@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Orthogonal Account Run API
+  description: Orthogonal is a unified API and payment layer that lets AI agents discover, access, and pay for external services from a single catalog of 40+ third-party APIs. Agents describe what they need in natural language; Orthogonal returns the right service and proxies the call, metering a per-call price. This OpenAPI description was GENERATED from the public developer documentation at https://docs.orthogonal.com (no first-party OpenAPI is published) and captures the documented Discovery and Run surface. Endpoint shapes are faithful to the docs; verify against the live API before code generation.
+  version: v1
+  contact:
+    name: Orthogonal
+    url: https://docs.orthogonal.com
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source: https://docs.orthogonal.com/api-reference/introduction.md
+servers:
+- url: https://api.orthogonal.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Run
+  description: Execute a call against any catalog API through Orthogonal.
+paths:
+  /v1/run:
+    post:
+      operationId: runApi
+      tags:
+      - Run
+      summary: Execute an API call through Orthogonal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - api
+              - path
+              properties:
+                api:
+                  type: string
+                  description: API slug (e.g. 'sixtyfour', 'fiber').
+                path:
+                  type: string
+                  description: Endpoint path (e.g. '/enrich-lead', '/find-email').
+                body:
+                  type: object
+                  description: Request body for POST/PUT/PATCH endpoints.
+                query:
+                  type: object
+                  description: Query string parameters as key-value pairs.
+      responses:
+        '200':
+          description: Result from the upstream API provider.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
+components:
+  responses:
+    UpstreamError:
+      description: Upstream API provider returned an error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: API or endpoint not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InsufficientCredits:
+      description: Not enough credits to complete the call.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    RunResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        priceCents:
+          type: number
+          description: Cost in cents (100 = $1).
+        data:
+          type: object
+          description: Response from the upstream API provider.
+        requestId:
+          type: string
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: false
+        error:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: string
+          description: Machine-readable error code.
+          enum:
+          - UNAUTHORIZED
+          - INSUFFICIENT_CREDITS
+          - RATE_LIMITED
+          - NOT_FOUND
+          - UPSTREAM_ERROR
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key as a bearer token. Live keys are prefixed ''orth_live_'' and test keys ''orth_test_''. Send as ''Authorization: Bearer orth_live_...''.'
