@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com (api-reference, authentication, quickstart)
+description: >-
+  Cross-cutting runtime semantics for the Orthogonal API, derived from the
+  developer documentation and the generated OpenAPI.
+auth:
+  style: bearer-api-key
+  header: 'Authorization: Bearer orth_live_...'
+  env_var: ORTHOGONAL_API_KEY
+  ref: authentication/orthogonal-authentication.yml
+versioning:
+  style: uri-path
+  current: v1
+  base_url: https://api.orthogonal.com/v1
+pagination:
+  style: limit-offset
+  params:
+    limit: Maximum records to return (list-endpoints max 500; search max 50).
+    offset: Records to skip.
+  response_fields:
+    pagination.hasMore: Whether more records exist.
+  note: Applies to /v1/list-endpoints; /v1/search accepts limit only.
+request_id:
+  field: requestId
+  location: response body
+  note: Every /v1/run response returns a unique requestId for tracing.
+error_envelope:
+  shape: '{ "success": false, "error": "<message>", "code": "<CODE>" }'
+  format: custom-json
+  ref: errors/orthogonal-problem-types.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency key/header is documented. Calls to /v1/run are metered
+    per-execution; there is no documented dedupe/retention window.
+rate_limiting:
+  documented: false
+  signal: RATE_LIMITED code with HTTP 429 on limit breach.
+pricing_signal:
+  field: priceCents
+  location: /v1/run response
+  note: Per-call price returned inline; also available up-front via the MCP quote tool.
+payments:
+  ref: mcp/orthogonal-mcp.yml
+  rails:
+  - credits (prepaid, default)
+  - x402 (USDC on Base)
+  - MPP (USDC.e on Tempo)

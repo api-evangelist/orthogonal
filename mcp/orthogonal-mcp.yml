@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com/mcp/setup.md
+status: official
+name: Orthogonal
+description: >-
+  Official hosted, remote MCP server that gives any MCP-compatible client (Claude,
+  Cursor, etc.) natural-language discovery and pay-per-call execution across
+  Orthogonal's catalog of 40+ third-party APIs.
+transport: streamable-http
+url: https://mcp.orthogonal.com
+authorization:
+  type: oauth2
+  authorization_server: https://mcp.orthogonal.com/.well-known/oauth-authorization-server
+  issuer: https://clerk.orthogonal.com
+  flow: authorization_code
+  pkce: S256
+  dynamic_client_registration: https://mcp.orthogonal.com/oauth/register
+tools:
+- name: search
+  description: Find APIs by describing what you need in natural language.
+- name: get_details
+  description: Retrieve full parameter info for an endpoint.
+- name: quote
+  description: Get pricing for a call without executing it.
+- name: use
+  description: Execute an API call.
+- name: integrate
+  description: Get ready-to-use code snippets for an endpoint.
+- name: batch_use
+  description: Run up to 20 API calls in parallel.
+- name: batch_get_details
+  description: Fetch parameter info for up to 20 endpoints simultaneously.
+clients:
+  claude_desktop: Settings -> Connectors -> Add custom connector -> URL https://mcp.orthogonal.com
+  cursor: Settings -> MCP -> Add Server -> URL https://mcp.orthogonal.com
+  generic: '{"mcpServers":{"orthogonal":{"url":"https://mcp.orthogonal.com"}}}'

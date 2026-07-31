@@ -1,0 +1,385 @@
+openapi: 3.1.0
+info:
+  title: Orthogonal API
+  description: >-
+    Orthogonal is a unified API and payment layer that lets AI agents discover,
+    access, and pay for external services from a single catalog of 40+ third-party
+    APIs. Agents describe what they need in natural language; Orthogonal returns
+    the right service and proxies the call, metering a per-call price. This
+    OpenAPI description was GENERATED from the public developer documentation at
+    https://docs.orthogonal.com (no first-party OpenAPI is published) and captures
+    the documented Discovery and Run surface. Endpoint shapes are faithful to the
+    docs; verify against the live API before code generation.
+  version: v1
+  contact:
+    name: Orthogonal
+    url: https://docs.orthogonal.com
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source: https://docs.orthogonal.com/api-reference/introduction.md
+servers:
+- url: https://api.orthogonal.com
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Discovery
+  description: Find APIs and endpoints, inspect parameters, and get code snippets.
+- name: Run
+  description: Execute a call against any catalog API through Orthogonal.
+- name: Account
+  description: Credit balance, usage, and transaction history.
+paths:
+  /v1/search:
+    post:
+      operationId: searchApis
+      tags:
+      - Discovery
+      summary: Search APIs using natural language
+      description: Find APIs and matching endpoints from a natural-language prompt.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - prompt
+              properties:
+                prompt:
+                  type: string
+                  description: Natural language description of what you're looking for.
+                limit:
+                  type: integer
+                  default: 10
+                  maximum: 50
+                  description: Maximum results to return.
+      responses:
+        '200':
+          description: Matching APIs and endpoints.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /v1/details:
+    post:
+      operationId: getDetails
+      tags:
+      - Discovery
+      summary: Get full parameter information for an endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - api
+              - path
+              properties:
+                api:
+                  type: string
+                  description: API slug from search results (e.g. 'apollo', 'linkup').
+                path:
+                  type: string
+                  description: Endpoint path (e.g. '/v1/people/match').
+      responses:
+        '200':
+          description: Endpoint parameter details.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/integrate:
+    post:
+      operationId: integrate
+      tags:
+      - Discovery
+      summary: Get ready-to-use code snippets for an endpoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - api
+              - path
+              properties:
+                api:
+                  type: string
+                path:
+                  type: string
+      responses:
+        '200':
+          description: Code snippets for the endpoint.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/list-endpoints:
+    get:
+      operationId: listEndpoints
+      tags:
+      - Discovery
+      summary: List all available APIs and endpoints
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+          maximum: 500
+        description: Maximum number of APIs to return.
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Number of APIs to skip (for pagination).
+      responses:
+        '200':
+          description: Catalog of APIs with their endpoints.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  apis:
+                    type: array
+                    items:
+                      type: object
+                  count:
+                    type: integer
+                  totalEndpoints:
+                    type: integer
+                  pagination:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      offset:
+                        type: integer
+                      hasMore:
+                        type: boolean
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/run:
+    post:
+      operationId: runApi
+      tags:
+      - Run
+      summary: Execute an API call through Orthogonal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - api
+              - path
+              properties:
+                api:
+                  type: string
+                  description: API slug (e.g. 'sixtyfour', 'fiber').
+                path:
+                  type: string
+                  description: Endpoint path (e.g. '/enrich-lead', '/find-email').
+                body:
+                  type: object
+                  description: Request body for POST/PUT/PATCH endpoints.
+                query:
+                  type: object
+                  description: Query string parameters as key-value pairs.
+      responses:
+        '200':
+          description: Result from the upstream API provider.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
+  /v1/balance:
+    get:
+      operationId: getBalance
+      tags:
+      - Account
+      summary: Check your credit balance
+      responses:
+        '200':
+          description: Current credit balance.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/transactions:
+    get:
+      operationId: listTransactions
+      tags:
+      - Account
+      summary: View your credit transaction history
+      responses:
+        '200':
+          description: Transaction history.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /v1/usage:
+    get:
+      operationId: getUsage
+      tags:
+      - Account
+      summary: View your API usage history
+      responses:
+        '200':
+          description: Usage history.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key as a bearer token. Live keys are prefixed 'orth_live_' and test
+        keys 'orth_test_'. Send as 'Authorization: Bearer orth_live_...'.
+  responses:
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InsufficientCredits:
+      description: Not enough credits to complete the call.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: API or endpoint not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UpstreamError:
+      description: Upstream API provider returned an error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: false
+        error:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: string
+          description: Machine-readable error code.
+          enum:
+          - UNAUTHORIZED
+          - INSUFFICIENT_CREDITS
+          - RATE_LIMITED
+          - NOT_FOUND
+          - UPSTREAM_ERROR
+    SearchResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiResult'
+        count:
+          type: integer
+        apisCount:
+          type: integer
+        prompt:
+          type: string
+        searchType:
+          type: string
+        responseTime:
+          type: number
+    ApiResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        baseUrl:
+          type: string
+        payableBaseUrl:
+          type: string
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/EndpointResult'
+    EndpointResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        path:
+          type: string
+        method:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        isPayable:
+          type: boolean
+        verified:
+          type: boolean
+        score:
+          type: number
+    RunResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        priceCents:
+          type: number
+          description: Cost in cents (100 = $1).
+        data:
+          type: object
+          description: Response from the upstream API provider.
+        requestId:
+          type: string

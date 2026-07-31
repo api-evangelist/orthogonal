@@ -1,0 +1,116 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/orthogonal-sh/skills
+description: >-
+  Orthogonal publishes an official Agent Skills library (SKILL.md files) for
+  Cursor, Claude Code, Windsurf, GitHub Copilot, Codex, Gemini CLI, and any agent
+  that reads SKILL.md. Skills are installable via the CLI ('orth skills add
+  orthogonal/<skill>'). 88 skills are published; a representative set is saved
+  verbatim in this directory, and the full library is referenced below.
+repository: https://github.com/orthogonal-sh/skills
+install:
+- npm install -g @orth/cli
+- orth skills add orthogonal/<skill>
+saved_verbatim:
+- file: orthogonal-search.md
+  skill: search
+  description: General-purpose web & platform search across Tavily, Exa, Andi, Linkup, Valyu, SearchAPI.
+- file: orthogonal-comprehensive-enrichment.md
+  skill: comprehensive-enrichment
+  description: Enrich any person or company from any identifier (email, name, LinkedIn, domain, handle).
+- file: orthogonal-lead-enrichment.md
+  skill: lead-enrichment
+  description: Enrich a sales lead into a contact record.
+- file: orthogonal-skills-README.md
+  skill: README
+  description: Skills library index and install guide.
+count: 88
+all_skills:
+- github
+- gmail
+- google-calendar
+- google-drive
+- google-sheets
+- notion
+- slack
+- amazon-search
+- andi
+- api-tester
+- brand-dev
+- company-funding-search
+- company-intel
+- competitor-research
+- comprehensive-enrichment
+- contactout
+- didit
+- dome
+- ebay-search
+- email-campaign
+- exa
+- extract-webpage-data
+- fiber
+- find-dentists
+- find-email-by-name
+- find-skill
+- find-twitter-influencers
+- fundable
+- get-brand-assets
+- gtm-enrichment-deep
+- gtm-enrichment-smart
+- hunter
+- image-analyzer
+- instagram-scraper
+- investor-call-prep
+- investor-recent-investments
+- investor-research
+- jina-s
+- job-search
+- lead-enrichment
+- linkedin-scraper
+- linkup
+- logo
+- market-research
+- notte
+- nyne
+- olostep
+- parallel
+- pdf-processor
+- perplexity
+- person-lookup
+- phone-verification
+- precip
+- prediction-market-odds
+- recent-funding-rounds
+- remotion
+- restaurant-booking
+- riveter
+- sales-prospecting
+- scrape
+- scrapecreators
+- scrapegraph
+- screenshot-website
+- search
+- searchapi
+- send-text-message
+- seo-analyzer
+- sixtyfour
+- skill-creator
+- social-listening
+- tako
+- targeted-prospecting
+- tavily
+- tavus
+- team-linkedin-profiles
+- textbelt
+- tiktok-search
+- tomba
+- twitter-profile-lookup
+- uptime-monitor
+- valyu
+- verify-email
+- vhs-terminal-recordings
+- weather
+- weather-forecast
+- website-screenshot
+- yc-batch-evaluator
+- yt-dlp-downloader

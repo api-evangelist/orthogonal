@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.orthogonal.com + live oauth-authorization-server metadata + generated OpenAPI
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 8414 OAuth 2.0 Authorization Server Metadata published at
+    api.orthogonal.com and mcp.orthogonal.com; authorization_code + refresh_token
+    grants, PKCE S256. Fronted by Clerk.
+- id: oidc
+  conforms: true
+  evidence: >-
+    scopes_supported includes 'openid'; id_token_signing_alg RS256; jwks_uri and
+    OpenID claims (sub, iss, aud, exp, iat, email, name) advertised.
+- id: pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = ["S256"].
+- id: oauth-dynamic-client-registration
+  conforms: true
+  evidence: RFC 7591 registration_endpoint advertised (clerk/mcp /oauth/register).
+- id: mcp
+  conforms: true
+  evidence: Official hosted MCP server at mcp.orthogonal.com exposing 7 tools over streamable HTTP.
+- id: x402
+  conforms: true
+  evidence: >-
+    Implements the x402 HTTP 402 payment flow (USDC on Base) at
+    x402.orthogonal.com/{api}/{path}.
+- id: pagination
+  conforms: true
+  evidence: limit/offset with pagination.hasMore on /v1/list-endpoints.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors use a custom JSON envelope (success/error/code), not
+    application/problem+json.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key or header is documented.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No first-party OpenAPI is published; the api-reference/openapi.json path
+    serves the default Mintlify Plant Store placeholder. A GENERATED spec is
+    provided in this repo under openapi/.

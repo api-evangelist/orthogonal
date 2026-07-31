@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.orthogonal.com/.well-known/oauth-authorization-server
+docs: https://clerk.com/docs/oauth/scoped-access
+description: >-
+  OAuth 2.0 scopes advertised by Orthogonal's authorization server metadata
+  (issuer clerk.orthogonal.com). These govern the hosted MCP OAuth flow; the
+  REST API itself uses opaque API keys with no scope model. Scopes below are the
+  Clerk scoped-access set exposed for api.orthogonal.com.
+oauth2:
+  authorization_endpoint: https://clerk.orthogonal.com/oauth/authorize
+  token_endpoint: https://clerk.orthogonal.com/oauth/token
+scopes:
+- name: openid
+  description: OpenID Connect sign-in; issues an ID token.
+- name: profile
+  description: Access the user's basic profile information.
+- name: email
+  description: Access the user's email address.
+- name: public_metadata
+  description: Read the user's public metadata.
+- name: private_metadata
+  description: Read the user's private metadata.
+- name: offline_access
+  description: Issue a refresh token for offline/long-lived access.
+- name: 'user:org:read'
+  description: Read the user's organization membership.

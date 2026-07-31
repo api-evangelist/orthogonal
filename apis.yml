@@ -1,8 +1,16 @@
 aid: orthogonal
 name: Orthogonal
-description: 'Orthogonal is a company surfaced as a portfolio company of pantera-capital, y-combinator
-  and added to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a
-  lead awaiting the enrichment pipeline.'
+description: >-
+  Orthogonal is a unified API and payment layer for AI agents, backed by Pantera
+  Capital and Y Combinator. An agent describes what it needs in natural language
+  and Orthogonal returns the right service from a catalog of 40+ third-party APIs
+  (web search, data enrichment, scraping, email finding/verification, identity),
+  then proxies the call and meters a per-call price. Access is available through a
+  REST API (api.orthogonal.com), a TypeScript SDK (@orth/sdk), a Python SDK (orth),
+  a CLI (@orth/cli), and an official hosted MCP server (mcp.orthogonal.com) for
+  Claude, Cursor, and other agents. Billing is prepaid credits or pay-per-call
+  stablecoin micropayments over x402 (USDC on Base) and MPP (USDC.e on Tempo).
+  Orthogonal also publishes an open library of 88 installable Agent Skills.
 url: https://raw.githubusercontent.com/api-evangelist/orthogonal/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,13 +19,81 @@ x-backed-by:
 - y-combinator
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://orthogonal.sh/logo.jpg
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- AI Agents
+- API Discovery
+- API Marketplace
+- Agent Payments
+- MCP
+- Data Enrichment
 - Crypto
-apis: []
+- Stablecoins
+apis:
+- aid: orthogonal:orthogonal-account-api
+  name: Orthogonal Account API
+  description: Credit balance, usage, and transaction history.
+  humanURL: https://docs.orthogonal.com/api-reference/introduction
+  baseURL: https://api.orthogonal.com/v1
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/orthogonal-account-api-openapi.yml
+  - type: Documentation
+    url: https://docs.orthogonal.com/
+  - type: APIReference
+    url: https://docs.orthogonal.com/api-reference/introduction
+  - type: Quickstart
+    url: https://docs.orthogonal.com/quickstart
+- aid: orthogonal:orthogonal-discovery-api
+  name: Orthogonal Discovery API
+  description: Find APIs and endpoints, inspect parameters, and get code snippets.
+  humanURL: https://docs.orthogonal.com/api-reference/introduction
+  baseURL: https://api.orthogonal.com/v1
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/orthogonal-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://docs.orthogonal.com/
+  - type: APIReference
+    url: https://docs.orthogonal.com/api-reference/introduction
+  - type: Quickstart
+    url: https://docs.orthogonal.com/quickstart
+- aid: orthogonal:orthogonal-run-api
+  name: Orthogonal Run API
+  description: Execute a call against any catalog API through Orthogonal.
+  humanURL: https://docs.orthogonal.com/api-reference/introduction
+  baseURL: https://api.orthogonal.com/v1
+  tags:
+  - Run
+  properties:
+  - type: OpenAPI
+    url: openapi/orthogonal-run-api-openapi.yml
+  - type: Documentation
+    url: https://docs.orthogonal.com/
+  - type: APIReference
+    url: https://docs.orthogonal.com/api-reference/introduction
+  - type: Quickstart
+    url: https://docs.orthogonal.com/quickstart
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +102,64 @@ maintainers:
 common:
 - type: Website
   url: https://www.orthogonal.com/
+- type: Documentation
+  url: https://docs.orthogonal.com/
+- type: APIReference
+  url: https://docs.orthogonal.com/api-reference/introduction
+- type: GettingStarted
+  url: https://docs.orthogonal.com/quickstart
+- type: Pricing
+  url: https://www.orthogonal.com/pricing
+- type: SignUp
+  url: https://orthogonal.com/dashboard
+- type: TermsOfService
+  url: https://www.orthogonal.com/terms
+- type: PrivacyPolicy
+  url: https://www.orthogonal.com/privacy
+- type: GitHubOrganization
+  url: https://github.com/orthogonal-sh
+- type: OpenAPI
+  url: openapi/orthogonal-openapi.yaml
+- type: Overlay
+  url: overlays/orthogonal-openapi-overlay.yaml
+- type: Packages
+  url: packages/orthogonal-packages.yml
+- type: SDKs
+  url: packages/orthogonal-packages.yml
+- type: CLI
+  url: cli/orthogonal-cli.yml
+- type: MCPServer
+  url: mcp/orthogonal-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/orthogonal-llms.txt
+- type: WellKnown
+  url: well-known/orthogonal-well-known.yml
+- type: Authentication
+  url: authentication/orthogonal-authentication.yml
+- type: OAuthScopes
+  url: scopes/orthogonal-scopes.yml
+- type: Conventions
+  url: conventions/orthogonal-conventions.yml
+- type: ErrorCatalog
+  url: errors/orthogonal-problem-types.yml
+- type: Conformance
+  url: conformance/orthogonal-conformance.yml
+- type: Lifecycle
+  url: lifecycle/orthogonal-lifecycle.yml
+- type: Sandbox
+  url: sandbox/orthogonal-sandbox.yml
+- type: DataModel
+  url: data-model/orthogonal-data-model.yml
+- type: DomainSecurity
+  url: security/orthogonal-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/orthogonal-vulnerability-disclosure.yml
+- type: Security
+  url: security/orthogonal-vulnerability-disclosure.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

@@ -1,0 +1,64 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orthogonal-openapi.yaml
+description: >-
+  Entity-relationship graph derived from the generated OpenAPI schemas. The core
+  domain is a catalog of APIs, each exposing Endpoints, plus per-account Balance,
+  Usage, and Transaction records produced by running calls.
+entities:
+- name: Api
+  description: A third-party API listed in the Orthogonal catalog.
+  key: slug
+  fields:
+  - id (uuid)
+  - name
+  - slug
+  - baseUrl
+  - payableBaseUrl
+  - verified
+- name: Endpoint
+  description: A callable operation on a catalog API.
+  key: id
+  fields:
+  - id (uuid)
+  - path
+  - method
+  - description
+  - price
+  - isPayable
+  - verified
+- name: RunResult
+  description: The result of executing an endpoint through /v1/run.
+  key: requestId
+  fields:
+  - requestId
+  - success
+  - priceCents
+  - data
+- name: Balance
+  description: An account's current credit balance.
+- name: Transaction
+  description: A credit ledger entry (top-up or spend).
+- name: Usage
+  description: An API usage record.
+relationships:
+- from: Api
+  to: Endpoint
+  type: has_many
+  via: endpoints
+- from: Endpoint
+  to: Api
+  type: belongs_to
+  via: api (slug)
+- from: RunResult
+  to: Endpoint
+  type: belongs_to
+  via: api + path
+- from: Transaction
+  to: RunResult
+  type: has_one
+  via: requestId (spend entries)
+- from: Usage
+  to: Endpoint
+  type: belongs_to
+  via: api + path

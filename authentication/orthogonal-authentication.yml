@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com/authentication.md + live oauth-authorization-server metadata
+summary: >-
+  The REST API and CLI authenticate with an API key passed as an HTTP bearer
+  token. The hosted MCP server authenticates users via OAuth 2.0 (authorization
+  code + PKCE) fronted by Clerk.
+schemes:
+- id: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  format: 'Authorization: Bearer orth_live_...'
+  key_prefixes:
+  - prefix: orth_live_
+    mode: live
+    note: production, billable
+  - prefix: orth_test_
+    mode: test
+    note: testing, no charges
+  env_var: ORTHOGONAL_API_KEY
+  applies_to:
+  - REST API (api.orthogonal.com)
+  - CLI (@orth/cli)
+  - SDKs (@orth/sdk, orth)
+- id: oauth2
+  type: oauth2
+  flow: authorization_code
+  pkce: S256
+  issuer: https://clerk.orthogonal.com
+  authorization_endpoint: https://clerk.orthogonal.com/oauth/authorize
+  token_endpoint: https://clerk.orthogonal.com/oauth/token
+  revocation_endpoint: https://clerk.orthogonal.com/oauth/token/revoke
+  registration_endpoint: https://mcp.orthogonal.com/oauth/register
+  jwks_uri: https://clerk.orthogonal.com/.well-known/jwks.json
+  applies_to:
+  - Hosted MCP server (mcp.orthogonal.com)
+  scopes:
+  - openid
+  - profile
+  - email
+  - public_metadata
+  - private_metadata
+  - offline_access
+  - user:org:read

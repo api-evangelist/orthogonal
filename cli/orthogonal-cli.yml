@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com/cli.md + npm @orth/cli
+name: orth
+package: '@orth/cli'
+registry: npm
+version: 0.2.33
+official: true
+repository: https://github.com/orthogonal-sh/cli
+install:
+- npm install -g @orth/cli
+env_var: ORTHOGONAL_API_KEY
+commands:
+- command: orth search <keyword>
+  description: Find APIs by keyword / natural language.
+- command: orth api
+  description: List all available APIs.
+- command: orth api <api-name>
+  description: View endpoints for a specific API.
+- command: orth api <api-name> <endpoint>
+  description: View full parameter details for an endpoint.
+- command: orth run <api> <endpoint>
+  description: Execute an API endpoint.
+- command: orth account
+  description: Check account balance and usage.
+- command: orth skills search <query>
+  description: Search installable agent skills.
+- command: orth skills add <skill>
+  description: Install a skill into agent skills directories.
+flags:
+- flag: --key <key>
+  description: Specify API key (overrides env var).
+- flag: --json
+  description: Output raw JSON.
+- flag: -q
+  description: Pass query parameters.
+- flag: --body
+  description: Provide a JSON request body.
+- flag: --help
+  description: Show help.
+- flag: --version
+  description: Show version.

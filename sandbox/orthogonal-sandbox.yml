@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com/authentication.md + concepts/pricing.md
+description: >-
+  Orthogonal separates test and live usage by API-key prefix. Test keys run the
+  same discovery/run surface without incurring charges. New accounts get free
+  credits to try live calls.
+modes:
+- mode: test
+  key_prefix: orth_test_
+  billable: false
+  note: Testing; calls are not charged.
+- mode: live
+  key_prefix: orth_live_
+  billable: true
+  note: Production; per-call pricing applies.
+free_credits:
+  amount_usd: 5
+  note: '$5 in free credits on new accounts; no credit card required.'
+env_var: ORTHOGONAL_API_KEY
+test_values: >-
+  No fixed/published test fixtures, test cards, or hosted test tokens — test mode
+  simply suppresses billing. Do not invent test values.

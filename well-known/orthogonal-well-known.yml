@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: probed
+source: live probes of Orthogonal hosts
+probes:
+- host: api.orthogonal.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  file: orthogonal-api-oauth-authorization-server.json
+- host: api.orthogonal.com
+  path: /.well-known/security.txt
+  status: 404
+- host: api.orthogonal.com
+  path: /.well-known/openid-configuration
+  status: 404
+- host: api.orthogonal.com
+  path: /.well-known/api-catalog
+  status: 404
+- host: api.orthogonal.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: mcp.orthogonal.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  file: orthogonal-mcp-oauth-authorization-server.json
+- host: mcp.orthogonal.com
+  path: /.well-known/security.txt
+  status: 404
+- host: mcp.orthogonal.com
+  path: /.well-known/openid-configuration
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/security.txt
+  status: 404
+- host: orthogonal.com
+  path: /.well-known/security.txt
+  status: 307
+notes: >-
+  Both api.orthogonal.com and mcp.orthogonal.com expose RFC 8414 OAuth 2.0
+  Authorization Server Metadata; the issuer is Clerk (clerk.orthogonal.com).
+  orthogonal.com returns 307 redirects for all .well-known paths. No
+  security.txt, OpenID configuration, api-catalog, or ai-plugin.json published.

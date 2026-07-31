@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.orthogonal.com/api-reference/introduction.md + run.md
+format: custom-json
+envelope:
+  shape: '{ "success": false, "error": "<message>", "code": "<CODE>" }'
+  note: >-
+    Orthogonal does NOT use RFC 9457 application/problem+json. Errors are a plain
+    JSON envelope with a boolean success flag, a human-readable error message,
+    and a machine-readable code string. HTTP status codes carry the class.
+problem_types:
+- code: UNAUTHORIZED
+  http_status: 401
+  title: Unauthorized
+  meaning: Missing or invalid API key.
+  remediation: "Send a valid key as 'Authorization: Bearer orth_live_...'."
+- code: INSUFFICIENT_CREDITS
+  http_status: 402
+  title: Insufficient credits
+  meaning: The account balance cannot cover the call price.
+  remediation: Top up credits in the dashboard, or pay per call with stablecoins (x402/MPP).
+- code: RATE_LIMITED
+  http_status: 429
+  title: Rate limited
+  meaning: Too many requests in the current window.
+  remediation: Back off and retry.
+- code: NOT_FOUND
+  http_status: 404
+  title: Not found
+  meaning: The requested API slug or endpoint path does not exist in the catalog.
+  remediation: Use /v1/search or /v1/list-endpoints to find valid api/path values.
+- code: UPSTREAM_ERROR
+  http_status: 502
+  title: Upstream error
+  meaning: The upstream third-party API provider returned an error.
+  remediation: Inspect the returned data; retry or choose an alternate API.
+- code: BAD_REQUEST
+  http_status: 400
+  title: Invalid request
+  meaning: Malformed request body or missing required fields (api, path).
+  remediation: Validate the request against the endpoint parameters from /v1/details.

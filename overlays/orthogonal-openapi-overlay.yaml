@@ -1,0 +1,45 @@
+overlay: 1.0.0
+info:
+  title: Orthogonal API Evangelist enrichment overlay
+  version: 1.0.0
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source: openapi/orthogonal-openapi.yaml
+extends: ../openapi/orthogonal-openapi.yaml
+actions:
+- target: $.info
+  description: Annotate provenance and governance context.
+  update:
+    x-apievangelist:
+      enriched: '2026-07-20'
+      note: >-
+        Base OpenAPI was generated from public docs (no first-party spec is
+        published). See conventions/, authentication/, and scopes/ for
+        cross-cutting semantics captured during enrichment.
+- target: $.info
+  description: Record payment rails available for the Run surface.
+  update:
+    x-payments:
+      rails:
+      - id: credits
+        default: true
+      - id: x402
+        stablecoin: USDC
+        chain: Base
+        endpoint: https://x402.orthogonal.com/{api}/{path}
+      - id: mpp
+        stablecoin: USDC.e
+        chain: Tempo
+        endpoint: https://mpp.orthogonal.com/{api}/{path}
+- target: "$.paths['/v1/run'].post"
+  description: Flag that pricing is metered per-execution and returned inline.
+  update:
+    x-metering:
+      price_field: priceCents
+      idempotent: false
+      note: Each execution is billed; there is no documented idempotency key.
+- target: "$.paths['/v1/search'].post"
+  description: Mark the semantic discovery entrypoint for agents.
+  update:
+    x-agent-entrypoint: true

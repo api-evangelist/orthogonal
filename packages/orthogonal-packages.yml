@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: npm registry + PyPI + github.com/orthogonal-sh
+packages:
+- name: '@orth/sdk'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 0.5.1
+  description: TypeScript SDK to call any API on the Orthogonal platform.
+  url: https://www.npmjs.com/package/@orth/sdk
+  repository: https://github.com/orthogonal-sh/orthogonal-typescript
+- name: '@orth/cli'
+  registry: npm
+  official: true
+  language: TypeScript
+  version: 0.2.33
+  description: CLI to access all APIs and skills on the Orthogonal platform.
+  url: https://www.npmjs.com/package/@orth/cli
+  repository: https://github.com/orthogonal-sh/cli
+- name: orth
+  registry: pypi
+  official: true
+  language: Python
+  version: 0.1.2
+  description: Python SDK to call any API on the Orthogonal platform.
+  url: https://pypi.org/project/orth/
+  repository: https://github.com/orthogonal-sh/python

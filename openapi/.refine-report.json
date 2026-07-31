@@ -1,0 +1,18 @@
+{
+  "provider": "orthogonal",
+  "sources": [
+    "orthogonal-account-api-openapi.yml",
+    "orthogonal-discovery-api-openapi.yml",
+    "orthogonal-run-api-openapi.yml"
+  ],
+  "outputs": [
+    "orthogonal-account-api-openapi.yml",
+    "orthogonal-discovery-api-openapi.yml",
+    "orthogonal-run-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.orthogonal.com
+versioning:
+  scheme: uri-path
+  current: v1
+  note: API is served under /v1. No prior versions documented.
+deprecation:
+  policy_documented: false
+  sunset_header: not documented
+  note: No published deprecation/sunset policy (RFC 8594) found.
+status_page:
+  found: false
+  note: No public status page discovered as of this pass.
+sla:
+  documented: false
+support:
+  security_contact: security@orthogonal.com
+  docs: https://docs.orthogonal.com
+deprecated_operations: []
