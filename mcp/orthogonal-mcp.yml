@@ -1,7 +1,8 @@
 generated: '2026-07-20'
 method: searched
 source: https://docs.orthogonal.com/mcp/setup.md
-status: official
+status: published
+status_raw: official
 name: Orthogonal
 description: >-
   Official hosted, remote MCP server that gives any MCP-compatible client (Claude,
