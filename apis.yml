@@ -34,7 +34,7 @@ accessModel:
 image: https://orthogonal.sh/logo.jpg
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-14'
 tags:
 - Company
 - AI Agents
@@ -94,6 +94,34 @@ apis:
     url: https://docs.orthogonal.com/api-reference/introduction
   - type: Quickstart
     url: https://docs.orthogonal.com/quickstart
+- aid: orthogonal:orthogonal-marketplace-api
+  name: Orthogonal API Marketplace
+  description: >-
+    The resold catalog itself — 795 payable operations across 58 third-party
+    provider families (scraping, enrichment, search, jobs, weather, agent
+    infrastructure), each namespaced /{provider-slug}/{upstream-path} and each
+    carrying its own fixed USD price in-band. Reachable three ways: as arguments
+    to POST /v1/run on the control plane, or directly against one of three
+    stablecoin payment rails that answer HTTP 402 and settle before the call runs.
+  humanURL: https://www.orthogonal.com/discover
+  baseURL: https://mpp.orthogonal.com
+  tags:
+  - Marketplace
+  - Payments
+  - x402
+  properties:
+  - type: OpenAPI
+    url: openapi/_original/orthogonal-marketplace-openapi.json
+  - type: Overlay
+    url: overlays/orthogonal-marketplace-overlay.yaml
+  - type: Plans
+    url: plans/orthogonal-plans-pricing.yml
+  - type: FinOps
+    url: finops/orthogonal-finops.yml
+  - type: Documentation
+    url: https://docs.orthogonal.com/payments
+  - type: APIReference
+    url: https://api.orthogonal.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -158,8 +186,28 @@ common:
   url: security/orthogonal-vulnerability-disclosure.yml
 - type: Security
   url: security/orthogonal-vulnerability-disclosure.yml
+- type: OpenAPI
+  url: openapi/_original/orthogonal-marketplace-openapi.json
+- type: Overlay
+  url: overlays/orthogonal-marketplace-overlay.yaml
+- type: AgentCard
+  url: a2a/orthogonal-a2a.yml
+- type: ToolCrosswalk
+  url: mcp/orthogonal-tool-crosswalk.yml
+- type: Plans
+  url: plans/orthogonal-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/orthogonal-rate-limits.yml
+- type: FinOps
+  url: finops/orthogonal-finops.yml
+- type: StatusPage
+  url: https://status.orthogonal.com/
+- type: Blog
+  url: https://www.orthogonal.com/blog
+- type: DeveloperPortal
+  url: https://docs.orthogonal.com/
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-14'
   status: enriched
-  artifacts_added: 24
+  artifacts_added: 11
   pass: local-v1
