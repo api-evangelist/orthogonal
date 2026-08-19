@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orthogonal Account Run API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Run",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute an API call through Orthogonal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orthogonal.com/v1/run",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute an API call through Orthogonal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

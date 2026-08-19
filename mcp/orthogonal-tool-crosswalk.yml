@@ -1,0 +1,130 @@
+generated: '2026-08-14'
+method: derived
+source: mcp/orthogonal-mcp.yml + openapi/ + https://api.orthogonal.com/openapi.json
+description: >-
+  Binds each tool on Orthogonal's hosted MCP server to the REST operation(s)
+  behind it. Orthogonal is unusual: the MCP surface is a thin, stable 7-tool
+  control plane, while the thing being controlled is a 795-operation marketplace
+  catalog reached through a single generic `use` / runApi call parameterised by
+  {api, path}. The crosswalk therefore has two layers — tool-to-control-plane
+  (1:1, high confidence) and control-plane-to-catalog (1:N fan-out).
+surfaces:
+  openapi:
+    control_plane: openapi/_original/orthogonal-openapi.yaml
+    control_plane_note: >-
+      GENERATED from the developer docs in a prior pass; no first-party OpenAPI
+      is published for the /v1 control plane.
+    marketplace: openapi/_original/orthogonal-marketplace-openapi.json
+    marketplace_note: >-
+      First-party, fetched verbatim from https://api.orthogonal.com/openapi.json
+      (795 operations, 58 provider families).
+  mcp:
+    url: https://mcp.orthogonal.com
+    transport: streamable-http
+    gated: true
+    gate_note: >-
+      POST tools/list returns HTTP 401 -32001 "Missing authentication. Use
+      x-api-host + x-api-key headers for user MCPs, or Bearer token for
+      Orthogonal MCP." Tool names and descriptions below are taken from the
+      published docs (docs.orthogonal.com/mcp/setup); live inputSchemas require
+      authenticated introspection and are NOT recorded here.
+  graphql:
+    present: false
+crosswalk:
+- tool: search
+  category: discovery
+  rest:
+  - searchApis
+  binding: rest
+  confidence: high
+  note: POST /v1/search — natural-language search over the catalog. Returns api, path, price.
+- tool: get_details
+  category: discovery
+  rest:
+  - getDetails
+  binding: rest
+  confidence: high
+  note: POST /v1/details — full parameter info for one endpoint.
+- tool: integrate
+  category: discovery
+  rest:
+  - integrate
+  binding: rest
+  confidence: high
+  note: POST /v1/integrate — ready-to-paste code snippet for an endpoint.
+- tool: use
+  category: execution
+  rest:
+  - runApi
+  binding: rest
+  confidence: high
+  note: >-
+    POST /v1/run with {api, path, body} — the single execution operation. Every
+    one of the 795 marketplace operations is reached through this one call, so
+    `use` fans out across the whole catalog rather than mapping to a named op.
+- tool: batch_use
+  category: execution
+  rest:
+  - runApi
+  binding: rest
+  confidence: medium
+  note: >-
+    Server-side fan-out of up to 20 parallel runApi calls. No public REST batch
+    operation is documented — the batching is an MCP-side composite over runApi.
+- tool: batch_get_details
+  category: discovery
+  rest:
+  - getDetails
+  binding: rest
+  confidence: medium
+  note: Server-side fan-out of up to 20 parallel getDetails calls; no REST batch operation documented.
+mcp_only:
+- tool: quote
+  reason: >-
+    Returns the price of a call without executing it. No public REST operation
+    exposes a standalone quote; the control-plane equivalents are the `price`
+    field returned inside a search/details response, and the static per-operation
+    x-payment-info block in the marketplace OpenAPI. Recorded as MCP-only because
+    an agent cannot get a price-only response over REST without also doing
+    discovery work.
+  partial_rest_equivalent:
+  - searchApis
+  - getDetails
+  static_equivalent: openapi/_original/orthogonal-marketplace-openapi.json#x-payment-info
+rest_only:
+- capability: account
+  operations:
+  - getBalance
+  - listTransactions
+  - getUsage
+  note: >-
+    Credit balance, transaction history and usage history have no MCP tool. An
+    agent using the MCP server cannot check whether it can afford the next call,
+    which is a real divergence given every call is metered and 402s on an empty
+    balance.
+- capability: catalog-browse
+  operations:
+  - listEndpoints
+  note: >-
+    Full catalog enumeration (GET /v1/list-endpoints, max 500) has no MCP tool;
+    the MCP surface only offers semantic `search`.
+- capability: marketplace-execution
+  operations: 795
+  operation_ids_sample:
+  - fantastic_jobs_GET__v1_active_jb
+  - sixtyfour_POST__enrich_company
+  - olostep_POST__v1_scrapes
+  note: >-
+    The 795 marketplace operations are not individually exposed as MCP tools;
+    they are addressed as {api, path} arguments to `use`. Not a gap — a
+    deliberate design choice — but it means MCP tool count understates reachable
+    surface by two orders of magnitude.
+coverage:
+  tools_named: 7
+  tools_bound_to_rest: 6
+  mcp_only: 1
+  control_plane_rest_ops: 8
+  control_plane_rest_ops_with_tool: 4
+  marketplace_rest_ops: 795
+  marketplace_ops_reachable_via_use: 795
+  marketplace_ops_with_named_tool: 0

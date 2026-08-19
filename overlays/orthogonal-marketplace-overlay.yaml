@@ -1,0 +1,55 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Orthogonal API Marketplace
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-14'
+  method: generated
+  source: openapi/_original/orthogonal-marketplace-openapi.json
+  note: >-
+    Captures API Evangelist's read of the first-party marketplace spec fetched
+    verbatim from https://api.orthogonal.com/openapi.json. The original is never
+    mutated. These actions record what the published contract is MISSING, so the
+    gaps are reviewable rather than silently absorbed.
+extends: openapi/_original/orthogonal-marketplace-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: https://api.orthogonal.com/openapi.json
+    x-apievangelist-fetched: '2026-08-14'
+    x-apievangelist-ownership: >-
+      Verified provider-owned. servers[] are mpp/x402/np.orthogonal.com,
+      info.title is "Orthogonal API Marketplace", and the spec was fetched from
+      api.orthogonal.com. All hosts are orthogonal.com subdomains.
+    x-apievangelist-shape: >-
+      Discovery and pricing manifest for a metered proxy, not a codegen contract.
+      764 paths / 795 operations across 58 upstream provider families, each path
+      namespaced /{provider-slug}/{upstream-path}.
+    x-apievangelist-gaps:
+    - no components.schemas (0 reusable schemas across 795 operations)
+    - no securitySchemes declared, despite every rail requiring payment credentials
+    - no top-level tags block (tags are used per-operation but never described)
+    - responses carry description only; no content/media-type schemas
+    - no parameters or requestBody documented on any operation
+    - no examples
+    x-apievangelist-strength: >-
+      In-band unit economics. 674 of 795 operations carry x-payment-info with a
+      fixed USD price and three settlement offers (mpp/tempo/USDC.e,
+      x402/base/USDC, np/base/USDC via Circle Gateway). An agent can price a call
+      from the contract alone. 108 operations price as "dynamic"; 121 carry no
+      payment block.
+- target: $.info
+  update:
+    x-apievangelist-related:
+      control_plane_openapi: openapi/_original/orthogonal-openapi.yaml
+      finops: finops/orthogonal-finops.yml
+      tool_crosswalk: mcp/orthogonal-tool-crosswalk.yml
+      conventions: conventions/orthogonal-conventions.yml
+- target: $
+  update:
+    x-apievangelist-note: >-
+      This spec describes the RESOLD surface. The Orthogonal control plane
+      (/v1/search, /v1/details, /v1/run, /v1/integrate, /v1/list-endpoints,
+      /v1/credits/balance) is a separate, smaller surface for which Orthogonal
+      publishes no OpenAPI; the repo carries a GENERATED description of it at
+      openapi/_original/orthogonal-openapi.yaml. Do not conflate the two.

@@ -1,0 +1,69 @@
+generated: '2026-08-14'
+method: probed
+source: https://docs.orthogonal.com/.well-known/agent-card.json
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.orthogonal.com
+  note: >-
+    Served from the documentation host, not the apex or the API host. The apex
+    (orthogonal.com, www.orthogonal.com), the API host (api.orthogonal.com) and
+    the MCP host (mcp.orthogonal.com) all return 404 for both the canonical
+    /.well-known/agent-card.json and the legacy /.well-known/agent.json.
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '0.3'
+  preferred_transport: HTTP+JSON
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  deviations:
+  - id: supportedInterfaces-instead-of-additionalInterfaces
+    note: >-
+      Card uses `supportedInterfaces[]`; A2A 1.0.0 names this field
+      `additionalInterfaces`. Not a hard-check failure, but a real spec deviation
+      an A2A client keyed to 1.0.0 will not read.
+  - id: protocolVersion-not-fully-qualified
+    note: 'Declares "0.3" rather than a patch-qualified "0.3.0".'
+  - id: skills-tags-empty
+    note: The single skill declares an empty tags[] array, so it is not discoverable by tag.
+card:
+  name: Orthogonal
+  url: https://docs.orthogonal.com/
+  version: 1.0.0
+  organization: Orthogonal
+  documentation_url: https://docs.orthogonal.com/
+  streaming: false
+  push_notifications: false
+  default_input_modes:
+  - text/plain
+  default_output_modes:
+  - text/plain
+  skills: 1
+  file: orthogonal-agent-card.json
+skills:
+- id: orthogonal
+  name: Orthogonal
+  url: https://docs.orthogonal.com/.well-known/agent-skills/orthogonal/skill.md
+  note: >-
+    The skill URL resolves (HTTP 200) to a real published SKILL.md — saved
+    verbatim at skills/orthogonal-wellknown-agent-skill.md. The card is therefore
+    a working discovery chain, not a dangling pointer.
+x-evidence:
+  fetched: '2026-08-14'
+  url: https://docs.orthogonal.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  misses:
+  - url: https://orthogonal.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://www.orthogonal.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://api.orthogonal.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://mcp.orthogonal.com/.well-known/agent-card.json
+    http_status: 404
+  - url: https://docs.orthogonal.com/.well-known/agent.json
+    http_status: 404

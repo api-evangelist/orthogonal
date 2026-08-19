@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orthogonal Account Discovery API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search APIs using natural language",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orthogonal.com/v1/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Find APIs and matching endpoints from a natural-language prompt."
+        },
+        {
+          "info": {
+            "name": "Get full parameter information for an endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orthogonal.com/v1/details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get full parameter information for an endpoint"
+        },
+        {
+          "info": {
+            "name": "Get ready-to-use code snippets for an endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orthogonal.com/v1/integrate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get ready-to-use code snippets for an endpoint"
+        },
+        {
+          "info": {
+            "name": "List all available APIs and endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orthogonal.com/v1/list-endpoints",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of APIs to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of APIs to skip (for pagination)."
+              }
+            ]
+          },
+          "docs": "List all available APIs and endpoints"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,28 +1,52 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: npm registry + PyPI + github.com/orthogonal-sh
+source: registry.npmjs.org + pypi.org/pypi/orth/json + github.com/orthogonal-sh
+checked: '2026-08-14'
 packages:
 - name: '@orth/sdk'
   registry: npm
   official: true
   language: TypeScript
   version: 0.5.1
+  published: '2026-07-04'
   description: TypeScript SDK to call any API on the Orthogonal platform.
   url: https://www.npmjs.com/package/@orth/sdk
   repository: https://github.com/orthogonal-sh/orthogonal-typescript
+  install: npm install @orth/sdk
 - name: '@orth/cli'
   registry: npm
   official: true
   language: TypeScript
-  version: 0.2.33
+  version: 0.2.34
+  published: '2026-08-07'
   description: CLI to access all APIs and skills on the Orthogonal platform.
   url: https://www.npmjs.com/package/@orth/cli
   repository: https://github.com/orthogonal-sh/cli
+  install: npm install -g @orth/cli
+  note: >-
+    Most actively released first-party artifact; bumped 0.2.33 -> 0.2.34 since the
+    2026-07-20 pass. See cli/orthogonal-cli.yml for the command surface.
 - name: orth
   registry: pypi
   official: true
   language: Python
   version: 0.1.2
+  published: '2026-07-05'
   description: Python SDK to call any API on the Orthogonal platform.
   url: https://pypi.org/project/orth/
   repository: https://github.com/orthogonal-sh/python
+  install: pip install orth
+currency:
+  note: >-
+    All three first-party packages are current relative to the API they wrap —
+    the newest release (2026-08-07) postdates every documented API change, and no
+    package is stale. Version and publish date read from the registry metadata
+    endpoints (registry.npmjs.org, pypi.org/pypi/<pkg>/json) on 2026-08-14.
+third_party_clients:
+  note: >-
+    The stablecoin payment rails are driven by THIRD-PARTY clients, not Orthogonal
+    packages — recorded for completeness, deliberately not listed as official:
+    `x402-fetch` + `viem` (Node) / `x402` + `eth-account` (Python) for the x402
+    rail, `mppx` (npm, published by wevm) for the MPP rail, and Stripe's `purl`
+    CLI. Orthogonal ships no first-party payment client.
+  docs: https://docs.orthogonal.com/payments

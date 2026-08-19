@@ -2,23 +2,23 @@
 
 ## Docs
 
-- [Balance](https://docs.orthogonal.com/api-reference/balance.md): Check your credit balance
-- [Get Details](https://docs.orthogonal.com/api-reference/details.md): Get full parameter information for an endpoint
-- [Integrate](https://docs.orthogonal.com/api-reference/integrate.md): Get code snippets for an endpoint
+- [Orthogonal](https://docs.orthogonal.com/index.md): Connect your agent to a catalog of paid tools and APIs.
+- [Quickstart](https://docs.orthogonal.com/quickstart.md): Connect your agent in two minutes
+- [Pricing](https://docs.orthogonal.com/concepts/pricing.md): How Orthogonal pricing works
+- [MCP Server](https://docs.orthogonal.com/mcp/setup.md): Add Orthogonal to Claude, Cursor, or any MCP-compatible client
+- [CLI](https://docs.orthogonal.com/cli.md): Access Orthogonal APIs from the command line
+- [Authentication](https://docs.orthogonal.com/authentication.md): How to authenticate with the Orthogonal API
+- [Payments](https://docs.orthogonal.com/payments.md): Pay per call with stablecoins over x402 or MPP.
+- [Examples](https://docs.orthogonal.com/use-cases.md): Chain multiple APIs into complete workflows
 - [API Reference](https://docs.orthogonal.com/api-reference/introduction.md): Complete reference for the Orthogonal API
+- [Search](https://docs.orthogonal.com/api-reference/search.md): Find APIs using natural language
+- [Get Details](https://docs.orthogonal.com/api-reference/details.md): Get full parameter information for an endpoint
 - [List Endpoints](https://docs.orthogonal.com/api-reference/list-endpoints.md): Get all available APIs and endpoints
 - [Run](https://docs.orthogonal.com/api-reference/run.md): Execute an API call
-- [Search](https://docs.orthogonal.com/api-reference/search.md): Find APIs using natural language
-- [Transactions](https://docs.orthogonal.com/api-reference/transactions.md): View your credit transaction history
+- [Integrate](https://docs.orthogonal.com/api-reference/integrate.md): Get code snippets for an endpoint
+- [Balance](https://docs.orthogonal.com/api-reference/balance.md): Check your credit balance
 - [Usage](https://docs.orthogonal.com/api-reference/usage.md): View your API usage history
-- [Authentication](https://docs.orthogonal.com/authentication.md): How to authenticate with the Orthogonal API
-- [CLI](https://docs.orthogonal.com/cli.md): Access Orthogonal APIs from the command line
-- [Pricing](https://docs.orthogonal.com/concepts/pricing.md): How Orthogonal pricing works
-- [Orthogonal](https://docs.orthogonal.com/index.md): Connect your agent to a catalog of paid tools and APIs.
-- [MCP Server](https://docs.orthogonal.com/mcp/setup.md): Add Orthogonal to Claude, Cursor, or any MCP-compatible client
-- [Payments](https://docs.orthogonal.com/payments.md): Pay per call with stablecoins over x402 or MPP.
-- [Quickstart](https://docs.orthogonal.com/quickstart.md): Connect your agent in two minutes
-- [Examples](https://docs.orthogonal.com/use-cases.md): Chain multiple APIs into complete workflows
+- [Transactions](https://docs.orthogonal.com/api-reference/transactions.md): View your credit transaction history
 
 ## Optional
 

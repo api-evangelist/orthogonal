@@ -1,0 +1,54 @@
+generated: '2026-08-14'
+method: searched
+source: https://docs.orthogonal.com/api-reference/introduction
+limit_count: 0
+description: >-
+  Orthogonal acknowledges rate limiting but publishes no numbers. The API
+  reference documents a RATE_LIMITED error code ("Too many requests") and the
+  provider-published Agent Skill tells agents to prefer batch_use over looping
+  "for 20+ calls" because "Orthogonal has rate limits" — but no window, no
+  per-key or per-account quota, and no burst allowance is stated anywhere in the
+  docs, and no RateLimit response headers are documented.
+limits: []
+error_signal:
+  code: RATE_LIMITED
+  http_status: 429
+  envelope: '{ "success": false, "error": "Too many requests", "code": "RATE_LIMITED" }'
+  source: https://docs.orthogonal.com/api-reference/introduction
+  note: >-
+    HTTP 429 is inferred from the documented RATE_LIMITED code class; the docs'
+    own HTTP status table (400/401/402/404/5xx) does not list 429 explicitly.
+headers:
+  documented: false
+  x_ratelimit: not documented
+  ratelimit_rfc9331: not documented
+  retry_after: not documented
+  note: >-
+    No X-RateLimit-*, RateLimit-* (RFC 9331) or Retry-After header is documented,
+    so an agent cannot read its remaining budget from a response. It can only
+    discover the limit by hitting it.
+mitigations:
+- id: batch_use
+  description: MCP tool running up to 20 API calls in parallel; the documented way to avoid tripping limits.
+  source: https://docs.orthogonal.com/mcp/setup
+- id: batch_get_details
+  description: Fetch parameter info for up to 20 endpoints in one call.
+  source: https://docs.orthogonal.com/mcp/setup
+- id: parentRequestId
+  description: >-
+    Pagination continuation token. Follow-on page/offset/cursor calls that pass
+    parentRequestId with unchanged non-pagination parameters are charged 0 — a
+    cost control rather than a rate control, but it removes the incentive to
+    batch pages into a burst.
+  source: https://api.orthogonal.com/openapi.json
+related:
+  conventions: conventions/orthogonal-conventions.yml
+  errors: errors/orthogonal-problem-types.yml
+  finops: finops/orthogonal-finops.yml
+evidence:
+- url: https://docs.orthogonal.com/llms-full.txt
+  http_status: 200
+  finding: 'single rate-limit mention: `RATE_LIMITED` | Too many requests'
+- url: https://docs.orthogonal.com/.well-known/agent-skills/orthogonal/skill.md
+  http_status: 200
+  finding: '"Orthogonal has rate limits. For 20+ calls, use batch_use endpoint instead of looping."'

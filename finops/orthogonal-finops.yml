@@ -1,0 +1,309 @@
+generated: '2026-08-14'
+method: probed
+source: https://api.orthogonal.com/openapi.json
+description: >-
+  Per-operation price catalog derived from the x-payment-info extension carried on
+  every payable operation in Orthogonal's marketplace OpenAPI. Orthogonal is a
+  metered proxy: each third-party API operation it resells has a fixed USD price
+  published in-band in the machine-readable contract, plus three settlement rails.
+  This is the rare case of a provider publishing its unit economics as structured
+  data inside its own OpenAPI rather than only on a pricing page.
+model: pay-per-call
+currency: USD
+unit: per API call
+billing_options:
+- id: credits
+  description: Prepaid credits drawn down per call; price returned inline as priceCents.
+  docs: https://docs.orthogonal.com/concepts/pricing
+- id: x402
+  description: HTTP 402 challenge settled in USDC on Base.
+  host: https://x402.orthogonal.com
+  currency: USDC
+  rail: base
+- id: mpp
+  description: Machine Payments Protocol; HTTP 402 settled in USDC.e on Tempo.
+  host: https://mpp.orthogonal.com
+  currency: USDC.e
+  rail: tempo
+- id: np
+  description: Circle Gateway Nanopayments (x402 v2), batched and gas-free.
+  host: https://np.orthogonal.com
+  currency: USDC
+  rail: base
+  settlement: circle-gateway
+coverage:
+  operations_total: 795
+  operations_priced: 674
+  operations_with_numeric_price: 566
+  operations_dynamically_priced: 108
+  note: >-
+    108 operations carry price "dynamic" (pass-through/usage-scaled upstream cost);
+    121 operations carry no x-payment-info block at all. All 674 payable operations
+    offer all three rails (mpp/x402/np) — no rail is a partial rollout.
+price_range_usd:
+  min: 0.0
+  median: 0.03
+  max: 3.5
+signals:
+  response_field: priceCents
+  quote_before_call: MCP `quote` tool / POST /v1/details
+  payment_required_status: 402
+catalog_families: 58
+families:
+- slug: scrapecreators
+  name: "Scrape Creators"
+  operations: 107
+  price_usd: 0.02
+- slug: fiber
+  name: "Fiber AI API"
+  operations: 92
+  price_usd_min: 0.02
+  price_usd_max: 0.18
+- slug: edges
+  name: "Edges"
+  operations: 42
+  price_usd_min: 0.06
+  price_usd_max: 0.88
+- slug: leadsforge
+  name: "Leadsforge"
+  operations: 31
+  price_usd_min: 0.005
+  price_usd_max: 0.3
+- slug: nyne
+  name: "Nyne.ai"
+  operations: 28
+  price_usd_min: 0.076
+  price_usd_max: 1.44
+- slug: context-dev
+  name: "Context.dev"
+  operations: 26
+  price_usd: 0.03
+- slug: company-enrich
+  name: "Company Enrich"
+  operations: 26
+  price_usd_min: 0.01225
+  price_usd_max: 0.1225
+- slug: aviato
+  name: "Aviato"
+  operations: 25
+  price_usd_min: 0.01
+  price_usd_max: 0.2
+- slug: bytemine
+  name: "Bytemine"
+  operations: 23
+  price_usd_min: 0.0
+  price_usd_max: 1.5
+- slug: predictleads
+  name: "PredictLeads"
+  operations: 23
+  price_usd: 0.04
+- slug: influencers-club
+  name: "Influencers Club"
+  operations: 22
+  price_usd_min: 0.02
+  price_usd_max: 0.66
+- slug: coresignal
+  name: "Coresignal"
+  operations: 21
+  price_usd_min: 0.021
+  price_usd_max: 0.084
+- slug: agentmail
+  name: "AgentMail"
+  operations: 21
+  price_usd_min: 0.01
+  price_usd_max: 2.0
+- slug: tomba
+  name: "Tomba API"
+  operations: 20
+  price_usd: 0.01
+- slug: agentphone
+  name: "AgentPhone"
+  operations: 20
+  price_usd_min: 0.03
+  price_usd_max: 3.5
+- slug: precip
+  name: "Precip AI - Hyperlocal Weather Data API"
+  operations: 16
+  price_usd: null
+- slug: icypeas
+  name: "Icypeas"
+  operations: 16
+  price_usd_min: 0.0
+  price_usd_max: 0.1
+- slug: joinmassive
+  name: "Massive Web API"
+  operations: 15
+  price_usd_min: 0.00125
+  price_usd_max: 0.3125
+- slug: notte
+  name: "Notte"
+  operations: 15
+  price_usd_min: 0.001
+  price_usd_max: 0.01
+- slug: findymail
+  name: "Findymail"
+  operations: 14
+  price_usd_min: 0.001
+  price_usd_max: 0.65
+- slug: fundable
+  name: "Fundable"
+  operations: 13
+  price_usd_min: 0.011
+  price_usd_max: 0.066
+- slug: brand-dev
+  name: "Brand.dev API"
+  operations: 13
+  price_usd: 0.03
+- slug: olostep
+  name: "Olostep API"
+  operations: 12
+  price_usd_min: 0.01
+  price_usd_max: 0.05
+- slug: serper
+  name: "Serper"
+  operations: 12
+  price_usd_min: 0.002
+  price_usd_max: 0.006
+- slug: scrapegraphai
+  name: "ScrapeGraphAI"
+  operations: 11
+  price_usd: null
+- slug: signalbase
+  name: "Signalbase"
+  operations: 9
+  price_usd: 0.08
+- slug: apollo
+  name: "Apollo API"
+  operations: 9
+  price_usd_min: 0.01
+  price_usd_max: 0.05
+- slug: fullenrich
+  name: "FullEnrich"
+  operations: 8
+  price_usd: 0.0
+- slug: ocean-io
+  name: "Ocean.io"
+  operations: 8
+  price_usd: 0.01
+- slug: captaindata
+  name: "CaptainData"
+  operations: 7
+  price_usd_min: 0.09
+  price_usd_max: 2.29
+- slug: openfunnel
+  name: "OpenFunnel"
+  operations: 7
+  price_usd: 0.132
+- slug: contactout
+  name: "ContactOut"
+  operations: 7
+  price_usd_min: 0.33
+  price_usd_max: 0.55
+- slug: crustdata
+  name: "Crustdata"
+  operations: 7
+  price_usd_min: 0.313
+  price_usd_max: 1.563
+- slug: tavily
+  name: "Tavily API"
+  operations: 6
+  price_usd: 0.5
+- slug: peopledatalabs
+  name: "People Data Labs"
+  operations: 6
+  price_usd_min: 0.09
+  price_usd_max: 0.7
+- slug: rocketreach
+  name: "RocketReach"
+  operations: 6
+  price_usd: 0.5
+- slug: didit
+  name: "Didit API"
+  operations: 6
+  price_usd_min: 0.04
+  price_usd_max: 0.36
+- slug: tako
+  name: "Tako"
+  operations: 6
+  price_usd: 0.023
+- slug: riveter
+  name: "Riveter API"
+  operations: 5
+  price_usd: null
+- slug: sixtyfour
+  name: "Sixtyfour API"
+  operations: 4
+  price_usd_min: 0.1
+  price_usd_max: 0.3
+- slug: openmart
+  name: "Openmart"
+  operations: 4
+  price_usd: 0.01
+- slug: exchange-rates
+  name: "Abstract Exchange Rates"
+  operations: 3
+  price_usd: 0.001
+- slug: vat-validation
+  name: "Abstract VAT Validation"
+  operations: 3
+  price_usd: 0.002
+- slug: fantastic-jobs
+  name: "Fantastic Jobs"
+  operations: 2
+  price_usd: 0.4
+- slug: baseten
+  name: "Baseten Model APIs"
+  operations: 2
+  price_usd: null
+- slug: happenstance
+  name: "Happenstance"
+  operations: 2
+  price_usd: 0.3
+- slug: timezone
+  name: "Abstract Timezone"
+  operations: 2
+  price_usd: 0.002
+- slug: linkup
+  name: "Linkup API"
+  operations: 2
+  price_usd: 0.01
+- slug: email-reputation
+  name: "Abstract Email Reputation"
+  operations: 1
+  price_usd: 0.005
+- slug: company-enrichment
+  name: "Abstract Company Enrichment"
+  operations: 1
+  price_usd: 0.003
+- slug: seltz
+  name: "Seltz"
+  operations: 1
+  price_usd: 0.00625
+- slug: phone-intelligence
+  name: "Abstract Phone Intelligence"
+  operations: 1
+  price_usd: 0.005
+- slug: serper-scrape
+  name: "Serper Scrape"
+  operations: 1
+  price_usd: 0.02
+- slug: andi
+  name: "Andi Search API"
+  operations: 1
+  price_usd: 0.01
+- slug: voygr
+  name: "Voygr"
+  operations: 1
+  price_usd: 0.005
+- slug: avatars
+  name: "Abstract Avatars"
+  operations: 1
+  price_usd: 0.001
+- slug: ip-intelligence
+  name: "Abstract IP Intelligence"
+  operations: 1
+  price_usd: 0.003
+- slug: iban-validation
+  name: "Abstract IBAN Validation"
+  operations: 1
+  price_usd: 0.002

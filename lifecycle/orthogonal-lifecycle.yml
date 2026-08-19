@@ -1,20 +1,54 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: https://docs.orthogonal.com
+source: https://docs.orthogonal.com + https://status.orthogonal.com
 versioning:
   scheme: uri-path
   current: v1
-  note: API is served under /v1. No prior versions documented.
+  note: >-
+    Control plane is served under /v1 (api.orthogonal.com/v1). No prior versions
+    documented. The marketplace rails (mpp/x402/np.orthogonal.com) are unversioned
+    at the host level; the upstream provider's own path version is carried through
+    verbatim (e.g. /fantastic-jobs/v1/active-jb).
 deprecation:
   policy_documented: false
   sunset_header: not documented
   note: No published deprecation/sunset policy (RFC 8594) found.
 status_page:
-  found: false
-  note: No public status page discovered as of this pass.
+  found: true
+  url: https://status.orthogonal.com/
+  provider_hosted: true
+  http_status: 200
+  checked: '2026-08-14'
+  services:
+  - name: orthogonal.com
+    state: Operational
+    uptime: 100%
+  history_window: daily bars from 2026-05-17 forward
+  incidents_section: true
+  maintenance_section: true
+  note: >-
+    Found this pass; the 2026-07-20 pass recorded no status page. Tracks a single
+    service ("orthogonal.com") — api., mcp., and the three payment rails are not
+    listed as separate components, so a rail outage would not necessarily surface.
 sla:
   documented: false
+  note: >-
+    The Security & Trust page states the Services are provided "as is" and "as
+    available" with no uptime guarantee. No uptime target or credits are published.
+changelog:
+  url: https://www.orthogonal.com/changelog
+  entries: 0
+  ref: changelog/orthogonal-changelog.yml
+  note: Page exists but is an empty placeholder.
 support:
   security_contact: security@orthogonal.com
+  general_contact: founders@orthogonal.com
   docs: https://docs.orthogonal.com
 deprecated_operations: []
+evidence:
+- url: https://status.orthogonal.com/
+  http_status: 200
+- url: https://www.orthogonal.com/changelog
+  http_status: 200
+- url: https://www.orthogonal.com/roadmap
+  http_status: 404

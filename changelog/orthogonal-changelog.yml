@@ -1,0 +1,36 @@
+generated: '2026-08-14'
+method: probed
+source: https://www.orthogonal.com/changelog
+url: https://www.orthogonal.com/changelog
+scheme: undated
+current_version: v1
+entry_count: 0
+entries: []
+description: >-
+  Orthogonal publishes a changelog PAGE but it carries no entries. The page
+  returns HTTP 200 with the heading "Changelog — What we're shipping" and the
+  body text "No updates yet — check back soon." It is a placeholder, not a
+  change history.
+pointer_decision:
+  emitted: false
+  reason: >-
+    No ChangeLog pointer was wired into apis.yml. The check the pointer feeds
+    (change_log_present) asserts that a consumer can find out what changed; a
+    published-but-empty page conveys nothing, and crediting it would be the same
+    soft-200 false-credit failure this pipeline guards against elsewhere. Revisit
+    on the next pass — the surface exists, so the moment the provider posts a
+    first entry this becomes a real hit.
+alternate_signals:
+- source: https://www.npmjs.com/package/@orth/cli
+  kind: package release history
+  note: '@orth/cli is the most actively released first-party artifact (0.2.34, 2026-08-07).'
+- source: https://www.orthogonal.com/blog
+  kind: blog
+  http_status: 200
+  note: A blog exists and is a partial substitute for release notes, but is not a dated changelog.
+evidence:
+- url: https://www.orthogonal.com/changelog
+  http_status: 200
+  finding: 'body text: "No updates yet — check back soon."'
+- url: https://docs.orthogonal.com/changelog
+  http_status: 404

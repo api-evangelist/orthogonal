@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Orthogonal Account API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check your credit balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orthogonal.com/v1/balance"
+          },
+          "docs": "Check your credit balance"
+        },
+        {
+          "info": {
+            "name": "View your credit transaction history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orthogonal.com/v1/transactions"
+          },
+          "docs": "View your credit transaction history"
+        },
+        {
+          "info": {
+            "name": "View your API usage history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orthogonal.com/v1/usage"
+          },
+          "docs": "View your API usage history"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

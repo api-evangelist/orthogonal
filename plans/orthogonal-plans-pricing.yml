@@ -1,0 +1,85 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.orthogonal.com/pricing
+docs: https://docs.orthogonal.com/concepts/pricing
+description: >-
+  Orthogonal sells no subscription. There are two published tiers for builders —
+  a self-serve Free tier where all consumption is prepaid credits drawn down
+  per call, and an unpriced Enterprise tier. The real price surface is not the
+  plan table, it is the per-operation price catalog: every payable operation in
+  the marketplace OpenAPI carries an x-payment-info block with a fixed USD price
+  (see finops/orthogonal-finops.yml).
+model: pay-per-call
+currency: USD
+plan_count: 2
+plans:
+- name: Free
+  price: 0
+  currency: USD
+  period: month
+  audience: builders
+  self_serve: true
+  included:
+  - $10 in free credits to start
+  - Access to all public APIs
+  - Pay-per-request pricing
+  - Auto top-up (beta)
+  - Analytics
+  overage: >-
+    Not an overage model — credits are prepaid and drawn down per call at the
+    per-operation price. Calls fail with 402 INSUFFICIENT_CREDITS when the
+    balance cannot cover the quoted price.
+  limits:
+    rate_limits: undocumented (see rate-limits/orthogonal-rate-limits.yml)
+    quota: none stated; bounded only by credit balance
+- name: Enterprise
+  price: null
+  price_label: Custom
+  currency: USD
+  period: null
+  audience: teams with high-volume agent workloads
+  self_serve: false
+  cta: Contact us
+  included:
+  - Everything in Free
+  - Custom credit packages
+  - Dedicated support
+  limits:
+    note: Not published.
+free_credits:
+  amount_usd: 10
+  source: https://www.orthogonal.com/pricing
+  card_required: false
+  discrepancy: >-
+    The pricing page states $10 in free credits; the docs page
+    (docs.orthogonal.com/concepts/pricing) still states $5. Both were fetched
+    2026-08-14 and returned 200. Recorded as published; not reconciled by us.
+  docs_value_usd: 5
+price_tiers_published:
+- tier: Basic
+  range_usd: 0.001 - 0.01
+  examples: Olostep scraping ($0.005), Hunter email search ($0.01)
+- tier: Standard
+  range_usd: 0.01 - 0.10
+  examples: Apollo enrichment ($0.03), LinkUp AI search ($0.004)
+- tier: Premium
+  range_usd: 0.10 - 1.00
+  examples: Deep research, AI analysis, bulk operations
+alternative_settlement:
+  note: >-
+    Consumption can also be settled per call in stablecoins instead of credits,
+    over x402 (USDC on Base), MPP (USDC.e on Tempo) or np (Circle Gateway
+    nanopayments). This bypasses the credit balance entirely; there is no plan
+    attached to it.
+  docs: https://docs.orthogonal.com/payments
+  ref: finops/orthogonal-finops.yml
+provider_side:
+  note: >-
+    The pricing page carries a second audience toggle, "For API Providers", for
+    companies listing an API on the marketplace. No provider-side rates or
+    revenue share are published on that surface.
+evidence:
+- url: https://www.orthogonal.com/pricing
+  http_status: 200
+- url: https://docs.orthogonal.com/concepts/pricing.md
+  http_status: 200

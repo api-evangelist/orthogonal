@@ -1,4 +1,4 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: probed
 source: live probes of Orthogonal hosts
 probes:
@@ -18,24 +18,85 @@ probes:
 - host: api.orthogonal.com
   path: /.well-known/ai-plugin.json
   status: 404
+- host: api.orthogonal.com
+  path: /.well-known/agent-card.json
+  status: 404
 - host: mcp.orthogonal.com
   path: /.well-known/oauth-authorization-server
   status: 200
   file: orthogonal-mcp-oauth-authorization-server.json
+- host: mcp.orthogonal.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  file: orthogonal-mcp-oauth-protected-resource.json
+  spec: RFC 9728
+  note: >-
+    Resource https://mcp.orthogonal.com, authorization_servers
+    [https://mcp.orthogonal.com], scopes_supported [openid, profile, email],
+    bearer_methods_supported [header].
 - host: mcp.orthogonal.com
   path: /.well-known/security.txt
   status: 404
 - host: mcp.orthogonal.com
   path: /.well-known/openid-configuration
   status: 404
+- host: mcp.orthogonal.com
+  path: /.well-known/agent-card.json
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/agent-card.json
+  status: 200
+  file: ../a2a/orthogonal-agent-card.json
+  spec: A2A 1.0.0
+  note: Real A2A Agent Card. Graded and manifested in a2a/orthogonal-a2a.yml.
+- host: docs.orthogonal.com
+  path: /.well-known/agent-skills/orthogonal/skill.md
+  status: 200
+  file: ../skills/orthogonal-wellknown-agent-skill.md
+  note: >-
+    Provider-published Agent Skill (SKILL.md), referenced by the agent card's
+    skills[0].url. Saved verbatim.
+- host: docs.orthogonal.com
+  path: /.well-known/agent.json
+  status: 404
 - host: docs.orthogonal.com
   path: /.well-known/security.txt
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/api-catalog
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+- host: docs.orthogonal.com
+  path: /.well-known/openid-configuration
+  status: 404
+- host: orthogonal.com
+  path: /.well-known/agent-card.json
+  status: 404
+- host: orthogonal.com
+  path: /.well-known/agent.json
+  status: 404
+- host: www.orthogonal.com
+  path: /.well-known/agent-card.json
+  status: 404
+- host: www.orthogonal.com
+  path: /.well-known/agent.json
   status: 404
 - host: orthogonal.com
   path: /.well-known/security.txt
   status: 307
 notes: >-
-  Both api.orthogonal.com and mcp.orthogonal.com expose RFC 8414 OAuth 2.0
-  Authorization Server Metadata; the issuer is Clerk (clerk.orthogonal.com).
-  orthogonal.com returns 307 redirects for all .well-known paths. No
-  security.txt, OpenID configuration, api-catalog, or ai-plugin.json published.
+  Orthogonal's .well-known surface is split across three hosts and none of them
+  serves the full set. api.orthogonal.com and mcp.orthogonal.com both publish RFC
+  8414 OAuth 2.0 Authorization Server Metadata (issuer Clerk,
+  clerk.orthogonal.com); mcp.orthogonal.com additionally publishes RFC 9728
+  OAuth 2.0 Protected Resource Metadata. The agent-facing discovery documents —
+  the A2A agent card and the published Agent Skill — live on the DOCS host
+  (docs.orthogonal.com), which is where an agent is least likely to look; the
+  apex and the API host both 404 for them. No security.txt, OpenID
+  configuration, api-catalog or ai-plugin.json is published on any host.
+checked: '2026-08-14'

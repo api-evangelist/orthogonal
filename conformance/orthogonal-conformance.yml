@@ -1,13 +1,38 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: derived
-source: https://docs.orthogonal.com + live oauth-authorization-server metadata + generated OpenAPI
+source: >-
+  https://api.orthogonal.com/openapi.json + live .well-known metadata +
+  https://docs.orthogonal.com
 standards:
+- id: openapi
+  conforms: true
+  version: 3.1.0
+  evidence: >-
+    CORRECTED THIS PASS. A first-party OpenAPI 3.1.0 IS published, at
+    https://api.orthogonal.com/openapi.json (669 KB, 764 paths, 795 operations,
+    info.title "Orthogonal API Marketplace", servers mpp/x402/np.orthogonal.com).
+    The 2026-07-20 pass concluded "no first-party OpenAPI is published" after
+    checking only the docs host, where docs.orthogonal.com/api-reference/openapi.json
+    still serves the default Mintlify "OpenAPI Plant Store" placeholder. Saved
+    verbatim at openapi/_original/orthogonal-marketplace-openapi.json.
+  caveats: >-
+    The published spec is thin on contract quality: no components.schemas, no
+    securitySchemes, no top-level tags block, and responses carry description
+    only (no content schemas). It is a discovery/pricing manifest more than a
+    codegen-grade contract.
 - id: oauth2
   conforms: true
   evidence: >-
     RFC 8414 OAuth 2.0 Authorization Server Metadata published at
     api.orthogonal.com and mcp.orthogonal.com; authorization_code + refresh_token
     grants, PKCE S256. Fronted by Clerk.
+- id: rfc9728-oauth-protected-resource
+  conforms: true
+  evidence: >-
+    Found this pass. mcp.orthogonal.com/.well-known/oauth-protected-resource
+    returns 200 with resource, authorization_servers, scopes_supported and
+    bearer_methods_supported — the RFC 9728 discovery document MCP clients use to
+    locate the authorization server.
 - id: oidc
   conforms: true
   evidence: >-
@@ -21,12 +46,46 @@ standards:
   evidence: RFC 7591 registration_endpoint advertised (clerk/mcp /oauth/register).
 - id: mcp
   conforms: true
-  evidence: Official hosted MCP server at mcp.orthogonal.com exposing 7 tools over streamable HTTP.
+  evidence: >-
+    Official hosted MCP server at mcp.orthogonal.com exposing 7 tools over
+    streamable HTTP. tools/list is auth-gated (401 -32001) — tool names come from
+    the published docs, not live introspection.
+- id: a2a
+  conforms: true
+  version: '0.3'
+  evidence: >-
+    Found this pass. A conformant A2A Agent Card is served at
+    https://docs.orthogonal.com/.well-known/agent-card.json (capabilities object,
+    protocolVersion present, skills array). Deviates by using supportedInterfaces
+    rather than A2A 1.0.0's additionalInterfaces. Graded in a2a/orthogonal-a2a.yml.
+- id: agent-skills
+  conforms: true
+  evidence: >-
+    Provider-published SKILL.md served from
+    docs.orthogonal.com/.well-known/agent-skills/orthogonal/skill.md, plus an
+    88-skill open library at github.com/orthogonal-sh/skills installable via
+    `orth skills add`.
 - id: x402
   conforms: true
   evidence: >-
     Implements the x402 HTTP 402 payment flow (USDC on Base) at
-    x402.orthogonal.com/{api}/{path}.
+    x402.orthogonal.com/{api}/{path}. Confirmed in-band: 674 operations in the
+    published OpenAPI carry an x-payment-info offer with method x402, rail base,
+    currency USDC.
+- id: x402-v2-np
+  conforms: true
+  evidence: >-
+    Third rail found this pass — np.orthogonal.com, "Circle Gateway
+    Nanopayments (x402 v2)", batched/gas-free, USDC on Base. Offered on all 674
+    payable operations.
+- id: mpp
+  conforms: true
+  evidence: >-
+    Machine Payments Protocol over Tempo (USDC.e) at mpp.orthogonal.com. Offered
+    on all 674 payable operations; client is `npx mppx`.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any host (api, mcp, docs, apex all 404 or 307).
 - id: pagination
   conforms: true
   evidence: limit/offset with pagination.hasMore on /v1/list-endpoints.
@@ -35,12 +94,26 @@ standards:
   evidence: >-
     Errors use a custom JSON envelope (success/error/code), not
     application/problem+json.
-- id: idempotency
-  conforms: false
-  evidence: No idempotency key or header is documented.
-- id: openapi
+- id: rfc9331-ratelimit-headers
   conforms: false
   evidence: >-
-    No first-party OpenAPI is published; the api-reference/openapi.json path
-    serves the default Mintlify Plant Store placeholder. A GENERATED spec is
-    provided in this repo under openapi/.
+    A RATE_LIMITED error code is documented but no RateLimit-*/X-RateLimit-*/
+    Retry-After header is published. See rate-limits/orthogonal-rate-limits.yml.
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No idempotency key or header is documented. The closest published mechanism
+    is parentRequestId, which suppresses DOUBLE BILLING on pagination
+    continuations — a billing-dedupe control, not request idempotency.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is published. Not penalized — there is nothing to describe.
+certifications:
+  published: []
+  note: >-
+    The Security & Trust page (orthogonal.com/security, last updated 2026-06-15)
+    describes practices in prose — TLS in transit, encryption at rest, least
+    privilege, data minimisation, responsible disclosure — but names NO
+    certification or audit (no SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP). No
+    trust center exists (trust.orthogonal.com 404). No Compliance pointer is
+    emitted.

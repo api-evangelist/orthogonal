@@ -1,4 +1,4 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://docs.orthogonal.com (api-reference, authentication, quickstart)
 description: >-
@@ -37,12 +37,45 @@ idempotency:
 rate_limiting:
   documented: false
   signal: RATE_LIMITED code with HTTP 429 on limit breach.
+  headers: none documented (no RateLimit-*, X-RateLimit-*, Retry-After)
+  ref: rate-limits/orthogonal-rate-limits.yml
 pricing_signal:
   field: priceCents
   location: /v1/run response
   note: Per-call price returned inline; also available up-front via the MCP quote tool.
 payments:
-  ref: mcp/orthogonal-mcp.yml
+  ref: finops/orthogonal-finops.yml
+  models:
+  - id: credits
+    description: Prepaid balance drawn down per call; price returned inline as priceCents.
+  - id: stablecoin-402
+    description: >-
+      Pay-per-call over a 402 challenge. The request is answered 402 Payment
+      Required, the client signs a payment and retries, settlement completes
+      before the call runs. Three rails: x402 (USDC/Base, x402.orthogonal.com),
+      MPP (USDC.e/Tempo, mpp.orthogonal.com), np (Circle Gateway nanopayments,
+      x402 v2, np.orthogonal.com).
+    docs: https://docs.orthogonal.com/payments
+  in_band_pricing:
+    extension: x-payment-info
+    source: https://api.orthogonal.com/openapi.json
+    note: >-
+      Every payable operation in the published marketplace OpenAPI carries its
+      own price and its three rail URLs as an x-payment-info block, so an agent
+      can read the cost of a call from the contract without a quote round-trip.
+billing_dedupe:
+  mechanism: parentRequestId
+  applies_to: pagination continuations (page / offset / cursor)
+  behaviour: >-
+    Pass parentRequestId from the first page's billing.requestId, with all
+    non-pagination parameters unchanged, and the continuation call is charged 0.
+    It still receives its own requestId and quoted price. Changing any filter
+    starts a new billable request.
+  source: https://api.orthogonal.com/openapi.json
+  caution: >-
+    This is NOT idempotency. It suppresses duplicate BILLING on a paged read; it
+    does not deduplicate a retried write, and there is no key, no scope and no
+    retention window. See idempotency above.
   rails:
   - credits (prepaid, default)
   - x402 (USDC on Base)

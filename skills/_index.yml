@@ -1,6 +1,8 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
-source: https://github.com/orthogonal-sh/skills
+source: >-
+  https://github.com/orthogonal-sh/skills +
+  https://docs.orthogonal.com/.well-known/agent-skills/orthogonal/skill.md
 description: >-
   Orthogonal publishes an official Agent Skills library (SKILL.md files) for
   Cursor, Claude Code, Windsurf, GitHub Copilot, Codex, Gemini CLI, and any agent
@@ -24,6 +26,21 @@ saved_verbatim:
 - file: orthogonal-skills-README.md
   skill: README
   description: Skills library index and install guide.
+- file: orthogonal-wellknown-agent-skill.md
+  skill: orthogonal
+  description: >-
+    The platform-level SKILL.md Orthogonal serves from its own well-known
+    namespace — when to reach for Orthogonal, the six control-plane endpoints,
+    CLI/API/MCP decision guidance, chained-API workflows, ten named gotchas and a
+    pre-submit verification checklist.
+  served_from: https://docs.orthogonal.com/.well-known/agent-skills/orthogonal/skill.md
+  http_status: 200
+  fetched: '2026-08-14'
+  note: >-
+    Found this pass. This is the skill referenced by skills[0].url in the A2A
+    agent card (a2a/orthogonal-a2a.yml), so card -> skill is a working discovery
+    chain. Distinct from the 88-skill per-API library on GitHub: this one is
+    about using Orthogonal itself.
 count: 88
 all_skills:
 - github
