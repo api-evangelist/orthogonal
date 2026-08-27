@@ -94,34 +94,6 @@ apis:
     url: https://docs.orthogonal.com/api-reference/introduction
   - type: Quickstart
     url: https://docs.orthogonal.com/quickstart
-- aid: orthogonal:orthogonal-marketplace-api
-  name: Orthogonal API Marketplace
-  description: >-
-    The resold catalog itself — 795 payable operations across 58 third-party
-    provider families (scraping, enrichment, search, jobs, weather, agent
-    infrastructure), each namespaced /{provider-slug}/{upstream-path} and each
-    carrying its own fixed USD price in-band. Reachable three ways: as arguments
-    to POST /v1/run on the control plane, or directly against one of three
-    stablecoin payment rails that answer HTTP 402 and settle before the call runs.
-  humanURL: https://www.orthogonal.com/discover
-  baseURL: https://mpp.orthogonal.com
-  tags:
-  - Marketplace
-  - Payments
-  - x402
-  properties:
-  - type: OpenAPI
-    url: openapi/_original/orthogonal-marketplace-openapi.json
-  - type: Overlay
-    url: overlays/orthogonal-marketplace-overlay.yaml
-  - type: Plans
-    url: plans/orthogonal-plans-pricing.yml
-  - type: FinOps
-    url: finops/orthogonal-finops.yml
-  - type: Documentation
-    url: https://docs.orthogonal.com/payments
-  - type: APIReference
-    url: https://api.orthogonal.com/llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
