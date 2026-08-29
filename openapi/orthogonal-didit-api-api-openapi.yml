@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Didit API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Didit API
+paths:
+  /didit/v3/phone/check:
+    post:
+      operationId: didit_POST__v3_phone_check
+      summary: Verify a one-time code sent to a phone number. Maximum of three verification attempts per code.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+  /didit/v3/email/send:
+    post:
+      operationId: didit_POST__v3_email_send
+      summary: Send a one-time verification code to an email address.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/didit/v3/email/send
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/didit/v3/email/send
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/didit/v3/email/send
+  /didit/v3/aml:
+    post:
+      operationId: didit_POST__v3_aml
+      summary: The AML Screening API allows you to screen individuals or companies against global watchlists and high-risk databases. This API provides real-time screening capabilities to detect potential matches and mitigate risks associated with financial fraud and terrorism. You can screen both persons and companies by specifying the `entity_type` parameter.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.36
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/didit/v3/aml
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/didit/v3/aml
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/didit/v3/aml
+  /didit/v3/email/check:
+    post:
+      operationId: didit_POST__v3_email_check
+      summary: Verify a code sent to an email address.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+  /didit/v3/database-validation:
+    post:
+      operationId: didit_POST__v3_database_validation
+      summary: Validate user-provided identity data against authoritative national and global data sources.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.31
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/didit/v3/database-validation
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/didit/v3/database-validation
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/didit/v3/database-validation
+  /didit/v3/phone/send:
+    post:
+      operationId: didit_POST__v3_phone_send
+      summary: Send a one-time verification code to a phone number.
+      tags:
+      - Didit API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/didit/v3/phone/send
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/didit/v3/phone/send
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/didit/v3/phone/send
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

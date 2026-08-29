@@ -1,0 +1,674 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Coresignal API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Coresignal
+paths:
+  /coresignal/v2/job_base/search/filter/preview:
+    post:
+      operationId: coresignal_POST__v2_job_base_search_filter_preview
+      summary: 'Preview job search results with summary data. Pass filters in the request body. Returns matching jobs with key fields: id, title, location, company_name, posting date, and relevance score. Use the ''id'' field with the ''Base Jobs Collect'' endpoint to get full job details.'
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/job_base/search/filter/preview
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/job_base/search/filter/preview
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/job_base/search/filter/preview
+  /coresignal/v2/company_base/collect/{profile_url}:
+    get:
+      operationId: coresignal_GET__v2_company_base_collect_profile_url_
+      summary: Get a full company profile by its professional network URL. Pass the URL-encoded company page URL in the path. Returns the same data as collecting by ID.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_base/collect/{profile_url}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_base/collect/{profile_url}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_base/collect/{profile_url}
+  /coresignal/v2/company_multi_source/collect/{company_id}:
+    get:
+      operationId: coresignal_GET__v2_company_multi_source_collect_company_id_
+      summary: Get the most comprehensive company profile by its Coresignal numeric ID. Multi-source data is aggregated from professional networks, business databases, and other sources. Use IDs returned by the search endpoints or look up by website using the 'Multi-source Company Enrich' endpoint. Returns company name, website, industry, size, funding, social URLs, and more.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.084
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_multi_source/collect/{company_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_multi_source/collect/{company_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_multi_source/collect/{company_id}
+  /coresignal/v2/company_multi_source/collect/{profile_url}:
+    get:
+      operationId: coresignal_GET__v2_company_multi_source_collect_profile_url_
+      summary: Get a comprehensive multi-source company profile by its professional network URL. Pass the URL-encoded company page URL in the path. Returns the same data as collecting by ID.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.084
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_multi_source/collect/{profile_url}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_multi_source/collect/{profile_url}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_multi_source/collect/{profile_url}
+  /coresignal/v2/employee_multi_source/collect/{employee_id}:
+    get:
+      operationId: coresignal_GET__v2_employee_multi_source_collect_employee_id_
+      summary: Get the most comprehensive employee profile by its Coresignal numeric ID. Multi-source data is aggregated from multiple platforms. Use IDs returned by the search endpoints. Returns name, headline, location, full work experience history, education, skills, social URLs, and more.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.084
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_multi_source/collect/{employee_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_multi_source/collect/{employee_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_multi_source/collect/{employee_id}
+  /coresignal/v2/employee_post/collect/{post_id}:
+    get:
+      operationId: coresignal_GET__v2_employee_post_collect_post_id_
+      summary: Get a full professional network post by its numeric post ID. Use IDs returned by the 'Employee Posts Search (Filter)' endpoint (not a post URL or requestId). Returns the post author name, author profile URL, full post content, publish date, and engagement data.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_post/collect/{post_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_post/collect/{post_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_post/collect/{post_id}
+  /coresignal/v2/employee_multi_source/collect/{profile_url}:
+    get:
+      operationId: coresignal_GET__v2_employee_multi_source_collect_profile_url_
+      summary: Get a comprehensive multi-source employee profile by their professional network URL. Pass the URL-encoded profile URL in the path. This is the easiest way to get the richest data on a person.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.084
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_multi_source/collect/{profile_url}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_multi_source/collect/{profile_url}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_multi_source/collect/{profile_url}
+  /coresignal/v2/employee_base/collect/{profile_url}:
+    get:
+      operationId: coresignal_GET__v2_employee_base_collect_profile_url_
+      summary: Get a full employee profile by their professional network URL. Pass the URL-encoded profile URL in the path. Returns the same data as collecting by ID. This is the easiest way to look up a person if you have their profile URL.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_base/collect/{profile_url}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_base/collect/{profile_url}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_base/collect/{profile_url}
+  /coresignal/v2/company_base/collect/{company_id}:
+    get:
+      operationId: coresignal_GET__v2_company_base_collect_company_id_
+      summary: Get a full company profile by its Coresignal numeric ID. Use IDs returned by the 'Base Company Search (Filter)' or 'Base Company Search (Filter) Preview' endpoints. Returns company data including name, website, industry, size, description, specialties, headquarters location, and follower count.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_base/collect/{company_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_base/collect/{company_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_base/collect/{company_id}
+  /coresignal/v2/company_multi_source/enrich:
+    get:
+      operationId: coresignal_GET__v2_company_multi_source_enrich
+      summary: Look up a company by its website domain and get the most comprehensive company profile. This is the easiest way to get rich company data if you know the company's website. Multi-source data is aggregated from professional networks, business databases, and other sources.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.084
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_multi_source/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_multi_source/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_multi_source/enrich
+  /coresignal/v2/employee_base/collect/{employee_id}:
+    get:
+      operationId: coresignal_GET__v2_employee_base_collect_employee_id_
+      summary: Get a full employee/professional profile by its Coresignal numeric ID. Use IDs returned by the 'Base Employee Search (Filter)' or Preview endpoints. Returns professional data including name, headline, location, work experience history, education, skills, and connections count.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_base/collect/{employee_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_base/collect/{employee_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_base/collect/{employee_id}
+  /coresignal/v2/employee_post/search/filter:
+    post:
+      operationId: coresignal_POST__v2_employee_post_search_filter
+      summary: Search for professional network posts using filters like author profile URL or keywords. Pass filters in the request body (not a post URL). Returns an array of numeric post IDs (e.g., ["7431869637207928834", ...]). Use these IDs with the 'Employee Posts Collect' endpoint to get full post content.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_post/search/filter
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_post/search/filter
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_post/search/filter
+  /coresignal/v2/job_base/search/filter:
+    post:
+      operationId: coresignal_POST__v2_job_base_search_filter
+      summary: Search for job listings using filters passed in the request body. Returns an array of numeric Coresignal job IDs (e.g., [406480270, 405917646, ...]). Use these IDs with the 'Base Jobs Collect' endpoint to get full job details. All filters are optional; combine to narrow results.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/job_base/search/filter
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/job_base/search/filter
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/job_base/search/filter
+  /coresignal/v2/employee_clean/collect/{employee_id}:
+    get:
+      operationId: coresignal_GET__v2_employee_clean_collect_employee_id_
+      summary: Get a cleaned, deduplicated employee profile by its Coresignal numeric ID. Use IDs returned by the search endpoints. Returns normalized professional data including name, headline, location, work experience, education, and skills.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_clean/collect/{employee_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_clean/collect/{employee_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_clean/collect/{employee_id}
+  /coresignal/v2/company_clean/enrich:
+    get:
+      operationId: coresignal_GET__v2_company_clean_enrich
+      summary: Look up a company by its website domain and get a full cleaned company profile. This is the easiest way to get company data if you know the company's website. Returns deduplicated, normalized data including name, industry, size, location, social URLs, and technology stack.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_clean/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_clean/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_clean/enrich
+  /coresignal/v2/employee_base/search/filter/preview:
+    post:
+      operationId: coresignal_POST__v2_employee_base_search_filter_preview
+      summary: 'Preview employee search results with summary data. Pass filters in the request body. Returns matching professionals with key fields: id, full_name, headline, location, company, title, and relevance score. Use the ''id'' field with the ''Base Employee Collect by ID'' endpoint to get full profiles.'
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_base/search/filter/preview
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_base/search/filter/preview
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_base/search/filter/preview
+  /coresignal/v2/company_clean/collect/{company_id}:
+    get:
+      operationId: coresignal_GET__v2_company_clean_collect_company_id_
+      summary: Get a cleaned, deduplicated company profile by its Coresignal numeric ID. Use IDs returned by the search endpoints or look up by website using the 'Clean Company Enrich' endpoint. Returns normalized company data including name, website, industry, size, location, social URLs, and technology stack.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_clean/collect/{company_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_clean/collect/{company_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_clean/collect/{company_id}
+  /coresignal/v2/company_base/search/filter:
+    post:
+      operationId: coresignal_POST__v2_company_base_search_filter
+      summary: Search for companies using filters passed in the request body. Returns an array of numeric Coresignal company IDs (e.g., [4744382, 1635599, ...]). Use these IDs with the 'Base Company Collect' endpoint to get full company profiles. All filters are optional; combine any number of them to narrow results.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_base/search/filter
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_base/search/filter
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_base/search/filter
+  /coresignal/v2/employee_base/search/filter:
+    post:
+      operationId: coresignal_POST__v2_employee_base_search_filter
+      summary: Search for professionals/employees using filters passed in the request body. Returns an array of numeric Coresignal employee IDs (e.g., [374311229, 958490751, ...]). Use these IDs with the 'Base Employee Collect by ID' endpoint to get full profiles. All filters are optional; combine any number of them to narrow results.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/employee_base/search/filter
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/employee_base/search/filter
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/employee_base/search/filter
+  /coresignal/v2/job_base/collect/{job_id}:
+    get:
+      operationId: coresignal_GET__v2_job_base_collect_job_id_
+      summary: Get a full job listing by its Coresignal numeric ID. Use IDs returned by the 'Base Jobs Search (Filter)' or Preview endpoints. Returns job title, full description, company name, location, employment type, posting date, and application URL.
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.042
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/job_base/collect/{job_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/job_base/collect/{job_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/job_base/collect/{job_id}
+  /coresignal/v2/company_base/search/filter/preview:
+    post:
+      operationId: coresignal_POST__v2_company_base_search_filter_preview
+      summary: 'Preview company search results with summary data. Pass filters in the request body. Returns matching companies with key fields: id, name, website, industry, size, country, and relevance score. Use the ''id'' field with the ''Base Company Collect'' endpoint to get full profiles.'
+      tags:
+      - Coresignal
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.021
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/coresignal/v2/company_base/search/filter/preview
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/coresignal/v2/company_base/search/filter/preview
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/coresignal/v2/company_base/search/filter/preview
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

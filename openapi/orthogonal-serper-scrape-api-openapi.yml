@@ -1,0 +1,54 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Serper Scrape API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Serper Scrape
+paths:
+  /serper-scrape/:
+    post:
+      operationId: serper_scrape_POST__
+      summary: Scrape any webpage and extract its content as clean text, markdown, or raw HTML. Handles JavaScript-rendered pages. Returns page text, metadata (title, description, OG tags), and optionally markdown/HTML. Use for content extraction, data gathering, or page analysis.
+      tags:
+      - Serper Scrape
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/serper-scrape/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/serper-scrape/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/serper-scrape/
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

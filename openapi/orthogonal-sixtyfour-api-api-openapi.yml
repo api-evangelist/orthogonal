@@ -1,0 +1,147 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Sixtyfour API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Sixtyfour API
+paths:
+  /sixtyfour/enrich-company:
+    post:
+      operationId: sixtyfour_POST__enrich_company
+      summary: Enrich company data with additional information and find associated people.
+      tags:
+      - Sixtyfour API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/sixtyfour/enrich-company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/sixtyfour/enrich-company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/sixtyfour/enrich-company
+  /sixtyfour/find-email:
+    post:
+      operationId: sixtyfour_POST__find_email
+      summary: Find email address for a lead.
+      tags:
+      - Sixtyfour API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/sixtyfour/find-email
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/sixtyfour/find-email
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/sixtyfour/find-email
+  /sixtyfour/find-phone:
+    post:
+      operationId: sixtyfour_POST__find_phone
+      summary: The Find Phone API uses Sixtyfour AI to discover phone numbers for leads. It extracts contact information from lead data and returns enriched results with phone numbers.
+      tags:
+      - Sixtyfour API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/sixtyfour/find-phone
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/sixtyfour/find-phone
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/sixtyfour/find-phone
+  /sixtyfour/enrich-lead:
+    post:
+      operationId: sixtyfour_POST__enrich_lead
+      summary: Enrich lead information with additional details such as contact information, social profiles, and company details.
+      tags:
+      - Sixtyfour API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/sixtyfour/enrich-lead
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/sixtyfour/enrich-lead
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/sixtyfour/enrich-lead
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

@@ -1,0 +1,519 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Icypeas API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Icypeas
+paths:
+  /icypeas/api/url-search/company:
+    post:
+      operationId: icypeas_POST__api_url_search_company
+      summary: Find a company's LinkedIn page URL by company name or domain. Synchronous response with status FOUND or NOT_FOUND.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/url-search/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/url-search/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/url-search/company
+  /icypeas/api/reverse-email-lookup:
+    post:
+      operationId: icypeas_POST__api_reverse_email_lookup
+      summary: Look up a professional email address to get the associated LinkedIn profile and person details. Returns results synchronously with status FOUND or NOT_FOUND.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/reverse-email-lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/reverse-email-lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/reverse-email-lookup
+  /icypeas/api/email-verification:
+    post:
+      operationId: icypeas_POST__api_email_verification
+      summary: Verify a single email address for deliverability. Returns a search ID to poll for results via the Fetch Search Result endpoint.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/email-verification
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/email-verification
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/email-verification
+  /icypeas/api/bulk-search:
+    post:
+      operationId: icypeas_POST__api_bulk_search
+      summary: Create a bulk search with up to 5000 rows. Supports email-search, email-verification, and domain-search tasks. Returns a file ID to track progress.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/bulk-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/bulk-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/bulk-search
+  /icypeas/api/reverse-email-lookups:
+    post:
+      operationId: icypeas_POST__api_reverse_email_lookups
+      summary: Look up multiple professional email addresses in bulk (up to 50 per call) to get associated LinkedIn profiles.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/reverse-email-lookups
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/reverse-email-lookups
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/reverse-email-lookups
+  /icypeas/api/find-companies/count:
+    post:
+      operationId: icypeas_POST__api_find_companies_count
+      summary: 'Count companies matching a query in the lead database. Free. Filters: name, industry, location, headcount (range), revenue (range), website, companyType, keyword, headcountGrowth.'
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/find-companies/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/find-companies/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/find-companies/count
+  /icypeas/api/find-companies:
+    post:
+      operationId: icypeas_POST__api_find_companies
+      summary: 'Search the lead database for companies matching filters. Returns paginated results. Filters: name, lid, urn, companyId, companyType, industry, location, headcount (range), headcountGrowth, revenue (range), keyword, website.'
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/find-companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/find-companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/find-companies
+  /icypeas/api/search-files/read:
+    post:
+      operationId: icypeas_POST__api_search_files_read
+      summary: List bulk search files with progress info or get a specific bulk search by file ID. Shows found, done, in-progress, total counts.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/search-files/read
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/search-files/read
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/search-files/read
+  /icypeas/api/find-people:
+    post:
+      operationId: icypeas_POST__api_find_people
+      summary: 'Search the lead database for people matching filters. Returns paginated results with profile, job, and company data. Filters: firstname, lastname, currentJobTitle, pastJobTitle, currentCompanyName, pastCompanyName, currentCompanyUrn, currentCompanyWebsite, currentCompanyId, school, languages, skills, location, keyword, headcount.'
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/find-people
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/find-people
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/find-people
+  /icypeas/api/domain-search:
+    post:
+      operationId: icypeas_POST__api_domain_search
+      summary: Scan a domain to discover all associated email addresses. Returns a search ID to poll for results via the Fetch Search Result endpoint.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/domain-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/domain-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/domain-search
+  /icypeas/api/url-search/profile:
+    post:
+      operationId: icypeas_POST__api_url_search_profile
+      summary: Find a person's LinkedIn profile URL by name and optionally company/domain and job title. Synchronous response with status FOUND or NOT_FOUND.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/url-search/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/url-search/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/url-search/profile
+  /icypeas/api/scrape/profile:
+    get:
+      operationId: icypeas_GET__api_scrape_profile
+      summary: Scrape a LinkedIn user profile by URL. Returns detailed profile data including work experience, education, skills, languages, and contact info.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/scrape/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/scrape/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/scrape/profile
+  /icypeas/api/email-search:
+    post:
+      operationId: icypeas_POST__api_email_search
+      summary: 'Find a professional email address by providing a first name, last name, and domain or company name. Returns a search ID to poll for results via the Fetch Search Result endpoint. Async: status progresses NONE → SCHEDULED → IN_PROGRESS → DEBITED (found) or NOT_DEBITED (not found).'
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/email-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/email-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/email-search
+  /icypeas/api/find-people/count:
+    post:
+      operationId: icypeas_POST__api_find_people_count
+      summary: 'Count people matching a query in the lead database. Free. Filters: currentJobTitle, pastJobTitle, currentCompanyName, pastCompanyName, location, skills, languages, keyword, headcount, school, etc.'
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/find-people/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/find-people/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/find-people/count
+  /icypeas/api/bulk-single-searchs/read:
+    post:
+      operationId: icypeas_POST__api_bulk_single_searchs_read
+      summary: Retrieve results for a search by ID. Use to poll async results from email-search, email-verification, domain-search, scrape, url-search. Supports pagination.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/bulk-single-searchs/read
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/bulk-single-searchs/read
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/bulk-single-searchs/read
+  /icypeas/api/scrape/company:
+    get:
+      operationId: icypeas_GET__api_scrape_company
+      summary: Scrape a LinkedIn company page by URL. Returns company details including description, industry, employee count, specialties, revenue estimates, and address.
+      tags:
+      - Icypeas
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/icypeas/api/scrape/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/icypeas/api/scrape/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/icypeas/api/scrape/company
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

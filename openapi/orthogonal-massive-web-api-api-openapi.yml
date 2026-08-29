@@ -1,0 +1,485 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Massive Web API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Massive Web API
+paths:
+  /joinmassive/search:
+    get:
+      operationId: joinmassive_GET__search
+      summary: 'Retrieve search results or queue a search for later retrieval. Supports Google engine with geotargeting by country, subdivision, and city. Returns structured SERP data. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/search
+  /joinmassive/search/results:
+    get:
+      operationId: joinmassive_GET__search_results
+      summary: Retrieve results or status of a queued search.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/search/results
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/search/results
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/search/results
+  /joinmassive/search/batches:
+    post:
+      operationId: joinmassive_POST__search_batches
+      summary: Queue multiple searches (up to 1000 terms).
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/search/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/search/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/search/batches
+    get:
+      operationId: joinmassive_GET__search_batches
+      summary: Retrieve status of batch searches.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/search/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/search/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/search/batches
+  /joinmassive/search/devices:
+    get:
+      operationId: joinmassive_GET__search_devices
+      summary: Retrieve supported device names for search emulation.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/search/devices
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/search/devices
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/search/devices
+  /joinmassive/ai/completions:
+    get:
+      operationId: joinmassive_GET__ai_completions
+      summary: Retrieve completion or status of a queued AI conversation.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/ai/completions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/ai/completions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/ai/completions
+  /joinmassive/ai/batches:
+    post:
+      operationId: joinmassive_POST__ai_batches
+      summary: Queue multiple LLM conversations (up to 1000 prompts).
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/ai/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/ai/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/ai/batches
+    get:
+      operationId: joinmassive_GET__ai_batches
+      summary: Retrieve status of batch AI conversations.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/ai/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/ai/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/ai/batches
+  /joinmassive/ai/devices:
+    get:
+      operationId: joinmassive_GET__ai_devices
+      summary: Retrieve supported device names for AI emulation.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/ai/devices
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/ai/devices
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/ai/devices
+  /joinmassive/browser/content:
+    get:
+      operationId: joinmassive_GET__browser_content
+      summary: Retrieve content or status of a queued browser request.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/browser/content
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/browser/content
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/browser/content
+  /joinmassive/browser/batches:
+    post:
+      operationId: joinmassive_POST__browser_batches
+      summary: Queue multiple browsing requests (up to 1000 URLs).
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/browser/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/browser/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/browser/batches
+    get:
+      operationId: joinmassive_GET__browser_batches
+      summary: Retrieve status of batch browsing requests.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/browser/batches
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/browser/batches
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/browser/batches
+  /joinmassive/browser/devices:
+    get:
+      operationId: joinmassive_GET__browser_devices
+      summary: Retrieve supported device names for browser emulation.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.00125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/browser/devices
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/browser/devices
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/browser/devices
+  /joinmassive/ai:
+    get:
+      operationId: joinmassive_GET__ai
+      summary: Retrieve an LLM completion. Supports ChatGPT, Gemini, Perplexity, and Copilot with geotargeting.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0625
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/ai
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/ai
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/ai
+  /joinmassive/browser:
+    get:
+      operationId: joinmassive_GET__browser
+      summary: Retrieve web content with full JS rendering. Supports antibot bypass, difficulty levels, speed tiers, CAPTCHA handling, and output as rendered HTML, raw HTML, or markdown.
+      tags:
+      - Massive Web API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/joinmassive/browser
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/joinmassive/browser
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/joinmassive/browser
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

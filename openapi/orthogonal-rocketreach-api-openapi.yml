@@ -1,0 +1,187 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Rocket Reach API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: RocketReach
+paths:
+  /rocketreach/profile-company/lookup:
+    get:
+      operationId: rocketreach_GET__profile_company_lookup
+      summary: Look up a person and their associated company data in a single request.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/rocketreach/profile-company/lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/rocketreach/profile-company/lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/rocketreach/profile-company/lookup
+  /rocketreach/person/search:
+    post:
+      operationId: rocketreach_POST__person_search
+      summary: Search for people by various criteria including name, title, company, location, and more. Returns paginated results. Consumes 1 export credit per page.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/rocketreach/person/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/rocketreach/person/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/rocketreach/person/search
+  /rocketreach/person/lookup:
+    get:
+      operationId: rocketreach_GET__person_lookup
+      summary: Look up a person by name, email, LinkedIn URL, or other identifiers. Returns professional profile and contact information. Consumes 1 export credit.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/rocketreach/person/lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/rocketreach/person/lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/rocketreach/person/lookup
+  /rocketreach/company/lookup/:
+    get:
+      operationId: rocketreach_GET__company_lookup_
+      summary: Look up a company by name, domain, or ID. Returns company profile including industry, size, location, revenue, and more. Consumes 1 export credit.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/rocketreach/company/lookup/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/rocketreach/company/lookup/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/rocketreach/company/lookup/
+  /rocketreach/person/checkStatus:
+    get:
+      operationId: rocketreach_GET__person_checkStatus
+      summary: Check the status of a pending person lookup request. Free, no credit cost.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+  /rocketreach/searchCompany:
+    post:
+      operationId: rocketreach_POST__searchCompany
+      summary: Search for companies by name, domain, industry, location, size, revenue, and more. Returns paginated results. Consumes 1 export credit per page.
+      tags:
+      - RocketReach
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/rocketreach/searchCompany
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/rocketreach/searchCompany
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/rocketreach/searchCompany
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

@@ -1,0 +1,3340 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Scrape Creators API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Scrape Creators
+paths:
+  /scrapecreators/v1/komi:
+    get:
+      operationId: scrapecreators_GET__v1_komi
+      summary: Komi
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/komi
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/komi
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/komi
+  /scrapecreators/v1/linkme:
+    get:
+      operationId: scrapecreators_GET__v1_linkme
+      summary: Linkme
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkme
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkme
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkme
+  /scrapecreators/v1/detect-age-gender:
+    get:
+      operationId: scrapecreators_GET__v1_detect_age_gender
+      summary: Age and Gender
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/detect-age-gender
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/detect-age-gender
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/detect-age-gender
+  /scrapecreators/v1/truthsocial/webhook:
+    post:
+      operationId: scrapecreators_POST__v1_truthsocial_webhook
+      summary: Truth Social Webhook
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/truthsocial/webhook
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/truthsocial/webhook
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/truthsocial/webhook
+  /scrapecreators/v1/reddit/ad:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_ad
+      summary: Get Ad
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/ad
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/ad
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/ad
+  /scrapecreators/v1/linkbio:
+    get:
+      operationId: scrapecreators_GET__v1_linkbio
+      summary: Linkbio
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkbio
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkbio
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkbio
+  /scrapecreators/v1/pillar:
+    get:
+      operationId: scrapecreators_GET__v1_pillar
+      summary: Pillar
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/pillar
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/pillar
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/pillar
+  /scrapecreators/v2/instagram/post/comments:
+    get:
+      operationId: scrapecreators_GET__v2_instagram_post_comments
+      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v2/instagram/post/comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v2/instagram/post/comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v2/instagram/post/comments
+  /scrapecreators/v2/instagram/media/transcript:
+    get:
+      operationId: scrapecreators_GET__v2_instagram_media_transcript
+      summary: Transcript
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v2/instagram/media/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v2/instagram/media/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v2/instagram/media/transcript
+  /scrapecreators/v1/tiktok/search/users:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_search_users
+      summary: 'Search Users Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/search/users
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/search/users
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/search/users
+  /scrapecreators/v1/tiktok/hashtags/popular:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_hashtags_popular
+      summary: 'Get popular hashtags Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/hashtags/popular
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/hashtags/popular
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/hashtags/popular
+  /scrapecreators/v1/youtube/video/comments:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_video_comments
+      summary: Comments
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/video/comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/video/comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/video/comments
+  /scrapecreators/v1/youtube/shorts/trending:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_shorts_trending
+      summary: Trending Shorts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/shorts/trending
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/shorts/trending
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/shorts/trending
+  /scrapecreators/v1/linkedin/company:
+    get:
+      operationId: scrapecreators_GET__v1_linkedin_company
+      summary: Company Page
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkedin/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkedin/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkedin/company
+  /scrapecreators/v1/facebook/profile/reels:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_profile_reels
+      summary: 'Profile Reels Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/profile/reels
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/profile/reels
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/profile/reels
+  /scrapecreators/v1/facebook/post:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_post
+      summary: Post
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/post
+  /scrapecreators/v1/facebook/post/transcript:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_post_transcript
+      summary: Transcript
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/post/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/post/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/post/transcript
+  /scrapecreators/v1/facebook/adLibrary/ad:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_adLibrary_ad
+      summary: Facebook Ad Library
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/adLibrary/ad
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/adLibrary/ad
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/adLibrary/ad
+  /scrapecreators/v1/facebook/profile/photos:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_profile_photos
+      summary: 'Profile Photos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/profile/photos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/profile/photos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/profile/photos
+  /scrapecreators/v1/linkedin/ads/search:
+    get:
+      operationId: scrapecreators_GET__v1_linkedin_ads_search
+      summary: LinkedIn Ad Library
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkedin/ads/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkedin/ads/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkedin/ads/search
+  /scrapecreators/v1/twitter/community/tweets:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_community_tweets
+      summary: Community Tweets
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/community/tweets
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/community/tweets
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/community/tweets
+  /scrapecreators/v1/pinterest/search:
+    get:
+      operationId: scrapecreators_GET__v1_pinterest_search
+      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/pinterest/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/pinterest/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/pinterest/search
+  /scrapecreators/v1/reddit/ads/search:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_ads_search
+      summary: Search Ads
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/ads/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/ads/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/ads/search
+  /scrapecreators/v1/truthsocial/user/posts:
+    get:
+      operationId: scrapecreators_GET__v1_truthsocial_user_posts
+      summary: User Posts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/truthsocial/user/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/truthsocial/user/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/truthsocial/user/posts
+  /scrapecreators/v1/youtube/search/hashtag:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_search_hashtag
+      summary: Search by Hashtag
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/search/hashtag
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/search/hashtag
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/search/hashtag
+  /scrapecreators/v1/tiktok/shop/search:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_shop_search
+      summary: 'TikTok Shop Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/shop/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/shop/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/shop/search
+  /scrapecreators/v1/kick/clip:
+    get:
+      operationId: scrapecreators_GET__v1_kick_clip
+      summary: Kick
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/kick/clip
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/kick/clip
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/kick/clip
+  /scrapecreators/v2/tiktok/video:
+    get:
+      operationId: scrapecreators_GET__v2_tiktok_video
+      summary: Video Info
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v2/tiktok/video
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v2/tiktok/video
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v2/tiktok/video
+  /scrapecreators/v1/instagram/user/embed:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_user_embed
+      summary: Embed HTML
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/user/embed
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/user/embed
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/user/embed
+  /scrapecreators/v1/twitch/clip:
+    get:
+      operationId: scrapecreators_GET__v1_twitch_clip
+      summary: Clip
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitch/clip
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitch/clip
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitch/clip
+  /scrapecreators/v1/tiktok/search/top:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_search_top
+      summary: 'Top Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/search/top
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/search/top
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/search/top
+  /scrapecreators/v2/instagram/user/posts:
+    get:
+      operationId: scrapecreators_GET__v2_instagram_user_posts
+      summary: Posts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v2/instagram/user/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v2/instagram/user/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v2/instagram/user/posts
+  /scrapecreators/v1/tiktok/profile:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_profile
+      summary: TikTok
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/profile
+  /scrapecreators/v1/linktree:
+    get:
+      operationId: scrapecreators_GET__v1_linktree
+      summary: Linktree
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linktree
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linktree
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linktree
+  /scrapecreators/v1/instagram/user/reels:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_user_reels
+      summary: Reels
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/user/reels
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/user/reels
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/user/reels
+  /scrapecreators/v1/instagram/user/highlights:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_user_highlights
+      summary: Story Highlights
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/user/highlights
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/user/highlights
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/user/highlights
+  /scrapecreators/v1/instagram/user/highlight/detail:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_user_highlight_detail
+      summary: Highlights Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/user/highlight/detail
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/user/highlight/detail
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/user/highlight/detail
+  /scrapecreators/v1/tiktok/song:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_song
+      summary: Get Song Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/song
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/song
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/song
+  /scrapecreators/v1/tiktok/user/following:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_user_following
+      summary: Following
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/user/following
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/user/following
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/user/following
+  /scrapecreators/v1/instagram/post:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_post
+      summary: Post/Reel Info
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/post
+  /scrapecreators/v1/tiktok/get-trending-feed:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_get_trending_feed
+      summary: Trending Feed
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/get-trending-feed
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/get-trending-feed
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/get-trending-feed
+  /scrapecreators/v1/tiktok/product:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_product
+      summary: Product Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/product
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/product
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/product
+  /scrapecreators/v1/instagram/profile:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_profile
+      summary: Instagram
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/profile
+  /scrapecreators/v1/linkedin/post:
+    get:
+      operationId: scrapecreators_GET__v1_linkedin_post
+      summary: Post
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkedin/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkedin/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkedin/post
+  /scrapecreators/v1/youtube/channel:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_channel
+      summary: YouTube
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/channel
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/channel
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/channel
+  /scrapecreators/v1/google/adLibrary/advertisers/search:
+    get:
+      operationId: scrapecreators_GET__v1_google_adLibrary_advertisers_search
+      summary: Advertiser Search
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/google/adLibrary/advertisers/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/google/adLibrary/advertisers/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/google/adLibrary/advertisers/search
+  /scrapecreators/v1/twitter/tweet/transcript:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_tweet_transcript
+      summary: Transcript
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/tweet/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/tweet/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/tweet/transcript
+  /scrapecreators/v1/google/search:
+    get:
+      operationId: scrapecreators_GET__v1_google_search
+      summary: Google
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/google/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/google/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/google/search
+  /scrapecreators/v1/google/ad:
+    get:
+      operationId: scrapecreators_GET__v1_google_ad
+      summary: Ad Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/google/ad
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/google/ad
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/google/ad
+  /scrapecreators/v1/pinterest/pin:
+    get:
+      operationId: scrapecreators_GET__v1_pinterest_pin
+      summary: Pin
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/pinterest/pin
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/pinterest/pin
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/pinterest/pin
+  /scrapecreators/v1/threads/search/users:
+    get:
+      operationId: scrapecreators_GET__v1_threads_search_users
+      summary: Search Users
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/threads/search/users
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/threads/search/users
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/threads/search/users
+  /scrapecreators/v1/truthsocial/profile:
+    get:
+      operationId: scrapecreators_GET__v1_truthsocial_profile
+      summary: Truth Social
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/truthsocial/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/truthsocial/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/truthsocial/profile
+  /scrapecreators/v1/twitch/profile:
+    get:
+      operationId: scrapecreators_GET__v1_twitch_profile
+      summary: Twitch
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitch/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitch/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitch/profile
+  /scrapecreators/v1/snapchat/profile:
+    get:
+      operationId: scrapecreators_GET__v1_snapchat_profile
+      summary: Snapchat
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/snapchat/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/snapchat/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/snapchat/profile
+  /scrapecreators/v1/tiktok/shop/products:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_shop_products
+      summary: 'Shop Products Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/shop/products
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/shop/products
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/shop/products
+  /scrapecreators/v1/tiktok/user/followers:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_user_followers
+      summary: Followers
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/user/followers
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/user/followers
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/user/followers
+  /scrapecreators/v1/youtube/search:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_search
+      summary: Search
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/search
+  /scrapecreators/v1/youtube/channel/shorts:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_channel_shorts
+      summary: Channel Shorts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/channel/shorts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/channel/shorts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/channel/shorts
+  /scrapecreators/v1/reddit/subreddit/details:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_subreddit_details
+      summary: Reddit
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/subreddit/details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/subreddit/details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/subreddit/details
+  /scrapecreators/v1/bluesky/post:
+    get:
+      operationId: scrapecreators_GET__v1_bluesky_post
+      summary: Post
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/bluesky/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/bluesky/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/bluesky/post
+  /scrapecreators/v1/pinterest/user/boards:
+    get:
+      operationId: scrapecreators_GET__v1_pinterest_user_boards
+      summary: User Boards
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/pinterest/user/boards
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/pinterest/user/boards
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/pinterest/user/boards
+  /scrapecreators/v1/threads/user/posts:
+    get:
+      operationId: scrapecreators_GET__v1_threads_user_posts
+      summary: Posts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/threads/user/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/threads/user/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/threads/user/posts
+  /scrapecreators/v1/tiktok/video/transcript:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_video_transcript
+      summary: Transcript
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/video/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/video/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/video/transcript
+  /scrapecreators/v1/google/company/ads:
+    get:
+      operationId: scrapecreators_GET__v1_google_company_ads
+      summary: 'Company Ads Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/google/company/ads
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/google/company/ads
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/google/company/ads
+  /scrapecreators/v1/reddit/post/comments:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_post_comments
+      summary: 'Post Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/post/comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/post/comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/post/comments
+  /scrapecreators/v1/instagram/song/reels:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_song_reels
+      summary: Reels using Song
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/song/reels
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/song/reels
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/song/reels
+  /scrapecreators/v1/threads/profile:
+    get:
+      operationId: scrapecreators_GET__v1_threads_profile
+      summary: Threads
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/threads/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/threads/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/threads/profile
+  /scrapecreators/v1/linkedin/profile:
+    get:
+      operationId: scrapecreators_GET__v1_linkedin_profile
+      summary: LinkedIn
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkedin/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkedin/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkedin/profile
+  /scrapecreators/v1/bluesky/profile:
+    get:
+      operationId: scrapecreators_GET__v1_bluesky_profile
+      summary: Bluesky
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/bluesky/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/bluesky/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/bluesky/profile
+  /scrapecreators/v1/linkedin/ad:
+    get:
+      operationId: scrapecreators_GET__v1_linkedin_ad
+      summary: Ad Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/linkedin/ad
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/linkedin/ad
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/linkedin/ad
+  /scrapecreators/v1/amazon/shop:
+    get:
+      operationId: scrapecreators_GET__v1_amazon_shop
+      summary: Amazon Shop
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/amazon/shop
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/amazon/shop
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/amazon/shop
+  /scrapecreators/v1/instagram/basic-profile:
+    get:
+      operationId: scrapecreators_GET__v1_instagram_basic_profile
+      summary: Basic Profile
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/instagram/basic-profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/instagram/basic-profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/instagram/basic-profile
+  /scrapecreators/v1/tiktok/user/live:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_user_live
+      summary: TikTok Live
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/user/live
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/user/live
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/user/live
+  /scrapecreators/v1/youtube/playlist:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_playlist
+      summary: Playlist
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/playlist
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/playlist
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/playlist
+  /scrapecreators/v1/youtube/video:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_video
+      summary: Video/Short Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/video
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/video
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/video
+  /scrapecreators/v1/facebook/profile:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_profile
+      summary: Facebook
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/profile
+  /scrapecreators/v1/twitter/user-tweets:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_user_tweets
+      summary: User Tweets
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/user-tweets
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/user-tweets
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/user-tweets
+  /scrapecreators/v1/tiktok/search/keyword:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_search_keyword
+      summary: 'Search by Keyword Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/search/keyword
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/search/keyword
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/search/keyword
+  /scrapecreators/v1/twitter/profile:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_profile
+      summary: Twitter
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/profile
+  /scrapecreators/v1/facebook/profile/posts:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_profile_posts
+      summary: 'Profile Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/profile/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/profile/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/profile/posts
+  /scrapecreators/v1/tiktok/videos/popular:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_videos_popular
+      summary: 'Get popular videos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/videos/popular
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/videos/popular
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/videos/popular
+  /scrapecreators/v1/facebook/adLibrary/search/companies:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_adLibrary_search_companies
+      summary: Search for Companies
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/companies
+  /scrapecreators/v1/twitter/tweet:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_tweet
+      summary: Tweet Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/tweet
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/tweet
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/tweet
+  /scrapecreators/v3/tiktok/profile/videos:
+    get:
+      operationId: scrapecreators_GET__v3_tiktok_profile_videos
+      summary: 'Profile Videos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v3/tiktok/profile/videos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v3/tiktok/profile/videos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v3/tiktok/profile/videos
+  /scrapecreators/v1/tiktok/songs/popular:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_songs_popular
+      summary: 'Get popular songs Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/songs/popular
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/songs/popular
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/songs/popular
+  /scrapecreators/v1/pinterest/board:
+    get:
+      operationId: scrapecreators_GET__v1_pinterest_board
+      summary: 'Board Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/pinterest/board
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/pinterest/board
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/pinterest/board
+  /scrapecreators/v1/bluesky/user/posts:
+    get:
+      operationId: scrapecreators_GET__v1_bluesky_user_posts
+      summary: Posts
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/bluesky/user/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/bluesky/user/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/bluesky/user/posts
+  /scrapecreators/v1/threads/post:
+    get:
+      operationId: scrapecreators_GET__v1_threads_post
+      summary: Post
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/threads/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/threads/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/threads/post
+  /scrapecreators/v1/youtube/video/transcript:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_video_transcript
+      summary: Transcript
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/video/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/video/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/video/transcript
+  /scrapecreators/v2/instagram/reels/search:
+    get:
+      operationId: scrapecreators_GET__v2_instagram_reels_search
+      summary: 'Search Reels Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v2/instagram/reels/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v2/instagram/reels/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v2/instagram/reels/search
+  /scrapecreators/v1/reddit/subreddit:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_subreddit
+      summary: 'Subreddit Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/subreddit
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/subreddit
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/subreddit
+  /scrapecreators/v1/tiktok/creators/popular:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_creators_popular
+      summary: 'Get popular creators Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/creators/popular
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/creators/popular
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/creators/popular
+  /scrapecreators/v1/facebook/group/posts:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_group_posts
+      summary: 'Facebook Group Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/group/posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/group/posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/group/posts
+  /scrapecreators/v1/tiktok/video/comments:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_video_comments
+      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/video/comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/video/comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/video/comments
+  /scrapecreators/v1/tiktok/shop/product/reviews:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_shop_product_reviews
+      summary: 'Product Reviews Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/shop/product/reviews
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/shop/product/reviews
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/shop/product/reviews
+  /scrapecreators/v1/facebook/adLibrary/search/ads:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_adLibrary_search_ads
+      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/ads
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/ads
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/adLibrary/search/ads
+  /scrapecreators/v1/tiktok/search/hashtag:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_search_hashtag
+      summary: 'Search by Hashtag Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/search/hashtag
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/search/hashtag
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/search/hashtag
+  /scrapecreators/v1/tiktok/song/videos:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_song_videos
+      summary: 'TikToks using Song Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/song/videos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/song/videos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/song/videos
+  /scrapecreators/v1/reddit/search:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_search
+      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/search
+  /scrapecreators/v1/reddit/subreddit/search:
+    get:
+      operationId: scrapecreators_GET__v1_reddit_subreddit_search
+      summary: 'Subreddit Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/reddit/subreddit/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/reddit/subreddit/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/reddit/subreddit/search
+  /scrapecreators/v1/youtube/channel-videos:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_channel_videos
+      summary: Channel Videos
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/channel-videos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/channel-videos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/channel-videos
+  /scrapecreators/v1/twitter/community:
+    get:
+      operationId: scrapecreators_GET__v1_twitter_community
+      summary: Community
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/twitter/community
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/twitter/community
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/twitter/community
+  /scrapecreators/v1/truthsocial/post:
+    get:
+      operationId: scrapecreators_GET__v1_truthsocial_post
+      summary: Post
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/truthsocial/post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/truthsocial/post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/truthsocial/post
+  /scrapecreators/v1/tiktok/user/audience:
+    get:
+      operationId: scrapecreators_GET__v1_tiktok_user_audience
+      summary: User's Audience Demographics
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/tiktok/user/audience
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/tiktok/user/audience
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/tiktok/user/audience
+  /scrapecreators/v1/youtube/community-post:
+    get:
+      operationId: scrapecreators_GET__v1_youtube_community_post
+      summary: Community Post Details
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/youtube/community-post
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/youtube/community-post
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/youtube/community-post
+  /scrapecreators/v1/facebook/adLibrary/company/ads:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_adLibrary_company_ads
+      summary: 'Company Ads Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/adLibrary/company/ads
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/adLibrary/company/ads
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/adLibrary/company/ads
+  /scrapecreators/v1/facebook/post/comments:
+    get:
+      operationId: scrapecreators_GET__v1_facebook_post_comments
+      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Scrape Creators
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapecreators/v1/facebook/post/comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapecreators/v1/facebook/post/comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapecreators/v1/facebook/post/comments
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

@@ -1,0 +1,218 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Contact Out API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: ContactOut
+paths:
+  /contactout/v1/email/enrich:
+    get:
+      operationId: contactout_GET__v1_email_enrich
+      summary: Get profile details from an email address.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.33
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/email/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/email/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/email/enrich
+  /contactout/v1/people/linkedin:
+    get:
+      operationId: contactout_GET__v1_people_linkedin
+      summary: Get contact details for a LinkedIn profile.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/people/linkedin
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/people/linkedin
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/people/linkedin
+  /contactout/v1/linkedin/enrich:
+    get:
+      operationId: contactout_GET__v1_linkedin_enrich
+      summary: Get full profile details (email, phone, work history, education, skills) from a LinkedIn profile URL.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/linkedin/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/linkedin/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/linkedin/enrich
+  /contactout/v1/people/enrich:
+    post:
+      operationId: contactout_POST__v1_people_enrich
+      summary: Enrich a person using multiple data points (name, email, phone, LinkedIn, company).
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.55
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/people/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/people/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/people/enrich
+  /contactout/v1/domain/enrich:
+    post:
+      operationId: contactout_POST__v1_domain_enrich
+      summary: Get company information from domain names.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/domain/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/domain/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/domain/enrich
+  /contactout/v1/people/count:
+    post:
+      operationId: contactout_POST__v1_people_count
+      summary: Count matching profiles for search criteria.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+  /contactout/v1/people/linkedin/batch:
+    post:
+      operationId: contactout_POST__v1_people_linkedin_batch
+      summary: Get contact details for up to 30 LinkedIn profiles.
+      tags:
+      - ContactOut
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/contactout/v1/people/linkedin/batch
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/contactout/v1/people/linkedin/batch
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/contactout/v1/people/linkedin/batch
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

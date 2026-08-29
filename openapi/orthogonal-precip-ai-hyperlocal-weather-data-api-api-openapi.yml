@@ -1,0 +1,519 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Precip AI - Hyperlocal Weather Data API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Precip AI - Hyperlocal Weather Data API
+paths:
+  /precip/api/v1/solar-radiation-hourly:
+    get:
+      operationId: precip_GET__api_v1_solar_radiation_hourly
+      summary: Hourly downward short-wave radiation flux in watts per square meter (W/m²)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/solar-radiation-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/solar-radiation-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/solar-radiation-hourly
+  /precip/api/v1/temp-0-10cm-hourly:
+    get:
+      operationId: precip_GET__api_v1_temp_0_10cm_hourly
+      summary: Hourly soil temperature data at 0-10cm depth in Celsius (°C)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/temp-0-10cm-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/temp-0-10cm-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/temp-0-10cm-hourly
+  /precip/api/v1/wind-speed-hourly:
+    get:
+      operationId: precip_GET__api_v1_wind_speed_hourly
+      summary: Hourly near-surface wind speed in meters per second (m/s)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/wind-speed-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/wind-speed-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/wind-speed-hourly
+  /precip/api/v1/specific-humidity-hourly:
+    get:
+      operationId: precip_GET__api_v1_specific_humidity_hourly
+      summary: Hourly specific humidity (kg/kg)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/specific-humidity-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/specific-humidity-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/specific-humidity-hourly
+  /precip/api/v1/soil-moisture-daily:
+    get:
+      operationId: precip_GET__api_v1_soil_moisture_daily
+      summary: Daily soil moisture percentage relative to holding capacity at 0-10cm depth
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/soil-moisture-daily
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/soil-moisture-daily
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/soil-moisture-daily
+  /precip/api/v1/recent-rain:
+    get:
+      operationId: precip_GET__api_v1_recent_rain
+      summary: Returns detailed information about the most recent precipitation event for the given location(s), including total amounts, precipitation type (rain/snow), timing, and how long ago it occurred. A rain event is defined as more than 1/10 inch (2.5mm) of precipitation with less than a 24-hour gap between occurrences.
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/recent-rain
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/recent-rain
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/recent-rain
+  /precip/api/v1/daily:
+    get:
+      operationId: precip_GET__api_v1_daily
+      summary: Returns comprehensive daily precipitation data for the given time range and location(s). Each day includes precipitation amount, type (rain/snow/mixed), probability (for forecasts), and data source. Seamlessly combines historical observations with forecast data depending on the requested time range.
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/daily
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/daily
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/daily
+  /precip/api/v1/wind-speed-gust-hourly:
+    get:
+      operationId: precip_GET__api_v1_wind_speed_gust_hourly
+      summary: Hourly wind gust speed in meters per second (m/s)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/wind-speed-gust-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/wind-speed-gust-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/wind-speed-gust-hourly
+  /precip/api/v1/last-48:
+    get:
+      operationId: precip_GET__api_v1_last_48
+      summary: Total precipitation in the last 48 hours for the given location(s).
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/last-48
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/last-48
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/last-48
+  /precip/api/v1/map/{serviceName}/ImageServer/tile/{z}/{y}/{x}:
+    get:
+      operationId: precip_GET__api_v1_map_serviceName_ImageServer_tile_z_y_x_
+      summary: Map tiles compatible with most web mapping or GIS tools. Software such as Mapbox, Google Maps, ArcGIS, Leaflet, OpenLayers or QGIS will require an `x/y/z` url eg `https://api.precip.ai/api/v1/map/last-48/ImageServer/tile/{z}/{y}/{x}`. See the examples for more details.
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/map/{serviceName}/ImageServer/tile/{z}/{y}/{x}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/map/{serviceName}/ImageServer/tile/{z}/{y}/{x}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/map/{serviceName}/ImageServer/tile/{z}/{y}/{x}
+  /precip/api/v1/soil-moisture-hourly:
+    get:
+      operationId: precip_GET__api_v1_soil_moisture_hourly
+      summary: Hourly soil moisture percentage relative to holding capacity at 0-10cm depth
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/soil-moisture-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/soil-moisture-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/soil-moisture-hourly
+  /precip/api/v1/wind-direction-hourly:
+    get:
+      operationId: precip_GET__api_v1_wind_direction_hourly
+      summary: Hourly wind direction in compass degrees (0-360)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/wind-direction-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/wind-direction-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/wind-direction-hourly
+  /precip/api/v1/cloud-cover-hourly:
+    get:
+      operationId: precip_GET__api_v1_cloud_cover_hourly
+      summary: Hourly cloud cover fraction (0-1, where 0 is clear and 1 is overcast)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/cloud-cover-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/cloud-cover-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/cloud-cover-hourly
+  /precip/api/v1/hourly:
+    get:
+      operationId: precip_GET__api_v1_hourly
+      summary: Returns comprehensive hourly precipitation data for the given time range and location(s). Each hour includes precipitation amount, type (rain/snow/mixed), probability (for forecasts), and data source. Seamlessly combines historical observations with forecast data depending on the requested time range.
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/hourly
+  /precip/api/v1/temperature-hourly:
+    get:
+      operationId: precip_GET__api_v1_temperature_hourly
+      summary: Hourly near-surface air temperature in Celsius (°C)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/temperature-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/temperature-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/temperature-hourly
+  /precip/api/v1/relative-humidity-hourly:
+    get:
+      operationId: precip_GET__api_v1_relative_humidity_hourly
+      summary: Hourly relative humidity as a percentage (0-100%)
+      tags:
+      - Precip AI - Hyperlocal Weather Data API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/precip/api/v1/relative-humidity-hourly
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/precip/api/v1/relative-humidity-hourly
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/precip/api/v1/relative-humidity-hourly
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

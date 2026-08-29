@@ -1,0 +1,280 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Apollo API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Apollo API
+paths:
+  /apollo/api/v1/organizations/bulk_enrich:
+    post:
+      operationId: apollo_POST__api_v1_organizations_bulk_enrich
+      summary: Enrich up to 10 organizations in a single request.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.05
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/organizations/bulk_enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/organizations/bulk_enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/organizations/bulk_enrich
+  /apollo/api/v1/news_articles/search:
+    post:
+      operationId: apollo_POST__api_v1_news_articles_search
+      summary: Search for news articles related to companies in the Apollo database.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/news_articles/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/news_articles/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/news_articles/search
+  /apollo/api/v1/people/match:
+    post:
+      operationId: apollo_POST__api_v1_people_match
+      summary: Enrich a person by email, LinkedIn URL, name+company, or other identifiers. Returns contact details, job info, and social profiles.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/people/match
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/people/match
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/people/match
+  /apollo/api/v1/organizations/{id}:
+    get:
+      operationId: apollo_GET__api_v1_organizations_id_
+      summary: Get complete organization info by Apollo organization ID.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/organizations/{id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/organizations/{id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/organizations/{id}
+  /apollo/api/v1/people/bulk_match:
+    post:
+      operationId: apollo_POST__api_v1_people_bulk_match
+      summary: Enrich up to 10 people in a single request. Webhook required for async results.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.05
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/people/bulk_match
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/people/bulk_match
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/people/bulk_match
+  /apollo/api/v1/mixed_companies/search:
+    post:
+      operationId: apollo_POST__api_v1_mixed_companies_search
+      summary: Search Apollo database for companies matching filters. Returns up to 100 results per page.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/mixed_companies/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/mixed_companies/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/mixed_companies/search
+  /apollo/api/v1/organizations/enrich:
+    get:
+      operationId: apollo_GET__api_v1_organizations_enrich
+      summary: Enrich a company by domain. Returns industry, revenue, employee count, funding, locations, and more.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/organizations/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/organizations/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/organizations/enrich
+  /apollo/api/v1/organizations/{organization_id}/job_postings:
+    get:
+      operationId: apollo_GET__api_v1_organizations_organization_id_job_postings
+      summary: Get current job postings for a company by Apollo organization ID.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/apollo/api/v1/organizations/{organization_id}/job_postings
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/apollo/api/v1/organizations/{organization_id}/job_postings
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/apollo/api/v1/organizations/{organization_id}/job_postings
+  /apollo/api/v1/mixed_people/api_search:
+    post:
+      operationId: apollo_POST__api_v1_mixed_people_api_search
+      summary: Search Apollo database for people matching filters. Returns up to 100 results per page. Does not include emails/phones - use enrichment endpoints for that.
+      tags:
+      - Apollo API
+      responses:
+        '200':
+          description: Successful response
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

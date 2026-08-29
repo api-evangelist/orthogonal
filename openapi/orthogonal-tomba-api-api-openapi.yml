@@ -1,0 +1,643 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Tomba API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Tomba API
+paths:
+  /tomba/v1/people/find:
+    get:
+      operationId: tomba_GET__v1_people_find
+      summary: Get person information from an email address.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/people/find
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/people/find
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/people/find
+  /tomba/v1/combined/find:
+    get:
+      operationId: tomba_GET__v1_combined_find
+      summary: Get combined person and company information from an email.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/combined/find
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/combined/find
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/combined/find
+  /tomba/v1/email-count:
+    get:
+      operationId: tomba_GET__v1_email_count
+      summary: Get the count of email addresses for a domain, broken down by department and seniority.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/email-count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/email-count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/email-count
+  /tomba/v1/author-finder:
+    get:
+      operationId: tomba_GET__v1_author_finder
+      summary: Find the email address of a blog post author from the article URL.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/author-finder
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/author-finder
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/author-finder
+  /tomba/v1/location:
+    get:
+      operationId: tomba_GET__v1_location
+      summary: Get employee location distribution for a domain.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/location
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/location
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/location
+  /tomba/v1/email-sources:
+    get:
+      operationId: tomba_GET__v1_email_sources
+      summary: Find the sources where an email was found on the web.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/email-sources
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/email-sources
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/email-sources
+  /tomba/v1/phone-finder:
+    get:
+      operationId: tomba_GET__v1_phone_finder
+      summary: Find phone numbers associated with an email, domain, or LinkedIn profile.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/phone-finder
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/phone-finder
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/phone-finder
+  /tomba/v1/email-format:
+    get:
+      operationId: tomba_GET__v1_email_format
+      summary: Get the email format patterns used by a domain (e.g. first.last, firstlast).
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/email-format
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/email-format
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/email-format
+  /tomba/v1/phone-validator:
+    get:
+      operationId: tomba_GET__v1_phone_validator
+      summary: Validate a phone number and get carrier information.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/phone-validator
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/phone-validator
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/phone-validator
+  /tomba/v1/domain-status:
+    get:
+      operationId: tomba_GET__v1_domain_status
+      summary: Check the status and availability of a domain.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/domain-status
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/domain-status
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/domain-status
+  /tomba/v1/domain-suggestions:
+    get:
+      operationId: tomba_GET__v1_domain_suggestions
+      summary: Get domain suggestions for a company name
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/domain-suggestions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/domain-suggestions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/domain-suggestions
+  /tomba/v1/technology:
+    get:
+      operationId: tomba_GET__v1_technology
+      summary: Discover technologies used by a website.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/technology
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/technology
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/technology
+  /tomba/v1/reveal/search:
+    post:
+      operationId: tomba_POST__v1_reveal_search
+      summary: Search for companies using natural language queries or structured filters. AI assistant generates appropriate filters from your query.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/reveal/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/reveal/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/reveal/search
+  /tomba/v1/companies/find:
+    get:
+      operationId: tomba_GET__v1_companies_find
+      summary: Get company information from a domain.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/companies/find
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/companies/find
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/companies/find
+  /tomba/v1/similar:
+    get:
+      operationId: tomba_GET__v1_similar
+      summary: Find domains similar to a given domain.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/similar
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/similar
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/similar
+  /tomba/v1/linkedin:
+    get:
+      operationId: tomba_GET__v1_linkedin
+      summary: Find the email address from a LinkedIn profile URL.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/linkedin
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/linkedin
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/linkedin
+  /tomba/v1/enrich:
+    get:
+      operationId: tomba_GET__v1_enrich
+      summary: Enrich an email address with person and company data (name, location, social handles).
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/enrich
+  /tomba/v1/email-finder:
+    get:
+      operationId: tomba_GET__v1_email_finder
+      summary: Find the most likely email address from a domain name, first name, and last name.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/email-finder
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/email-finder
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/email-finder
+  /tomba/v1/domain-search:
+    get:
+      operationId: tomba_GET__v1_domain_search
+      summary: Search emails based on a website domain. Returns all email addresses found on the internet for a given domain, with organization info and employee details.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/domain-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/domain-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/domain-search
+  /tomba/v1/email-verifier:
+    get:
+      operationId: tomba_GET__v1_email_verifier
+      summary: Verify the deliverability of an email address.
+      tags:
+      - Tomba API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tomba/v1/email-verifier
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tomba/v1/email-verifier
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tomba/v1/email-verifier
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

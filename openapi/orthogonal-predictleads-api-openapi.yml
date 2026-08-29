@@ -1,0 +1,736 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Predict Leads API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: PredictLeads
+paths:
+  /predictleads/v3/companies/{company_id_or_domain}/similar_companies:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_similar_companies
+      summary: Find companies similar to a given company
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/similar_companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/similar_companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/similar_companies
+  /predictleads/v3/companies/{company_id_or_domain}/website_evolution:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_website_evolution
+      summary: 'Track website changes over time for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/website_evolution
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/website_evolution
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/website_evolution
+  /predictleads/v3/news_events/{id}:
+    get:
+      operationId: predictleads_GET__v3_news_events_id_
+      summary: Get a single news event by ID
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/news_events/{id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/news_events/{id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/news_events/{id}
+  /predictleads/v3/products/{id}:
+    get:
+      operationId: predictleads_GET__v3_products_id_
+      summary: Get a single product by ID
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/products/{id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/products/{id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/products/{id}
+  /predictleads/v3/companies/{company_id_or_domain}/financing_events:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_financing_events
+      summary: 'Get financing/funding events for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/financing_events
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/financing_events
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/financing_events
+  /predictleads/v3/companies/{id_or_domain}:
+    get:
+      operationId: predictleads_GET__v3_companies_id_or_domain_
+      summary: Get company profile by ID or domain
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{id_or_domain}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{id_or_domain}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{id_or_domain}
+  /predictleads/v3/discover/job_openings:
+    get:
+      operationId: predictleads_GET__v3_discover_job_openings
+      summary: 'Search and filter job openings across all companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/job_openings
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/job_openings
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/job_openings
+  /predictleads/v3/companies/{company_id_or_domain}/job_openings:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_job_openings
+      summary: 'Get job openings for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/job_openings
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/job_openings
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/job_openings
+  /predictleads/v3/job_openings/{id}:
+    get:
+      operationId: predictleads_GET__v3_job_openings_id_
+      summary: Get a single job opening by ID
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/job_openings/{id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/job_openings/{id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/job_openings/{id}
+  /predictleads/v3/companies/{company_id_or_domain}/news_events:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_news_events
+      summary: 'Get news events for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/news_events
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/news_events
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/news_events
+  /predictleads/v3/discover/portfolio_companies/connections:
+    get:
+      operationId: predictleads_GET__v3_discover_portfolio_companies_connections
+      summary: 'Discover connections across portfolio companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/portfolio_companies/connections
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/portfolio_companies/connections
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/portfolio_companies/connections
+  /predictleads/v3/companies/{company_id_or_domain}/technology_detections:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_technology_detections
+      summary: 'Get technology stack detections for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/technology_detections
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/technology_detections
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/technology_detections
+  /predictleads/v3/discover/products/latest:
+    get:
+      operationId: predictleads_GET__v3_discover_products_latest
+      summary: 'Discover the latest products across all companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/products/latest
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/products/latest
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/products/latest
+  /predictleads/v3/discover/technologies/{technology_id_or_fuzzy_name}/technology_detections:
+    get:
+      operationId: predictleads_GET__v3_discover_technologies_technology_id_or_fuzzy_name_technology_detections
+      summary: 'Find companies using a specific technology Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/technologies/{technology_id_or_fuzzy_name}/technology_detections
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/technologies/{technology_id_or_fuzzy_name}/technology_detections
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/technologies/{technology_id_or_fuzzy_name}/technology_detections
+  /predictleads/v3/companies/{company_id_or_domain}/github_repositories:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_github_repositories
+      summary: 'Get GitHub repositories associated with a company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/github_repositories
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/github_repositories
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/github_repositories
+  /predictleads/v3/discover/financing_events:
+    get:
+      operationId: predictleads_GET__v3_discover_financing_events
+      summary: 'Search and filter financing events across all companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/financing_events
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/financing_events
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/financing_events
+  /predictleads/v3/technologies:
+    get:
+      operationId: predictleads_GET__v3_technologies
+      summary: 'List all tracked technologies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/technologies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/technologies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/technologies
+  /predictleads/v3/technologies/{id_or_fuzzy_name}:
+    get:
+      operationId: predictleads_GET__v3_technologies_id_or_fuzzy_name_
+      summary: Get a specific technology by ID or name
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/technologies/{id_or_fuzzy_name}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/technologies/{id_or_fuzzy_name}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/technologies/{id_or_fuzzy_name}
+  /predictleads/v3/companies/{company_id_or_domain}/connections:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_connections
+      summary: 'Get business connections for a specific company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/connections
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/connections
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/connections
+  /predictleads/v3/discover/news_events:
+    get:
+      operationId: predictleads_GET__v3_discover_news_events
+      summary: 'Search and filter news events across all companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/news_events
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/news_events
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/news_events
+  /predictleads/v3/companies/{company_id_or_domain}/products:
+    get:
+      operationId: predictleads_GET__v3_companies_company_id_or_domain_products
+      summary: 'Get products associated with a company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/products
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/products
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/companies/{company_id_or_domain}/products
+  /predictleads/v3/discover/startup_platform_posts:
+    get:
+      operationId: predictleads_GET__v3_discover_startup_platform_posts
+      summary: 'Discover posts from startup platforms (Product Hunt, Hacker News, etc.) Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/startup_platform_posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/startup_platform_posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/startup_platform_posts
+  /predictleads/v3/discover/companies:
+    get:
+      operationId: predictleads_GET__v3_discover_companies
+      summary: 'Search and filter companies Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - PredictLeads
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/predictleads/v3/discover/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/predictleads/v3/discover/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/predictleads/v3/discover/companies
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

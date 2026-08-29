@@ -1,0 +1,266 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Agent Phone API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: AgentPhone
+paths:
+  /agentphone/v0/agent/verify:
+    post:
+      operationId: agentphone_POST__v0_agent_verify
+      summary: Verify OTP code. Atomically creates account, provisions phone number, creates starter agent, returns API key. No auth required.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/{agentId}:
+    patch:
+      operationId: agentphone_PATCH__v1_agents_agentId_
+      summary: Update agent fields. Only sent fields change.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: agentphone_DELETE__v1_agents_agentId_
+      summary: Permanently delete an agent. Cannot be undone.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+    get:
+      operationId: agentphone_GET__v1_agents_agentId_
+      summary: Get details for a specific agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/{agentId}/numbers/{numberId}:
+    delete:
+      operationId: agentphone_DELETE__v1_agents_agentId_numbers_numberId_
+      summary: Detach a phone number from an agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/voices:
+    get:
+      operationId: agentphone_GET__v1_agents_voices
+      summary: List all available voices across providers (ElevenLabs, Cartesia, OpenAI, etc).
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/{agentId}/webhook:
+    post:
+      operationId: agentphone_POST__v1_agents_agentId_webhook
+      summary: Set webhook URL for a specific agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+    get:
+      operationId: agentphone_GET__v1_agents_agentId_webhook
+      summary: Get webhook URL for a specific agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v0/agent/sign-up:
+    post:
+      operationId: agentphone_POST__v0_agent_sign_up
+      summary: Start agent signup. Sends a 6-digit OTP to the human's email. Returns a verification_id. No auth required.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/calls/{callId}:
+    get:
+      operationId: agentphone_GET__v1_calls_callId_
+      summary: Get call details and transcript. Poll until status is completed or failed.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/conversations/{conversationId}:
+    get:
+      operationId: agentphone_GET__v1_conversations_conversationId_
+      summary: Get a conversation with all messages.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/{agentId}/conversations:
+    get:
+      operationId: agentphone_GET__v1_agents_agentId_conversations
+      summary: List SMS conversations for a specific agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents:
+    post:
+      operationId: agentphone_POST__v1_agents
+      summary: Create a new agent with name, voice, system prompt, and voice mode.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/numbers:
+    post:
+      operationId: agentphone_POST__v1_numbers
+      summary: Buy a US or CA phone number. $3/month per number.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 3.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/agentphone/v1/numbers
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/agentphone/v1/numbers
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/agentphone/v1/numbers
+  /agentphone/v1/agents/{agentId}/numbers:
+    post:
+      operationId: agentphone_POST__v1_agents_agentId_numbers
+      summary: Attach a phone number to an agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/numbers/{numberId}:
+    delete:
+      operationId: agentphone_DELETE__v1_numbers_numberId_
+      summary: Release a phone number. Irreversible.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/agents/{agentId}/calls:
+    get:
+      operationId: agentphone_GET__v1_agents_agentId_calls
+      summary: List calls for a specific agent.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/numbers/{numberId}/messages:
+    get:
+      operationId: agentphone_GET__v1_numbers_numberId_messages
+      summary: List messages for a phone number.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+  /agentphone/v1/messages:
+    post:
+      operationId: agentphone_POST__v1_messages
+      summary: 'Send an SMS from an agent''s phone number. First message compliance: Your initial SMS to any new contact must include (1) your brand name, (2) opt-in confirmation, and (3) opt-out instructions (e.g., "Reply STOP to unsubscribe"). Non-compliant first messages may be silently filtered by carriers.'
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/agentphone/v1/messages
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/agentphone/v1/messages
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/agentphone/v1/messages
+  /agentphone/v1/calls:
+    post:
+      operationId: agentphone_POST__v1_calls
+      summary: Make an outbound voice call. Include systemPrompt for autonomous AI conversation, omit for webhook-driven mode.
+      tags:
+      - AgentPhone
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/agentphone/v1/calls
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/agentphone/v1/calls
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/agentphone/v1/calls
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

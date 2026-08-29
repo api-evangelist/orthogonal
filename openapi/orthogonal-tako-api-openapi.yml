@@ -1,0 +1,209 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Tako API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Tako
+paths:
+  /tako/v1/beta/visualize:
+    post:
+      operationId: tako_POST__v1_beta_visualize
+      summary: 'Turn your own data into interactive Tako Knowledge Card visualizations. Provide data as CSV strings and a natural language query describing what to visualize. Tako auto-selects the best chart type or you can specify one. Returns a knowledge card with chart image, interactive webpage, and embed URLs. Example: {"csv": ["quarter,revenue\nQ1,100\nQ2,200\nQ3,300"], "query": "Show revenue growth as a bar chart"}'
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/beta/visualize
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/beta/visualize
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/beta/visualize
+  /tako/v1/knowledge_search:
+    post:
+      operationId: tako_POST__v1_knowledge_search
+      summary: 'Search for data visualizations using natural language. Ask any question about finance, economics, demographics, sports, politics, climate, or health and get back interactive knowledge cards with charts, data, and source attribution. Example: {"inputs": {"text": "NVIDIA vs AMD revenue since 2018"}}. Returns cards with title, chart image URL, interactive webpage URL, embeddable URL, data description, and source information.'
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/knowledge_search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/knowledge_search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/knowledge_search
+  /tako/v1/thin_viz/create/:
+    post:
+      operationId: tako_POST__v1_thin_viz_create_
+      summary: 'Create a custom embeddable knowledge card from your own data by specifying chart components directly. Returns card_id, image_url, webpage_url, and embed_url. Use List Default Schemas first to see available chart types and their required fields. Example body for a bar chart: {"components": [{"component_type": "header", "config": {"title": "Sales by Region"}}, {"component_type": "categorical_bar", "config": {"datasets": [{"label": "Revenue", "data": [{"x": "US", "y": 500}, {"x": "EU", "y": 300}]}]}}], "title": "Sales by Region", "source": "Internal Data"}'
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/thin_viz/create/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/thin_viz/create/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/thin_viz/create/
+  /tako/v1/tako_tools_description:
+    get:
+      operationId: tako_GET__v1_tako_tools_description
+      summary: Get descriptions of Tako search tool capabilities and available data topics. Returns what types of data Tako can search across (finance, economics, demographics, sports, politics, climate, health) with example metrics for each category. Useful for understanding what queries Tako can answer before searching.
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/tako_tools_description
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/tako_tools_description
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/tako_tools_description
+  /tako/v1/beta/chart_insights:
+    get:
+      operationId: tako_GET__v1_beta_chart_insights
+      summary: Analyze a Tako Knowledge Card and get AI-generated insights. Returns plain-text observations about trends, growth rates, comparisons, and anomalies in the data. Use this after Knowledge Search to extract key takeaways from a chart. Requires a card_id from a previous Knowledge Search or Create Card response.
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/beta/chart_insights
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/beta/chart_insights
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/beta/chart_insights
+  /tako/v1/thin_viz/default_schema/:
+    get:
+      operationId: tako_GET__v1_thin_viz_default_schema_
+      summary: List all available chart/visualization templates that can be used with the Create Card endpoint. Returns schema names (e.g. stock_card, bar_chart, pie_chart, choropleth, treemap, heatmap, table, etc.) with descriptions and their component types. Call this first to understand what chart types are available before creating a card.
+      tags:
+      - Tako
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.023
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/tako/v1/thin_viz/default_schema/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/tako/v1/thin_viz/default_schema/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/tako/v1/thin_viz/default_schema/
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

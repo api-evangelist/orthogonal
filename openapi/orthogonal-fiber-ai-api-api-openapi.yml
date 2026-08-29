@@ -1,0 +1,2655 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Fiber AI API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Fiber AI API
+paths:
+  /fiber/v1/contact-details/batch/start:
+    post:
+      operationId: fiber_POST__v1_contact_details_batch_start
+      summary: Batch contact reveal for up to 2000 people. Async. Poll with /contact-details/batch/poll.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/contact-details/batch/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/contact-details/batch/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/contact-details/batch/start
+  /fiber/v1/scouting-report:
+    post:
+      operationId: fiber_POST__v1_scouting_report
+      summary: Generates a comprehensive scouting report for a company including news, founders, funding, media links, and historical headcount.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.12
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/scouting-report
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/scouting-report
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/scouting-report
+  /fiber/v1/combined-search/count:
+    post:
+      operationId: fiber_POST__v1_combined_search_count
+      summary: Get total count of companies and people matching search filters in one call.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/combined-search/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/combined-search/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/combined-search/count
+  /fiber/v1/twitter-handle-to-linkedin/single:
+    post:
+      operationId: fiber_POST__v1_twitter_handle_to_linkedin_single
+      summary: Resolves a Twitter/X handle to a LinkedIn profile URL.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.06
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter-handle-to-linkedin/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter-handle-to-linkedin/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter-handle-to-linkedin/single
+  /fiber/v1/instagram/user-posts:
+    post:
+      operationId: fiber_POST__v1_instagram_user_posts
+      summary: 'Fetches paginated posts from an Instagram user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/instagram/user-posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/instagram/user-posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/instagram/user-posts
+  /fiber/v1/people-search/count:
+    post:
+      operationId: fiber_POST__v1_people_search_count
+      summary: Get count of profiles matching search filters. Use to estimate result sizes before running a full search.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/people-search/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/people-search/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/people-search/count
+  /fiber/v1/contact-details/turbo/sync:
+    post:
+      operationId: fiber_POST__v1_contact_details_turbo_sync
+      summary: Fastest synchronous contact reveal using premium enrichment stack. Higher cost, lowest latency.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/contact-details/turbo/sync
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/contact-details/turbo/sync
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/contact-details/turbo/sync
+  /fiber/v1/tiktok/song-videos:
+    post:
+      operationId: fiber_POST__v1_tiktok_song_videos
+      summary: 'Fetches TikTok videos that use a specific song. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/song-videos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/song-videos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/song-videos
+  /fiber/v1/tiktok/song-details:
+    post:
+      operationId: fiber_POST__v1_tiktok_song_details
+      summary: Fetches details for a TikTok song.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/song-details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/song-details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/song-details
+  /fiber/v1/tiktok/video-details:
+    post:
+      operationId: fiber_POST__v1_tiktok_video_details
+      summary: Fetches details for a specific TikTok video.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/video-details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/video-details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/video-details
+  /fiber/v1/tiktok/video-transcript:
+    post:
+      operationId: fiber_POST__v1_tiktok_video_transcript
+      summary: Fetches the transcript of a TikTok video.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/video-transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/video-transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/video-transcript
+  /fiber/v1/youtube/transcript:
+    post:
+      operationId: fiber_POST__v1_youtube_transcript
+      summary: Fetches the transcript of a YouTube video.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/youtube/transcript
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/youtube/transcript
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/youtube/transcript
+  /fiber/v1/tiktok/popular-creators:
+    post:
+      operationId: fiber_POST__v1_tiktok_popular_creators
+      summary: Fetches popular TikTok creators, optionally filtered by country.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/popular-creators
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/popular-creators
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/popular-creators
+  /fiber/v1/tiktok/popular-hashtags:
+    post:
+      operationId: fiber_POST__v1_tiktok_popular_hashtags
+      summary: Fetches trending TikTok hashtags.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/popular-hashtags
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/popular-hashtags
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/popular-hashtags
+  /fiber/v1/google-maps-search/check:
+    post:
+      operationId: fiber_POST__v1_google_maps_search_check
+      summary: Check progress of a Google Maps search. Returns completion percentage.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/natural-language-search/combined/sync:
+    post:
+      operationId: fiber_POST__v1_natural_language_search_combined_sync
+      summary: Natural language search for both companies and profiles. Converts text query to search params and returns results. Fixed cost for param generation plus per-result charges.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/natural-language-search/combined/sync
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/natural-language-search/combined/sync
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/natural-language-search/combined/sync
+  /fiber/v1/domain-lookup/trigger:
+    post:
+      operationId: fiber_POST__v1_domain_lookup_trigger
+      summary: 'Find domains and websites for a list of companies. Async: poll with /domain-lookup/polling. Max 400 companies per request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/domain-lookup/trigger
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/domain-lookup/trigger
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/domain-lookup/trigger
+  /fiber/v1/twitter/profile:
+    post:
+      operationId: fiber_POST__v1_twitter_profile
+      summary: Fetches a Twitter/X user profile by handle.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/profile
+  /fiber/v1/contact-details/single:
+    post:
+      operationId: fiber_POST__v1_contact_details_single
+      summary: Standard synchronous contact reveal. Returns emails and/or phone numbers for a person given their LinkedIn URL. Best balance of speed, cost, and coverage.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/contact-details/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/contact-details/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/contact-details/single
+  /fiber/v1/github-lookup/poll:
+    post:
+      operationId: fiber_POST__v1_github_lookup_poll
+      summary: Polls the status of a GitHub lookup agent run.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/tiktok/popular-songs:
+    post:
+      operationId: fiber_POST__v1_tiktok_popular_songs
+      summary: Fetches popular TikTok songs.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/popular-songs
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/popular-songs
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/popular-songs
+  /fiber/v1/github-to-linkedin/trigger:
+    post:
+      operationId: fiber_POST__v1_github_to_linkedin_trigger
+      summary: Batch GitHub to LinkedIn lookup. Async. Poll with /github-to-linkedin/polling.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/github-to-linkedin/trigger
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/github-to-linkedin/trigger
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/github-to-linkedin/trigger
+  /fiber/v1/github-to-linkedin/polling:
+    post:
+      operationId: fiber_POST__v1_github_to_linkedin_polling
+      summary: Polls the status of a GitHub to LinkedIn batch lookup.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/twitter/user-mentions:
+    post:
+      operationId: fiber_POST__v1_twitter_user_mentions
+      summary: 'Fetches paginated mentions of a Twitter/X user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/user-mentions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/user-mentions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/user-mentions
+  /fiber/v1/tiktok/user-following:
+    post:
+      operationId: fiber_POST__v1_tiktok_user_following
+      summary: 'Fetches paginated list of accounts a TikTok user follows. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/user-following
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/user-following
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/user-following
+  /fiber/v1/google-maps-search/poll:
+    post:
+      operationId: fiber_POST__v1_google_maps_search_poll
+      summary: Poll for Google Maps search results. Returns paginated business data.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/people-search:
+    post:
+      operationId: fiber_POST__v1_people_search
+      summary: 'Search for people using filters Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/people-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/people-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/people-search
+  /fiber/v1/google-maps-search/start:
+    post:
+      operationId: fiber_POST__v1_google_maps_search_start
+      summary: 'Start a search on Google Maps. Searches businesses by query across specified areas. Charges 3 credits ($0.06) per business found. Async: poll with /google-maps-search/poll.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/google-maps-search/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/google-maps-search/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/google-maps-search/start
+  /fiber/v1/text-to-search-params/profiles:
+    post:
+      operationId: fiber_POST__v1_text_to_search_params_profiles
+      summary: Takes free-form text (e.g., 'Software engineers in US with 5+ years of experience') and converts it into a structured set of filters for profile search.           This endpoint helps transform natural language queries into standardized search parameters such as job titles, skills, seniority, locations, past experiences, education, languages, and more.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/text-to-search-params/profiles
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/text-to-search-params/profiles
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/text-to-search-params/profiles
+  /fiber/v1/twitter/search:
+    post:
+      operationId: fiber_POST__v1_twitter_search
+      summary: 'Search tweets by query string. Supports Twitter search operators. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/search
+  /fiber/v1/natural-language-search/combined-search-param:
+    post:
+      operationId: fiber_POST__v1_natural_language_search_combined_search_param
+      summary: Converts natural language text into structured company and profile search parameters. Does not return results, only the search params.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/natural-language-search/combined-search-param
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/natural-language-search/combined-search-param
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/natural-language-search/combined-search-param
+  /fiber/v1/local-business-search/poll:
+    post:
+      operationId: fiber_POST__v1_local_business_search_poll
+      summary: Poll for local business search results.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/stealth-founders/count:
+    post:
+      operationId: fiber_POST__v1_stealth_founders_count
+      summary: Count stealth or ex-stealth startup founders matching search criteria.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/stealth-founders/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/stealth-founders/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/stealth-founders/count
+  /fiber/v1/linkedin-live-fetch/company/single:
+    post:
+      operationId: fiber_POST__v1_linkedin_live_fetch_company_single
+      summary: Returns an enriched company with details for a given LinkedIn company identifier
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/linkedin-live-fetch/company/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/linkedin-live-fetch/company/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/linkedin-live-fetch/company/single
+  /fiber/v1/validate-email/single:
+    post:
+      operationId: fiber_POST__v1_validate_email_single
+      summary: Checks if a given email is likely to bounce using a waterfall of strategies. Works for catch-all email addresses, which are increasingly common yet hard for other APIs to validate.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/validate-email/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/validate-email/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/validate-email/single
+  /fiber/v1/twitter/user-followers:
+    post:
+      operationId: fiber_POST__v1_twitter_user_followers
+      summary: 'Fetches paginated followers of a Twitter/X user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/user-followers
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/user-followers
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/user-followers
+  /fiber/v1/twitter/tweet-retweeters:
+    post:
+      operationId: fiber_POST__v1_twitter_tweet_retweeters
+      summary: 'Fetches paginated list of users who retweeted a tweet. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/tweet-retweeters
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/tweet-retweeters
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/tweet-retweeters
+  /fiber/v1/kitchen-sink/person:
+    post:
+      operationId: fiber_POST__v1_kitchen_sink_person
+      summary: Search for a person using a variety of parameters such as LinkedIn slug, LinkedIn URL, or their current company information. Returns profile data for the person if found.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/kitchen-sink/person
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/kitchen-sink/person
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/kitchen-sink/person
+  /fiber/v1/linkedin-live-fetch/post-reactions:
+    post:
+      operationId: fiber_POST__v1_linkedin_live_fetch_post_reactions
+      summary: 'Fetches paginated reactions of a specific type for a LinkedIn post. Each page contains up to 10 reactions. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/linkedin-live-fetch/post-reactions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/linkedin-live-fetch/post-reactions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/linkedin-live-fetch/post-reactions
+  /fiber/v1/contact-details/batch/poll:
+    post:
+      operationId: fiber_POST__v1_contact_details_batch_poll
+      summary: Polls a batch contact details task. Returns partial results as they complete.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/validate-phone/single:
+    post:
+      operationId: fiber_POST__v1_validate_phone_single
+      summary: Validates a phone number and returns whether it's valid, reachable, carrier info, and caller name.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.06
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/validate-phone/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/validate-phone/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/validate-phone/single
+  /fiber/v1/youtube/video-comments:
+    post:
+      operationId: fiber_POST__v1_youtube_video_comments
+      summary: 'Fetches paginated comments on a YouTube video. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/youtube/video-comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/youtube/video-comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/youtube/video-comments
+  /fiber/v1/company-revenue:
+    post:
+      operationId: fiber_POST__v1_company_revenue
+      summary: Fetches the most recent annual revenue estimate for a company. Pass a LinkedIn company URL, domain, and/or company name.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.08
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/company-revenue
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/company-revenue
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/company-revenue
+  /fiber/v1/depth-chart/start:
+    post:
+      operationId: fiber_POST__v1_depth_chart_start
+      summary: Generates an organizational depth chart for a company. Classifies employees by function. Async. Poll with /depth-chart/poll.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.18
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/depth-chart/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/depth-chart/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/depth-chart/start
+  /fiber/v1/instagram/post-details:
+    post:
+      operationId: fiber_POST__v1_instagram_post_details
+      summary: Fetches details for a specific Instagram post.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/instagram/post-details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/instagram/post-details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/instagram/post-details
+  /fiber/v1/twitter/tweet-replies:
+    post:
+      operationId: fiber_POST__v1_twitter_tweet_replies
+      summary: 'Fetches paginated replies to a given tweet. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/tweet-replies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/tweet-replies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/tweet-replies
+  /fiber/v1/instagram/profile:
+    post:
+      operationId: fiber_POST__v1_instagram_profile
+      summary: Fetches an Instagram user profile by handle.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/instagram/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/instagram/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/instagram/profile
+  /fiber/v1/twitter/tweet-details:
+    post:
+      operationId: fiber_POST__v1_twitter_tweet_details
+      summary: Fetches full details for a specific tweet by ID.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/tweet-details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/tweet-details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/tweet-details
+  /fiber/v1/github-to-linkedin/single:
+    post:
+      operationId: fiber_POST__v1_github_to_linkedin_single
+      summary: Finds LinkedIn profile and/or email from a GitHub username. Synchronous.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/github-to-linkedin/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/github-to-linkedin/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/github-to-linkedin/single
+  /fiber/v1/multi-source/search:
+    post:
+      operationId: fiber_POST__v1_multi_source_search
+      summary: Multi-source AI search. Searches across multiple data sources using natural language. Pricing coming soon from Fiber.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/multi-source/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/multi-source/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/multi-source/search
+  /fiber/v1/instagram/user-reels:
+    post:
+      operationId: fiber_POST__v1_instagram_user_reels
+      summary: 'Fetches paginated reels from an Instagram user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/instagram/user-reels
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/instagram/user-reels
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/instagram/user-reels
+  /fiber/v1/natural-language-search/profiles:
+    post:
+      operationId: fiber_POST__v1_natural_language_search_profiles
+      summary: 'Takes free-form text (e.g., ''Software engineers in US with 5+ years of experience'') and returns a list of matching profiles.             The endpoint interprets natural language queries and applies structured filters such as job titles, seniority, skills, locations, past jobs, education, and languages to identify relevant people. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/natural-language-search/profiles
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/natural-language-search/profiles
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/natural-language-search/profiles
+  /fiber/v1/natural-language-search/companies:
+    post:
+      operationId: fiber_POST__v1_natural_language_search_companies
+      summary: 'Takes free-form text (e.g., ''Series A startups in USA with 50–200 employees'') and returns a list of matching companies.           The endpoint interprets natural language queries and applies structured filters such as industries, funding stages, headcount ranges, and locations to identify relevant companies. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/natural-language-search/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/natural-language-search/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/natural-language-search/companies
+  /fiber/v1/contact-details/exhaustive/poll:
+    post:
+      operationId: fiber_POST__v1_contact_details_exhaustive_poll
+      summary: Polls the status of an exhaustive contact reveal task. Returns status and results when complete.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/depth-chart/poll:
+    post:
+      operationId: fiber_POST__v1_depth_chart_poll
+      summary: Polls the status of a depth chart generation. Returns the org chart when complete.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/github-lookup/trigger:
+    post:
+      operationId: fiber_POST__v1_github_lookup_trigger
+      summary: Looks up GitHub profiles for a list of people. Async. Poll with /github-lookup/poll.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/github-lookup/trigger
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/github-lookup/trigger
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/github-lookup/trigger
+  /fiber/v1/tiktok/search-keyword:
+    post:
+      operationId: fiber_POST__v1_tiktok_search_keyword
+      summary: 'Searches TikTok videos by keyword or phrase. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/search-keyword
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/search-keyword
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/search-keyword
+  /fiber/v1/tiktok/video-comments:
+    post:
+      operationId: fiber_POST__v1_tiktok_video_comments
+      summary: 'Fetches paginated comments on a TikTok video. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/video-comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/video-comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/video-comments
+  /fiber/v1/youtube/channel:
+    post:
+      operationId: fiber_POST__v1_youtube_channel
+      summary: 'Fetches YouTube channel info and paginated videos. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/youtube/channel
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/youtube/channel
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/youtube/channel
+  /fiber/v1/youtube/search:
+    post:
+      operationId: fiber_POST__v1_youtube_search
+      summary: 'Searches YouTube videos by query. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/youtube/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/youtube/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/youtube/search
+  /fiber/v1/tiktok/profile:
+    post:
+      operationId: fiber_POST__v1_tiktok_profile
+      summary: Fetches a TikTok user profile by handle.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/profile
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/profile
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/profile
+  /fiber/v1/natural-language-search/job-description-search:
+    post:
+      operationId: fiber_POST__v1_natural_language_search_job_description_search
+      summary: Search for profiles matching a job description using natural language. Converts JD text to search params and returns matching candidates.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/natural-language-search/job-description-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/natural-language-search/job-description-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/natural-language-search/job-description-search
+  /fiber/v1/company-count:
+    post:
+      operationId: fiber_POST__v1_company_count
+      summary: Get count of companies matching search filters. Use to estimate result sizes before running a full search.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/company-count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/company-count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/company-count
+  /fiber/v1/social-media-lookup/trigger:
+    post:
+      operationId: fiber_POST__v1_social_media_lookup_trigger
+      summary: 'Find social media profiles (Twitter, Instagram) for a person. Async: poll with /social-media-lookup/polling.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/social-media-lookup/trigger
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/social-media-lookup/trigger
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/social-media-lookup/trigger
+  /fiber/v1/social-media-lookup/polling:
+    post:
+      operationId: fiber_POST__v1_social_media_lookup_polling
+      summary: Poll for social media lookup results.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/combined-search/paginated:
+    post:
+      operationId: fiber_POST__v1_combined_search_paginated
+      summary: Combined people and company search with pagination. Returns both companies and profiles matching filters. Charged per result returned.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/combined-search/paginated
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/combined-search/paginated
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/combined-search/paginated
+  /fiber/v1/tiktok/comment-replies:
+    post:
+      operationId: fiber_POST__v1_tiktok_comment_replies
+      summary: 'Fetches paginated replies to a TikTok comment. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/comment-replies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/comment-replies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/comment-replies
+  /fiber/v1/contact-details/exhaustive/start:
+    post:
+      operationId: fiber_POST__v1_contact_details_exhaustive_start
+      summary: Maximum-coverage async contact reveal. Runs all waterfall steps in parallel. Poll with /contact-details/exhaustive/poll.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/contact-details/exhaustive/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/contact-details/exhaustive/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/contact-details/exhaustive/start
+  /fiber/v1/twitter/user-tweets:
+    post:
+      operationId: fiber_POST__v1_twitter_user_tweets
+      summary: 'Fetches paginated tweets from a Twitter/X user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/user-tweets
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/user-tweets
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/user-tweets
+  /fiber/v1/email-to-person/single:
+    post:
+      operationId: fiber_POST__v1_email_to_person_single
+      summary: 'Do a reverse lookup: given an email address, find someone''s LinkedIn profile and personal details. Note: if you also have the person''s name, company, etc., you''ll get better results with the Kitchen Sink endpoint, where you can pass all the information you have.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/email-to-person/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/email-to-person/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/email-to-person/single
+  /fiber/v1/company-search:
+    post:
+      operationId: fiber_POST__v1_company_search
+      summary: 'Search for companies using filters Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/company-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/company-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/company-search
+  /fiber/v1/job-search:
+    post:
+      operationId: fiber_POST__v1_job_search
+      summary: 'Search for job postings with flexible filtering capabilities Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/job-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/job-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/job-search
+  /fiber/v1/kitchen-sink/company:
+    post:
+      operationId: fiber_POST__v1_kitchen_sink_company
+      summary: Search for a company using a variety of parameters such as LinkedIn slug, LinkedIn URL, name, etc. Returns complete company data if found.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/kitchen-sink/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/kitchen-sink/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/kitchen-sink/company
+  /fiber/v1/tiktok/search-hashtag:
+    post:
+      operationId: fiber_POST__v1_tiktok_search_hashtag
+      summary: 'Searches TikTok videos by hashtag. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/search-hashtag
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/search-hashtag
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/search-hashtag
+  /fiber/v1/linkedin-live-fetch/profile-posts:
+    post:
+      operationId: fiber_POST__v1_linkedin_live_fetch_profile_posts
+      summary: 'Fetches recent posts from a LinkedIn profile. Returns a paginated feed of posts with optional cursor for pagination. Each page returns up to 50 posts. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/linkedin-live-fetch/profile-posts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/linkedin-live-fetch/profile-posts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/linkedin-live-fetch/profile-posts
+  /fiber/v1/twitter/tweet-quotes:
+    post:
+      operationId: fiber_POST__v1_twitter_tweet_quotes
+      summary: 'Fetches paginated quote tweets for a given tweet. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/tweet-quotes
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/tweet-quotes
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/tweet-quotes
+  /fiber/v1/stealth-founders/search:
+    post:
+      operationId: fiber_POST__v1_stealth_founders_search
+      summary: 'Search for stealth or ex-stealth startup founders. Returns profiles of founders currently in or who have left stealth mode. Charged per profile found. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/stealth-founders/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/stealth-founders/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/stealth-founders/search
+  /fiber/v1/linkedin-live-fetch/profile/single:
+    post:
+      operationId: fiber_POST__v1_linkedin_live_fetch_profile_single
+      summary: Returns an enriched profile with details for a given LinkedIn profile identifier
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/linkedin-live-fetch/profile/single
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/linkedin-live-fetch/profile/single
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/linkedin-live-fetch/profile/single
+  /fiber/v1/text-to-search-params/companies:
+    post:
+      operationId: fiber_POST__v1_text_to_search_params_companies
+      summary: Takes free-form text (e.g., 'Series A startups in USA with 50–200 employees') and converts it into a structured set of filters for company search.         This endpoint helps transform natural language queries into standardized search parameters such as industries, funding stages, headcount ranges, locations, and more.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/text-to-search-params/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/text-to-search-params/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/text-to-search-params/companies
+  /fiber/v1/domain-lookup/polling:
+    post:
+      operationId: fiber_POST__v1_domain_lookup_polling
+      summary: Poll for domain lookup results.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+  /fiber/v1/twitter/user-following:
+    post:
+      operationId: fiber_POST__v1_twitter_user_following
+      summary: 'Fetches paginated list of accounts a Twitter/X user follows. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/twitter/user-following
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/twitter/user-following
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/twitter/user-following
+  /fiber/v1/youtube/video-details:
+    post:
+      operationId: fiber_POST__v1_youtube_video_details
+      summary: Fetches details for a specific YouTube video.
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/youtube/video-details
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/youtube/video-details
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/youtube/video-details
+  /fiber/v1/tiktok/unified-search:
+    post:
+      operationId: fiber_POST__v1_tiktok_unified_search
+      summary: 'Unified search returning both videos and users. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/unified-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/unified-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/unified-search
+  /fiber/v1/tiktok/user-followers:
+    post:
+      operationId: fiber_POST__v1_tiktok_user_followers
+      summary: 'Fetches paginated followers of a TikTok user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/user-followers
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/user-followers
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/user-followers
+  /fiber/v1/local-business-search/start:
+    post:
+      operationId: fiber_POST__v1_local_business_search_start
+      summary: 'Start an AI-powered local business search. Finds company details, decision makers, and contact info. Async: poll with /local-business-search/poll.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/local-business-search/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/local-business-search/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/local-business-search/start
+  /fiber/v1/tiktok/search-users:
+    post:
+      operationId: fiber_POST__v1_tiktok_search_users
+      summary: 'Searches TikTok users by query. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/search-users
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/search-users
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/search-users
+  /fiber/v1/instagram/post-comments:
+    post:
+      operationId: fiber_POST__v1_instagram_post_comments
+      summary: 'Fetches paginated comments on an Instagram post. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/instagram/post-comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/instagram/post-comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/instagram/post-comments
+  /fiber/v1/tiktok/trending-feed:
+    post:
+      operationId: fiber_POST__v1_tiktok_trending_feed
+      summary: 'Fetches the TikTok trending feed. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/trending-feed
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/trending-feed
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/trending-feed
+  /fiber/v1/investor-search:
+    post:
+      operationId: fiber_POST__v1_investor_search
+      summary: 'Search for investors with flexible filtering capabilities Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/investor-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/investor-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/investor-search
+  /fiber/v1/real-estate/listings:
+    post:
+      operationId: fiber_POST__v1_real_estate_listings
+      summary: 'Search real estate listings by location. Supports filtering by price, bedrooms, property type, and more. Charged per page of results. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/real-estate/listings
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/real-estate/listings
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/real-estate/listings
+  /fiber/v1/linkedin-live-fetch/post-comments:
+    post:
+      operationId: fiber_POST__v1_linkedin_live_fetch_post_comments
+      summary: 'Fetches paginated comments for a LinkedIn post. Each page contains up to 10 comments. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/linkedin-live-fetch/post-comments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/linkedin-live-fetch/post-comments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/linkedin-live-fetch/post-comments
+  /fiber/v1/tiktok/user-videos:
+    post:
+      operationId: fiber_POST__v1_tiktok_user_videos
+      summary: 'Fetches paginated videos from a TikTok user. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Fiber AI API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.04
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fiber/v1/tiktok/user-videos
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fiber/v1/tiktok/user-videos
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fiber/v1/tiktok/user-videos
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

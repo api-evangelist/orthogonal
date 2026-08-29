@@ -1,0 +1,569 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Nyne.ai API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Nyne.ai
+paths:
+  /nyne/person/enrichment:
+    get:
+      operationId: nyne_GET__person_enrichment
+      summary: Poll for person enrichment results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_enrichment
+      summary: 'Start async person enrichment. Requires at least one of: email, phone, or social_media_url.'
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/enrichment
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/enrichment
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/enrichment
+  /nyne/company/funding:
+    post:
+      operationId: nyne_POST__company_funding
+      summary: Start async retrieval of company funding history and investment details.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.578
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/funding
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/funding
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/funding
+    get:
+      operationId: nyne_GET__company_funding
+      summary: Poll for company funding results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+  /nyne/company/funders:
+    post:
+      operationId: nyne_POST__company_funders
+      summary: Start async retrieval of investors and funders associated with a company.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 1.44
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/funders
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/funders
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/funders
+    get:
+      operationId: nyne_GET__company_funders
+      summary: Poll for company funders results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+  /nyne/person/social-profiles:
+    get:
+      operationId: nyne_GET__person_social_profiles
+      summary: Poll for social profiles results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_social_profiles
+      summary: Start async retrieval of all social media profiles associated with a person.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.363
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/social-profiles
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/social-profiles
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/social-profiles
+  /nyne/company/enrichment:
+    get:
+      operationId: nyne_GET__company_enrichment
+      summary: Poll for company enrichment results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__company_enrichment
+      summary: 'Start async company enrichment. Requires at least one of: email, phone, or social_media_url.'
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.076
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/enrichment
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/enrichment
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/enrichment
+  /nyne/person/search:
+    get:
+      operationId: nyne_GET__person_search
+      summary: Poll for person search results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_search
+      summary: 'Start async person search by company name, role, geography, and person name. Returns requestId for polling. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later offset or cursor pages of the same search, pass parentRequestId with unchanged search parameters. Valid continuation pages still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable search.'
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/search
+  /nyne/company/needs:
+    get:
+      operationId: nyne_GET__company_needs
+      summary: Poll for company needs results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__company_needs
+      summary: Start async analysis of company needs based on provided content.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.219
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/needs
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/needs
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/needs
+  /nyne/company/checkseller:
+    get:
+      operationId: nyne_GET__company_checkseller
+      summary: Poll for checkseller results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__company_checkseller
+      summary: Start async check if a company sells a specific product/service.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.148
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/checkseller
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/checkseller
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/checkseller
+  /nyne/person/interactions:
+    post:
+      operationId: nyne_POST__person_interactions
+      summary: Start async retrieval of social media interactions. Requires social_media_url and type.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.219
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/interactions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/interactions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/interactions
+    get:
+      operationId: nyne_GET__person_interactions
+      summary: Poll for interactions results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+  /nyne/company/search:
+    get:
+      operationId: nyne_GET__company_search
+      summary: Poll for company search results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__company_search
+      summary: 'Start async company search. Requires at least one of: industry or website_keyword.'
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.363
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/company/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/company/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/company/search
+  /nyne/person/events:
+    get:
+      operationId: nyne_GET__person_events
+      summary: Poll for person events results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_events
+      summary: Start async retrieval of life events and career milestones. Requires event parameter.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.219
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/events
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/events
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/events
+  /nyne/person/interests:
+    get:
+      operationId: nyne_GET__person_interests
+      summary: Poll for interests results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_interests
+      summary: Start async retrieval of interests, skills, and topics a person engages with.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.363
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/interests
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/interests
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/interests
+  /nyne/person/single-social-lookup:
+    get:
+      operationId: nyne_GET__person_single_social_lookup
+      summary: Poll for single social lookup results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_single_social_lookup
+      summary: Start async lookup of a single social media profile. Requires both social_media_url and site.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.148
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/single-social-lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/single-social-lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/single-social-lookup
+  /nyne/person/newsfeed:
+    get:
+      operationId: nyne_GET__person_newsfeed
+      summary: Poll for person newsfeed results using requestId.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: nyne_POST__person_newsfeed
+      summary: Start async retrieval of social media newsfeed data from LinkedIn, Twitter, Instagram, GitHub, or Facebook profiles.
+      tags:
+      - Nyne.ai
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.435
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/nyne/person/newsfeed
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/nyne/person/newsfeed
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/nyne/person/newsfeed
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

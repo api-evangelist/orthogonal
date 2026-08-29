@@ -1,0 +1,564 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Company Enrich API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Company Enrich
+paths:
+  /company-enrich/geo/cities:
+    post:
+      operationId: company_enrich_POST__geo_cities
+      summary: Search for cities by name or country. Returns up to 100 cities per page. Use this to get valid city IDs for company and people search filters.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/positions/autocomplete:
+    get:
+      operationId: company_enrich_GET__positions_autocomplete
+      summary: Autocomplete job positions and titles. Returns matching positions for a partial string. Use this to find valid values for the positions filter in people search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/technologies/autocomplete:
+    get:
+      operationId: company_enrich_GET__technologies_autocomplete
+      summary: Autocomplete technology names. Returns matching technologies for a partial string. Use this to find valid values for the technologies filter in company search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/geo/countries:
+    post:
+      operationId: company_enrich_POST__geo_countries
+      summary: Search for countries by name. Returns up to 100 countries per page. Use this to look up valid country codes for search filters.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/people/email:
+    get:
+      operationId: company_enrich_GET__people_email
+      summary: Resolve a work email address for a person. If domain is omitted, the person's current experience domains are tried automatically in seniority order. Beta endpoint.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.1225
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/people/email
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/people/email
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/people/email
+  /company-enrich/companies/similar/count:
+    post:
+      operationId: company_enrich_POST__companies_similar_count
+      summary: Get the total count of similar companies without returning results. Accepts the same parameters as /companies/similar. Use this to check volume before running the full query.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/people:
+    get:
+      operationId: company_enrich_GET__people
+      summary: Get a person's full profile by their CompanyEnrich ID. Returns name, title, company, location, social links, and more.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.0245
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/people
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/people
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/people
+  /company-enrich/companies/search/scroll:
+    post:
+      operationId: company_enrich_POST__companies_search_scroll
+      summary: 'Search companies with cursor-based pagination for large result sets. Accepts the same filters as /companies/search. No 10,000 result limit unlike the standard search endpoint. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/search/scroll
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/search/scroll
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/search/scroll
+  /company-enrich/companies/search:
+    post:
+      operationId: company_enrich_POST__companies_search
+      summary: 'Search for companies matching specific criteria. Supports filters for country, industry, employee count, revenue, keywords, technologies, company type, category, founded year, funding, and more. Also supports text search by name/domain and semantic natural language search. Max 10,000 results via page-based pagination. Use the scroll endpoint for larger result sets. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/search
+  /company-enrich/companies/autocomplete:
+    get:
+      operationId: company_enrich_GET__companies_autocomplete
+      summary: Autocomplete company domain names. Returns up to 10 matching companies for a partial domain string. Useful for typeahead UIs or resolving a partial domain before enriching.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/keywords/autocomplete:
+    get:
+      operationId: company_enrich_GET__keywords_autocomplete
+      summary: Autocomplete company keywords. Returns matching keywords for a partial string. Use this to find valid values for the keywords filter in company search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/industries:
+    get:
+      operationId: company_enrich_GET__industries
+      summary: List all available company industries. Use these as values for the industries filter in company search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/geo/countries/{countryCode}:
+    get:
+      operationId: company_enrich_GET__geo_countries_countryCode_
+      summary: Get a country by its ISO 3166-1 alpha-2 code (e.g., US, GB, DE).
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/geo/regions:
+    get:
+      operationId: company_enrich_GET__geo_regions
+      summary: List all available geographic regions. Use region IDs as values for the regions filter in company and people search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/companies/workforce:
+    get:
+      operationId: company_enrich_GET__companies_workforce
+      summary: Get workforce insights for a company. Returns observed employee count, employee range bucket, and headcounts broken down by department.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.06125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/workforce
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/workforce
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/workforce
+  /company-enrich/people/search:
+    post:
+      operationId: company_enrich_POST__people_search
+      summary: 'Search for people matching specific criteria. Supports filters for company domains, job titles, countries, states, cities, seniority, and more. Max 10,000 results via page-based pagination. Use the scroll endpoint for larger result sets. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/people/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/people/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/people/search
+  /company-enrich/companies:
+    get:
+      operationId: company_enrich_GET__companies
+      summary: Get a company's full profile by its CompanyEnrich ID. Returns name, domain, industry, employee count, revenue, location, funding, social links, and more.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01225
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies
+  /company-enrich/companies/similar:
+    post:
+      operationId: company_enrich_POST__companies_similar
+      summary: 'Find companies similar to one or more given companies. Supports additional filters like country, industry, employee count, and revenue to narrow results. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/similar
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/similar
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/similar
+  /company-enrich/companies/enrich:
+    post:
+      operationId: company_enrich_POST__companies_enrich
+      summary: Enrich a company by NAME or a social URL (name, linkedinUrl, twitterUrl, etc.). At least one field is required. This variant does NOT accept a domain — to enrich by website domain use GET /companies/enrich?domain=example.com instead.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01225
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/enrich
+    get:
+      operationId: company_enrich_GET__companies_enrich
+      summary: Enrich a company by domain name. Returns the full company profile including industry, employee count, revenue, location, funding, technologies, and social links. This is the primary and most reliable way to look up a company. Returns 404 if the domain is not found.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01225
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/enrich
+  /company-enrich/companies/similar/scroll:
+    post:
+      operationId: company_enrich_POST__companies_similar_scroll
+      summary: 'Find similar companies with cursor-based pagination for large result sets. Accepts the same parameters as /companies/similar. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/similar/scroll
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/similar/scroll
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/similar/scroll
+  /company-enrich/people/search/scroll:
+    post:
+      operationId: company_enrich_POST__people_search_scroll
+      summary: 'Search people with cursor-based pagination for large result sets. Accepts the same filters as /people/search. No 10,000 result limit unlike the standard search endpoint. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/people/search/scroll
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/people/search/scroll
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/people/search/scroll
+  /company-enrich/geo/states:
+    post:
+      operationId: company_enrich_POST__geo_states
+      summary: Search for states or provinces by name or country. Returns up to 100 per page. Use this to get valid state IDs for search filters.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/people/lookup:
+    post:
+      operationId: company_enrich_POST__people_lookup
+      summary: Look up a person by their email address. Resolves the company from the email domain, then matches the person. Returns the best matching person profile.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.06125
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/people/lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/people/lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/people/lookup
+  /company-enrich/companies/search/count:
+    post:
+      operationId: company_enrich_POST__companies_search_count
+      summary: Get the total count of companies matching search criteria without returning results. Accepts the same filters as /companies/search. Use this to check result volume before running a full search.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+  /company-enrich/companies/enrich/batch:
+    post:
+      operationId: company_enrich_POST__companies_enrich_batch
+      summary: Enrich multiple companies by domain in a single request. Accepts 1 to 50 domains. Use this instead of multiple single-enrich calls for better performance and rate limit efficiency.
+      tags:
+      - Company Enrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/company-enrich/companies/enrich/batch
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/company-enrich/companies/enrich/batch
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/company-enrich/companies/enrich/batch
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

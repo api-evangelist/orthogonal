@@ -1,0 +1,63 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Baseten Model APIs API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Baseten Model APIs
+paths:
+  /baseten/v1/chat/completions:
+    post:
+      operationId: baseten_POST__v1_chat_completions
+      summary: Send a conversation to a model and get a completion back. Works exactly like the OpenAI chat completions endpoint. Pass messages and a model slug, get a response with the assistant's reply. Supports streaming for real-time token delivery, tool calling for function execution, structured outputs via response_format, and controllable reasoning depth on supported models.
+      tags:
+      - Baseten Model APIs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/baseten/v1/chat/completions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/baseten/v1/chat/completions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/baseten/v1/chat/completions
+  /baseten/v1/models:
+    get:
+      operationId: baseten_GET__v1_models
+      summary: Returns the current list of available models with metadata including pricing, context window sizes, and supported features. Use this to discover valid model slugs for the chat completions endpoint.
+      tags:
+      - Baseten Model APIs
+      responses:
+        '200':
+          description: Successful response
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

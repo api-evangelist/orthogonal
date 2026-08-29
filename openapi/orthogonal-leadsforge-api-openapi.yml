@@ -1,0 +1,984 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Leadsforge API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Leadsforge
+paths:
+  /leadsforge/enrichment/jobs:
+    get:
+      operationId: leadsforge_GET__enrichment_jobs
+      summary: List enrichment jobs with optional filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/jobs
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/jobs
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/jobs
+  /leadsforge/enrichment/jobs/{jobID}/results:
+    get:
+      operationId: leadsforge_GET__enrichment_jobs_jobID_results
+      summary: Get results of a completed enrichment job with pagination.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/jobs/{jobID}/results
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/jobs/{jobID}/results
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/jobs/{jobID}/results
+  /leadsforge/enrichment/jobs/{jobID}:
+    get:
+      operationId: leadsforge_GET__enrichment_jobs_jobID_
+      summary: Get the status of an enrichment job by job ID.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/jobs/{jobID}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/jobs/{jobID}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/jobs/{jobID}
+  /leadsforge/company-followers/jobs/{jobID}:
+    get:
+      operationId: leadsforge_GET__company_followers_jobs_jobID_
+      summary: Get the status of a company followers job by job ID.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/jobs/{jobID}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/jobs/{jobID}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/jobs/{jobID}
+  /leadsforge/company-followers/filters/countries:
+    get:
+      operationId: leadsforge_GET__company_followers_filters_countries
+      summary: Get list of supported country values for company followers filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/filters/countries
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/filters/countries
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/filters/countries
+  /leadsforge/company-followers/filters/departments:
+    get:
+      operationId: leadsforge_GET__company_followers_filters_departments
+      summary: Get list of supported department values for company followers filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/filters/departments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/filters/departments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/filters/departments
+  /leadsforge/company-followers/filters/levels:
+    get:
+      operationId: leadsforge_GET__company_followers_filters_levels
+      summary: Get list of supported seniority level values for company followers filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/filters/levels
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/filters/levels
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/filters/levels
+  /leadsforge/lookalikes/filters/departments:
+    get:
+      operationId: leadsforge_GET__lookalikes_filters_departments
+      summary: Get available department values for lookalikes filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/filters/departments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/filters/departments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/filters/departments
+  /leadsforge/lookalikes/filters/employee-ranges:
+    get:
+      operationId: leadsforge_GET__lookalikes_filters_employee_ranges
+      summary: Get available employee range values for lookalikes filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/filters/employee-ranges
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/filters/employee-ranges
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/filters/employee-ranges
+  /leadsforge/lookalikes/filters/locations:
+    get:
+      operationId: leadsforge_GET__lookalikes_filters_locations
+      summary: Get available location values for lookalikes filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/filters/locations
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/filters/locations
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/filters/locations
+  /leadsforge/search/filters/seniorities:
+    get:
+      operationId: leadsforge_GET__search_filters_seniorities
+      summary: Get available seniority values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/seniorities
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/seniorities
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/seniorities
+  /leadsforge/company-followers/jobs/{jobID}/results:
+    get:
+      operationId: leadsforge_GET__company_followers_jobs_jobID_results
+      summary: Get results of a company followers job with pagination.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/jobs/{jobID}/results
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/jobs/{jobID}/results
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/jobs/{jobID}/results
+  /leadsforge/lookalikes/preview:
+    post:
+      operationId: leadsforge_POST__lookalikes_preview
+      summary: Preview lookalike companies for given domains. This endpoint is free on the upstream API.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/preview
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/preview
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/preview
+  /leadsforge/enrichment/emails:
+    post:
+      operationId: leadsforge_POST__enrichment_emails
+      summary: Find email addresses for multiple people. Returns a job ID to poll for results.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/emails
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/emails
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/emails
+  /leadsforge/enrichment/phone:
+    post:
+      operationId: leadsforge_POST__enrichment_phone
+      summary: Find phone number for a person synchronously. Provide name + company or LinkedIn URL.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/phone
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/phone
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/phone
+  /leadsforge/search/filters/company-types:
+    get:
+      operationId: leadsforge_GET__search_filters_company_types
+      summary: Get available company type values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/company-types
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/company-types
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/company-types
+  /leadsforge/company-followers/jobs:
+    get:
+      operationId: leadsforge_GET__company_followers_jobs
+      summary: List company followers jobs with optional filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/jobs
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/jobs
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/jobs
+  /leadsforge/search/count:
+    post:
+      operationId: leadsforge_POST__search_count
+      summary: Count the number of results matching search filters without returning the actual data.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/count
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/count
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/count
+  /leadsforge/search:
+    post:
+      operationId: leadsforge_POST__search
+      summary: Search for people/leads with filters on company, job title, location, seniority, and more.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search
+  /leadsforge/company-followers/search:
+    post:
+      operationId: leadsforge_POST__company_followers_search
+      summary: Search followers of a company on LinkedIn with filters for country, department, seniority, and job title.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/search
+  /leadsforge/search/filters/departments:
+    get:
+      operationId: leadsforge_GET__search_filters_departments
+      summary: Get available department values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/departments
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/departments
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/departments
+  /leadsforge/search/filters/funding-types:
+    get:
+      operationId: leadsforge_GET__search_filters_funding_types
+      summary: Get available funding type values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/funding-types
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/funding-types
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/funding-types
+  /leadsforge/search/filters/industries:
+    get:
+      operationId: leadsforge_GET__search_filters_industries
+      summary: Get available industry values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/industries
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/industries
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/industries
+  /leadsforge/search/filters/revenue-ranges:
+    get:
+      operationId: leadsforge_GET__search_filters_revenue_ranges
+      summary: Get available revenue range values for search filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/search/filters/revenue-ranges
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/search/filters/revenue-ranges
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/search/filters/revenue-ranges
+  /leadsforge/enrichment/phones:
+    post:
+      operationId: leadsforge_POST__enrichment_phones
+      summary: Find phone numbers for multiple people. Returns a job ID to poll for results.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/phones
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/phones
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/phones
+  /leadsforge/enrichment/linkedin:
+    post:
+      operationId: leadsforge_POST__enrichment_linkedin
+      summary: Find LinkedIn profiles for multiple people. Returns a job ID to poll for results.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/linkedin
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/linkedin
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/linkedin
+  /leadsforge/company-followers/filters/job-titles:
+    get:
+      operationId: leadsforge_GET__company_followers_filters_job_titles
+      summary: Get paginated list of supported job title values with optional search.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/filters/job-titles
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/filters/job-titles
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/filters/job-titles
+  /leadsforge/company-followers/filters/states:
+    get:
+      operationId: leadsforge_GET__company_followers_filters_states
+      summary: Get list of supported state/region values for company followers filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/company-followers/filters/states
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/company-followers/filters/states
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/company-followers/filters/states
+  /leadsforge/lookalikes/search:
+    post:
+      operationId: leadsforge_POST__lookalikes_search
+      summary: Search for lookalike companies with pagination and filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/search
+  /leadsforge/lookalikes/filters/seniorities:
+    get:
+      operationId: leadsforge_GET__lookalikes_filters_seniorities
+      summary: Get available seniority values for lookalikes filtering.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/lookalikes/filters/seniorities
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/lookalikes/filters/seniorities
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/lookalikes/filters/seniorities
+  /leadsforge/enrichment/email:
+    post:
+      operationId: leadsforge_POST__enrichment_email
+      summary: Find email address for a person synchronously. Provide name + company or LinkedIn URL.
+      tags:
+      - Leadsforge
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/leadsforge/enrichment/email
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/leadsforge/enrichment/email
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/leadsforge/enrichment/email
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

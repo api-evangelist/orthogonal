@@ -1,0 +1,426 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Brand.dev API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Brand.dev API
+paths:
+  /brand-dev/v1/brand/ai/query:
+    post:
+      operationId: brand_dev_POST__v1_brand_ai_query
+      summary: Use AI to extract specific data points from a brand’s website. The AI will crawl the website and extract the requested information based on the provided data points.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/ai/query
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/ai/query
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/ai/query
+  /brand-dev/v1/brand/retrieve-by-ticker:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve_by_ticker
+      summary: Retrieve brand information using a stock ticker symbol. This endpoint looks up the company associated with the ticker and returns its brand data.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve-by-ticker
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve-by-ticker
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve-by-ticker
+  /brand-dev/v1/brand/naics:
+    get:
+      operationId: brand_dev_GET__v1_brand_naics
+      summary: Endpoint to classify any brand into a 2022 NAICS code.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/naics
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/naics
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/naics
+  /brand-dev/v1/brand/styleguide:
+    get:
+      operationId: brand_dev_GET__v1_brand_styleguide
+      summary: Automatically extract comprehensive design system information from a brand’s website including colors, typography, spacing, shadows, and UI components.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/styleguide
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/styleguide
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/styleguide
+  /brand-dev/v1/brand/transaction_identifier:
+    get:
+      operationId: brand_dev_GET__v1_brand_transaction_identifier
+      summary: Endpoint specially designed for platforms that want to identify transaction data by the transaction title.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/transaction_identifier
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/transaction_identifier
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/transaction_identifier
+  /brand-dev/v1/brand/retrieve-simplified:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve_simplified
+      summary: 'Returns a simplified version of brand data containing only essential information: domain, title, colors, logos, and backdrops. This endpoint is optimized for faster responses and reduced data transfer.'
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve-simplified
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve-simplified
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve-simplified
+  /brand-dev/v1/brand/ai/products:
+    post:
+      operationId: brand_dev_POST__v1_brand_ai_products
+      summary: 'Beta feature: Extract product information from a brand’s website. Brand.dev will analyze the website and return a list of products with details such as name, description, image, pricing, features, and more.'
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/ai/products
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/ai/products
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/ai/products
+  /brand-dev/v1/brand/fonts:
+    get:
+      operationId: brand_dev_GET__v1_brand_fonts
+      summary: Extract font information from a brand’s website including font families, usage statistics, fallbacks, and element/word counts.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/fonts
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/fonts
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/fonts
+  /brand-dev/v1/brand/retrieve-by-email:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve_by_email
+      summary: Retrieve brand information using an email address while detecting disposable and free email addresses. This endpoint extracts the domain from the email address and returns brand data for that domain. Disposable and free email addresses (like gmail.com, yahoo.com) will throw a 422 error.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve-by-email
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve-by-email
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve-by-email
+  /brand-dev/v1/brand/retrieve:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve
+      summary: Retrieve logos, backdrops, colors, industry, description, and more from any domain
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve
+  /brand-dev/v1/brand/retrieve-by-isin:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve_by_isin
+      summary: Retrieve brand information using an ISIN (International Securities Identification Number). This endpoint looks up the company associated with the ISIN and returns its brand data.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve-by-isin
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve-by-isin
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve-by-isin
+  /brand-dev/v1/brand/screenshot:
+    get:
+      operationId: brand_dev_GET__v1_brand_screenshot
+      summary: Capture a screenshot of a website. Supports both viewport (standard browser view) and full-page screenshots. Can also screenshot specific page types (login, pricing, etc.) by using heuristics to find the appropriate URL. Returns a URL to the uploaded screenshot image hosted on our CDN.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/screenshot
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/screenshot
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/screenshot
+  /brand-dev/v1/brand/retrieve-by-name:
+    get:
+      operationId: brand_dev_GET__v1_brand_retrieve_by_name
+      summary: Retrieve brand information using a company name. This endpoint searches for the company by name and returns its brand data.
+      tags:
+      - Brand.dev API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/brand-dev/v1/brand/retrieve-by-name
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/brand-dev/v1/brand/retrieve-by-name
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/brand-dev/v1/brand/retrieve-by-name
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

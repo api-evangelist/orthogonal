@@ -1,0 +1,271 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Full Enrich API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: FullEnrich
+paths:
+  /fullenrich/contact/enrich/bulk:
+    post:
+      operationId: fullenrich_POST__contact_enrich_bulk
+      summary: 'Start enrichment for up to 100 B2B contacts. Provide first_name + last_name + company or linkedin_url. Returns enrichment_id to poll for results. Async: results delivered via webhook or GET endpoint.'
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/contact/enrich/bulk
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/contact/enrich/bulk
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/contact/enrich/bulk
+  /fullenrich/company/lookup:
+    post:
+      operationId: fullenrich_POST__company_lookup
+      summary: Look up a single company using its identifiers (domain, or professional network URL/ID). Returns the best matching company. Provide at least one identifier. Costs 0.25 credits per result.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/company/lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/company/lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/company/lookup
+  /fullenrich/people/search:
+    post:
+      operationId: fullenrich_POST__people_search
+      summary: Search for people based on various filters including job title, company, location, industry, and more. Multiple filters within the same field use AND logic. Returns professional details and company lite info. Costs 0.25 credits per result.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/people/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/people/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/people/search
+  /fullenrich/people/lookup:
+    post:
+      operationId: fullenrich_POST__people_lookup
+      summary: Look up a single person using their identifiers (professional network URL/ID, or full name combined with a company identifier). Returns the best matching person. Costs 0.25 credits per result.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/people/lookup
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/people/lookup
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/people/lookup
+  /fullenrich/contact/reverse/email/bulk:
+    post:
+      operationId: fullenrich_POST__contact_reverse_email_bulk
+      summary: 'Identify the person and company behind one or more email addresses. Returns full person profile (name, job title, work history) and company details (industry, headcount). Async: results via webhook or GET endpoint.'
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/contact/reverse/email/bulk
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/contact/reverse/email/bulk
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/contact/reverse/email/bulk
+  /fullenrich/company/search:
+    post:
+      operationId: fullenrich_POST__company_search
+      summary: Search for companies based on various filters including industry, headcount, location, and more. Multiple filters within the same field use AND logic. Returns full company details. Costs 0.25 credits per result.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/company/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/company/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/company/search
+  /fullenrich/contact/enrich/bulk/{enrichment_id}:
+    get:
+      operationId: fullenrich_GET__contact_enrich_bulk_enrichment_id_
+      summary: Retrieve results of a bulk enrichment by enrichment_id. Use this to poll for results if not using webhooks. Returns contact data with emails, phones, and professional details.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/contact/enrich/bulk/{enrichment_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/contact/enrich/bulk/{enrichment_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/contact/enrich/bulk/{enrichment_id}
+  /fullenrich/contact/reverse/email/bulk/{enrichment_id}:
+    get:
+      operationId: fullenrich_GET__contact_reverse_email_bulk_enrichment_id_
+      summary: Retrieve results of a reverse email lookup by enrichment_id. Returns person and company profiles for the submitted emails.
+      tags:
+      - FullEnrich
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/fullenrich/contact/reverse/email/bulk/{enrichment_id}
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/fullenrich/contact/reverse/email/bulk/{enrichment_id}
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/fullenrich/contact/reverse/email/bulk/{enrichment_id}
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

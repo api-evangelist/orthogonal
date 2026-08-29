@@ -1,0 +1,230 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Scrape Graph AI API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: ScrapeGraphAI
+paths:
+  /scrapegraphai/api/monitor/{id}/pause:
+    post:
+      operationId: scrapegraphai_POST__api_monitor_id_pause
+      summary: Pause an active monitor.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+  /scrapegraphai/api/crawl:
+    post:
+      operationId: scrapegraphai_POST__api_crawl
+      summary: Start a website crawl from a seed URL with configurable depth and page limits.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapegraphai/api/crawl
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapegraphai/api/crawl
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapegraphai/api/crawl
+  /scrapegraphai/api/monitor/{id}:
+    get:
+      operationId: scrapegraphai_GET__api_monitor_id_
+      summary: Get details of a specific monitor by ID.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+    patch:
+      operationId: scrapegraphai_PATCH__api_monitor_id_
+      summary: Update a monitor configuration.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: scrapegraphai_DELETE__api_monitor_id_
+      summary: Delete a monitor by ID.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+  /scrapegraphai/api/monitor:
+    post:
+      operationId: scrapegraphai_POST__api_monitor
+      summary: Create a monitor to track changes on a URL at a given interval.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapegraphai/api/monitor
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapegraphai/api/monitor
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapegraphai/api/monitor
+  /scrapegraphai/api/extract:
+    post:
+      operationId: scrapegraphai_POST__api_extract
+      summary: LLM-driven extraction from a URL, HTML, or markdown input with a prompt and optional JSON schema.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapegraphai/api/extract
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapegraphai/api/extract
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapegraphai/api/extract
+  /scrapegraphai/api/monitor/{id}/activity:
+    get:
+      operationId: scrapegraphai_GET__api_monitor_id_activity
+      summary: Get paginated tick activity for a monitor, including diffs.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+  /scrapegraphai/api/monitor/{id}/resume:
+    post:
+      operationId: scrapegraphai_POST__api_monitor_id_resume
+      summary: Resume a paused monitor.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+  /scrapegraphai/api/scrape:
+    post:
+      operationId: scrapegraphai_POST__api_scrape
+      summary: 'Fetches a URL and returns the requested format(s): markdown, html, links, images, summary, json, branding, screenshot.'
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapegraphai/api/scrape
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapegraphai/api/scrape
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapegraphai/api/scrape
+  /scrapegraphai/api/search:
+    post:
+      operationId: scrapegraphai_POST__api_search
+      summary: Runs a search, scrapes the top N result URLs, optionally runs LLM extraction with prompt and schema.
+      tags:
+      - ScrapeGraphAI
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/scrapegraphai/api/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/scrapegraphai/api/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/scrapegraphai/api/search
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

@@ -1,0 +1,209 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace People Data Labs API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: People Data Labs
+paths:
+  /peopledatalabs/v5/person/identify:
+    get:
+      operationId: peopledatalabs_GET__v5_person_identify
+      summary: Broad person lookup returning up to 20 candidate matches with confidence scores. Useful when you have partial info and want multiple possible matches.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.7
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/person/identify
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/person/identify
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/person/identify
+  /peopledatalabs/v5/ip/enrich:
+    get:
+      operationId: peopledatalabs_GET__v5_ip_enrich
+      summary: Enrich an IP address with associated company, location, and metadata.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.09
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/ip/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/ip/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/ip/enrich
+  /peopledatalabs/v5/person/enrich:
+    get:
+      operationId: peopledatalabs_GET__v5_person_enrich
+      summary: Enrich a person by name, email, phone, LinkedIn URL, or other identifiers. Returns full profile with work history, education, skills, and social profiles.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.35
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/person/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/person/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/person/enrich
+  /peopledatalabs/v5/company/enrich:
+    get:
+      operationId: peopledatalabs_GET__v5_company_enrich
+      summary: Enrich a company by name, website, ticker, or LinkedIn URL. Returns full company profile with industry, size, location, funding, and more.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.11
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/company/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/company/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/company/enrich
+  /peopledatalabs/v5/person/search:
+    post:
+      operationId: peopledatalabs_POST__v5_person_search
+      summary: Search and filter people using Elasticsearch or SQL queries. Find people by job title, company, location, skills, education, and more.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/person/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/person/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/person/search
+  /peopledatalabs/v5/company/search:
+    post:
+      operationId: peopledatalabs_POST__v5_company_search
+      summary: Search and filter companies using Elasticsearch or SQL queries. Find companies by industry, size, location, funding, and more.
+      tags:
+      - People Data Labs
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/peopledatalabs/v5/company/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/peopledatalabs/v5/company/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/peopledatalabs/v5/company/search
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

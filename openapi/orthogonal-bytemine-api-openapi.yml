@@ -1,0 +1,736 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Bytemine API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Bytemine
+paths:
+  /bytemine/v1/company-lookalikes:
+    post:
+      operationId: bytemine_POST__v1_company_lookalikes
+      summary: Find companies similar to provided domains (max 10). Returns job_id immediately. Provide a webhook_url to receive results when complete (required, as job polling is not available through this API). 50 credits per run.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 1.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/v1/company-lookalikes
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/v1/company-lookalikes
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/v1/company-lookalikes
+  /bytemine/crawl/diff:
+    post:
+      operationId: bytemine_POST__crawl_diff
+      summary: Compare a page's current content against a saved snapshot. Returns added/removed lines and change summary. 1 credit.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/diff
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/diff
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/diff
+  /bytemine/v1/icp-builder:
+    post:
+      operationId: bytemine_POST__v1_icp_builder
+      summary: Describe your ideal customer profile in plain text. Returns a job_id immediately. Provide a webhook_url to receive results when complete (required, as job polling is not available through this API). 50 credits per run.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 1.5
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/v1/icp-builder
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/v1/icp-builder
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/v1/icp-builder
+  /bytemine/contacts/unlock:
+    post:
+      operationId: bytemine_POST__contacts_unlock
+      summary: 'Unlock full contact details (emails, phones, social profiles) for prospect PIDs obtained from /contacts/search. Requires gateway wrapper format: {path, method, body: {pids}}.'
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/contacts/unlock
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/contacts/unlock
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/contacts/unlock
+  /bytemine/crawl/start:
+    post:
+      operationId: bytemine_POST__crawl_start
+      summary: Start a multi-page crawl job with sitemap discovery and configurable depth/page limits. Returns job_id. 1 credit per page.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/start
+  /bytemine/signals/funding:
+    post:
+      operationId: bytemine_POST__signals_funding
+      summary: Search real-time funding signals with filters for round type, amount, investor, industry, date, employee count, and more. 1 credit per record. Use count='true' for free count-only query.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/signals/funding
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/signals/funding
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/signals/funding
+  /bytemine/contacts/enrich:
+    post:
+      operationId: bytemine_POST__contacts_enrich
+      summary: Enrich a single contact by email, phone, LinkedIn, Facebook, or name+company. Returns full profile with work email, phone, job title, company info. 1 credit per match.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/contacts/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/contacts/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/contacts/enrich
+  /bytemine/crawl/map:
+    post:
+      operationId: bytemine_POST__crawl_map
+      summary: Discover all URLs on a website via sitemap + link extraction. Returns scored/sorted URLs without scraping content. 1 credit.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/map
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/map
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/map
+  /bytemine/crawl/scrape:
+    post:
+      operationId: bytemine_POST__crawl_scrape
+      summary: Scrape a URL and return markdown, links, metadata, and tech stack. Falls back to Firecrawl if needed. 1 credit.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/scrape
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/scrape
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/scrape
+  /bytemine/crawl/batch:
+    post:
+      operationId: bytemine_POST__crawl_batch
+      summary: Scrape up to 100 URLs in parallel. Returns markdown, metadata, and tech stack per URL. 1 credit per URL.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/batch
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/batch
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/batch
+  /bytemine/crawl/snapshot:
+    post:
+      operationId: bytemine_POST__crawl_snapshot
+      summary: Save a snapshot of a page's current content for change tracking. Use with /crawl/diff to detect changes. 1 credit.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/snapshot
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/snapshot
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/snapshot
+  /bytemine/crawl/continue:
+    post:
+      operationId: bytemine_POST__crawl_continue
+      summary: Resume processing pending pages in an existing crawl job. Call repeatedly until status is 'completed'.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/continue
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/continue
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/continue
+  /bytemine/crawl/results:
+    post:
+      operationId: bytemine_POST__crawl_results
+      summary: Retrieve paginated results from a completed crawl. Each result includes URL, markdown, metadata, and links. Free, no credits.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/results
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/results
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/results
+  /bytemine/v1/apps/roi-calculator:
+    post:
+      operationId: bytemine_POST__v1_apps_roi_calculator
+      summary: Generate a personalized ROI projection and business case with quantified savings, implementation timeline, risk analysis, and outreach copy. Returns a public shareable URL. 10 credits.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/v1/apps/roi-calculator
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/v1/apps/roi-calculator
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/v1/apps/roi-calculator
+  /bytemine/b2b-enrich:
+    post:
+      operationId: bytemine_POST__b2b_enrich
+      summary: Enrich a company by name, website, LinkedIn URL, or company_id. Returns full profile with description, industries, NAICS, locations, posts, funding. 1 credit per match.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/b2b-enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/b2b-enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/b2b-enrich
+  /bytemine/v1/apps/meeting-prep:
+    post:
+      operationId: bytemine_POST__v1_apps_meeting_prep
+      summary: Generate a comprehensive meeting prep brief with company intel, contacts, talking points, objections, ice breakers, and pain points. 10 credits.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/v1/apps/meeting-prep
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/v1/apps/meeting-prep
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/v1/apps/meeting-prep
+  /bytemine/crawl/intel:
+    post:
+      operationId: bytemine_POST__crawl_intel
+      summary: 'Crawl a website''s key pages and return comprehensive intel: company profile, contacts, social links, tech stack, sales signals, pain points, conversation starters. 1 credit per page (min 5).'
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.15
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/intel
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/intel
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/intel
+  /bytemine/v1/proposals/generate:
+    post:
+      operationId: bytemine_POST__v1_proposals_generate
+      summary: Generate a personalized sales or partnership proposal with branding, ROI projections, social proof, and outreach copy. Returns a public shareable URL. 10 credits.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.3
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/v1/proposals/generate
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/v1/proposals/generate
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/v1/proposals/generate
+  /bytemine/crawl/status:
+    post:
+      operationId: bytemine_POST__crawl_status
+      summary: Check crawl job status including pages crawled, found, and completion. Free, no credits.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/status
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/status
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/status
+  /bytemine/signals/acquisitions:
+    post:
+      operationId: bytemine_POST__signals_acquisitions
+      summary: Search real-time M&A/acquisition signals with filters for acquirer, amount, industry, date, and more. 1 credit per record. Use count='true' for free count-only query.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/signals/acquisitions
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/signals/acquisitions
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/signals/acquisitions
+  /bytemine/crawl/extract:
+    post:
+      operationId: bytemine_POST__crawl_extract
+      summary: 'Scrape a URL and extract structured data using a schema: company_profile, team_members, pricing, tech_stack, social_links, branding, full_intelligence. 2 credits.'
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.06
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/crawl/extract
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/crawl/extract
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/crawl/extract
+  /bytemine/b2b-search:
+    post:
+      operationId: bytemine_POST__b2b_search
+      summary: Search companies by name, industry, NAICS code, keywords, location, employee count. 1 credit per company returned.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/b2b-search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/b2b-search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/b2b-search
+  /bytemine/contacts/search:
+    post:
+      operationId: bytemine_POST__contacts_search
+      summary: Search the prospect database using filters like job title, seniority, industry, location, company size, and more. Returns masked results. 1 credit per result.
+      tags:
+      - Bytemine
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/bytemine/contacts/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/bytemine/contacts/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/bytemine/contacts/search
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

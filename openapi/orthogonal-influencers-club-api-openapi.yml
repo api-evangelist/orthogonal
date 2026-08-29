@@ -1,0 +1,419 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Influencers Club API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Influencers Club
+paths:
+  /influencers-club/public/v1/discovery/classifier/locations/twitter/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_locations_twitter_
+      summary: Get Twitter location identifiers for filtering creators by geographic location.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/locations/twitch/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_locations_twitch_
+      summary: Get Twitch location identifiers for filtering creators by geographic location.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/audience-brand-names/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_audience_brand_names_
+      summary: Get audience brand names (Nike, Apple, Starbucks, etc.) for filtering Instagram creators (10k+ followers) whose audience follows specific brands.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/audience-brand-categories/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_audience_brand_categories_
+      summary: Get audience brand categories (Sports, Fashion, Technology, etc.) for filtering Instagram creators (10k+ followers) by audience brand affinity.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/creators/enrich/email/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_enrich_email_
+      summary: Basic creator enrichment by email address. Returns essential profile info including social media presence, contact details, and platform account identifiers across Instagram, YouTube, TikTok, Twitter, and Twitch. 0.05 upstream credits per request.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.033
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/enrich/email/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/enrich/email/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/enrich/email/
+  /influencers-club/public/v1/discovery/classifier/yt-topics/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_yt_topics_
+      summary: Get hierarchical YouTube topic categories and subtopics for discovering YouTube creators by content niche.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/brands/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_brands_
+      summary: Get comprehensive list of brand names for filtering in creator discovery searches.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/languages/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_languages_
+      summary: Get supported languages with abbreviations for filtering creators by profile or content language.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/creators/content/details/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_content_details_
+      summary: 'Retrieve detailed post information: metadata, comments, transcript, or audio. Supports Instagram (data/comments/transcript/audio), TikTok (data/comments/transcript/audio), and YouTube (data/comments/transcript). 0.03 upstream credits per request.'
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/content/details/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/content/details/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/content/details/
+  /influencers-club/public/v1/discovery/creators/similar/:
+    post:
+      operationId: influencers_club_POST__public_v1_discovery_creators_similar_
+      summary: Find creators similar to a reference creator by URL, username, or ID. Supports Instagram, YouTube, TikTok, and Twitch. Returns paginated list of lookalike creators with profile info and engagement. 0.01 upstream credits per creator returned.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/discovery/creators/similar/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/discovery/creators/similar/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/discovery/creators/similar/
+  /influencers-club/public/v1/discovery/classifier/audience-interests/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_audience_interests_
+      summary: Get audience interest values for filtering Instagram creators (10k+ followers) by audience interests.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/audience-locations/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_audience_locations_
+      summary: Get audience location values (countries, states, cities) for filtering Instagram creators (10k+ followers) by audience geography.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/creators/enrich/handle/raw/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_enrich_handle_raw_
+      summary: Retrieve raw platform data for a creator by handle. Returns unprocessed data including profile info, post data, media counts, and platform-native metadata. Supports Instagram, YouTube, TikTok, Twitter, Snapchat, Discord, Pinterest, Facebook, and LinkedIn. 0.03 upstream credits per request.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/raw/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/raw/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/raw/
+  /influencers-club/public/v1/discovery/classifier/games/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_games_
+      summary: Get list of Twitch games for filtering streamers by games played.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/creators/enrich/handle/full/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_enrich_handle_full_
+      summary: Comprehensive creator enrichment by social media handle. Returns cross-platform presence, engagement analytics, follower growth, content performance, monetization indicators, niche classification, hashtags, income estimates, and optional lookalikes. Supports 10 platforms. 1 upstream credit per request.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.66
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/full/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/full/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/enrich/handle/full/
+  /influencers-club/public/v1/discovery/classifier/locations/tiktok/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_locations_tiktok_
+      summary: Get TikTok location identifiers for filtering creators by geographic location.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/locations/youtube/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_locations_youtube_
+      summary: Get YouTube location identifiers for filtering creators by geographic location.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/discovery/classifier/locations/instagram/:
+    get:
+      operationId: influencers_club_GET__public_v1_discovery_classifier_locations_instagram_
+      summary: Get Instagram location identifiers for filtering creators by geographic location.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+  /influencers-club/public/v1/creators/audience/overlap/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_audience_overlap_
+      summary: Compare audience overlap between 2-10 creators on a given platform. Returns per-creator overlap and unique audience percentages, plus total followers and unique followers. 1 upstream credit per request.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.66
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/audience/overlap/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/audience/overlap/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/audience/overlap/
+  /influencers-club/public/v1/discovery/:
+    post:
+      operationId: influencers_club_POST__public_v1_discovery_
+      summary: Search and discover creators across multiple platforms using advanced filtering (location, gender, language, followers, engagement, audience demographics, brand deals, and more). Supports Instagram, YouTube, TikTok, Twitch, and Twitter. Returns paginated list of creator profiles with analytics. 0.01 upstream credits per creator returned.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.03
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/discovery/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/discovery/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/discovery/
+  /influencers-club/public/v1/creators/socials/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_socials_
+      summary: 'Discover all verified social accounts connected to a creator. Supports 10 seed platforms: Instagram, YouTube, TikTok, Twitter, Snapchat, Discord, Pinterest, Facebook, LinkedIn, and Twitch. Returns connected accounts with platform, username, and follower count. 0.5 upstream credits per request.'
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.33
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/socials/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/socials/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/socials/
+  /influencers-club/public/v1/creators/content/posts/:
+    post:
+      operationId: influencers_club_POST__public_v1_creators_content_posts_
+      summary: Fetch recent posts for a creator. Returns post metadata including ID, URL, caption, media URLs, timestamps, and engagement metrics (likes, comments, views, shares). Supports Instagram, TikTok, and YouTube with cursor-based pagination. 0.03 upstream credits per request.
+      tags:
+      - Influencers Club
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.02
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/influencers-club/public/v1/creators/content/posts/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/influencers-club/public/v1/creators/content/posts/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/influencers-club/public/v1/creators/content/posts/
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

@@ -1,0 +1,240 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Crustdata API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Crustdata
+paths:
+  /crustdata/screener/companydb/search:
+    post:
+      operationId: crustdata_POST__screener_companydb_search
+      summary: 'Search millions of companies in Crustdata''s database with advanced filtering. Supports nested AND/OR filter logic, sorting, and cursor-based pagination. Returns up to 1000 results per request. Filter by company name, HQ country, industry, employee metrics, funding, revenue, year founded, and more. Uses (.) for fuzzy text matching and [.] for exact token matching. Note: This API is in beta. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/screener/companydb/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/screener/companydb/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/screener/companydb/search
+  /crustdata/data_lab/gartner_reviews/Table/:
+    post:
+      operationId: crustdata_POST__data_lab_gartner_reviews_Table_
+      summary: 'Get Gartner Peer Insights review data for companies. Filter by review rating, company ID, and other metrics. Returns a fields-and-rows structure. Note: requires Crustdata credits for this dataset. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/data_lab/gartner_reviews/Table/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/data_lab/gartner_reviews/Table/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/data_lab/gartner_reviews/Table/
+  /crustdata/screener/persondb/search:
+    post:
+      operationId: crustdata_POST__screener_persondb_search
+      summary: 'Search millions of professional profiles in Crustdata''s database with advanced filtering. Supports nested AND/OR filter logic and cursor-based pagination. Returns up to 1000 results per request with employment history, education, skills, emails, and social profiles. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/screener/persondb/search
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/screener/persondb/search
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/screener/persondb/search
+  /crustdata/data_lab/job_listings/Table/:
+    post:
+      operationId: crustdata_POST__data_lab_job_listings_Table_
+      summary: 'Get job listings from Crustdata''s database. Filter by company, date, location, and more. Returns a fields-and-rows structure where fields describe column names/types and rows contain the data. Use Company Identification endpoint first to get company_id values for filtering. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.313
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/data_lab/job_listings/Table/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/data_lab/job_listings/Table/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/data_lab/job_listings/Table/
+  /crustdata/screener/company:
+    get:
+      operationId: crustdata_GET__screener_company
+      summary: 'Enrich one or more companies by domain, name, or Crustdata company ID. Returns comprehensive firmographic data: headcount, revenue, funding, employer reviews, web traffic, news, job openings, founders, and decision makers. Provide at least one of company_domain, company_name, or company_id. Multiple values can be comma-separated (e.g. company_domain=stripe.com,hubspot.com).'
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/screener/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/screener/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/screener/company
+  /crustdata/screener/person/enrich:
+    get:
+      operationId: crustdata_GET__screener_person_enrich
+      summary: Enrich one or more individuals by LinkedIn URL or business email. Returns employment history, education, skills, contact info, and GitHub profiles. Provide at least one of linkedin_profile_url or business_email. Multiple values can be comma-separated. Use fields to select specific data and reduce response size.
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 1.563
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/screener/person/enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/screener/person/enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/screener/person/enrich
+  /crustdata/screener/identify/:
+    post:
+      operationId: crustdata_POST__screener_identify_
+      summary: Identify one or more companies in Crustdata's database by domain, name, LinkedIn URL, Crunchbase URL, or company ID. Returns matching companies with relevance scores. Only one identifier field is needed.
+      tags:
+      - Crustdata
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/crustdata/screener/identify/
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/crustdata/screener/identify/
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/crustdata/screener/identify/
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

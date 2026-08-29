@@ -1,0 +1,355 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Notte API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Notte
+paths:
+  /notte/sessions/{session_id}/cookies:
+    get:
+      operationId: notte_GET__sessions_session_id_cookies
+      summary: Get all cookies from the browser session.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+    post:
+      operationId: notte_POST__sessions_session_id_cookies
+      summary: Set cookies in the browser session.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.001
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/{session_id}/cookies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/{session_id}/cookies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/{session_id}/cookies
+  /notte/sessions/{session_id}/network/logs:
+    get:
+      operationId: notte_GET__sessions_session_id_network_logs
+      summary: Get network request/response logs from the session.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+  /notte/sessions/{session_id}/page/observe:
+    post:
+      operationId: notte_POST__sessions_session_id_page_observe
+      summary: Observe the current page state and get available actions.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.005
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/{session_id}/page/observe
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/{session_id}/page/observe
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/{session_id}/page/observe
+  /notte/sessions/{session_id}/page/screenshot:
+    post:
+      operationId: notte_POST__sessions_session_id_page_screenshot
+      summary: Take a screenshot of the current page.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.001
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/{session_id}/page/screenshot
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/{session_id}/page/screenshot
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/{session_id}/page/screenshot
+  /notte/sessions/{session_id}/stop:
+    delete:
+      operationId: notte_DELETE__sessions_session_id_stop
+      summary: Stop and clean up a browser session.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+  /notte/scrape_from_html:
+    post:
+      operationId: notte_POST__scrape_from_html
+      summary: Extract structured content from raw HTML without using a browser
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.002
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/scrape_from_html
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/scrape_from_html
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/scrape_from_html
+  /notte/agents/start:
+    post:
+      operationId: notte_POST__agents_start
+      summary: Start an AI agent to autonomously complete a browser task.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/agents/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/agents/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/agents/start
+  /notte/sessions/start:
+    post:
+      operationId: notte_POST__sessions_start
+      summary: Start a new browser session. Configure browser type, proxies, viewport, and session timeout.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/start
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/start
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/start
+  /notte/agents/{agent_id}:
+    get:
+      operationId: notte_GET__agents_agent_id_
+      summary: Get agent execution status and results.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+  /notte/agents/{agent_id}/stop:
+    delete:
+      operationId: notte_DELETE__agents_agent_id_stop
+      summary: Stop a running agent.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+  /notte/scrape:
+    post:
+      operationId: notte_POST__scrape
+      summary: Scrape content from a URL without managing sessions.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/scrape
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/scrape
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/scrape
+  /notte/sessions/{session_id}/page/execute:
+    post:
+      operationId: notte_POST__sessions_session_id_page_execute
+      summary: Execute an action on the page (click, type, navigate, etc.).
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.002
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/{session_id}/page/execute
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/{session_id}/page/execute
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/{session_id}/page/execute
+  /notte/sessions/{session_id}/page/scrape:
+    post:
+      operationId: notte_POST__sessions_session_id_page_scrape
+      summary: Scrape content from the current page in the session.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.003
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/notte/sessions/{session_id}/page/scrape
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/notte/sessions/{session_id}/page/scrape
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/notte/sessions/{session_id}/page/scrape
+  /notte/sessions/{session_id}:
+    get:
+      operationId: notte_GET__sessions_session_id_
+      summary: Get session status and details.
+      tags:
+      - Notte
+      responses:
+        '200':
+          description: Successful response
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

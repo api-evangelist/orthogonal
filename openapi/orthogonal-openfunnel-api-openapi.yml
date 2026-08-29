@@ -1,0 +1,108 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Open Funnel API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: OpenFunnel
+paths:
+  /openfunnel/api/v2/account/batch:
+    post:
+      operationId: openfunnel_POST__api_v2_account_batch
+      summary: Fetch account records in bulk by account IDs or domains. Use this when you already know the companies and want OpenFunnel account details, signals, and optional ICP people pagination in one request.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v1/people/filtered-people:
+    post:
+      operationId: openfunnel_POST__api_v1_people_filtered_people
+      summary: List people IDs that match structured filters from the people filters endpoint. Supports pagination and sorting, so it is useful for finding contacts by role, seniority, company, or other people attributes.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v1/account/search-by-traits:
+    get:
+      operationId: openfunnel_GET__api_v1_account_search_by_traits
+      summary: Search companies by natural-language traits such as industry, product, business model, buyer, or technology usage. Use query and optional limit to return ranked company matches with relevance data.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v2/account/filtered-accounts:
+    post:
+      operationId: openfunnel_POST__api_v2_account_filtered_accounts
+      summary: List account IDs that match structured account filters from the account filters endpoint. Supports pagination and sorting, so it is useful for browsing or exporting companies after choosing filter criteria.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v2/account/filters:
+    get:
+      operationId: openfunnel_GET__api_v2_account_filters
+      summary: Return the available account filter fields and allowed values for filtered account searches. Use this before filtered account search to build valid filter payloads.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v1/people/filters:
+    get:
+      operationId: openfunnel_GET__api_v1_people_filters
+      summary: Return the available people filter fields and allowed values for filtered people searches. Use this before filtered people search to build valid filter payloads.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+  /openfunnel/api/v1/enrich/deep-enrich:
+    post:
+      operationId: openfunnel_POST__api_v1_enrich_deep_enrich
+      summary: Start a background enrichment run for a company domain. OpenFunnel creates or finds the account, discovers intent signals, finds relevant people, and ICP-qualifies them. Requires domain plus either icp_id or target_icp_roles; jobs can take 15 to 30 minutes.
+      tags:
+      - OpenFunnel
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.132
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/openfunnel/api/v1/enrich/deep-enrich
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/openfunnel/api/v1/enrich/deep-enrich
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/openfunnel/api/v1/enrich/deep-enrich
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

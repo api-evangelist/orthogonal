@@ -1,0 +1,112 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Riveter API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Riveter API
+paths:
+  /riveter/v1/run_status:
+    get:
+      operationId: riveter_GET__v1_run_status
+      summary: Check the current status of a project run
+      tags:
+      - Riveter API
+      responses:
+        '200':
+          description: Successful response
+  /riveter/v1/run_data:
+    get:
+      operationId: riveter_GET__v1_run_data
+      summary: Retrieve the processed data from a completed project run
+      tags:
+      - Riveter API
+      responses:
+        '200':
+          description: Successful response
+  /riveter/v1/stop_run:
+    post:
+      operationId: riveter_POST__v1_stop_run
+      summary: 'Stop a currently running project. This will halt all processing and mark the run as stopped. Behavior:  If the run is already stopped or success, returns success with current status. If the run is in progress, stops all pending cells and marks the run as stopped.  Stopped runs cannot be resumed'
+      tags:
+      - Riveter API
+      responses:
+        '200':
+          description: Successful response
+  /riveter/v1/run:
+    post:
+      operationId: riveter_POST__v1_run
+      summary: Copy link Define the structure of your output directly in the API request. This endpoint allows you to define both your input data and output configuration in a single request.
+      tags:
+      - Riveter API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/riveter/v1/run
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/riveter/v1/run
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/riveter/v1/run
+  /riveter/v1/scrape:
+    post:
+      operationId: riveter_POST__v1_scrape
+      summary: Scrape a webpage and return the text content. This endpoint allows you to extract text content from any public webpage.
+      tags:
+      - Riveter API
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/riveter/v1/scrape
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/riveter/v1/scrape
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/riveter/v1/scrape
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np

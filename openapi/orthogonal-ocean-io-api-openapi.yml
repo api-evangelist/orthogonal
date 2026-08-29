@@ -1,0 +1,227 @@
+openapi: 3.2.0
+info:
+  title: Orthogonal API Marketplace Ocean.io API
+  version: 1.0.0
+  description: Discoverable APIs payable over MPP (Machine Payments Protocol / Tempo), x402, and np (Circle Gateway Nanopayments, x402 v2).
+servers:
+- url: https://mpp.orthogonal.com
+  description: MPP (Tempo) rail
+- url: https://x402.orthogonal.com
+  description: x402 rail
+- url: https://np.orthogonal.com
+  description: np (Circle Gateway, x402 v2) rail
+tags:
+- name: Ocean.io
+paths:
+  /ocean-io/v3/search/companies:
+    post:
+      operationId: ocean_io_POST__v3_search_companies
+      summary: Search for companies using filters (industry, size, location, technologies, revenue, headcount growth, etc.) and/or lookalike domains. Returns enriched company profiles. Use the size parameter to control max results (1-10,000), defaults to 50. Use searchAfter from the previous response to paginate.
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v3/search/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v3/search/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v3/search/companies
+  /ocean-io/v2/warmup/companies:
+    post:
+      operationId: ocean_io_POST__v2_warmup_companies
+      summary: Check available companies in Ocean.io database and trigger data gathering for missing ones. Use before searching to improve coverage for specific domains.
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+  /ocean-io/v2/enrich/person:
+    post:
+      operationId: ocean_io_POST__v2_enrich_person
+      summary: Match a person with Ocean.io database and enrich with additional information (job title, company, location, social profiles, etc.).
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v2/enrich/person
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v2/enrich/person
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v2/enrich/person
+  /ocean-io/v2/lookup/companies:
+    post:
+      operationId: ocean_io_POST__v2_lookup_companies
+      summary: Lookup and enrich multiple companies by domain (max 1000). Domain redirections are handled automatically. Companies not found return null.
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v2/lookup/companies
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v2/lookup/companies
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v2/lookup/companies
+  /ocean-io/v2/lookup/people:
+    post:
+      operationId: ocean_io_POST__v2_lookup_people
+      summary: Lookup and enrich multiple people by LinkedIn handle or Ocean.io ID (max 1000 total). Costs 0.05 credits per handle/ID. People not found return null.
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v2/lookup/people
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v2/lookup/people
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v2/lookup/people
+  /ocean-io/v2/enrich/company:
+    post:
+      operationId: ocean_io_POST__v2_enrich_company
+      summary: Match a company with Ocean.io database and enrich it with additional information (industry, size, revenue, technologies, contacts, etc.).
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: 0.01
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v2/enrich/company
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v2/enrich/company
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v2/enrich/company
+  /ocean-io/v2/data-fields:
+    get:
+      operationId: ocean_io_GET__v2_data_fields
+      summary: 'Returns all valid filter values for Ocean.io search endpoints: industries, industry categories, technologies, technology categories, regions, LinkedIn industries, departments, seniorities, and company sizes. Use these values when building search filters.'
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+  /ocean-io/v3/search/people:
+    post:
+      operationId: ocean_io_POST__v3_search_people
+      summary: Search for people using filters (job title, seniority, department, skills, location) with optional company filters. Returns enriched person profiles. Use the size parameter to control max results (1-10,000). Use searchAfter from the previous response to paginate.
+      tags:
+      - Ocean.io
+      responses:
+        '200':
+          description: Successful response
+        '402':
+          description: Payment Required (x402 / MPP / np)
+      x-payment-info:
+        price: dynamic
+        offers:
+        - method: mpp
+          intent: charge
+          rail: tempo
+          currency: USDC.e
+          url: https://mpp.orthogonal.com/ocean-io/v3/search/people
+        - method: x402
+          intent: charge
+          rail: base
+          currency: USDC
+          url: https://x402.orthogonal.com/ocean-io/v3/search/people
+        - method: np
+          intent: charge
+          rail: base
+          currency: USDC
+          settlement: circle-gateway
+          version: x402-v2
+          url: https://np.orthogonal.com/ocean-io/v3/search/people
+x-service-info:
+  name: Orthogonal
+  docs:
+    llms: https://api.orthogonal.com/llms.txt
+  protocols:
+  - mpp
+  - x402
+  - np
