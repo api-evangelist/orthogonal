@@ -550,7 +550,8 @@ apis:
     hyperlocal weather data api.
   humanURL: https://docs.orthogonal.com/api-reference/introduction
   baseURL: https://api.orthogonal.com/v1
-  tags:
+  tags: []
+  tags_raw:
   - Precip AI - Hyperlocal Weather Data API
   properties:
   - type: OpenAPI
@@ -691,6 +692,8 @@ apis:
   humanURL: https://docs.orthogonal.com/api-reference/introduction
   baseURL: https://api.orthogonal.com/v1
   tags:
+  - VOYGR
+  tags_raw:
   - Voygr
   properties:
   - type: OpenAPI
