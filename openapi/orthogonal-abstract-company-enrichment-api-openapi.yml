@@ -16,7 +16,7 @@ paths:
   /company-enrichment/v2:
     get:
       operationId: company_enrichment_GET__v2
-      summary: Get detailed company information from a domain including name, logo, headcount, location, industry, and more.
+      summary: Get detailed company information from a domain including name, logo, headcount…
       tags:
       - Abstract Company Enrichment
       responses:

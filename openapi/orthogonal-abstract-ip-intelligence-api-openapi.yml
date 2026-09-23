@@ -16,7 +16,7 @@ paths:
   /ip-intelligence/v1:
     get:
       operationId: ip_intelligence_GET__v1
-      summary: Get geolocation and security intelligence for an IP address including VPN, proxy, Tor, and abuse detection.
+      summary: Get geolocation and security intelligence for an IP address including VPN…
       tags:
       - Abstract IP Intelligence
       responses:

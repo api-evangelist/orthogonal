@@ -16,7 +16,7 @@ paths:
   /vat-validation/v1/validate:
     get:
       operationId: vat_validation_GET__v1_validate
-      summary: Validate a VAT number and get company details associated with it.
+      summary: Validate a VAT number and get company details associated with it
       tags:
       - Abstract VAT Validation
       responses:
@@ -47,7 +47,7 @@ paths:
   /vat-validation/v1/calculate:
     get:
       operationId: vat_validation_GET__v1_calculate
-      summary: Calculate VAT amount for a given price and country.
+      summary: Calculate VAT amount for a given price and country
       tags:
       - Abstract VAT Validation
       responses:
@@ -78,7 +78,7 @@ paths:
   /vat-validation/v1/categories:
     get:
       operationId: vat_validation_GET__v1_categories
-      summary: Get VAT rate categories for a specific country.
+      summary: Get VAT rate categories for a specific country
       tags:
       - Abstract VAT Validation
       responses:

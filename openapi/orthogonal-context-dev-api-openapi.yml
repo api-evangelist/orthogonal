@@ -16,7 +16,7 @@ paths:
   /context-dev/web/fonts:
     get:
       operationId: context_dev_GET__web_fonts
-      summary: Scrape font information from a website including font families, usage statistics, fallbacks, and element/word counts.
+      summary: Scrape font information from a website including font families, usage…
       tags:
       - Context.dev
       responses:
@@ -47,7 +47,7 @@ paths:
   /context-dev/web/scrape/html:
     get:
       operationId: context_dev_GET__web_scrape_html
-      summary: Scrapes the given URL and returns the raw HTML content of the page.
+      summary: Scrapes the given URL and returns the raw HTML content of the page
       tags:
       - Context.dev
       responses:
@@ -78,7 +78,7 @@ paths:
   /context-dev/web/scrape/images:
     get:
       operationId: context_dev_GET__web_scrape_images
-      summary: Scrapes all images from the given URL. Extracts images from img, svg, picture/source, link, and video elements including inline SVGs, base64 data URIs, and standard URLs.
+      summary: Scrapes all images from the given URL.
       tags:
       - Context.dev
       responses:
@@ -109,7 +109,7 @@ paths:
   /context-dev/web/scrape/markdown:
     get:
       operationId: context_dev_GET__web_scrape_markdown
-      summary: Scrapes the given URL, converts the HTML content to Markdown, and returns the result.
+      summary: Scrapes the given URL, converts the HTML content to Markdown, and returns the…
       tags:
       - Context.dev
       responses:
@@ -140,7 +140,7 @@ paths:
   /context-dev/web/scrape/sitemap:
     get:
       operationId: context_dev_GET__web_scrape_sitemap
-      summary: Crawls the sitemap of the given domain and returns all discovered page URLs. Supports sitemap index files (recursive), parallel fetching with concurrency control, deduplication, and filters out non-page resources (images, PDFs, etc.).
+      summary: Crawls the sitemap of the given domain and returns all discovered page URLs.
       tags:
       - Context.dev
       responses:
@@ -171,7 +171,7 @@ paths:
   /context-dev/web/styleguide:
     get:
       operationId: context_dev_GET__web_styleguide
-      summary: Extract a comprehensive design system from a website including colors, typography, spacing, shadows, and UI components.
+      summary: Extract a comprehensive design system from a website including colors…
       tags:
       - Context.dev
       responses:
@@ -202,7 +202,7 @@ paths:
   /context-dev/brand/ai/products:
     post:
       operationId: context_dev_POST__brand_ai_products
-      summary: 'Beta feature: Extract product information from a brand''s website. We will analyze the website and return a list of products with details such as name, description, image, pricing, features, and more.'
+      summary: 'Beta feature: Extract product information from a brand''s website.'
       tags:
       - Context.dev
       responses:
@@ -233,7 +233,7 @@ paths:
   /context-dev/brand/retrieve-by-email:
     get:
       operationId: context_dev_GET__brand_retrieve_by_email
-      summary: Retrieve brand information using an email address while detecting disposable and free email addresses. This endpoint extracts the domain from the email address and returns brand data for that domain. Disposable and free email addresses (like gmail.com, yahoo.com) will throw a 422 error.
+      summary: Retrieve brand information using an email address while detecting disposable…
       tags:
       - Context.dev
       responses:
@@ -264,7 +264,7 @@ paths:
   /context-dev/brand/retrieve-by-isin:
     get:
       operationId: context_dev_GET__brand_retrieve_by_isin
-      summary: Retrieve brand information using an ISIN (International Securities Identification Number). This endpoint looks up the company associated with the ISIN and returns its brand data.
+      summary: Retrieve brand information using an ISIN (International Securities…
       tags:
       - Context.dev
       responses:
@@ -295,7 +295,7 @@ paths:
   /context-dev/brand/ai/query:
     post:
       operationId: context_dev_POST__brand_ai_query
-      summary: Use AI to extract specific data points from a brand's website. The AI will crawl the website and extract the requested information based on the provided data points.
+      summary: Use AI to extract specific data points from a brand's website.
       tags:
       - Context.dev
       responses:
@@ -326,7 +326,7 @@ paths:
   /context-dev/web/naics:
     get:
       operationId: context_dev_GET__web_naics
-      summary: Classify any brand into 2022 NAICS industry codes from its domain or name.
+      summary: Classify any brand into 2022 NAICS industry codes from its domain or name
       tags:
       - Context.dev
       responses:
@@ -357,7 +357,7 @@ paths:
   /context-dev/web/search:
     post:
       operationId: context_dev_POST__web_search
-      summary: Performs an intelligent web search. Costs 1 credit per returned result.
+      summary: Performs an intelligent web search. Costs 1 credit per returned result
       tags:
       - Context.dev
       responses:
@@ -388,7 +388,7 @@ paths:
   /context-dev/brand/prefetch:
     post:
       operationId: context_dev_POST__brand_prefetch
-      summary: Signal that you may fetch brand data for a particular domain soon to improve latency. This endpoint does not charge credits and is available for paid customers to optimize future requests. [You must be on a paid plan to use this endpoint]
+      summary: Signal that you may fetch brand data for a particular domain soon to improve…
       tags:
       - Context.dev
       responses:
@@ -419,7 +419,7 @@ paths:
   /context-dev/brand/retrieve-simplified:
     get:
       operationId: context_dev_GET__brand_retrieve_simplified
-      summary: 'Returns a simplified version of brand data containing only essential information: domain, title, colors, logos, and backdrops. This endpoint is optimized for faster responses and reduced data transfer.'
+      summary: Returns a simplified version of brand data containing only essential…
       tags:
       - Context.dev
       responses:
@@ -450,7 +450,7 @@ paths:
   /context-dev/brand/ai/product:
     post:
       operationId: context_dev_POST__brand_ai_product
-      summary: 'Beta feature: Given a single URL, determines if it is a product detail page, classifies the platform/product type, and extracts the product information. Supports Amazon, TikTok Shop, Etsy, and generic ecommerce sites.'
+      summary: 'Beta feature: Given a single URL, determines if it is a product detail page…'
       tags:
       - Context.dev
       responses:
@@ -481,7 +481,7 @@ paths:
   /context-dev/brand/transaction_identifier:
     get:
       operationId: context_dev_GET__brand_transaction_identifier
-      summary: Endpoint specially designed for platforms that want to identify transaction data by the transaction title.
+      summary: Endpoint specially designed for platforms that want to identify transaction…
       tags:
       - Context.dev
       responses:
@@ -512,7 +512,7 @@ paths:
   /context-dev/brand/retrieve:
     get:
       operationId: context_dev_GET__brand_retrieve
-      summary: Retrieve logos, backdrops, colors, industry, description, and more from any domain
+      summary: Retrieve logos, backdrops, colors, industry, description, and more from any…
       tags:
       - Context.dev
       responses:
@@ -543,7 +543,7 @@ paths:
   /context-dev/brand/retrieve-by-name:
     get:
       operationId: context_dev_GET__brand_retrieve_by_name
-      summary: Retrieve brand information using a company name. This endpoint searches for the company by name and returns its brand data.
+      summary: Retrieve brand information using a company name.
       tags:
       - Context.dev
       responses:
@@ -574,7 +574,7 @@ paths:
   /context-dev/brand/prefetch-by-email:
     post:
       operationId: context_dev_POST__brand_prefetch_by_email
-      summary: Signal that you may fetch brand data for a particular domain soon to improve latency. This endpoint accepts an email address, extracts the domain from it, validates that it's not a disposable or free email provider, and queues the domain for prefetching. This endpoint does not charge credits and is available for paid customers to optimize future requests. [You must be on a paid plan to use this endpoint]
+      summary: Signal that you may fetch brand data for a particular domain soon to improve…
       tags:
       - Context.dev
       responses:
@@ -605,7 +605,7 @@ paths:
   /context-dev/people/retrieve:
     post:
       operationId: context_dev_POST__people_retrieve
-      summary: Retrieve and normalize a person profile from identifiers such as LinkedIn URL.
+      summary: Retrieve and normalize a person profile from identifiers such as LinkedIn URL
       tags:
       - Context.dev
       responses:
@@ -636,7 +636,7 @@ paths:
   /context-dev/web/screenshot:
     get:
       operationId: context_dev_GET__web_screenshot
-      summary: Capture a screenshot of a website. Supports both viewport (standard browser view) and full page screenshots.
+      summary: Capture a screenshot of a website.
       tags:
       - Context.dev
       responses:
@@ -667,7 +667,7 @@ paths:
   /context-dev/web/extract:
     post:
       operationId: context_dev_POST__web_extract
-      summary: Crawl a website, use the provided JSON Schema and instructions to prioritize relevant internal links, and extract structured data from the selected pages.
+      summary: Crawl a website, use the provided JSON Schema and instructions to prioritize…
       tags:
       - Context.dev
       responses:
@@ -698,7 +698,7 @@ paths:
   /context-dev/web/competitors:
     get:
       operationId: context_dev_GET__web_competitors
-      summary: Analyze a company's landing page and web search evidence to return direct competitors for the same product or market.
+      summary: Analyze a company's landing page and web search evidence to return direct…
       tags:
       - Context.dev
       responses:
@@ -729,7 +729,7 @@ paths:
   /context-dev/brand/retrieve-by-ticker:
     get:
       operationId: context_dev_GET__brand_retrieve_by_ticker
-      summary: Retrieve brand information using a stock ticker symbol. This endpoint looks up the company associated with the ticker and returns its brand data.
+      summary: Retrieve brand information using a stock ticker symbol.
       tags:
       - Context.dev
       responses:
@@ -760,7 +760,7 @@ paths:
   /context-dev/web/crawl:
     post:
       operationId: context_dev_POST__web_crawl
-      summary: Performs a crawl starting from a given URL, extracts page content as Markdown, and returns results for all crawled pages. Only follows links within the same domain as the starting URL. Costs 1 credit per successful page crawled.
+      summary: Performs a crawl starting from a given URL, extracts page content as Markdown…
       tags:
       - Context.dev
       responses:
@@ -791,7 +791,7 @@ paths:
   /context-dev/web/sic:
     get:
       operationId: context_dev_GET__web_sic
-      summary: Classify any brand into Standard Industrial Classification (SIC) codes from its domain or name.
+      summary: Classify any brand into Standard Industrial Classification (SIC) codes from its…
       tags:
       - Context.dev
       responses:

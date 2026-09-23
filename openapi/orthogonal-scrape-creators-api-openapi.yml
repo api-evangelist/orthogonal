@@ -233,7 +233,7 @@ paths:
   /scrapecreators/v2/instagram/post/comments:
     get:
       operationId: scrapecreators_GET__v2_instagram_post_comments
-      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Comments Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -295,7 +295,7 @@ paths:
   /scrapecreators/v1/tiktok/search/users:
     get:
       operationId: scrapecreators_GET__v1_tiktok_search_users
-      summary: 'Search Users Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search Users Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -326,7 +326,7 @@ paths:
   /scrapecreators/v1/tiktok/hashtags/popular:
     get:
       operationId: scrapecreators_GET__v1_tiktok_hashtags_popular
-      summary: 'Get popular hashtags Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get popular hashtags Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -450,7 +450,7 @@ paths:
   /scrapecreators/v1/facebook/profile/reels:
     get:
       operationId: scrapecreators_GET__v1_facebook_profile_reels
-      summary: 'Profile Reels Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Profile Reels Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -574,7 +574,7 @@ paths:
   /scrapecreators/v1/facebook/profile/photos:
     get:
       operationId: scrapecreators_GET__v1_facebook_profile_photos
-      summary: 'Profile Photos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Profile Photos Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -667,7 +667,7 @@ paths:
   /scrapecreators/v1/pinterest/search:
     get:
       operationId: scrapecreators_GET__v1_pinterest_search
-      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -791,7 +791,7 @@ paths:
   /scrapecreators/v1/tiktok/shop/search:
     get:
       operationId: scrapecreators_GET__v1_tiktok_shop_search
-      summary: 'TikTok Shop Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'TikTok Shop Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -946,7 +946,7 @@ paths:
   /scrapecreators/v1/tiktok/search/top:
     get:
       operationId: scrapecreators_GET__v1_tiktok_search_top
-      summary: 'Top Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Top Search Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -1690,7 +1690,7 @@ paths:
   /scrapecreators/v1/tiktok/shop/products:
     get:
       operationId: scrapecreators_GET__v1_tiktok_shop_products
-      summary: 'Shop Products Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Shop Products Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -1969,7 +1969,7 @@ paths:
   /scrapecreators/v1/google/company/ads:
     get:
       operationId: scrapecreators_GET__v1_google_company_ads
-      summary: 'Company Ads Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Company Ads Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2000,7 +2000,7 @@ paths:
   /scrapecreators/v1/reddit/post/comments:
     get:
       operationId: scrapecreators_GET__v1_reddit_post_comments
-      summary: 'Post Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Post Comments Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2403,7 +2403,7 @@ paths:
   /scrapecreators/v1/tiktok/search/keyword:
     get:
       operationId: scrapecreators_GET__v1_tiktok_search_keyword
-      summary: 'Search by Keyword Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search by Keyword Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2465,7 +2465,7 @@ paths:
   /scrapecreators/v1/facebook/profile/posts:
     get:
       operationId: scrapecreators_GET__v1_facebook_profile_posts
-      summary: 'Profile Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Profile Posts Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2496,7 +2496,7 @@ paths:
   /scrapecreators/v1/tiktok/videos/popular:
     get:
       operationId: scrapecreators_GET__v1_tiktok_videos_popular
-      summary: 'Get popular videos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get popular videos Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2589,7 +2589,7 @@ paths:
   /scrapecreators/v3/tiktok/profile/videos:
     get:
       operationId: scrapecreators_GET__v3_tiktok_profile_videos
-      summary: 'Profile Videos Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Profile Videos Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2620,7 +2620,7 @@ paths:
   /scrapecreators/v1/tiktok/songs/popular:
     get:
       operationId: scrapecreators_GET__v1_tiktok_songs_popular
-      summary: 'Get popular songs Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get popular songs Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2651,7 +2651,7 @@ paths:
   /scrapecreators/v1/pinterest/board:
     get:
       operationId: scrapecreators_GET__v1_pinterest_board
-      summary: 'Board Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Board Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2775,7 +2775,7 @@ paths:
   /scrapecreators/v2/instagram/reels/search:
     get:
       operationId: scrapecreators_GET__v2_instagram_reels_search
-      summary: 'Search Reels Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search Reels Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2806,7 +2806,7 @@ paths:
   /scrapecreators/v1/reddit/subreddit:
     get:
       operationId: scrapecreators_GET__v1_reddit_subreddit
-      summary: 'Subreddit Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Subreddit Posts Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2837,7 +2837,7 @@ paths:
   /scrapecreators/v1/tiktok/creators/popular:
     get:
       operationId: scrapecreators_GET__v1_tiktok_creators_popular
-      summary: 'Get popular creators Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get popular creators Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2868,7 +2868,7 @@ paths:
   /scrapecreators/v1/facebook/group/posts:
     get:
       operationId: scrapecreators_GET__v1_facebook_group_posts
-      summary: 'Facebook Group Posts Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Facebook Group Posts Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2899,7 +2899,7 @@ paths:
   /scrapecreators/v1/tiktok/video/comments:
     get:
       operationId: scrapecreators_GET__v1_tiktok_video_comments
-      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Comments Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2930,7 +2930,7 @@ paths:
   /scrapecreators/v1/tiktok/shop/product/reviews:
     get:
       operationId: scrapecreators_GET__v1_tiktok_shop_product_reviews
-      summary: 'Product Reviews Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Product Reviews Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2961,7 +2961,7 @@ paths:
   /scrapecreators/v1/facebook/adLibrary/search/ads:
     get:
       operationId: scrapecreators_GET__v1_facebook_adLibrary_search_ads
-      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -2992,7 +2992,7 @@ paths:
   /scrapecreators/v1/tiktok/search/hashtag:
     get:
       operationId: scrapecreators_GET__v1_tiktok_search_hashtag
-      summary: 'Search by Hashtag Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search by Hashtag Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -3023,7 +3023,7 @@ paths:
   /scrapecreators/v1/tiktok/song/videos:
     get:
       operationId: scrapecreators_GET__v1_tiktok_song_videos
-      summary: 'TikToks using Song Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'TikToks using Song Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -3054,7 +3054,7 @@ paths:
   /scrapecreators/v1/reddit/search:
     get:
       operationId: scrapecreators_GET__v1_reddit_search
-      summary: 'Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -3085,7 +3085,7 @@ paths:
   /scrapecreators/v1/reddit/subreddit/search:
     get:
       operationId: scrapecreators_GET__v1_reddit_subreddit_search
-      summary: 'Subreddit Search Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Subreddit Search Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -3271,7 +3271,7 @@ paths:
   /scrapecreators/v1/facebook/adLibrary/company/ads:
     get:
       operationId: scrapecreators_GET__v1_facebook_adLibrary_company_ads
-      summary: 'Company Ads Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Company Ads Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:
@@ -3302,7 +3302,7 @@ paths:
   /scrapecreators/v1/facebook/post/comments:
     get:
       operationId: scrapecreators_GET__v1_facebook_post_comments
-      summary: 'Comments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Comments Pagination billing: call the first page normally and save…'
       tags:
       - Scrape Creators
       responses:

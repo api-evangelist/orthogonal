@@ -16,7 +16,7 @@ paths:
   /apollo/api/v1/organizations/bulk_enrich:
     post:
       operationId: apollo_POST__api_v1_organizations_bulk_enrich
-      summary: Enrich up to 10 organizations in a single request.
+      summary: Enrich up to 10 organizations in a single request
       tags:
       - Apollo API
       responses:
@@ -47,7 +47,7 @@ paths:
   /apollo/api/v1/news_articles/search:
     post:
       operationId: apollo_POST__api_v1_news_articles_search
-      summary: Search for news articles related to companies in the Apollo database.
+      summary: Search for news articles related to companies in the Apollo database
       tags:
       - Apollo API
       responses:
@@ -78,7 +78,7 @@ paths:
   /apollo/api/v1/people/match:
     post:
       operationId: apollo_POST__api_v1_people_match
-      summary: Enrich a person by email, LinkedIn URL, name+company, or other identifiers. Returns contact details, job info, and social profiles.
+      summary: Enrich a person by email, LinkedIn URL, name+company, or other identifiers.
       tags:
       - Apollo API
       responses:
@@ -109,7 +109,7 @@ paths:
   /apollo/api/v1/organizations/{id}:
     get:
       operationId: apollo_GET__api_v1_organizations_id_
-      summary: Get complete organization info by Apollo organization ID.
+      summary: Get complete organization info by Apollo organization ID
       tags:
       - Apollo API
       responses:
@@ -140,7 +140,7 @@ paths:
   /apollo/api/v1/people/bulk_match:
     post:
       operationId: apollo_POST__api_v1_people_bulk_match
-      summary: Enrich up to 10 people in a single request. Webhook required for async results.
+      summary: Enrich up to 10 people in a single request. Webhook required for async results
       tags:
       - Apollo API
       responses:
@@ -171,7 +171,7 @@ paths:
   /apollo/api/v1/mixed_companies/search:
     post:
       operationId: apollo_POST__api_v1_mixed_companies_search
-      summary: Search Apollo database for companies matching filters. Returns up to 100 results per page.
+      summary: Search Apollo database for companies matching filters.
       tags:
       - Apollo API
       responses:
@@ -202,7 +202,7 @@ paths:
   /apollo/api/v1/organizations/enrich:
     get:
       operationId: apollo_GET__api_v1_organizations_enrich
-      summary: Enrich a company by domain. Returns industry, revenue, employee count, funding, locations, and more.
+      summary: Enrich a company by domain.
       tags:
       - Apollo API
       responses:
@@ -233,7 +233,7 @@ paths:
   /apollo/api/v1/organizations/{organization_id}/job_postings:
     get:
       operationId: apollo_GET__api_v1_organizations_organization_id_job_postings
-      summary: Get current job postings for a company by Apollo organization ID.
+      summary: Get current job postings for a company by Apollo organization ID
       tags:
       - Apollo API
       responses:
@@ -264,7 +264,7 @@ paths:
   /apollo/api/v1/mixed_people/api_search:
     post:
       operationId: apollo_POST__api_v1_mixed_people_api_search
-      summary: Search Apollo database for people matching filters. Returns up to 100 results per page. Does not include emails/phones - use enrichment endpoints for that.
+      summary: Search Apollo database for people matching filters.
       tags:
       - Apollo API
       responses:

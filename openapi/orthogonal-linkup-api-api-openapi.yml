@@ -16,7 +16,7 @@ paths:
   /linkup/search:
     post:
       operationId: linkup_POST__search
-      summary: The /search endpoint allows you to retrieve web content.
+      summary: The /search endpoint allows you to retrieve web content
       tags:
       - Linkup API
       responses:
@@ -47,7 +47,7 @@ paths:
   /linkup/fetch:
     post:
       operationId: linkup_POST__fetch
-      summary: The /fetch endpoint allows you to fetch a single webpage from a given URL.
+      summary: The /fetch endpoint allows you to fetch a single webpage from a given URL
       tags:
       - Linkup API
       responses:

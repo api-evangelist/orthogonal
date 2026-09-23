@@ -16,7 +16,7 @@ paths:
   /olostep/v1/scrapes/{scrape_id}:
     get:
       operationId: olostep_GET__v1_scrapes_scrape_id_
-      summary: Can be used to retrieve response for a scrape.
+      summary: Can be used to retrieve response for a scrape
       tags:
       - Olostep API
       responses:
@@ -25,7 +25,7 @@ paths:
   /olostep/v1/retrieve:
     get:
       operationId: olostep_GET__v1_retrieve
-      summary: Retrieve page content of processed batches and crawls urls.
+      summary: Retrieve page content of processed batches and crawls urls
       tags:
       - Olostep API
       responses:
@@ -34,7 +34,7 @@ paths:
   /olostep/v1/batches/{batch_id}:
     get:
       operationId: olostep_GET__v1_batches_batch_id_
-      summary: Retrieves the status and progress information about a batch. To retrieve the content for a batch, see here
+      summary: Retrieves the status and progress information about a batch.
       tags:
       - Olostep API
       responses:
@@ -43,7 +43,7 @@ paths:
   /olostep/v1/answers:
     post:
       operationId: olostep_POST__v1_answers
-      summary: The AI will perform actions like searching and browsing web pages to find the answer to the provided task. Execution time is 3-30s depending upon complexity. For longer tasks, use the agent endpoint instead.
+      summary: The AI will perform actions like searching and browsing web pages to find the…
       tags:
       - Olostep API
       responses:
@@ -74,7 +74,7 @@ paths:
   /olostep/v1/crawls/{crawl_id}/pages:
     get:
       operationId: olostep_GET__v1_crawls_crawl_id_pages
-      summary: Fetches the list of pages for a specific crawl.
+      summary: Fetches the list of pages for a specific crawl
       tags:
       - Olostep API
       responses:
@@ -83,7 +83,7 @@ paths:
   /olostep/v1/maps:
     post:
       operationId: olostep_POST__v1_maps
-      summary: This endpoint allows users to get all the urls on a certain website. It can take up to 120 seconds for complex websites. For large websites, results are paginated using cursor-based pagination
+      summary: This endpoint allows users to get all the urls on a certain website.
       tags:
       - Olostep API
       responses:
@@ -114,7 +114,7 @@ paths:
   /olostep/v1/batches/{batch_id}/items:
     get:
       operationId: olostep_GET__v1_batches_batch_id_items
-      summary: Retrieves the list of items processed for a batch. You can then use the `retrieve_id` to get the content with the Retrieve Endpoint
+      summary: Retrieves the list of items processed for a batch.
       tags:
       - Olostep API
       responses:
@@ -123,7 +123,7 @@ paths:
   /olostep/v1/answers/{answer_id}:
     get:
       operationId: olostep_GET__v1_answers_answer_id_
-      summary: This endpoint retrieves a previously completed answer by its ID.
+      summary: This endpoint retrieves a previously completed answer by its ID
       tags:
       - Olostep API
       responses:
@@ -132,7 +132,7 @@ paths:
   /olostep/v1/crawls/{crawl_id}:
     get:
       operationId: olostep_GET__v1_crawls_crawl_id_
-      summary: Fetches information about a specific crawl.
+      summary: Fetches information about a specific crawl
       tags:
       - Olostep API
       responses:
@@ -141,7 +141,7 @@ paths:
   /olostep/v1/crawls:
     post:
       operationId: olostep_POST__v1_crawls
-      summary: Starts a new crawl. You receive a `id` to track the progress. The operation may take 1-10 mins depending upon the site and depth and pages parameters.
+      summary: Starts a new crawl.
       tags:
       - Olostep API
       responses:
@@ -203,7 +203,7 @@ paths:
   /olostep/v1/batches:
     post:
       operationId: olostep_POST__v1_batches
-      summary: 'Starts a new batch. You receive an `id` that you can use to track the progress of the batch as shown [here](/api-reference/batches/info). Note: Processing time is constant regardless of batch size'
+      summary: Starts a new batch.
       tags:
       - Olostep API
       responses:

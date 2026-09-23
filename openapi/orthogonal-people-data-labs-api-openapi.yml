@@ -16,7 +16,7 @@ paths:
   /peopledatalabs/v5/person/identify:
     get:
       operationId: peopledatalabs_GET__v5_person_identify
-      summary: Broad person lookup returning up to 20 candidate matches with confidence scores. Useful when you have partial info and want multiple possible matches.
+      summary: Broad person lookup returning up to 20 candidate matches with confidence scores.
       tags:
       - People Data Labs
       responses:
@@ -47,7 +47,7 @@ paths:
   /peopledatalabs/v5/ip/enrich:
     get:
       operationId: peopledatalabs_GET__v5_ip_enrich
-      summary: Enrich an IP address with associated company, location, and metadata.
+      summary: Enrich an IP address with associated company, location, and metadata
       tags:
       - People Data Labs
       responses:
@@ -78,7 +78,7 @@ paths:
   /peopledatalabs/v5/person/enrich:
     get:
       operationId: peopledatalabs_GET__v5_person_enrich
-      summary: Enrich a person by name, email, phone, LinkedIn URL, or other identifiers. Returns full profile with work history, education, skills, and social profiles.
+      summary: Enrich a person by name, email, phone, LinkedIn URL, or other identifiers.
       tags:
       - People Data Labs
       responses:
@@ -109,7 +109,7 @@ paths:
   /peopledatalabs/v5/company/enrich:
     get:
       operationId: peopledatalabs_GET__v5_company_enrich
-      summary: Enrich a company by name, website, ticker, or LinkedIn URL. Returns full company profile with industry, size, location, funding, and more.
+      summary: Enrich a company by name, website, ticker, or LinkedIn URL.
       tags:
       - People Data Labs
       responses:
@@ -140,7 +140,7 @@ paths:
   /peopledatalabs/v5/person/search:
     post:
       operationId: peopledatalabs_POST__v5_person_search
-      summary: Search and filter people using Elasticsearch or SQL queries. Find people by job title, company, location, skills, education, and more.
+      summary: Search and filter people using Elasticsearch or SQL queries.
       tags:
       - People Data Labs
       responses:
@@ -171,7 +171,7 @@ paths:
   /peopledatalabs/v5/company/search:
     post:
       operationId: peopledatalabs_POST__v5_company_search
-      summary: Search and filter companies using Elasticsearch or SQL queries. Find companies by industry, size, location, funding, and more.
+      summary: Search and filter companies using Elasticsearch or SQL queries.
       tags:
       - People Data Labs
       responses:

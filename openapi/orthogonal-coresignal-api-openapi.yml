@@ -16,7 +16,7 @@ paths:
   /coresignal/v2/job_base/search/filter/preview:
     post:
       operationId: coresignal_POST__v2_job_base_search_filter_preview
-      summary: 'Preview job search results with summary data. Pass filters in the request body. Returns matching jobs with key fields: id, title, location, company_name, posting date, and relevance score. Use the ''id'' field with the ''Base Jobs Collect'' endpoint to get full job details.'
+      summary: Preview job search results with summary data.
       tags:
       - Coresignal
       responses:
@@ -47,7 +47,7 @@ paths:
   /coresignal/v2/company_base/collect/{profile_url}:
     get:
       operationId: coresignal_GET__v2_company_base_collect_profile_url_
-      summary: Get a full company profile by its professional network URL. Pass the URL-encoded company page URL in the path. Returns the same data as collecting by ID.
+      summary: Get a full company profile by its professional network URL.
       tags:
       - Coresignal
       responses:
@@ -78,7 +78,7 @@ paths:
   /coresignal/v2/company_multi_source/collect/{company_id}:
     get:
       operationId: coresignal_GET__v2_company_multi_source_collect_company_id_
-      summary: Get the most comprehensive company profile by its Coresignal numeric ID. Multi-source data is aggregated from professional networks, business databases, and other sources. Use IDs returned by the search endpoints or look up by website using the 'Multi-source Company Enrich' endpoint. Returns company name, website, industry, size, funding, social URLs, and more.
+      summary: Get the most comprehensive company profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -109,7 +109,7 @@ paths:
   /coresignal/v2/company_multi_source/collect/{profile_url}:
     get:
       operationId: coresignal_GET__v2_company_multi_source_collect_profile_url_
-      summary: Get a comprehensive multi-source company profile by its professional network URL. Pass the URL-encoded company page URL in the path. Returns the same data as collecting by ID.
+      summary: Get a comprehensive multi-source company profile by its professional network…
       tags:
       - Coresignal
       responses:
@@ -140,7 +140,7 @@ paths:
   /coresignal/v2/employee_multi_source/collect/{employee_id}:
     get:
       operationId: coresignal_GET__v2_employee_multi_source_collect_employee_id_
-      summary: Get the most comprehensive employee profile by its Coresignal numeric ID. Multi-source data is aggregated from multiple platforms. Use IDs returned by the search endpoints. Returns name, headline, location, full work experience history, education, skills, social URLs, and more.
+      summary: Get the most comprehensive employee profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -171,7 +171,7 @@ paths:
   /coresignal/v2/employee_post/collect/{post_id}:
     get:
       operationId: coresignal_GET__v2_employee_post_collect_post_id_
-      summary: Get a full professional network post by its numeric post ID. Use IDs returned by the 'Employee Posts Search (Filter)' endpoint (not a post URL or requestId). Returns the post author name, author profile URL, full post content, publish date, and engagement data.
+      summary: Get a full professional network post by its numeric post ID.
       tags:
       - Coresignal
       responses:
@@ -202,7 +202,7 @@ paths:
   /coresignal/v2/employee_multi_source/collect/{profile_url}:
     get:
       operationId: coresignal_GET__v2_employee_multi_source_collect_profile_url_
-      summary: Get a comprehensive multi-source employee profile by their professional network URL. Pass the URL-encoded profile URL in the path. This is the easiest way to get the richest data on a person.
+      summary: Get a comprehensive multi-source employee profile by their professional network…
       tags:
       - Coresignal
       responses:
@@ -233,7 +233,7 @@ paths:
   /coresignal/v2/employee_base/collect/{profile_url}:
     get:
       operationId: coresignal_GET__v2_employee_base_collect_profile_url_
-      summary: Get a full employee profile by their professional network URL. Pass the URL-encoded profile URL in the path. Returns the same data as collecting by ID. This is the easiest way to look up a person if you have their profile URL.
+      summary: Get a full employee profile by their professional network URL.
       tags:
       - Coresignal
       responses:
@@ -264,7 +264,7 @@ paths:
   /coresignal/v2/company_base/collect/{company_id}:
     get:
       operationId: coresignal_GET__v2_company_base_collect_company_id_
-      summary: Get a full company profile by its Coresignal numeric ID. Use IDs returned by the 'Base Company Search (Filter)' or 'Base Company Search (Filter) Preview' endpoints. Returns company data including name, website, industry, size, description, specialties, headquarters location, and follower count.
+      summary: Get a full company profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -295,7 +295,7 @@ paths:
   /coresignal/v2/company_multi_source/enrich:
     get:
       operationId: coresignal_GET__v2_company_multi_source_enrich
-      summary: Look up a company by its website domain and get the most comprehensive company profile. This is the easiest way to get rich company data if you know the company's website. Multi-source data is aggregated from professional networks, business databases, and other sources.
+      summary: Look up a company by its website domain and get the most comprehensive company…
       tags:
       - Coresignal
       responses:
@@ -326,7 +326,7 @@ paths:
   /coresignal/v2/employee_base/collect/{employee_id}:
     get:
       operationId: coresignal_GET__v2_employee_base_collect_employee_id_
-      summary: Get a full employee/professional profile by its Coresignal numeric ID. Use IDs returned by the 'Base Employee Search (Filter)' or Preview endpoints. Returns professional data including name, headline, location, work experience history, education, skills, and connections count.
+      summary: Get a full employee/professional profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -357,7 +357,7 @@ paths:
   /coresignal/v2/employee_post/search/filter:
     post:
       operationId: coresignal_POST__v2_employee_post_search_filter
-      summary: Search for professional network posts using filters like author profile URL or keywords. Pass filters in the request body (not a post URL). Returns an array of numeric post IDs (e.g., ["7431869637207928834", ...]). Use these IDs with the 'Employee Posts Collect' endpoint to get full post content.
+      summary: Search for professional network posts using filters like author profile URL or…
       tags:
       - Coresignal
       responses:
@@ -388,7 +388,7 @@ paths:
   /coresignal/v2/job_base/search/filter:
     post:
       operationId: coresignal_POST__v2_job_base_search_filter
-      summary: Search for job listings using filters passed in the request body. Returns an array of numeric Coresignal job IDs (e.g., [406480270, 405917646, ...]). Use these IDs with the 'Base Jobs Collect' endpoint to get full job details. All filters are optional; combine to narrow results.
+      summary: Search for job listings using filters passed in the request body.
       tags:
       - Coresignal
       responses:
@@ -419,7 +419,7 @@ paths:
   /coresignal/v2/employee_clean/collect/{employee_id}:
     get:
       operationId: coresignal_GET__v2_employee_clean_collect_employee_id_
-      summary: Get a cleaned, deduplicated employee profile by its Coresignal numeric ID. Use IDs returned by the search endpoints. Returns normalized professional data including name, headline, location, work experience, education, and skills.
+      summary: Get a cleaned, deduplicated employee profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -450,7 +450,7 @@ paths:
   /coresignal/v2/company_clean/enrich:
     get:
       operationId: coresignal_GET__v2_company_clean_enrich
-      summary: Look up a company by its website domain and get a full cleaned company profile. This is the easiest way to get company data if you know the company's website. Returns deduplicated, normalized data including name, industry, size, location, social URLs, and technology stack.
+      summary: Look up a company by its website domain and get a full cleaned company profile.
       tags:
       - Coresignal
       responses:
@@ -481,7 +481,7 @@ paths:
   /coresignal/v2/employee_base/search/filter/preview:
     post:
       operationId: coresignal_POST__v2_employee_base_search_filter_preview
-      summary: 'Preview employee search results with summary data. Pass filters in the request body. Returns matching professionals with key fields: id, full_name, headline, location, company, title, and relevance score. Use the ''id'' field with the ''Base Employee Collect by ID'' endpoint to get full profiles.'
+      summary: Preview employee search results with summary data.
       tags:
       - Coresignal
       responses:
@@ -512,7 +512,7 @@ paths:
   /coresignal/v2/company_clean/collect/{company_id}:
     get:
       operationId: coresignal_GET__v2_company_clean_collect_company_id_
-      summary: Get a cleaned, deduplicated company profile by its Coresignal numeric ID. Use IDs returned by the search endpoints or look up by website using the 'Clean Company Enrich' endpoint. Returns normalized company data including name, website, industry, size, location, social URLs, and technology stack.
+      summary: Get a cleaned, deduplicated company profile by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -543,7 +543,7 @@ paths:
   /coresignal/v2/company_base/search/filter:
     post:
       operationId: coresignal_POST__v2_company_base_search_filter
-      summary: Search for companies using filters passed in the request body. Returns an array of numeric Coresignal company IDs (e.g., [4744382, 1635599, ...]). Use these IDs with the 'Base Company Collect' endpoint to get full company profiles. All filters are optional; combine any number of them to narrow results.
+      summary: Search for companies using filters passed in the request body.
       tags:
       - Coresignal
       responses:
@@ -574,7 +574,7 @@ paths:
   /coresignal/v2/employee_base/search/filter:
     post:
       operationId: coresignal_POST__v2_employee_base_search_filter
-      summary: Search for professionals/employees using filters passed in the request body. Returns an array of numeric Coresignal employee IDs (e.g., [374311229, 958490751, ...]). Use these IDs with the 'Base Employee Collect by ID' endpoint to get full profiles. All filters are optional; combine any number of them to narrow results.
+      summary: Search for professionals/employees using filters passed in the request body.
       tags:
       - Coresignal
       responses:
@@ -605,7 +605,7 @@ paths:
   /coresignal/v2/job_base/collect/{job_id}:
     get:
       operationId: coresignal_GET__v2_job_base_collect_job_id_
-      summary: Get a full job listing by its Coresignal numeric ID. Use IDs returned by the 'Base Jobs Search (Filter)' or Preview endpoints. Returns job title, full description, company name, location, employment type, posting date, and application URL.
+      summary: Get a full job listing by its Coresignal numeric ID.
       tags:
       - Coresignal
       responses:
@@ -636,7 +636,7 @@ paths:
   /coresignal/v2/company_base/search/filter/preview:
     post:
       operationId: coresignal_POST__v2_company_base_search_filter_preview
-      summary: 'Preview company search results with summary data. Pass filters in the request body. Returns matching companies with key fields: id, name, website, industry, size, country, and relevance score. Use the ''id'' field with the ''Base Company Collect'' endpoint to get full profiles.'
+      summary: Preview company search results with summary data.
       tags:
       - Coresignal
       responses:

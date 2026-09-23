@@ -16,7 +16,7 @@ paths:
   /tako/v1/beta/visualize:
     post:
       operationId: tako_POST__v1_beta_visualize
-      summary: 'Turn your own data into interactive Tako Knowledge Card visualizations. Provide data as CSV strings and a natural language query describing what to visualize. Tako auto-selects the best chart type or you can specify one. Returns a knowledge card with chart image, interactive webpage, and embed URLs. Example: {"csv": ["quarter,revenue\nQ1,100\nQ2,200\nQ3,300"], "query": "Show revenue growth as a bar chart"}'
+      summary: Turn your own data into interactive Tako Knowledge Card visualizations.
       tags:
       - Tako
       responses:
@@ -47,7 +47,7 @@ paths:
   /tako/v1/knowledge_search:
     post:
       operationId: tako_POST__v1_knowledge_search
-      summary: 'Search for data visualizations using natural language. Ask any question about finance, economics, demographics, sports, politics, climate, or health and get back interactive knowledge cards with charts, data, and source attribution. Example: {"inputs": {"text": "NVIDIA vs AMD revenue since 2018"}}. Returns cards with title, chart image URL, interactive webpage URL, embeddable URL, data description, and source information.'
+      summary: Search for data visualizations using natural language.
       tags:
       - Tako
       responses:
@@ -78,7 +78,7 @@ paths:
   /tako/v1/thin_viz/create/:
     post:
       operationId: tako_POST__v1_thin_viz_create_
-      summary: 'Create a custom embeddable knowledge card from your own data by specifying chart components directly. Returns card_id, image_url, webpage_url, and embed_url. Use List Default Schemas first to see available chart types and their required fields. Example body for a bar chart: {"components": [{"component_type": "header", "config": {"title": "Sales by Region"}}, {"component_type": "categorical_bar", "config": {"datasets": [{"label": "Revenue", "data": [{"x": "US", "y": 500}, {"x": "EU", "y": 300}]}]}}], "title": "Sales by Region", "source": "Internal Data"}'
+      summary: Create a custom embeddable knowledge card from your own data by specifying…
       tags:
       - Tako
       responses:
@@ -109,7 +109,7 @@ paths:
   /tako/v1/tako_tools_description:
     get:
       operationId: tako_GET__v1_tako_tools_description
-      summary: Get descriptions of Tako search tool capabilities and available data topics. Returns what types of data Tako can search across (finance, economics, demographics, sports, politics, climate, health) with example metrics for each category. Useful for understanding what queries Tako can answer before searching.
+      summary: Get descriptions of Tako search tool capabilities and available data topics.
       tags:
       - Tako
       responses:
@@ -140,7 +140,7 @@ paths:
   /tako/v1/beta/chart_insights:
     get:
       operationId: tako_GET__v1_beta_chart_insights
-      summary: Analyze a Tako Knowledge Card and get AI-generated insights. Returns plain-text observations about trends, growth rates, comparisons, and anomalies in the data. Use this after Knowledge Search to extract key takeaways from a chart. Requires a card_id from a previous Knowledge Search or Create Card response.
+      summary: Analyze a Tako Knowledge Card and get AI-generated insights.
       tags:
       - Tako
       responses:
@@ -171,7 +171,7 @@ paths:
   /tako/v1/thin_viz/default_schema/:
     get:
       operationId: tako_GET__v1_thin_viz_default_schema_
-      summary: List all available chart/visualization templates that can be used with the Create Card endpoint. Returns schema names (e.g. stock_card, bar_chart, pie_chart, choropleth, treemap, heatmap, table, etc.) with descriptions and their component types. Call this first to understand what chart types are available before creating a card.
+      summary: List all available chart/visualization templates that can be used with the…
       tags:
       - Tako
       responses:

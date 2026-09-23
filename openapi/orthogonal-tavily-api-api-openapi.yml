@@ -16,7 +16,7 @@ paths:
   /tavily/research/{request_id}:
     get:
       operationId: tavily_GET__research_request_id_
-      summary: Retrieve the status and results of a research task using its request ID.
+      summary: Retrieve the status and results of a research task using its request ID
       tags:
       - Tavily API
       responses:
@@ -25,7 +25,7 @@ paths:
   /tavily/research:
     post:
       operationId: tavily_POST__research
-      summary: Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.
+      summary: Tavily Research performs comprehensive research on a given topic by conducting…
       tags:
       - Tavily API
       responses:
@@ -56,7 +56,7 @@ paths:
   /tavily/crawl:
     post:
       operationId: tavily_POST__crawl
-      summary: Tavily Crawl is a graph-based website traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.
+      summary: Tavily Crawl is a graph-based website traversal tool that can explore hundreds…
       tags:
       - Tavily API
       responses:
@@ -87,7 +87,7 @@ paths:
   /tavily/search:
     post:
       operationId: tavily_POST__search
-      summary: Execute a search query using Tavily Search.
+      summary: Execute a search query using Tavily Search
       tags:
       - Tavily API
       responses:
@@ -118,7 +118,7 @@ paths:
   /tavily/map:
     post:
       operationId: tavily_POST__map
-      summary: Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.
+      summary: Tavily Map traverses websites like a graph and can explore hundreds of paths in…
       tags:
       - Tavily API
       responses:
@@ -149,7 +149,7 @@ paths:
   /tavily/extract:
     post:
       operationId: tavily_POST__extract
-      summary: Extract web page content from one or more specified URLs using Tavily Extract.
+      summary: Extract web page content from one or more specified URLs using Tavily Extract
       tags:
       - Tavily API
       responses:

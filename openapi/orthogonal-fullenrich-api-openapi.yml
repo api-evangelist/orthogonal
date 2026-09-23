@@ -16,7 +16,7 @@ paths:
   /fullenrich/contact/enrich/bulk:
     post:
       operationId: fullenrich_POST__contact_enrich_bulk
-      summary: 'Start enrichment for up to 100 B2B contacts. Provide first_name + last_name + company or linkedin_url. Returns enrichment_id to poll for results. Async: results delivered via webhook or GET endpoint.'
+      summary: Start enrichment for up to 100 B2B contacts.
       tags:
       - FullEnrich
       responses:
@@ -47,7 +47,7 @@ paths:
   /fullenrich/company/lookup:
     post:
       operationId: fullenrich_POST__company_lookup
-      summary: Look up a single company using its identifiers (domain, or professional network URL/ID). Returns the best matching company. Provide at least one identifier. Costs 0.25 credits per result.
+      summary: Look up a single company using its identifiers (domain, or professional network…
       tags:
       - FullEnrich
       responses:
@@ -78,7 +78,7 @@ paths:
   /fullenrich/people/search:
     post:
       operationId: fullenrich_POST__people_search
-      summary: Search for people based on various filters including job title, company, location, industry, and more. Multiple filters within the same field use AND logic. Returns professional details and company lite info. Costs 0.25 credits per result.
+      summary: Search for people based on various filters including job title, company…
       tags:
       - FullEnrich
       responses:
@@ -109,7 +109,7 @@ paths:
   /fullenrich/people/lookup:
     post:
       operationId: fullenrich_POST__people_lookup
-      summary: Look up a single person using their identifiers (professional network URL/ID, or full name combined with a company identifier). Returns the best matching person. Costs 0.25 credits per result.
+      summary: Look up a single person using their identifiers (professional network URL/ID…
       tags:
       - FullEnrich
       responses:
@@ -140,7 +140,7 @@ paths:
   /fullenrich/contact/reverse/email/bulk:
     post:
       operationId: fullenrich_POST__contact_reverse_email_bulk
-      summary: 'Identify the person and company behind one or more email addresses. Returns full person profile (name, job title, work history) and company details (industry, headcount). Async: results via webhook or GET endpoint.'
+      summary: Identify the person and company behind one or more email addresses.
       tags:
       - FullEnrich
       responses:
@@ -171,7 +171,7 @@ paths:
   /fullenrich/company/search:
     post:
       operationId: fullenrich_POST__company_search
-      summary: Search for companies based on various filters including industry, headcount, location, and more. Multiple filters within the same field use AND logic. Returns full company details. Costs 0.25 credits per result.
+      summary: Search for companies based on various filters including industry, headcount…
       tags:
       - FullEnrich
       responses:
@@ -202,7 +202,7 @@ paths:
   /fullenrich/contact/enrich/bulk/{enrichment_id}:
     get:
       operationId: fullenrich_GET__contact_enrich_bulk_enrichment_id_
-      summary: Retrieve results of a bulk enrichment by enrichment_id. Use this to poll for results if not using webhooks. Returns contact data with emails, phones, and professional details.
+      summary: Retrieve results of a bulk enrichment by enrichment_id.
       tags:
       - FullEnrich
       responses:
@@ -233,7 +233,7 @@ paths:
   /fullenrich/contact/reverse/email/bulk/{enrichment_id}:
     get:
       operationId: fullenrich_GET__contact_reverse_email_bulk_enrichment_id_
-      summary: Retrieve results of a reverse email lookup by enrichment_id. Returns person and company profiles for the submitted emails.
+      summary: Retrieve results of a reverse email lookup by enrichment_id.
       tags:
       - FullEnrich
       responses:

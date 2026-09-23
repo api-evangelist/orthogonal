@@ -16,7 +16,7 @@ paths:
   /voygr/v1/business-status:
     post:
       operationId: voygr_POST__v1_business_status
-      summary: Check whether a business exists at the given address and whether it is open or closed. Returns existence_status (exists, not_exists, uncertain) and open_closed_status (open, closed, uncertain).
+      summary: Check whether a business exists at the given address and whether it is open or…
       tags:
       - Voygr
       responses:

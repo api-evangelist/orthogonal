@@ -16,7 +16,7 @@ paths:
   /edges/actions/salesnavigator-search-company-metrics/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_search_company_metrics_run_live
-      summary: Get total result count metrics for a Sales Navigator company search URL.
+      summary: Get total result count metrics for a Sales Navigator company search URL
       tags:
       - Edges
       responses:
@@ -47,7 +47,7 @@ paths:
   /edges/actions/linkedin-find-company-url/run/live:
     post:
       operationId: edges_POST__actions_linkedin_find_company_url_run_live
-      summary: Use AI to find a LinkedIn company page URL from a company name or domain.
+      summary: Use AI to find a LinkedIn company page URL from a company name or domain
       tags:
       - Edges
       responses:
@@ -78,7 +78,7 @@ paths:
   /edges/actions/linkedin-extract-post-likers/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_post_likers_run_live
-      summary: Extract users who liked a specific LinkedIn post. Returns profile information of people who have reacted to the post.
+      summary: Extract users who liked a specific LinkedIn post.
       tags:
       - Edges
       responses:
@@ -109,7 +109,7 @@ paths:
   /edges/actions/linkedin-extract-job/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_job_run_live
-      summary: Extract detailed information from a LinkedIn job posting including title, company, description, requirements, and application details.
+      summary: Extract detailed information from a LinkedIn job posting including title…
       tags:
       - Edges
       responses:
@@ -140,7 +140,7 @@ paths:
   /edges/actions/linkedin-extract-people-skills/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_skills_run_live
-      summary: Extract the skills listed on a LinkedIn profile including skill names and endorsement counts.
+      summary: Extract the skills listed on a LinkedIn profile including skill names and…
       tags:
       - Edges
       responses:
@@ -171,7 +171,7 @@ paths:
   /edges/actions/linkedin-extract-people-educations/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_educations_run_live
-      summary: Extract education history from LinkedIn profiles including schools, degrees, fields of study, and dates.
+      summary: Extract education history from LinkedIn profiles including schools, degrees…
       tags:
       - Edges
       responses:
@@ -202,7 +202,7 @@ paths:
   /edges/actions/linkedin-find-profile-url/run/live:
     post:
       operationId: edges_POST__actions_linkedin_find_profile_url_run_live
-      summary: Use AI to find a LinkedIn profile URL from a person's name and optional contextual information.
+      summary: Use AI to find a LinkedIn profile URL from a person's name and optional…
       tags:
       - Edges
       responses:
@@ -233,7 +233,7 @@ paths:
   /edges/actions/salesnavigator-extract-leads-list/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_extract_leads_list_run_live
-      summary: Extract leads from a saved leads list in Sales Navigator.
+      summary: Extract leads from a saved leads list in Sales Navigator
       tags:
       - Edges
       responses:
@@ -264,7 +264,7 @@ paths:
   /edges/actions/linkedin-extract-people-post-activity/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_post_activity_run_live
-      summary: Extract the post activity history of a LinkedIn profile, showing content they have published.
+      summary: Extract the post activity history of a LinkedIn profile, showing content they…
       tags:
       - Edges
       responses:
@@ -295,7 +295,7 @@ paths:
   /edges/actions/linkedin-peopleid-from-salesnavigatorid/run/live:
     post:
       operationId: edges_POST__actions_linkedin_peopleid_from_salesnavigatorid_run_live
-      summary: Convert a Sales Navigator lead ID to a LinkedIn people ID for profile enrichment.
+      summary: Convert a Sales Navigator lead ID to a LinkedIn people ID for profile enrichment
       tags:
       - Edges
       responses:
@@ -326,7 +326,7 @@ paths:
   /edges/actions/linkedin-search-companies/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_companies_run_live
-      summary: Search for companies on LinkedIn using filters like industry, size, location, and keywords.
+      summary: Search for companies on LinkedIn using filters like industry, size, location…
       tags:
       - Edges
       responses:
@@ -357,7 +357,7 @@ paths:
   /edges/actions/salesnavigator-extract-employees-distribution/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_extract_employees_distribution_run_live
-      summary: Extract employee distribution data (by department, seniority, location) from a Sales Navigator company page.
+      summary: Extract employee distribution data (by department, seniority, location) from a…
       tags:
       - Edges
       responses:
@@ -388,7 +388,7 @@ paths:
   /edges/actions/linkedin-search-jobs/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_jobs_run_live
-      summary: Search for job postings on LinkedIn using keywords, location, company, and other filters.
+      summary: Search for job postings on LinkedIn using keywords, location, company, and…
       tags:
       - Edges
       responses:
@@ -419,7 +419,7 @@ paths:
   /edges/actions/salesnavigator-search-companies/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_search_companies_run_live
-      summary: Search for accounts (companies) on Sales Navigator using advanced filters.
+      summary: Search for accounts (companies) on Sales Navigator using advanced filters
       tags:
       - Edges
       responses:
@@ -450,7 +450,7 @@ paths:
   /edges/actions/linkedin-extract-licenses-certifications/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_licenses_certifications_run_live
-      summary: Extract licenses and certifications from a LinkedIn profile including credential name, issuing organization, and dates.
+      summary: Extract licenses and certifications from a LinkedIn profile including…
       tags:
       - Edges
       responses:
@@ -481,7 +481,7 @@ paths:
   /edges/actions/linkedin-search-people/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_people_run_live
-      summary: Search for people on LinkedIn using filters like title, company, location, and keywords.
+      summary: Search for people on LinkedIn using filters like title, company, location, and…
       tags:
       - Edges
       responses:
@@ -512,7 +512,7 @@ paths:
   /edges/actions/linkedin-extract-people-comment-activity/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_comment_activity_run_live
-      summary: Extract the comment activity history of a LinkedIn profile, showing posts they have commented on.
+      summary: Extract the comment activity history of a LinkedIn profile, showing posts they…
       tags:
       - Edges
       responses:
@@ -543,7 +543,7 @@ paths:
   /edges/actions/linkedin-extract-similar-companies/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_similar_companies_run_live
-      summary: Extract a list of companies similar to a given LinkedIn company page, based on LinkedIn's recommendations.
+      summary: Extract a list of companies similar to a given LinkedIn company page, based on…
       tags:
       - Edges
       responses:
@@ -574,7 +574,7 @@ paths:
   /edges/actions/linkedin-extract-post-reposters/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_post_reposters_run_live
-      summary: Extract users who reposted a specific LinkedIn post with their profile information.
+      summary: Extract users who reposted a specific LinkedIn post with their profile…
       tags:
       - Edges
       responses:
@@ -605,7 +605,7 @@ paths:
   /edges/actions/salesnavigator-extract-accounts-list/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_extract_accounts_list_run_live
-      summary: Extract accounts (companies) from a saved accounts list in Sales Navigator.
+      summary: Extract accounts (companies) from a saved accounts list in Sales Navigator
       tags:
       - Edges
       responses:
@@ -636,7 +636,7 @@ paths:
   /edges/actions/linkedin-search-content/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_content_run_live
-      summary: Search for posts and articles on LinkedIn using keywords and filters.
+      summary: Search for posts and articles on LinkedIn using keywords and filters
       tags:
       - Edges
       responses:
@@ -667,7 +667,7 @@ paths:
   /edges/actions/linkedin-search-schools/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_schools_run_live
-      summary: Search for schools and universities on LinkedIn using keywords and filters.
+      summary: Search for schools and universities on LinkedIn using keywords and filters
       tags:
       - Edges
       responses:
@@ -698,7 +698,7 @@ paths:
   /edges/actions/salesnavigator-extract-employees-count/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_extract_employees_count_run_live
-      summary: Extract employee count statistics from a company's Sales Navigator account page.
+      summary: Extract employee count statistics from a company's Sales Navigator account page
       tags:
       - Edges
       responses:
@@ -729,7 +729,7 @@ paths:
   /edges/actions/linkedin-extract-post-commenters/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_post_commenters_run_live
-      summary: Extract users who commented on a specific LinkedIn post with their profile information and comments.
+      summary: Extract users who commented on a specific LinkedIn post with their profile…
       tags:
       - Edges
       responses:
@@ -760,7 +760,7 @@ paths:
   /edges/actions/linkedin-search-events/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_events_run_live
-      summary: Search for events on LinkedIn using keywords, date, and location filters.
+      summary: Search for events on LinkedIn using keywords, date, and location filters
       tags:
       - Edges
       responses:
@@ -791,7 +791,7 @@ paths:
   /edges/actions/linkedin-search-groups/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_groups_run_live
-      summary: Search for groups on LinkedIn using keywords and filters.
+      summary: Search for groups on LinkedIn using keywords and filters
       tags:
       - Edges
       responses:
@@ -822,7 +822,7 @@ paths:
   /edges/actions/linkedin-extract-people-reaction-activity/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_reaction_activity_run_live
-      summary: Extract the reaction activity history of a LinkedIn profile, showing posts they have liked or reacted to.
+      summary: Extract the reaction activity history of a LinkedIn profile, showing posts they…
       tags:
       - Edges
       responses:
@@ -853,7 +853,7 @@ paths:
   /edges/actions/linkedin-extract-company-affiliates/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_company_affiliates_run_live
-      summary: Extract the list of affiliated companies (subsidiaries, parent companies) linked to a LinkedIn company page.
+      summary: Extract the list of affiliated companies (subsidiaries, parent companies)…
       tags:
       - Edges
       responses:
@@ -884,7 +884,7 @@ paths:
   /edges/actions/linkedin-extract-event/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_event_run_live
-      summary: Extract detailed information from a LinkedIn event including title, description, date, location, and organizer.
+      summary: Extract detailed information from a LinkedIn event including title…
       tags:
       - Edges
       responses:
@@ -915,7 +915,7 @@ paths:
   /edges/actions/linkedin-extract-people/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_run_live
-      summary: Extract detailed profile information from LinkedIn people including name, headline, experience, education, and skills.
+      summary: Extract detailed profile information from LinkedIn people including name…
       tags:
       - Edges
       responses:
@@ -946,7 +946,7 @@ paths:
   /edges/actions/linkedin-extract-event-attendees/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_event_attendees_run_live
-      summary: Extract the list of attendees registered for a LinkedIn event.
+      summary: Extract the list of attendees registered for a LinkedIn event
       tags:
       - Edges
       responses:
@@ -977,7 +977,7 @@ paths:
   /edges/actions/linkedin-extract-group-members/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_group_members_run_live
-      summary: Extract the list of members from a LinkedIn group you belong to.
+      summary: Extract the list of members from a LinkedIn group you belong to
       tags:
       - Edges
       responses:
@@ -1008,7 +1008,7 @@ paths:
   /edges/actions/linkedin-extract-post/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_post_run_live
-      summary: Extract detailed information from a LinkedIn post including content, author, engagement metrics, and media.
+      summary: Extract detailed information from a LinkedIn post including content, author…
       tags:
       - Edges
       responses:
@@ -1039,7 +1039,7 @@ paths:
   /edges/actions/linkedin-extract-school-alumnis/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_school_alumnis_run_live
-      summary: Extract the list of alumni from a LinkedIn school page with their profile information.
+      summary: Extract the list of alumni from a LinkedIn school page with their profile…
       tags:
       - Edges
       responses:
@@ -1070,7 +1070,7 @@ paths:
   /edges/actions/salesnavigator-search-company-employees/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_search_company_employees_run_live
-      summary: Search for leads within a specific company using Sales Navigator filters.
+      summary: Search for leads within a specific company using Sales Navigator filters
       tags:
       - Edges
       responses:
@@ -1101,7 +1101,7 @@ paths:
   /edges/actions/salesnavigator-extract-company/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_extract_company_run_live
-      summary: Extract full company data from a Sales Navigator company page, including revenue, description, employee counts, and other profile metadata.
+      summary: Extract full company data from a Sales Navigator company page, including…
       tags:
       - Edges
       responses:
@@ -1132,7 +1132,7 @@ paths:
   /edges/actions/linkedin-extract-people-experiences/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_people_experiences_run_live
-      summary: Extract detailed work experience history from LinkedIn profiles including job titles, companies, dates, and descriptions.
+      summary: Extract detailed work experience history from LinkedIn profiles including job…
       tags:
       - Edges
       responses:
@@ -1163,7 +1163,7 @@ paths:
   /edges/actions/linkedin-search-company-employees/run/live:
     post:
       operationId: edges_POST__actions_linkedin_search_company_employees_run_live
-      summary: Search for employees of a specific company on LinkedIn with optional filters.
+      summary: Search for employees of a specific company on LinkedIn with optional filters
       tags:
       - Edges
       responses:
@@ -1194,7 +1194,7 @@ paths:
   /edges/actions/linkedin-extract-company-employees-insights/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_company_employees_insights_run_live
-      summary: Extract employee insights and analytics from a LinkedIn company page, including headcount by function, location, and seniority.
+      summary: Extract employee insights and analytics from a LinkedIn company page, including…
       tags:
       - Edges
       responses:
@@ -1225,7 +1225,7 @@ paths:
   /edges/actions/linkedin-extract-company/run/live:
     post:
       operationId: edges_POST__actions_linkedin_extract_company_run_live
-      summary: Extract detailed information from a LinkedIn company page including name, description, industry, employee count, and more.
+      summary: Extract detailed information from a LinkedIn company page including name…
       tags:
       - Edges
       responses:
@@ -1256,7 +1256,7 @@ paths:
   /edges/actions/salesnavigator-search-metrics/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_search_metrics_run_live
-      summary: Get metrics and statistics for a Sales Navigator search query, including total results count.
+      summary: Get metrics and statistics for a Sales Navigator search query, including total…
       tags:
       - Edges
       responses:
@@ -1287,7 +1287,7 @@ paths:
   /edges/actions/salesnavigator-search-people/run/live:
     post:
       operationId: edges_POST__actions_salesnavigator_search_people_run_live
-      summary: Search for leads on Sales Navigator using advanced filters like title, company, geography, and more.
+      summary: Search for leads on Sales Navigator using advanced filters like title, company…
       tags:
       - Edges
       responses:

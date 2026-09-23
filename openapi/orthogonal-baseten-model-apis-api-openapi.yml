@@ -16,7 +16,7 @@ paths:
   /baseten/v1/chat/completions:
     post:
       operationId: baseten_POST__v1_chat_completions
-      summary: Send a conversation to a model and get a completion back. Works exactly like the OpenAI chat completions endpoint. Pass messages and a model slug, get a response with the assistant's reply. Supports streaming for real-time token delivery, tool calling for function execution, structured outputs via response_format, and controllable reasoning depth on supported models.
+      summary: Send a conversation to a model and get a completion back.
       tags:
       - Baseten Model APIs
       responses:
@@ -47,7 +47,7 @@ paths:
   /baseten/v1/models:
     get:
       operationId: baseten_GET__v1_models
-      summary: Returns the current list of available models with metadata including pricing, context window sizes, and supported features. Use this to discover valid model slugs for the chat completions endpoint.
+      summary: Returns the current list of available models with metadata including pricing…
       tags:
       - Baseten Model APIs
       responses:

@@ -34,7 +34,7 @@ paths:
   /fundable/company/deals:
     get:
       operationId: fundable_GET__company_deals
-      summary: 'Get entire funding history for a company Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get entire funding history for a company Pagination billing: call the first…'
       tags:
       - Fundable
       responses:
@@ -158,7 +158,7 @@ paths:
   /fundable/deals:
     post:
       operationId: fundable_POST__deals
-      summary: 'Search for funding rounds using filters Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search for funding rounds using filters Pagination billing: call the first page…'
       tags:
       - Fundable
       responses:
@@ -220,7 +220,7 @@ paths:
   /fundable/companies:
     post:
       operationId: fundable_POST__companies
-      summary: 'Search for companies using filters, includes latest funding round Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Search for companies using filters, includes latest funding round Pagination…
       tags:
       - Fundable
       responses:
@@ -313,7 +313,7 @@ paths:
   /fundable/investors:
     post:
       operationId: fundable_POST__investors
-      summary: 'Search for investors using filters Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Search for investors using filters Pagination billing: call the first page…'
       tags:
       - Fundable
       responses:
@@ -344,7 +344,7 @@ paths:
   /fundable/investor/deals:
     get:
       operationId: fundable_GET__investor_deals
-      summary: 'Get investment firm''s portfolio of investments Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: 'Get investment firm''s portfolio of investments Pagination billing: call the…'
       tags:
       - Fundable
       responses:

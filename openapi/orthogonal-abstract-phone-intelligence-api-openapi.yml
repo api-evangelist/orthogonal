@@ -16,7 +16,7 @@ paths:
   /phone-intelligence/v1:
     get:
       operationId: phone_intelligence_GET__v1
-      summary: Get detailed intelligence about a phone number including carrier, line type, location, risk score, and breach data.
+      summary: Get detailed intelligence about a phone number including carrier, line type…
       tags:
       - Abstract Phone Intelligence
       responses:

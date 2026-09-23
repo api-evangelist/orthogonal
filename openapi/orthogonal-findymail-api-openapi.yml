@@ -16,7 +16,7 @@ paths:
   /findymail/api/search/business-profile:
     post:
       operationId: findymail_POST__api_search_business_profile
-      summary: Find someone's email from a business profile URL. Uses one finder credit if a verified email is found. Limited to 30 concurrent sync requests.
+      summary: Find someone's email from a business profile URL.
       tags:
       - Findymail
       responses:
@@ -47,7 +47,7 @@ paths:
   /findymail/api/technologies:
     post:
       operationId: findymail_POST__api_technologies
-      summary: Get the technology stack for a company by domain. 1 credit when technologies found, free when no results.
+      summary: Get the technology stack for a company by domain.
       tags:
       - Findymail
       responses:
@@ -78,7 +78,7 @@ paths:
   /findymail/api/search/phone:
     post:
       operationId: findymail_POST__api_search_phone
-      summary: Find phone number from a LinkedIn URL. Uses 10 finder credits if found. EU citizens excluded for legal reasons.
+      summary: Find phone number from a LinkedIn URL.
       tags:
       - Findymail
       responses:
@@ -109,7 +109,7 @@ paths:
   /findymail/api/intellimatch/status:
     get:
       operationId: findymail_GET__api_intellimatch_status
-      summary: Poll export status for an Intellimatch search. Returns success, processing, pending, failed, or not_found.
+      summary: Poll export status for an Intellimatch search.
       tags:
       - Findymail
       responses:
@@ -140,7 +140,7 @@ paths:
   /findymail/api/search/employees:
     post:
       operationId: findymail_POST__api_search_employees
-      summary: Find employees by company website and job title. 1 credit per found contact. Does NOT return email.
+      summary: Find employees by company website and job title.
       tags:
       - Findymail
       responses:
@@ -171,7 +171,7 @@ paths:
   /findymail/api/lookalike/search:
     post:
       operationId: findymail_POST__api_lookalike_search
-      summary: Find companies similar to a seed domain. 1 credit per 10 results (rounded up).
+      summary: Find companies similar to a seed domain. 1 credit per 10 results (rounded up)
       tags:
       - Findymail
       responses:
@@ -202,7 +202,7 @@ paths:
   /findymail/api/verify:
     post:
       operationId: findymail_POST__api_verify
-      summary: Verify an email address. Uses one verifier credit on all attempted verifications.
+      summary: Verify an email address. Uses one verifier credit on all attempted verifications
       tags:
       - Findymail
       responses:
@@ -233,7 +233,7 @@ paths:
   /findymail/api/search/company:
     post:
       operationId: findymail_POST__api_search_company
-      summary: Retrieve company data using a LinkedIn URL, name, or domain. At least one field required. 1 credit per successful response.
+      summary: Retrieve company data using a LinkedIn URL, name, or domain.
       tags:
       - Findymail
       responses:
@@ -264,7 +264,7 @@ paths:
   /findymail/api/technologies/search:
     get:
       operationId: findymail_GET__api_technologies_search
-      summary: Search the technology catalog by name. Returns up to 25 results. Free, no credits consumed. Rate limited to 10 req/min.
+      summary: Search the technology catalog by name.
       tags:
       - Findymail
       responses:
@@ -295,7 +295,7 @@ paths:
   /findymail/api/search/name:
     post:
       operationId: findymail_POST__api_search_name
-      summary: Find someone's email from name and company (website or name). Uses one finder credit if a verified email is found.
+      summary: Find someone's email from name and company (website or name).
       tags:
       - Findymail
       responses:
@@ -326,7 +326,7 @@ paths:
   /findymail/api/search/reverse-email:
     post:
       operationId: findymail_POST__api_search_reverse_email
-      summary: Find a LinkedIn profile from an email address. 1 credit without profile data, 2 credits with profile data (with_profile=true).
+      summary: Find a LinkedIn profile from an email address.
       tags:
       - Findymail
       responses:
@@ -357,7 +357,7 @@ paths:
   /findymail/api/search/domain:
     post:
       operationId: findymail_POST__api_search_domain
-      summary: Find contacts with valid emails at a given domain with given roles. Limited to 5 concurrent sync requests.
+      summary: Find contacts with valid emails at a given domain with given roles.
       tags:
       - Findymail
       responses:
@@ -388,7 +388,7 @@ paths:
   /findymail/api/intellimatch/data:
     get:
       operationId: findymail_GET__api_intellimatch_data
-      summary: 'Retrieve paginated company and contact results from a completed Intellimatch search. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Retrieve paginated company and contact results from a completed Intellimatch…
       tags:
       - Findymail
       responses:
@@ -419,7 +419,7 @@ paths:
   /findymail/api/intellimatch/search:
     post:
       operationId: findymail_POST__api_intellimatch_search
-      summary: Create an Intellimatch search task using natural language queries. Returns a hash for polling status.
+      summary: Create an Intellimatch search task using natural language queries.
       tags:
       - Findymail
       responses:

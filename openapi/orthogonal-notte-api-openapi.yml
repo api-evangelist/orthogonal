@@ -16,7 +16,7 @@ paths:
   /notte/sessions/{session_id}/cookies:
     get:
       operationId: notte_GET__sessions_session_id_cookies
-      summary: Get all cookies from the browser session.
+      summary: Get all cookies from the browser session
       tags:
       - Notte
       responses:
@@ -24,7 +24,7 @@ paths:
           description: Successful response
     post:
       operationId: notte_POST__sessions_session_id_cookies
-      summary: Set cookies in the browser session.
+      summary: Set cookies in the browser session
       tags:
       - Notte
       responses:
@@ -55,7 +55,7 @@ paths:
   /notte/sessions/{session_id}/network/logs:
     get:
       operationId: notte_GET__sessions_session_id_network_logs
-      summary: Get network request/response logs from the session.
+      summary: Get network request/response logs from the session
       tags:
       - Notte
       responses:
@@ -64,7 +64,7 @@ paths:
   /notte/sessions/{session_id}/page/observe:
     post:
       operationId: notte_POST__sessions_session_id_page_observe
-      summary: Observe the current page state and get available actions.
+      summary: Observe the current page state and get available actions
       tags:
       - Notte
       responses:
@@ -95,7 +95,7 @@ paths:
   /notte/sessions/{session_id}/page/screenshot:
     post:
       operationId: notte_POST__sessions_session_id_page_screenshot
-      summary: Take a screenshot of the current page.
+      summary: Take a screenshot of the current page
       tags:
       - Notte
       responses:
@@ -126,7 +126,7 @@ paths:
   /notte/sessions/{session_id}/stop:
     delete:
       operationId: notte_DELETE__sessions_session_id_stop
-      summary: Stop and clean up a browser session.
+      summary: Stop and clean up a browser session
       tags:
       - Notte
       responses:
@@ -166,7 +166,7 @@ paths:
   /notte/agents/start:
     post:
       operationId: notte_POST__agents_start
-      summary: Start an AI agent to autonomously complete a browser task.
+      summary: Start an AI agent to autonomously complete a browser task
       tags:
       - Notte
       responses:
@@ -197,7 +197,7 @@ paths:
   /notte/sessions/start:
     post:
       operationId: notte_POST__sessions_start
-      summary: Start a new browser session. Configure browser type, proxies, viewport, and session timeout.
+      summary: Start a new browser session.
       tags:
       - Notte
       responses:
@@ -228,7 +228,7 @@ paths:
   /notte/agents/{agent_id}:
     get:
       operationId: notte_GET__agents_agent_id_
-      summary: Get agent execution status and results.
+      summary: Get agent execution status and results
       tags:
       - Notte
       responses:
@@ -237,7 +237,7 @@ paths:
   /notte/agents/{agent_id}/stop:
     delete:
       operationId: notte_DELETE__agents_agent_id_stop
-      summary: Stop a running agent.
+      summary: Stop a running agent
       tags:
       - Notte
       responses:
@@ -246,7 +246,7 @@ paths:
   /notte/scrape:
     post:
       operationId: notte_POST__scrape
-      summary: Scrape content from a URL without managing sessions.
+      summary: Scrape content from a URL without managing sessions
       tags:
       - Notte
       responses:
@@ -277,7 +277,7 @@ paths:
   /notte/sessions/{session_id}/page/execute:
     post:
       operationId: notte_POST__sessions_session_id_page_execute
-      summary: Execute an action on the page (click, type, navigate, etc.).
+      summary: Execute an action on the page (click, type, navigate, etc.)
       tags:
       - Notte
       responses:
@@ -308,7 +308,7 @@ paths:
   /notte/sessions/{session_id}/page/scrape:
     post:
       operationId: notte_POST__sessions_session_id_page_scrape
-      summary: Scrape content from the current page in the session.
+      summary: Scrape content from the current page in the session
       tags:
       - Notte
       responses:
@@ -339,7 +339,7 @@ paths:
   /notte/sessions/{session_id}:
     get:
       operationId: notte_GET__sessions_session_id_
-      summary: Get session status and details.
+      summary: Get session status and details
       tags:
       - Notte
       responses:

@@ -16,7 +16,7 @@ paths:
   /exchange-rates/v1/convert:
     get:
       operationId: exchange_rates_GET__v1_convert
-      summary: Convert an amount from one currency to another.
+      summary: Convert an amount from one currency to another
       tags:
       - Abstract Exchange Rates
       responses:
@@ -47,7 +47,7 @@ paths:
   /exchange-rates/v1/historical:
     get:
       operationId: exchange_rates_GET__v1_historical
-      summary: Get exchange rates for a specific historical date.
+      summary: Get exchange rates for a specific historical date
       tags:
       - Abstract Exchange Rates
       responses:
@@ -78,7 +78,7 @@ paths:
   /exchange-rates/v1/live:
     get:
       operationId: exchange_rates_GET__v1_live
-      summary: Get the latest exchange rates for a given base currency.
+      summary: Get the latest exchange rates for a given base currency
       tags:
       - Abstract Exchange Rates
       responses:

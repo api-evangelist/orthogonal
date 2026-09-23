@@ -16,7 +16,7 @@ paths:
   /captaindata/people/find:
     get:
       operationId: captaindata_GET__people_find
-      summary: Find people by name and optionally company name. Returns matching profiles.
+      summary: Find people by name and optionally company name. Returns matching profiles
       tags:
       - CaptainData
       responses:
@@ -47,7 +47,7 @@ paths:
   /captaindata/companies/find:
     get:
       operationId: captaindata_GET__companies_find
-      summary: Find a company by name. Returns matching company profiles.
+      summary: Find a company by name. Returns matching company profiles
       tags:
       - CaptainData
       responses:
@@ -78,7 +78,7 @@ paths:
   /captaindata/companies/search:
     get:
       operationId: captaindata_GET__companies_search
-      summary: 'Search and discover companies using a LinkedIn Sales Navigator search query. Returns paginated results. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Search and discover companies using a LinkedIn Sales Navigator search query.
       tags:
       - CaptainData
       responses:
@@ -109,7 +109,7 @@ paths:
   /captaindata/people/enrich:
     get:
       operationId: captaindata_GET__people_enrich
-      summary: Get comprehensive profile information from a LinkedIn URL with additional enrichment data. Returns full name, headline, summary, skills, languages, education, experiences, company info, and more.
+      summary: Get comprehensive profile information from a LinkedIn URL with additional…
       tags:
       - CaptainData
       responses:
@@ -140,7 +140,7 @@ paths:
   /captaindata/people/search:
     get:
       operationId: captaindata_GET__people_search
-      summary: 'Search and discover people using a LinkedIn Sales Navigator search query. Returns paginated results with profile summaries. Use the X-Pagination-Next response header cursor for pagination. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Search and discover people using a LinkedIn Sales Navigator search query.
       tags:
       - CaptainData
       responses:
@@ -171,7 +171,7 @@ paths:
   /captaindata/companies/enrich:
     get:
       operationId: captaindata_GET__companies_enrich
-      summary: Get comprehensive company information from a LinkedIn Company URL. Returns company details, industry, size, and more.
+      summary: Get comprehensive company information from a LinkedIn Company URL.
       tags:
       - CaptainData
       responses:
@@ -202,7 +202,7 @@ paths:
   /captaindata/companies/{company_uid}/employees:
     get:
       operationId: captaindata_GET__companies_company_uid_employees
-      summary: 'List employees of a given company. Returns paginated results. The company_uid path parameter is the LinkedIn company ID (e.g., 1035 for Microsoft), which can be obtained from the Enrich Company or Find Company endpoints (li_company_id field). Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: List employees of a given company.
       tags:
       - CaptainData
       responses:

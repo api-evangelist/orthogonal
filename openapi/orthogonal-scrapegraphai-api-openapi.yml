@@ -16,7 +16,7 @@ paths:
   /scrapegraphai/api/monitor/{id}/pause:
     post:
       operationId: scrapegraphai_POST__api_monitor_id_pause
-      summary: Pause an active monitor.
+      summary: Pause an active monitor
       tags:
       - ScrapeGraphAI
       responses:
@@ -25,7 +25,7 @@ paths:
   /scrapegraphai/api/crawl:
     post:
       operationId: scrapegraphai_POST__api_crawl
-      summary: Start a website crawl from a seed URL with configurable depth and page limits.
+      summary: Start a website crawl from a seed URL with configurable depth and page limits
       tags:
       - ScrapeGraphAI
       responses:
@@ -56,7 +56,7 @@ paths:
   /scrapegraphai/api/monitor/{id}:
     get:
       operationId: scrapegraphai_GET__api_monitor_id_
-      summary: Get details of a specific monitor by ID.
+      summary: Get details of a specific monitor by ID
       tags:
       - ScrapeGraphAI
       responses:
@@ -64,7 +64,7 @@ paths:
           description: Successful response
     patch:
       operationId: scrapegraphai_PATCH__api_monitor_id_
-      summary: Update a monitor configuration.
+      summary: Update a monitor configuration
       tags:
       - ScrapeGraphAI
       responses:
@@ -72,7 +72,7 @@ paths:
           description: Successful response
     delete:
       operationId: scrapegraphai_DELETE__api_monitor_id_
-      summary: Delete a monitor by ID.
+      summary: Delete a monitor by ID
       tags:
       - ScrapeGraphAI
       responses:
@@ -81,7 +81,7 @@ paths:
   /scrapegraphai/api/monitor:
     post:
       operationId: scrapegraphai_POST__api_monitor
-      summary: Create a monitor to track changes on a URL at a given interval.
+      summary: Create a monitor to track changes on a URL at a given interval
       tags:
       - ScrapeGraphAI
       responses:
@@ -112,7 +112,7 @@ paths:
   /scrapegraphai/api/extract:
     post:
       operationId: scrapegraphai_POST__api_extract
-      summary: LLM-driven extraction from a URL, HTML, or markdown input with a prompt and optional JSON schema.
+      summary: LLM-driven extraction from a URL, HTML, or markdown input with a prompt and…
       tags:
       - ScrapeGraphAI
       responses:
@@ -143,7 +143,7 @@ paths:
   /scrapegraphai/api/monitor/{id}/activity:
     get:
       operationId: scrapegraphai_GET__api_monitor_id_activity
-      summary: Get paginated tick activity for a monitor, including diffs.
+      summary: Get paginated tick activity for a monitor, including diffs
       tags:
       - ScrapeGraphAI
       responses:
@@ -152,7 +152,7 @@ paths:
   /scrapegraphai/api/monitor/{id}/resume:
     post:
       operationId: scrapegraphai_POST__api_monitor_id_resume
-      summary: Resume a paused monitor.
+      summary: Resume a paused monitor
       tags:
       - ScrapeGraphAI
       responses:
@@ -161,7 +161,7 @@ paths:
   /scrapegraphai/api/scrape:
     post:
       operationId: scrapegraphai_POST__api_scrape
-      summary: 'Fetches a URL and returns the requested format(s): markdown, html, links, images, summary, json, branding, screenshot.'
+      summary: 'Fetches a URL and returns the requested format(s): markdown, html, links…'
       tags:
       - ScrapeGraphAI
       responses:
@@ -192,7 +192,7 @@ paths:
   /scrapegraphai/api/search:
     post:
       operationId: scrapegraphai_POST__api_search
-      summary: Runs a search, scrapes the top N result URLs, optionally runs LLM extraction with prompt and schema.
+      summary: Runs a search, scrapes the top N result URLs, optionally runs LLM extraction…
       tags:
       - ScrapeGraphAI
       responses:

@@ -39,15 +39,13 @@ introspection:
   method: POST tools/list
   endpoint: https://mcp.orthogonal.com/
   http_status: 401
-  response: '{"jsonrpc":"2.0","id":1,"error":{"code":-32001,"message":"Unauthorized","data":"Missing authentication. Use x-api-host + x-api-key headers for user MCPs, or Bearer token for Orthogonal MCP."}}'
+  response: '{"jsonrpc":"2.0","id":1,"error":{"code":-32001,"message":"Unauthorized","data":"Missing authentication.
+    Use x-api-host + x-api-key headers for user MCPs, or Bearer token for Orthogonal MCP."}}'
   checked: '2026-08-14'
-  note: >-
-    Live tools/list is auth-gated, so the tool list above is the PUBLISHED one
-    (docs.orthogonal.com/mcp/setup) — names and descriptions only. Per-tool
-    inputSchemas require authenticated introspection and are not recorded. The
-    anonymous discovery documents WERE readable: RFC 8414 authorization-server
-    metadata and RFC 9728 protected-resource metadata both return 200 (see
-    well-known/orthogonal-well-known.yml).
+  note: 'Live tools/list is auth-gated, so the tool list above is the PUBLISHED one (docs.orthogonal.com/mcp/setup)
+    — names and descriptions only. Per-tool inputSchemas require authenticated introspection and are not
+    recorded. The anonymous discovery documents WERE readable: RFC 8414 authorization-server metadata
+    and RFC 9728 protected-resource metadata both return 200 (see well-known/orthogonal-well-known.yml).'
 protected_resource:
   metadata: https://mcp.orthogonal.com/.well-known/oauth-protected-resource
   spec: RFC 9728
@@ -63,20 +61,13 @@ protected_resource:
   http_status: 200
   file: ../well-known/orthogonal-mcp-oauth-protected-resource.json
 byo_mcp:
-  note: >-
-    The 401 body reveals a second mode: "user MCPs" authenticated with x-api-host
-    + x-api-key headers, alongside the first-party Orthogonal MCP authenticated
-    with a Bearer token. Not documented on the setup page; recorded as observed.
+  note: 'The 401 body reveals a second mode: "user MCPs" authenticated with x-api-host + x-api-key headers,
+    alongside the first-party Orthogonal MCP authenticated with a Bearer token. Not documented on the
+    setup page; recorded as observed.'
 crosswalk: mcp/orthogonal-tool-crosswalk.yml
 deployment:
   mode: remote
-  endpoint: https://mcp.orthogonal.com
-  auth: oauth
-  verified: probed
+  verified: searched
   tools: 7
-  checked: '2026-08-14'
-  source: >-
-    Probed 2026-08-14 — POST https://mcp.orthogonal.com/ answers JSON-RPC with an
-    auth challenge (401), and GET /openapi.json returns an endpoint map
-    advertising 'POST /' (JSON-RPC) and 'GET /sse'. Remote-only: Orthogonal ships
-    no stdio MCP package, and the documented client config is a bare URL.
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -16,7 +16,7 @@ paths:
   /timezone/v1/convert_time:
     get:
       operationId: timezone_GET__v1_convert_time
-      summary: Convert time between two locations or timezones.
+      summary: Convert time between two locations or timezones
       tags:
       - Abstract Timezone
       responses:
@@ -47,7 +47,7 @@ paths:
   /timezone/v1/current_time:
     get:
       operationId: timezone_GET__v1_current_time
-      summary: Get the current time, date, and timezone for a location.
+      summary: Get the current time, date, and timezone for a location
       tags:
       - Abstract Timezone
       responses:

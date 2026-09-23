@@ -16,7 +16,7 @@ paths:
   /contactout/v1/email/enrich:
     get:
       operationId: contactout_GET__v1_email_enrich
-      summary: Get profile details from an email address.
+      summary: Get profile details from an email address
       tags:
       - ContactOut
       responses:
@@ -47,7 +47,7 @@ paths:
   /contactout/v1/people/linkedin:
     get:
       operationId: contactout_GET__v1_people_linkedin
-      summary: Get contact details for a LinkedIn profile.
+      summary: Get contact details for a LinkedIn profile
       tags:
       - ContactOut
       responses:
@@ -78,7 +78,7 @@ paths:
   /contactout/v1/linkedin/enrich:
     get:
       operationId: contactout_GET__v1_linkedin_enrich
-      summary: Get full profile details (email, phone, work history, education, skills) from a LinkedIn profile URL.
+      summary: Get full profile details (email, phone, work history, education, skills) from a…
       tags:
       - ContactOut
       responses:
@@ -109,7 +109,7 @@ paths:
   /contactout/v1/people/enrich:
     post:
       operationId: contactout_POST__v1_people_enrich
-      summary: Enrich a person using multiple data points (name, email, phone, LinkedIn, company).
+      summary: Enrich a person using multiple data points (name, email, phone, LinkedIn…
       tags:
       - ContactOut
       responses:
@@ -140,7 +140,7 @@ paths:
   /contactout/v1/domain/enrich:
     post:
       operationId: contactout_POST__v1_domain_enrich
-      summary: Get company information from domain names.
+      summary: Get company information from domain names
       tags:
       - ContactOut
       responses:
@@ -171,7 +171,7 @@ paths:
   /contactout/v1/people/count:
     post:
       operationId: contactout_POST__v1_people_count
-      summary: Count matching profiles for search criteria.
+      summary: Count matching profiles for search criteria
       tags:
       - ContactOut
       responses:
@@ -180,7 +180,7 @@ paths:
   /contactout/v1/people/linkedin/batch:
     post:
       operationId: contactout_POST__v1_people_linkedin_batch
-      summary: Get contact details for up to 30 LinkedIn profiles.
+      summary: Get contact details for up to 30 LinkedIn profiles
       tags:
       - ContactOut
       responses:

@@ -16,7 +16,7 @@ paths:
   /ocean-io/v3/search/companies:
     post:
       operationId: ocean_io_POST__v3_search_companies
-      summary: Search for companies using filters (industry, size, location, technologies, revenue, headcount growth, etc.) and/or lookalike domains. Returns enriched company profiles. Use the size parameter to control max results (1-10,000), defaults to 50. Use searchAfter from the previous response to paginate.
+      summary: Search for companies using filters (industry, size, location, technologies…
       tags:
       - Ocean.io
       responses:
@@ -47,7 +47,7 @@ paths:
   /ocean-io/v2/warmup/companies:
     post:
       operationId: ocean_io_POST__v2_warmup_companies
-      summary: Check available companies in Ocean.io database and trigger data gathering for missing ones. Use before searching to improve coverage for specific domains.
+      summary: Check available companies in Ocean.io database and trigger data gathering for…
       tags:
       - Ocean.io
       responses:
@@ -56,7 +56,7 @@ paths:
   /ocean-io/v2/enrich/person:
     post:
       operationId: ocean_io_POST__v2_enrich_person
-      summary: Match a person with Ocean.io database and enrich with additional information (job title, company, location, social profiles, etc.).
+      summary: Match a person with Ocean.io database and enrich with additional information…
       tags:
       - Ocean.io
       responses:
@@ -87,7 +87,7 @@ paths:
   /ocean-io/v2/lookup/companies:
     post:
       operationId: ocean_io_POST__v2_lookup_companies
-      summary: Lookup and enrich multiple companies by domain (max 1000). Domain redirections are handled automatically. Companies not found return null.
+      summary: Lookup and enrich multiple companies by domain (max 1000).
       tags:
       - Ocean.io
       responses:
@@ -118,7 +118,7 @@ paths:
   /ocean-io/v2/lookup/people:
     post:
       operationId: ocean_io_POST__v2_lookup_people
-      summary: Lookup and enrich multiple people by LinkedIn handle or Ocean.io ID (max 1000 total). Costs 0.05 credits per handle/ID. People not found return null.
+      summary: Lookup and enrich multiple people by LinkedIn handle or Ocean.io ID (max 1000…
       tags:
       - Ocean.io
       responses:
@@ -149,7 +149,7 @@ paths:
   /ocean-io/v2/enrich/company:
     post:
       operationId: ocean_io_POST__v2_enrich_company
-      summary: Match a company with Ocean.io database and enrich it with additional information (industry, size, revenue, technologies, contacts, etc.).
+      summary: Match a company with Ocean.io database and enrich it with additional…
       tags:
       - Ocean.io
       responses:
@@ -180,7 +180,7 @@ paths:
   /ocean-io/v2/data-fields:
     get:
       operationId: ocean_io_GET__v2_data_fields
-      summary: 'Returns all valid filter values for Ocean.io search endpoints: industries, industry categories, technologies, technology categories, regions, LinkedIn industries, departments, seniorities, and company sizes. Use these values when building search filters.'
+      summary: 'Returns all valid filter values for Ocean.io search endpoints: industries…'
       tags:
       - Ocean.io
       responses:
@@ -189,7 +189,7 @@ paths:
   /ocean-io/v3/search/people:
     post:
       operationId: ocean_io_POST__v3_search_people
-      summary: Search for people using filters (job title, seniority, department, skills, location) with optional company filters. Returns enriched person profiles. Use the size parameter to control max results (1-10,000). Use searchAfter from the previous response to paginate.
+      summary: Search for people using filters (job title, seniority, department, skills…
       tags:
       - Ocean.io
       responses:

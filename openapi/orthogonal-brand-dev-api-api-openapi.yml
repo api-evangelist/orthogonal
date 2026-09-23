@@ -16,7 +16,7 @@ paths:
   /brand-dev/v1/brand/ai/query:
     post:
       operationId: brand_dev_POST__v1_brand_ai_query
-      summary: Use AI to extract specific data points from a brand’s website. The AI will crawl the website and extract the requested information based on the provided data points.
+      summary: Use AI to extract specific data points from a brand’s website.
       tags:
       - Brand.dev API
       responses:
@@ -47,7 +47,7 @@ paths:
   /brand-dev/v1/brand/retrieve-by-ticker:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve_by_ticker
-      summary: Retrieve brand information using a stock ticker symbol. This endpoint looks up the company associated with the ticker and returns its brand data.
+      summary: Retrieve brand information using a stock ticker symbol.
       tags:
       - Brand.dev API
       responses:
@@ -78,7 +78,7 @@ paths:
   /brand-dev/v1/brand/naics:
     get:
       operationId: brand_dev_GET__v1_brand_naics
-      summary: Endpoint to classify any brand into a 2022 NAICS code.
+      summary: Endpoint to classify any brand into a 2022 NAICS code
       tags:
       - Brand.dev API
       responses:
@@ -109,7 +109,7 @@ paths:
   /brand-dev/v1/brand/styleguide:
     get:
       operationId: brand_dev_GET__v1_brand_styleguide
-      summary: Automatically extract comprehensive design system information from a brand’s website including colors, typography, spacing, shadows, and UI components.
+      summary: Automatically extract comprehensive design system information from a brand’s…
       tags:
       - Brand.dev API
       responses:
@@ -140,7 +140,7 @@ paths:
   /brand-dev/v1/brand/transaction_identifier:
     get:
       operationId: brand_dev_GET__v1_brand_transaction_identifier
-      summary: Endpoint specially designed for platforms that want to identify transaction data by the transaction title.
+      summary: Endpoint specially designed for platforms that want to identify transaction…
       tags:
       - Brand.dev API
       responses:
@@ -171,7 +171,7 @@ paths:
   /brand-dev/v1/brand/retrieve-simplified:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve_simplified
-      summary: 'Returns a simplified version of brand data containing only essential information: domain, title, colors, logos, and backdrops. This endpoint is optimized for faster responses and reduced data transfer.'
+      summary: Returns a simplified version of brand data containing only essential…
       tags:
       - Brand.dev API
       responses:
@@ -202,7 +202,7 @@ paths:
   /brand-dev/v1/brand/ai/products:
     post:
       operationId: brand_dev_POST__v1_brand_ai_products
-      summary: 'Beta feature: Extract product information from a brand’s website. Brand.dev will analyze the website and return a list of products with details such as name, description, image, pricing, features, and more.'
+      summary: 'Beta feature: Extract product information from a brand’s website.'
       tags:
       - Brand.dev API
       responses:
@@ -233,7 +233,7 @@ paths:
   /brand-dev/v1/brand/fonts:
     get:
       operationId: brand_dev_GET__v1_brand_fonts
-      summary: Extract font information from a brand’s website including font families, usage statistics, fallbacks, and element/word counts.
+      summary: Extract font information from a brand’s website including font families, usage…
       tags:
       - Brand.dev API
       responses:
@@ -264,7 +264,7 @@ paths:
   /brand-dev/v1/brand/retrieve-by-email:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve_by_email
-      summary: Retrieve brand information using an email address while detecting disposable and free email addresses. This endpoint extracts the domain from the email address and returns brand data for that domain. Disposable and free email addresses (like gmail.com, yahoo.com) will throw a 422 error.
+      summary: Retrieve brand information using an email address while detecting disposable…
       tags:
       - Brand.dev API
       responses:
@@ -295,7 +295,7 @@ paths:
   /brand-dev/v1/brand/retrieve:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve
-      summary: Retrieve logos, backdrops, colors, industry, description, and more from any domain
+      summary: Retrieve logos, backdrops, colors, industry, description, and more from any…
       tags:
       - Brand.dev API
       responses:
@@ -326,7 +326,7 @@ paths:
   /brand-dev/v1/brand/retrieve-by-isin:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve_by_isin
-      summary: Retrieve brand information using an ISIN (International Securities Identification Number). This endpoint looks up the company associated with the ISIN and returns its brand data.
+      summary: Retrieve brand information using an ISIN (International Securities…
       tags:
       - Brand.dev API
       responses:
@@ -357,7 +357,7 @@ paths:
   /brand-dev/v1/brand/screenshot:
     get:
       operationId: brand_dev_GET__v1_brand_screenshot
-      summary: Capture a screenshot of a website. Supports both viewport (standard browser view) and full-page screenshots. Can also screenshot specific page types (login, pricing, etc.) by using heuristics to find the appropriate URL. Returns a URL to the uploaded screenshot image hosted on our CDN.
+      summary: Capture a screenshot of a website.
       tags:
       - Brand.dev API
       responses:
@@ -388,7 +388,7 @@ paths:
   /brand-dev/v1/brand/retrieve-by-name:
     get:
       operationId: brand_dev_GET__v1_brand_retrieve_by_name
-      summary: Retrieve brand information using a company name. This endpoint searches for the company by name and returns its brand data.
+      summary: Retrieve brand information using a company name.
       tags:
       - Brand.dev API
       responses:

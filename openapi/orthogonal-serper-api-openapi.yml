@@ -16,7 +16,7 @@ paths:
   /serper/lens:
     post:
       operationId: serper_POST__lens
-      summary: 'Google Lens reverse image search - identify objects, find visually similar images, and get visual search results from an image URL. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Lens reverse image search - identify objects, find visually similar…
       tags:
       - Serper
       responses:
@@ -47,7 +47,7 @@ paths:
   /serper/images:
     post:
       operationId: serper_POST__images
-      summary: 'Google Images search - returns image results with titles, image URLs, thumbnail URLs, source domains, and dimensions. Use for finding images, visual research, or brand asset discovery. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Images search - returns image results with titles, image URLs, thumbnail…
       tags:
       - Serper
       responses:
@@ -78,7 +78,7 @@ paths:
   /serper/autocomplete:
     post:
       operationId: serper_POST__autocomplete
-      summary: Google Autocomplete - returns search query suggestions based on a prefix. Use for keyword research, SEO, understanding search intent, or building search-ahead UIs.
+      summary: Google Autocomplete - returns search query suggestions based on a prefix.
       tags:
       - Serper
       responses:
@@ -109,7 +109,7 @@ paths:
   /serper/search:
     post:
       operationId: serper_POST__search
-      summary: 'Google Search - returns organic results, knowledge graph, people also ask, related searches, and sitelinks. Use for general web queries, fact-finding, and research. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Search - returns organic results, knowledge graph, people also ask…
       tags:
       - Serper
       responses:
@@ -140,7 +140,7 @@ paths:
   /serper/news:
     post:
       operationId: serper_POST__news
-      summary: 'Google News search - returns news articles with titles, links, sources, dates, and snippets. Use for current events, press coverage, competitor monitoring, or media research. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google News search - returns news articles with titles, links, sources, dates…
       tags:
       - Serper
       responses:
@@ -171,7 +171,7 @@ paths:
   /serper/scholar:
     post:
       operationId: serper_POST__scholar
-      summary: 'Google Scholar search - returns academic papers with titles, authors, publication venues, years, citation counts, links, and snippets. Use as_ylo/as_yhi to filter by publication year range. Use for academic research, literature reviews, or citation analysis. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Scholar search - returns academic papers with titles, authors…
       tags:
       - Serper
       responses:
@@ -202,7 +202,7 @@ paths:
   /serper/videos:
     post:
       operationId: serper_POST__videos
-      summary: 'Google Videos search - returns video results with titles, links, channels, durations, dates, and platforms (YouTube, Vimeo, etc). Use for finding video content, tutorials, or media. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Videos search - returns video results with titles, links, channels…
       tags:
       - Serper
       responses:
@@ -233,7 +233,7 @@ paths:
   /serper/maps:
     post:
       operationId: serper_POST__maps
-      summary: 'Google Maps search - returns map listings with titles, addresses, latitude/longitude coordinates, ratings, review counts, phone numbers, websites, and categories. More detailed than Places for location-based queries. Use ll parameter for precise geographic targeting. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Maps search - returns map listings with titles, addresses…
       tags:
       - Serper
       responses:
@@ -264,7 +264,7 @@ paths:
   /serper/shopping:
     post:
       operationId: serper_POST__shopping
-      summary: 'Google Shopping search - returns product listings with titles, prices, sellers, ratings, delivery info, and product links. Use for price comparison, product research, or e-commerce intelligence. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Shopping search - returns product listings with titles, prices, sellers…
       tags:
       - Serper
       responses:
@@ -295,7 +295,7 @@ paths:
   /serper/reviews:
     post:
       operationId: serper_POST__reviews
-      summary: 'Google Reviews - returns reviews for a specific business/place including review text, ratings, authors, dates, and likes. Requires a place identifier (cid, fid, or placeId) obtained from Places or Maps search results. Use sortBy to order by relevance, newest, highest, or lowest rating. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Reviews - returns reviews for a specific business/place including review…
       tags:
       - Serper
       responses:
@@ -326,7 +326,7 @@ paths:
   /serper/places:
     post:
       operationId: serper_POST__places
-      summary: 'Google Places search - returns local businesses with names, addresses, phone numbers, ratings, review counts, hours, categories, and cids. Use for finding local businesses, restaurants, services. Returns cid values needed for the Reviews endpoint. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Places search - returns local businesses with names, addresses, phone…
       tags:
       - Serper
       responses:
@@ -357,7 +357,7 @@ paths:
   /serper/patents:
     post:
       operationId: serper_POST__patents
-      summary: 'Google Patents search - returns patent results with titles, patent numbers, inventors, assignees, filing dates, publication dates, and abstracts. Use for IP research, prior art searches, or technology landscape analysis. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Google Patents search - returns patent results with titles, patent numbers…
       tags:
       - Serper
       responses:

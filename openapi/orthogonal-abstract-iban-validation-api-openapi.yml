@@ -16,7 +16,7 @@ paths:
   /iban-validation/v1:
     get:
       operationId: iban_validation_GET__v1
-      summary: Validate an IBAN and retrieve associated bank details, country, and check digits.
+      summary: Validate an IBAN and retrieve associated bank details, country, and check digits
       tags:
       - Abstract IBAN Validation
       responses:

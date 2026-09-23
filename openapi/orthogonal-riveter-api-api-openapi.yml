@@ -34,7 +34,7 @@ paths:
   /riveter/v1/stop_run:
     post:
       operationId: riveter_POST__v1_stop_run
-      summary: 'Stop a currently running project. This will halt all processing and mark the run as stopped. Behavior:  If the run is already stopped or success, returns success with current status. If the run is in progress, stops all pending cells and marks the run as stopped.  Stopped runs cannot be resumed'
+      summary: Stop a currently running project.
       tags:
       - Riveter API
       responses:
@@ -43,7 +43,7 @@ paths:
   /riveter/v1/run:
     post:
       operationId: riveter_POST__v1_run
-      summary: Copy link Define the structure of your output directly in the API request. This endpoint allows you to define both your input data and output configuration in a single request.
+      summary: Copy link Define the structure of your output directly in the API request.
       tags:
       - Riveter API
       responses:
@@ -74,7 +74,7 @@ paths:
   /riveter/v1/scrape:
     post:
       operationId: riveter_POST__v1_scrape
-      summary: Scrape a webpage and return the text content. This endpoint allows you to extract text content from any public webpage.
+      summary: Scrape a webpage and return the text content.
       tags:
       - Riveter API
       responses:

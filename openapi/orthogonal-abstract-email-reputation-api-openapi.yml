@@ -16,7 +16,7 @@ paths:
   /email-reputation/v1:
     get:
       operationId: email_reputation_GET__v1
-      summary: Get detailed reputation data for an email address including deliverability, quality score, and risk indicators.
+      summary: Get detailed reputation data for an email address including deliverability…
       tags:
       - Abstract Email Reputation
       responses:

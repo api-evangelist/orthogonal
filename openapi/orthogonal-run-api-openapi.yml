@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Orthogonal Run API
-  description: Orthogonal is a unified API and payment layer that lets AI agents discover, access, and pay for external services from a single catalog of 40+ third-party APIs. Agents describe what they need in natural language; Orthogonal returns the right service and proxies the call, metering a per-call price. This OpenAPI description was GENERATED from the public developer documentation at https://docs.orthogonal.com (no first-party OpenAPI is published) and captures the documented Discovery and Run surface. Endpoint shapes are faithful to the docs; verify against the live API before code generation.
+  description: Orthogonal is a unified API and payment layer that lets AI agents discover, access, and pay for external services from a single catalog of 40+ third-party APIs.
   version: v1
   contact:
     name: Orthogonal
@@ -65,37 +65,6 @@ paths:
         '502':
           $ref: '#/components/responses/UpstreamError'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    InsufficientCredits:
-      description: Not enough credits to complete the call.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: API or endpoint not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UpstreamError:
-      description: Upstream API provider returned an error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     RunResponse:
       type: object
@@ -128,6 +97,37 @@ components:
           - RATE_LIMITED
           - NOT_FOUND
           - UPSTREAM_ERROR
+  responses:
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: API or endpoint not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InsufficientCredits:
+      description: Not enough credits to complete the call.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UpstreamError:
+      description: Upstream API provider returned an error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http

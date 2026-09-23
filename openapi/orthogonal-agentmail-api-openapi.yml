@@ -16,7 +16,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/drafts/{draft_id}:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_drafts_draft_id_
-      summary: Get a specific draft including its full content, recipients, and attachments.
+      summary: Get a specific draft including its full content, recipients, and attachments
       tags:
       - AgentMail
       responses:
@@ -24,7 +24,7 @@ paths:
           description: Successful response
     delete:
       operationId: agentmail_DELETE__v0_inboxes_inbox_id_drafts_draft_id_
-      summary: 'Permanently delete a draft. Important: pass method: "DELETE" in your run request.'
+      summary: 'Permanently delete a draft. Important: pass method: "DELETE" in your run request'
       tags:
       - AgentMail
       responses:
@@ -32,7 +32,7 @@ paths:
           description: Successful response
     patch:
       operationId: agentmail_PATCH__v0_inboxes_inbox_id_drafts_draft_id_
-      summary: Update an existing draft. Only the fields you include will be changed; omitted fields are left unchanged.
+      summary: Update an existing draft.
       tags:
       - AgentMail
       responses:
@@ -41,7 +41,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/drafts/{draft_id}/send:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_drafts_draft_id_send
-      summary: Send an existing draft as an email. The draft is converted to a sent message and deleted from drafts. Returns the message_id and thread_id.
+      summary: Send an existing draft as an email.
       tags:
       - AgentMail
       responses:
@@ -50,7 +50,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_
-      summary: Get details of a specific inbox including display name, creation date, and metadata.
+      summary: Get details of a specific inbox including display name, creation date, and…
       tags:
       - AgentMail
       responses:
@@ -58,7 +58,7 @@ paths:
           description: Successful response
     patch:
       operationId: agentmail_PATCH__v0_inboxes_inbox_id_
-      summary: Update an existing inbox display name or client ID.
+      summary: Update an existing inbox display name or client ID
       tags:
       - AgentMail
       responses:
@@ -66,7 +66,7 @@ paths:
           description: Successful response
     delete:
       operationId: agentmail_DELETE__v0_inboxes_inbox_id_
-      summary: 'Permanently delete an inbox and all its contents. Important: pass method: "DELETE" in your run request to distinguish from Get Inbox.'
+      summary: Permanently delete an inbox and all its contents.
       tags:
       - AgentMail
       responses:
@@ -75,7 +75,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/threads/{thread_id}:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_threads_thread_id_
-      summary: Get a thread and all its messages. Returns the full conversation including message bodies, timestamps, and metadata.
+      summary: Get a thread and all its messages.
       tags:
       - AgentMail
       responses:
@@ -83,7 +83,7 @@ paths:
           description: Successful response
     delete:
       operationId: agentmail_DELETE__v0_inboxes_inbox_id_threads_thread_id_
-      summary: 'Move a thread to trash, or permanently delete if already trashed. Important: pass method: "DELETE" in your run request.'
+      summary: Move a thread to trash, or permanently delete if already trashed.
       tags:
       - AgentMail
       responses:
@@ -92,7 +92,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/{message_id}/raw:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_messages_message_id_raw
-      summary: Get the original raw RFC 2822 email content including all headers, MIME parts, and encoded attachments.
+      summary: Get the original raw RFC 2822 email content including all headers, MIME parts…
       tags:
       - AgentMail
       responses:
@@ -101,7 +101,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/{message_id}:
     patch:
       operationId: agentmail_PATCH__v0_inboxes_inbox_id_messages_message_id_
-      summary: Update labels on a message (e.g., mark as read, archive, star).
+      summary: Update labels on a message (e.g., mark as read, archive, star)
       tags:
       - AgentMail
       responses:
@@ -109,7 +109,7 @@ paths:
           description: Successful response
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_messages_message_id_
-      summary: Get a specific message including headers, body (text and HTML), attachments, and metadata.
+      summary: Get a specific message including headers, body (text and HTML), attachments…
       tags:
       - AgentMail
       responses:
@@ -118,7 +118,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/drafts:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_drafts
-      summary: Create a new draft in an inbox. The draft can be edited later and sent with Send Draft.
+      summary: Create a new draft in an inbox.
       tags:
       - AgentMail
       responses:
@@ -148,7 +148,7 @@ paths:
           url: https://np.orthogonal.com/agentmail/v0/inboxes/{inbox_id}/drafts
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_drafts
-      summary: List all drafts in an inbox. Returns draft metadata including subject, recipients, and timestamps.
+      summary: List all drafts in an inbox.
       tags:
       - AgentMail
       responses:
@@ -157,7 +157,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/{message_id}/reply:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_messages_message_id_reply
-      summary: Reply to a specific message. Automatically sets In-Reply-To and References headers for proper threading.
+      summary: Reply to a specific message.
       tags:
       - AgentMail
       responses:
@@ -188,7 +188,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/send:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_messages_send
-      summary: Send an email message from an inbox. At least one recipient (to, cc, or bcc) is required. Returns the message_id and thread_id. Replace {inbox_id} directly in the path with the full inbox email (e.g., /v0/inboxes/myagent@agentmail.to/messages/send).
+      summary: Send an email message from an inbox.
       tags:
       - AgentMail
       responses:
@@ -219,7 +219,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/threads:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_threads
-      summary: List all email threads in an inbox, ordered by most recent. Supports pagination and filtering.
+      summary: List all email threads in an inbox, ordered by most recent.
       tags:
       - AgentMail
       responses:
@@ -228,7 +228,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/{message_id}/forward:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_messages_message_id_forward
-      summary: Forward a message to new recipients. Includes the original message content and any attachments.
+      summary: Forward a message to new recipients.
       tags:
       - AgentMail
       responses:
@@ -259,7 +259,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages/{message_id}/reply-all:
     post:
       operationId: agentmail_POST__v0_inboxes_inbox_id_messages_message_id_reply_all
-      summary: Reply to all recipients of a message. Includes all original To and CC recipients automatically.
+      summary: Reply to all recipients of a message.
       tags:
       - AgentMail
       responses:
@@ -290,7 +290,7 @@ paths:
   /agentmail/v0/inboxes/{inbox_id}/messages:
     get:
       operationId: agentmail_GET__v0_inboxes_inbox_id_messages
-      summary: List all messages in an inbox, ordered by most recent. Supports pagination and filtering by labels or time range.
+      summary: List all messages in an inbox, ordered by most recent.
       tags:
       - AgentMail
       responses:
@@ -299,7 +299,7 @@ paths:
   /agentmail/v0/inboxes:
     post:
       operationId: agentmail_POST__v0_inboxes
-      summary: Create a new email inbox. Inboxes cost $2/month. Inboxes with no API activity for 30+ days are automatically deleted. Any request using the inbox resets the inactivity timer. Returns an inbox_id in email format (e.g., myagent@agentmail.to) used for all subsequent operations. If username is omitted, a random one is generated.
+      summary: Create a new email inbox.
       tags:
       - AgentMail
       responses:

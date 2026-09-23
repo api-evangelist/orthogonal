@@ -16,7 +16,7 @@ paths:
   /openmart/api/v1/search/only_ids:
     post:
       operationId: openmart_POST__api_v1_search_only_ids
-      summary: Lightweight search returning only business IDs.
+      summary: Lightweight search returning only business IDs
       tags:
       - Openmart
       responses:
@@ -47,7 +47,7 @@ paths:
   /openmart/api/v1/search:
     post:
       operationId: openmart_POST__api_v1_search
-      summary: Search local businesses by natural language query with 22+ filter categories.
+      summary: Search local businesses by natural language query with 22+ filter categories
       tags:
       - Openmart
       responses:
@@ -78,7 +78,7 @@ paths:
   /openmart/api/v1/enrich_company:
     post:
       operationId: openmart_POST__api_v1_enrich_company
-      summary: Enrich a company by website URL or social media link.
+      summary: Enrich a company by website URL or social media link
       tags:
       - Openmart
       responses:
@@ -109,7 +109,7 @@ paths:
   /openmart/api/v1/business_records/list/{id_type}:
     get:
       operationId: openmart_GET__api_v1_business_records_list_id_type_
-      summary: Fetch full business records by openmart_id or google_place_id. Up to 100 IDs.
+      summary: Fetch full business records by openmart_id or google_place_id. Up to 100 IDs
       tags:
       - Openmart
       responses:

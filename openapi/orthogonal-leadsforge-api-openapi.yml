@@ -16,7 +16,7 @@ paths:
   /leadsforge/enrichment/jobs:
     get:
       operationId: leadsforge_GET__enrichment_jobs
-      summary: List enrichment jobs with optional filtering.
+      summary: List enrichment jobs with optional filtering
       tags:
       - Leadsforge
       responses:
@@ -47,7 +47,7 @@ paths:
   /leadsforge/enrichment/jobs/{jobID}/results:
     get:
       operationId: leadsforge_GET__enrichment_jobs_jobID_results
-      summary: Get results of a completed enrichment job with pagination.
+      summary: Get results of a completed enrichment job with pagination
       tags:
       - Leadsforge
       responses:
@@ -78,7 +78,7 @@ paths:
   /leadsforge/enrichment/jobs/{jobID}:
     get:
       operationId: leadsforge_GET__enrichment_jobs_jobID_
-      summary: Get the status of an enrichment job by job ID.
+      summary: Get the status of an enrichment job by job ID
       tags:
       - Leadsforge
       responses:
@@ -109,7 +109,7 @@ paths:
   /leadsforge/company-followers/jobs/{jobID}:
     get:
       operationId: leadsforge_GET__company_followers_jobs_jobID_
-      summary: Get the status of a company followers job by job ID.
+      summary: Get the status of a company followers job by job ID
       tags:
       - Leadsforge
       responses:
@@ -140,7 +140,7 @@ paths:
   /leadsforge/company-followers/filters/countries:
     get:
       operationId: leadsforge_GET__company_followers_filters_countries
-      summary: Get list of supported country values for company followers filtering.
+      summary: Get list of supported country values for company followers filtering
       tags:
       - Leadsforge
       responses:
@@ -171,7 +171,7 @@ paths:
   /leadsforge/company-followers/filters/departments:
     get:
       operationId: leadsforge_GET__company_followers_filters_departments
-      summary: Get list of supported department values for company followers filtering.
+      summary: Get list of supported department values for company followers filtering
       tags:
       - Leadsforge
       responses:
@@ -202,7 +202,7 @@ paths:
   /leadsforge/company-followers/filters/levels:
     get:
       operationId: leadsforge_GET__company_followers_filters_levels
-      summary: Get list of supported seniority level values for company followers filtering.
+      summary: Get list of supported seniority level values for company followers filtering
       tags:
       - Leadsforge
       responses:
@@ -233,7 +233,7 @@ paths:
   /leadsforge/lookalikes/filters/departments:
     get:
       operationId: leadsforge_GET__lookalikes_filters_departments
-      summary: Get available department values for lookalikes filtering.
+      summary: Get available department values for lookalikes filtering
       tags:
       - Leadsforge
       responses:
@@ -264,7 +264,7 @@ paths:
   /leadsforge/lookalikes/filters/employee-ranges:
     get:
       operationId: leadsforge_GET__lookalikes_filters_employee_ranges
-      summary: Get available employee range values for lookalikes filtering.
+      summary: Get available employee range values for lookalikes filtering
       tags:
       - Leadsforge
       responses:
@@ -295,7 +295,7 @@ paths:
   /leadsforge/lookalikes/filters/locations:
     get:
       operationId: leadsforge_GET__lookalikes_filters_locations
-      summary: Get available location values for lookalikes filtering.
+      summary: Get available location values for lookalikes filtering
       tags:
       - Leadsforge
       responses:
@@ -326,7 +326,7 @@ paths:
   /leadsforge/search/filters/seniorities:
     get:
       operationId: leadsforge_GET__search_filters_seniorities
-      summary: Get available seniority values for search filtering.
+      summary: Get available seniority values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -357,7 +357,7 @@ paths:
   /leadsforge/company-followers/jobs/{jobID}/results:
     get:
       operationId: leadsforge_GET__company_followers_jobs_jobID_results
-      summary: Get results of a company followers job with pagination.
+      summary: Get results of a company followers job with pagination
       tags:
       - Leadsforge
       responses:
@@ -388,7 +388,7 @@ paths:
   /leadsforge/lookalikes/preview:
     post:
       operationId: leadsforge_POST__lookalikes_preview
-      summary: Preview lookalike companies for given domains. This endpoint is free on the upstream API.
+      summary: Preview lookalike companies for given domains.
       tags:
       - Leadsforge
       responses:
@@ -419,7 +419,7 @@ paths:
   /leadsforge/enrichment/emails:
     post:
       operationId: leadsforge_POST__enrichment_emails
-      summary: Find email addresses for multiple people. Returns a job ID to poll for results.
+      summary: Find email addresses for multiple people. Returns a job ID to poll for results
       tags:
       - Leadsforge
       responses:
@@ -450,7 +450,7 @@ paths:
   /leadsforge/enrichment/phone:
     post:
       operationId: leadsforge_POST__enrichment_phone
-      summary: Find phone number for a person synchronously. Provide name + company or LinkedIn URL.
+      summary: Find phone number for a person synchronously.
       tags:
       - Leadsforge
       responses:
@@ -481,7 +481,7 @@ paths:
   /leadsforge/search/filters/company-types:
     get:
       operationId: leadsforge_GET__search_filters_company_types
-      summary: Get available company type values for search filtering.
+      summary: Get available company type values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -512,7 +512,7 @@ paths:
   /leadsforge/company-followers/jobs:
     get:
       operationId: leadsforge_GET__company_followers_jobs
-      summary: List company followers jobs with optional filtering.
+      summary: List company followers jobs with optional filtering
       tags:
       - Leadsforge
       responses:
@@ -543,7 +543,7 @@ paths:
   /leadsforge/search/count:
     post:
       operationId: leadsforge_POST__search_count
-      summary: Count the number of results matching search filters without returning the actual data.
+      summary: Count the number of results matching search filters without returning the…
       tags:
       - Leadsforge
       responses:
@@ -574,7 +574,7 @@ paths:
   /leadsforge/search:
     post:
       operationId: leadsforge_POST__search
-      summary: Search for people/leads with filters on company, job title, location, seniority, and more.
+      summary: Search for people/leads with filters on company, job title, location…
       tags:
       - Leadsforge
       responses:
@@ -605,7 +605,7 @@ paths:
   /leadsforge/company-followers/search:
     post:
       operationId: leadsforge_POST__company_followers_search
-      summary: Search followers of a company on LinkedIn with filters for country, department, seniority, and job title.
+      summary: Search followers of a company on LinkedIn with filters for country, department…
       tags:
       - Leadsforge
       responses:
@@ -636,7 +636,7 @@ paths:
   /leadsforge/search/filters/departments:
     get:
       operationId: leadsforge_GET__search_filters_departments
-      summary: Get available department values for search filtering.
+      summary: Get available department values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -667,7 +667,7 @@ paths:
   /leadsforge/search/filters/funding-types:
     get:
       operationId: leadsforge_GET__search_filters_funding_types
-      summary: Get available funding type values for search filtering.
+      summary: Get available funding type values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -698,7 +698,7 @@ paths:
   /leadsforge/search/filters/industries:
     get:
       operationId: leadsforge_GET__search_filters_industries
-      summary: Get available industry values for search filtering.
+      summary: Get available industry values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -729,7 +729,7 @@ paths:
   /leadsforge/search/filters/revenue-ranges:
     get:
       operationId: leadsforge_GET__search_filters_revenue_ranges
-      summary: Get available revenue range values for search filtering.
+      summary: Get available revenue range values for search filtering
       tags:
       - Leadsforge
       responses:
@@ -760,7 +760,7 @@ paths:
   /leadsforge/enrichment/phones:
     post:
       operationId: leadsforge_POST__enrichment_phones
-      summary: Find phone numbers for multiple people. Returns a job ID to poll for results.
+      summary: Find phone numbers for multiple people. Returns a job ID to poll for results
       tags:
       - Leadsforge
       responses:
@@ -791,7 +791,7 @@ paths:
   /leadsforge/enrichment/linkedin:
     post:
       operationId: leadsforge_POST__enrichment_linkedin
-      summary: Find LinkedIn profiles for multiple people. Returns a job ID to poll for results.
+      summary: Find LinkedIn profiles for multiple people. Returns a job ID to poll for results
       tags:
       - Leadsforge
       responses:
@@ -822,7 +822,7 @@ paths:
   /leadsforge/company-followers/filters/job-titles:
     get:
       operationId: leadsforge_GET__company_followers_filters_job_titles
-      summary: Get paginated list of supported job title values with optional search.
+      summary: Get paginated list of supported job title values with optional search
       tags:
       - Leadsforge
       responses:
@@ -853,7 +853,7 @@ paths:
   /leadsforge/company-followers/filters/states:
     get:
       operationId: leadsforge_GET__company_followers_filters_states
-      summary: Get list of supported state/region values for company followers filtering.
+      summary: Get list of supported state/region values for company followers filtering
       tags:
       - Leadsforge
       responses:
@@ -884,7 +884,7 @@ paths:
   /leadsforge/lookalikes/search:
     post:
       operationId: leadsforge_POST__lookalikes_search
-      summary: Search for lookalike companies with pagination and filtering.
+      summary: Search for lookalike companies with pagination and filtering
       tags:
       - Leadsforge
       responses:
@@ -915,7 +915,7 @@ paths:
   /leadsforge/lookalikes/filters/seniorities:
     get:
       operationId: leadsforge_GET__lookalikes_filters_seniorities
-      summary: Get available seniority values for lookalikes filtering.
+      summary: Get available seniority values for lookalikes filtering
       tags:
       - Leadsforge
       responses:
@@ -946,7 +946,7 @@ paths:
   /leadsforge/enrichment/email:
     post:
       operationId: leadsforge_POST__enrichment_email
-      summary: Find email address for a person synchronously. Provide name + company or LinkedIn URL.
+      summary: Find email address for a person synchronously.
       tags:
       - Leadsforge
       responses:

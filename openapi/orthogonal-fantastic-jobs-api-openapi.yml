@@ -16,7 +16,7 @@ paths:
   /fantastic-jobs/v1/active-jb:
     get:
       operationId: fantastic_jobs_GET__v1_active_jb
-      summary: 'Returns new jobs from LinkedIn, Wellfound, and Y Combinator. LinkedIn hourly for English-speaking countries; others every few hours. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Returns new jobs from LinkedIn, Wellfound, and Y Combinator.
       tags:
       - Fantastic Jobs
       responses:
@@ -47,7 +47,7 @@ paths:
   /fantastic-jobs/v1/active-ats:
     get:
       operationId: fantastic_jobs_GET__v1_active_ats
-      summary: 'Returns new jobs from 54 ATS platforms (company career pages). Refreshed hourly. Supports 30+ filters including title, location, source, AI experience level, work arrangement, and more. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Returns new jobs from 54 ATS platforms (company career pages).
       tags:
       - Fantastic Jobs
       responses:

@@ -16,7 +16,7 @@ paths:
   /serper-scrape/:
     post:
       operationId: serper_scrape_POST__
-      summary: Scrape any webpage and extract its content as clean text, markdown, or raw HTML. Handles JavaScript-rendered pages. Returns page text, metadata (title, description, OG tags), and optionally markdown/HTML. Use for content extraction, data gathering, or page analysis.
+      summary: Scrape any webpage and extract its content as clean text, markdown, or raw HTML.
       tags:
       - Serper Scrape
       responses:

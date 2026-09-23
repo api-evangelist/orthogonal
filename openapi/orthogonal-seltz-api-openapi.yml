@@ -16,7 +16,7 @@ paths:
   /seltz/v1/search:
     post:
       operationId: seltz_POST__v1_search
-      summary: Search the web and return matching documents with URLs and content.
+      summary: Search the web and return matching documents with URLs and content
       tags:
       - Seltz
       responses:

@@ -16,7 +16,7 @@ paths:
   /agentphone/v0/agent/verify:
     post:
       operationId: agentphone_POST__v0_agent_verify
-      summary: Verify OTP code. Atomically creates account, provisions phone number, creates starter agent, returns API key. No auth required.
+      summary: Verify OTP code.
       tags:
       - AgentPhone
       responses:
@@ -25,7 +25,7 @@ paths:
   /agentphone/v1/agents/{agentId}:
     patch:
       operationId: agentphone_PATCH__v1_agents_agentId_
-      summary: Update agent fields. Only sent fields change.
+      summary: Update agent fields. Only sent fields change
       tags:
       - AgentPhone
       responses:
@@ -33,7 +33,7 @@ paths:
           description: Successful response
     delete:
       operationId: agentphone_DELETE__v1_agents_agentId_
-      summary: Permanently delete an agent. Cannot be undone.
+      summary: Permanently delete an agent. Cannot be undone
       tags:
       - AgentPhone
       responses:
@@ -41,7 +41,7 @@ paths:
           description: Successful response
     get:
       operationId: agentphone_GET__v1_agents_agentId_
-      summary: Get details for a specific agent.
+      summary: Get details for a specific agent
       tags:
       - AgentPhone
       responses:
@@ -50,7 +50,7 @@ paths:
   /agentphone/v1/agents/{agentId}/numbers/{numberId}:
     delete:
       operationId: agentphone_DELETE__v1_agents_agentId_numbers_numberId_
-      summary: Detach a phone number from an agent.
+      summary: Detach a phone number from an agent
       tags:
       - AgentPhone
       responses:
@@ -59,7 +59,7 @@ paths:
   /agentphone/v1/agents/voices:
     get:
       operationId: agentphone_GET__v1_agents_voices
-      summary: List all available voices across providers (ElevenLabs, Cartesia, OpenAI, etc).
+      summary: List all available voices across providers (ElevenLabs, Cartesia, OpenAI, etc)
       tags:
       - AgentPhone
       responses:
@@ -68,7 +68,7 @@ paths:
   /agentphone/v1/agents/{agentId}/webhook:
     post:
       operationId: agentphone_POST__v1_agents_agentId_webhook
-      summary: Set webhook URL for a specific agent.
+      summary: Set webhook URL for a specific agent
       tags:
       - AgentPhone
       responses:
@@ -76,7 +76,7 @@ paths:
           description: Successful response
     get:
       operationId: agentphone_GET__v1_agents_agentId_webhook
-      summary: Get webhook URL for a specific agent.
+      summary: Get webhook URL for a specific agent
       tags:
       - AgentPhone
       responses:
@@ -85,7 +85,7 @@ paths:
   /agentphone/v0/agent/sign-up:
     post:
       operationId: agentphone_POST__v0_agent_sign_up
-      summary: Start agent signup. Sends a 6-digit OTP to the human's email. Returns a verification_id. No auth required.
+      summary: Start agent signup.
       tags:
       - AgentPhone
       responses:
@@ -94,7 +94,7 @@ paths:
   /agentphone/v1/calls/{callId}:
     get:
       operationId: agentphone_GET__v1_calls_callId_
-      summary: Get call details and transcript. Poll until status is completed or failed.
+      summary: Get call details and transcript. Poll until status is completed or failed
       tags:
       - AgentPhone
       responses:
@@ -103,7 +103,7 @@ paths:
   /agentphone/v1/conversations/{conversationId}:
     get:
       operationId: agentphone_GET__v1_conversations_conversationId_
-      summary: Get a conversation with all messages.
+      summary: Get a conversation with all messages
       tags:
       - AgentPhone
       responses:
@@ -112,7 +112,7 @@ paths:
   /agentphone/v1/agents/{agentId}/conversations:
     get:
       operationId: agentphone_GET__v1_agents_agentId_conversations
-      summary: List SMS conversations for a specific agent.
+      summary: List SMS conversations for a specific agent
       tags:
       - AgentPhone
       responses:
@@ -121,7 +121,7 @@ paths:
   /agentphone/v1/agents:
     post:
       operationId: agentphone_POST__v1_agents
-      summary: Create a new agent with name, voice, system prompt, and voice mode.
+      summary: Create a new agent with name, voice, system prompt, and voice mode
       tags:
       - AgentPhone
       responses:
@@ -130,7 +130,7 @@ paths:
   /agentphone/v1/numbers:
     post:
       operationId: agentphone_POST__v1_numbers
-      summary: Buy a US or CA phone number. $3/month per number.
+      summary: Buy a US or CA phone number. $3/month per number
       tags:
       - AgentPhone
       responses:
@@ -161,7 +161,7 @@ paths:
   /agentphone/v1/agents/{agentId}/numbers:
     post:
       operationId: agentphone_POST__v1_agents_agentId_numbers
-      summary: Attach a phone number to an agent.
+      summary: Attach a phone number to an agent
       tags:
       - AgentPhone
       responses:
@@ -170,7 +170,7 @@ paths:
   /agentphone/v1/numbers/{numberId}:
     delete:
       operationId: agentphone_DELETE__v1_numbers_numberId_
-      summary: Release a phone number. Irreversible.
+      summary: Release a phone number. Irreversible
       tags:
       - AgentPhone
       responses:
@@ -179,7 +179,7 @@ paths:
   /agentphone/v1/agents/{agentId}/calls:
     get:
       operationId: agentphone_GET__v1_agents_agentId_calls
-      summary: List calls for a specific agent.
+      summary: List calls for a specific agent
       tags:
       - AgentPhone
       responses:
@@ -188,7 +188,7 @@ paths:
   /agentphone/v1/numbers/{numberId}/messages:
     get:
       operationId: agentphone_GET__v1_numbers_numberId_messages
-      summary: List messages for a phone number.
+      summary: List messages for a phone number
       tags:
       - AgentPhone
       responses:
@@ -197,7 +197,7 @@ paths:
   /agentphone/v1/messages:
     post:
       operationId: agentphone_POST__v1_messages
-      summary: 'Send an SMS from an agent''s phone number. First message compliance: Your initial SMS to any new contact must include (1) your brand name, (2) opt-in confirmation, and (3) opt-out instructions (e.g., "Reply STOP to unsubscribe"). Non-compliant first messages may be silently filtered by carriers.'
+      summary: Send an SMS from an agent's phone number.
       tags:
       - AgentPhone
       responses:
@@ -228,7 +228,7 @@ paths:
   /agentphone/v1/calls:
     post:
       operationId: agentphone_POST__v1_calls
-      summary: Make an outbound voice call. Include systemPrompt for autonomous AI conversation, omit for webhook-driven mode.
+      summary: Make an outbound voice call.
       tags:
       - AgentPhone
       responses:

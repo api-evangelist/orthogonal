@@ -16,7 +16,7 @@ paths:
   /happenstance/v1/research:
     post:
       operationId: happenstance_POST__v1_research
-      summary: Start a new person research request. Include as many details as possible about the person in the description field (name, company, role, etc.).
+      summary: Start a new person research request.
       tags:
       - Happenstance
       responses:
@@ -47,7 +47,7 @@ paths:
   /happenstance/v1/research/{research_id}:
     get:
       operationId: happenstance_GET__v1_research_research_id_
-      summary: Get the status and results of a research request. Returns status (RUNNING, COMPLETED, FAILED, FAILED_AMBIGUOUS) and a detailed profile when completed.
+      summary: Get the status and results of a research request.
       tags:
       - Happenstance
       responses:

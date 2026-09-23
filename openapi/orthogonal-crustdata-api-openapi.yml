@@ -16,7 +16,7 @@ paths:
   /crustdata/screener/companydb/search:
     post:
       operationId: crustdata_POST__screener_companydb_search
-      summary: 'Search millions of companies in Crustdata''s database with advanced filtering. Supports nested AND/OR filter logic, sorting, and cursor-based pagination. Returns up to 1000 results per request. Filter by company name, HQ country, industry, employee metrics, funding, revenue, year founded, and more. Uses (.) for fuzzy text matching and [.] for exact token matching. Note: This API is in beta. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Search millions of companies in Crustdata's database with advanced filtering.
       tags:
       - Crustdata
       responses:
@@ -47,7 +47,7 @@ paths:
   /crustdata/data_lab/gartner_reviews/Table/:
     post:
       operationId: crustdata_POST__data_lab_gartner_reviews_Table_
-      summary: 'Get Gartner Peer Insights review data for companies. Filter by review rating, company ID, and other metrics. Returns a fields-and-rows structure. Note: requires Crustdata credits for this dataset. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get Gartner Peer Insights review data for companies.
       tags:
       - Crustdata
       responses:
@@ -78,7 +78,7 @@ paths:
   /crustdata/screener/persondb/search:
     post:
       operationId: crustdata_POST__screener_persondb_search
-      summary: 'Search millions of professional profiles in Crustdata''s database with advanced filtering. Supports nested AND/OR filter logic and cursor-based pagination. Returns up to 1000 results per request with employment history, education, skills, emails, and social profiles. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Search millions of professional profiles in Crustdata's database with advanced…
       tags:
       - Crustdata
       responses:
@@ -109,7 +109,7 @@ paths:
   /crustdata/data_lab/job_listings/Table/:
     post:
       operationId: crustdata_POST__data_lab_job_listings_Table_
-      summary: 'Get job listings from Crustdata''s database. Filter by company, date, location, and more. Returns a fields-and-rows structure where fields describe column names/types and rows contain the data. Use Company Identification endpoint first to get company_id values for filtering. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get job listings from Crustdata's database.
       tags:
       - Crustdata
       responses:
@@ -140,7 +140,7 @@ paths:
   /crustdata/screener/company:
     get:
       operationId: crustdata_GET__screener_company
-      summary: 'Enrich one or more companies by domain, name, or Crustdata company ID. Returns comprehensive firmographic data: headcount, revenue, funding, employer reviews, web traffic, news, job openings, founders, and decision makers. Provide at least one of company_domain, company_name, or company_id. Multiple values can be comma-separated (e.g. company_domain=stripe.com,hubspot.com).'
+      summary: Enrich one or more companies by domain, name, or Crustdata company ID.
       tags:
       - Crustdata
       responses:
@@ -171,7 +171,7 @@ paths:
   /crustdata/screener/person/enrich:
     get:
       operationId: crustdata_GET__screener_person_enrich
-      summary: Enrich one or more individuals by LinkedIn URL or business email. Returns employment history, education, skills, contact info, and GitHub profiles. Provide at least one of linkedin_profile_url or business_email. Multiple values can be comma-separated. Use fields to select specific data and reduce response size.
+      summary: Enrich one or more individuals by LinkedIn URL or business email.
       tags:
       - Crustdata
       responses:
@@ -202,7 +202,7 @@ paths:
   /crustdata/screener/identify/:
     post:
       operationId: crustdata_POST__screener_identify_
-      summary: Identify one or more companies in Crustdata's database by domain, name, LinkedIn URL, Crunchbase URL, or company ID. Returns matching companies with relevance scores. Only one identifier field is needed.
+      summary: Identify one or more companies in Crustdata's database by domain, name…
       tags:
       - Crustdata
       responses:

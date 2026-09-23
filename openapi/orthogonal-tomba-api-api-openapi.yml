@@ -16,7 +16,7 @@ paths:
   /tomba/v1/people/find:
     get:
       operationId: tomba_GET__v1_people_find
-      summary: Get person information from an email address.
+      summary: Get person information from an email address
       tags:
       - Tomba API
       responses:
@@ -47,7 +47,7 @@ paths:
   /tomba/v1/combined/find:
     get:
       operationId: tomba_GET__v1_combined_find
-      summary: Get combined person and company information from an email.
+      summary: Get combined person and company information from an email
       tags:
       - Tomba API
       responses:
@@ -78,7 +78,7 @@ paths:
   /tomba/v1/email-count:
     get:
       operationId: tomba_GET__v1_email_count
-      summary: Get the count of email addresses for a domain, broken down by department and seniority.
+      summary: Get the count of email addresses for a domain, broken down by department and…
       tags:
       - Tomba API
       responses:
@@ -109,7 +109,7 @@ paths:
   /tomba/v1/author-finder:
     get:
       operationId: tomba_GET__v1_author_finder
-      summary: Find the email address of a blog post author from the article URL.
+      summary: Find the email address of a blog post author from the article URL
       tags:
       - Tomba API
       responses:
@@ -140,7 +140,7 @@ paths:
   /tomba/v1/location:
     get:
       operationId: tomba_GET__v1_location
-      summary: Get employee location distribution for a domain.
+      summary: Get employee location distribution for a domain
       tags:
       - Tomba API
       responses:
@@ -171,7 +171,7 @@ paths:
   /tomba/v1/email-sources:
     get:
       operationId: tomba_GET__v1_email_sources
-      summary: Find the sources where an email was found on the web.
+      summary: Find the sources where an email was found on the web
       tags:
       - Tomba API
       responses:
@@ -202,7 +202,7 @@ paths:
   /tomba/v1/phone-finder:
     get:
       operationId: tomba_GET__v1_phone_finder
-      summary: Find phone numbers associated with an email, domain, or LinkedIn profile.
+      summary: Find phone numbers associated with an email, domain, or LinkedIn profile
       tags:
       - Tomba API
       responses:
@@ -233,7 +233,7 @@ paths:
   /tomba/v1/email-format:
     get:
       operationId: tomba_GET__v1_email_format
-      summary: Get the email format patterns used by a domain (e.g. first.last, firstlast).
+      summary: Get the email format patterns used by a domain (e.g. first.last, firstlast)
       tags:
       - Tomba API
       responses:
@@ -264,7 +264,7 @@ paths:
   /tomba/v1/phone-validator:
     get:
       operationId: tomba_GET__v1_phone_validator
-      summary: Validate a phone number and get carrier information.
+      summary: Validate a phone number and get carrier information
       tags:
       - Tomba API
       responses:
@@ -295,7 +295,7 @@ paths:
   /tomba/v1/domain-status:
     get:
       operationId: tomba_GET__v1_domain_status
-      summary: Check the status and availability of a domain.
+      summary: Check the status and availability of a domain
       tags:
       - Tomba API
       responses:
@@ -357,7 +357,7 @@ paths:
   /tomba/v1/technology:
     get:
       operationId: tomba_GET__v1_technology
-      summary: Discover technologies used by a website.
+      summary: Discover technologies used by a website
       tags:
       - Tomba API
       responses:
@@ -388,7 +388,7 @@ paths:
   /tomba/v1/reveal/search:
     post:
       operationId: tomba_POST__v1_reveal_search
-      summary: Search for companies using natural language queries or structured filters. AI assistant generates appropriate filters from your query.
+      summary: Search for companies using natural language queries or structured filters.
       tags:
       - Tomba API
       responses:
@@ -419,7 +419,7 @@ paths:
   /tomba/v1/companies/find:
     get:
       operationId: tomba_GET__v1_companies_find
-      summary: Get company information from a domain.
+      summary: Get company information from a domain
       tags:
       - Tomba API
       responses:
@@ -450,7 +450,7 @@ paths:
   /tomba/v1/similar:
     get:
       operationId: tomba_GET__v1_similar
-      summary: Find domains similar to a given domain.
+      summary: Find domains similar to a given domain
       tags:
       - Tomba API
       responses:
@@ -481,7 +481,7 @@ paths:
   /tomba/v1/linkedin:
     get:
       operationId: tomba_GET__v1_linkedin
-      summary: Find the email address from a LinkedIn profile URL.
+      summary: Find the email address from a LinkedIn profile URL
       tags:
       - Tomba API
       responses:
@@ -512,7 +512,7 @@ paths:
   /tomba/v1/enrich:
     get:
       operationId: tomba_GET__v1_enrich
-      summary: Enrich an email address with person and company data (name, location, social handles).
+      summary: Enrich an email address with person and company data (name, location, social…
       tags:
       - Tomba API
       responses:
@@ -543,7 +543,7 @@ paths:
   /tomba/v1/email-finder:
     get:
       operationId: tomba_GET__v1_email_finder
-      summary: Find the most likely email address from a domain name, first name, and last name.
+      summary: Find the most likely email address from a domain name, first name, and last name
       tags:
       - Tomba API
       responses:
@@ -574,7 +574,7 @@ paths:
   /tomba/v1/domain-search:
     get:
       operationId: tomba_GET__v1_domain_search
-      summary: Search emails based on a website domain. Returns all email addresses found on the internet for a given domain, with organization info and employee details.
+      summary: Search emails based on a website domain.
       tags:
       - Tomba API
       responses:
@@ -605,7 +605,7 @@ paths:
   /tomba/v1/email-verifier:
     get:
       operationId: tomba_GET__v1_email_verifier
-      summary: Verify the deliverability of an email address.
+      summary: Verify the deliverability of an email address
       tags:
       - Tomba API
       responses:

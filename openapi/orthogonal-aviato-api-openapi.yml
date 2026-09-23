@@ -16,7 +16,7 @@ paths:
   /aviato/social/post/{postUrn}/reactions:
     get:
       operationId: aviato_GET__social_post_postUrn_reactions
-      summary: 'Get reactions for a LinkedIn post. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get reactions for a LinkedIn post.
       tags:
       - Aviato
       responses:
@@ -47,7 +47,7 @@ paths:
   /aviato/social/post/{postUrn}/reshares:
     get:
       operationId: aviato_GET__social_post_postUrn_reshares
-      summary: 'Get reshares for a LinkedIn post. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get reshares for a LinkedIn post.
       tags:
       - Aviato
       responses:
@@ -78,7 +78,7 @@ paths:
   /aviato/person/vestings:
     get:
       operationId: aviato_GET__person_vestings
-      summary: 'Get vestings of a person. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get vestings of a person.
       tags:
       - Aviato
       responses:
@@ -109,7 +109,7 @@ paths:
   /aviato/person/simple/search:
     get:
       operationId: aviato_GET__person_simple_search
-      summary: 'Simplified person search with pre-defined query parameters. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Simplified person search with pre-defined query parameters.
       tags:
       - Aviato
       responses:
@@ -140,7 +140,7 @@ paths:
   /aviato/company/funds:
     get:
       operationId: aviato_GET__company_funds
-      summary: 'Get funds that a company has raised. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get funds that a company has raised.
       tags:
       - Aviato
       responses:
@@ -171,7 +171,7 @@ paths:
   /aviato/company/funding-rounds:
     get:
       operationId: aviato_GET__company_funding_rounds
-      summary: 'Get funding rounds of the specified company. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get funding rounds of the specified company.
       tags:
       - Aviato
       responses:
@@ -202,7 +202,7 @@ paths:
   /aviato/person/email:
     get:
       operationId: aviato_GET__person_email
-      summary: Get a person's email addresses.
+      summary: Get a person's email addresses
       tags:
       - Aviato
       responses:
@@ -233,7 +233,7 @@ paths:
   /aviato/social/post/{postUrn}/comments:
     get:
       operationId: aviato_GET__social_post_postUrn_comments
-      summary: 'Get comments for a LinkedIn post. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get comments for a LinkedIn post.
       tags:
       - Aviato
       responses:
@@ -264,7 +264,7 @@ paths:
   /aviato/company/acquisitions:
     get:
       operationId: aviato_GET__company_acquisitions
-      summary: 'Get companies acquired by the specified company. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get companies acquired by the specified company.
       tags:
       - Aviato
       responses:
@@ -295,7 +295,7 @@ paths:
   /aviato/social/person/posts:
     get:
       operationId: aviato_GET__social_person_posts
-      summary: 'Get posts from a person''s LinkedIn profile. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get posts from a person's LinkedIn profile.
       tags:
       - Aviato
       responses:
@@ -326,7 +326,7 @@ paths:
   /aviato/person/investments/funds:
     get:
       operationId: aviato_GET__person_investments_funds
-      summary: 'Get funds that a person has invested in. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get funds that a person has invested in.
       tags:
       - Aviato
       responses:
@@ -357,7 +357,7 @@ paths:
   /aviato/company/employees:
     get:
       operationId: aviato_GET__company_employees
-      summary: 'Get employees of the specified company. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get employees of the specified company.
       tags:
       - Aviato
       responses:
@@ -388,7 +388,7 @@ paths:
   /aviato/company/investments:
     get:
       operationId: aviato_GET__company_investments
-      summary: 'Get investments made into the specified company. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get investments made into the specified company.
       tags:
       - Aviato
       responses:
@@ -419,7 +419,7 @@ paths:
   /aviato/company/investments/funds:
     get:
       operationId: aviato_GET__company_investments_funds
-      summary: 'Get individual funds that a company has invested in (e.g. Sequoia''s Growth Fund). Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get individual funds that a company has invested in (e.g.
       tags:
       - Aviato
       responses:
@@ -450,7 +450,7 @@ paths:
   /aviato/company/enrich:
     get:
       operationId: aviato_GET__company_enrich
-      summary: Get enriched details on a company. Pass any identifier (id, linkedinURL, website, etc.).
+      summary: Get enriched details on a company.
       tags:
       - Aviato
       responses:
@@ -481,7 +481,7 @@ paths:
   /aviato/company/search:
     post:
       operationId: aviato_POST__company_search
-      summary: Search for companies using Aviato DSL. Pass dsl object with filters, limit, and offset inside it.
+      summary: Search for companies using Aviato DSL.
       tags:
       - Aviato
       responses:
@@ -512,7 +512,7 @@ paths:
   /aviato/person/founded-companies:
     get:
       operationId: aviato_GET__person_founded_companies
-      summary: 'Get companies that a person has founded. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get companies that a person has founded.
       tags:
       - Aviato
       responses:
@@ -543,7 +543,7 @@ paths:
   /aviato/marketmap/generate:
     post:
       operationId: aviato_POST__marketmap_generate
-      summary: Start generating a market map to find similar companies. Supply name+website or an Aviato company ID.
+      summary: Start generating a market map to find similar companies.
       tags:
       - Aviato
       responses:
@@ -574,7 +574,7 @@ paths:
   /aviato/company/founders:
     get:
       operationId: aviato_GET__company_founders
-      summary: 'Get founders of the specified company. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get founders of the specified company.
       tags:
       - Aviato
       responses:
@@ -605,7 +605,7 @@ paths:
   /aviato/person/investments/companies:
     get:
       operationId: aviato_GET__person_investments_companies
-      summary: 'Get companies that a person has invested in. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get companies that a person has invested in.
       tags:
       - Aviato
       responses:
@@ -636,7 +636,7 @@ paths:
   /aviato/geocoder/search:
     get:
       operationId: aviato_GET__geocoder_search
-      summary: Search for a location and get geocoded matches. Use the geocoded ID with person/company search locationIDList filter.
+      summary: Search for a location and get geocoded matches.
       tags:
       - Aviato
       responses:
@@ -667,7 +667,7 @@ paths:
   /aviato/person/search:
     post:
       operationId: aviato_POST__person_search
-      summary: Search for people using Aviato DSL. Pass dsl object with filters, limit, and offset inside it.
+      summary: Search for people using Aviato DSL.
       tags:
       - Aviato
       responses:
@@ -698,7 +698,7 @@ paths:
   /aviato/company/investments/outbound:
     get:
       operationId: aviato_GET__company_investments_outbound
-      summary: 'Get outbound investments that a company has made. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get outbound investments that a company has made.
       tags:
       - Aviato
       responses:
@@ -729,7 +729,7 @@ paths:
   /aviato/social/company/posts:
     get:
       operationId: aviato_GET__social_company_posts
-      summary: 'Get posts from a company''s LinkedIn page. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later page, offset, or cursor calls on the same logical search, pass parentRequestId with unchanged non-pagination parameters. Valid continuation calls still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable request.'
+      summary: Get posts from a company's LinkedIn page.
       tags:
       - Aviato
       responses:
@@ -760,7 +760,7 @@ paths:
   /aviato/person/enrich:
     get:
       operationId: aviato_GET__person_enrich
-      summary: Get enriched details on a person. Pass any identifier.
+      summary: Get enriched details on a person. Pass any identifier
       tags:
       - Aviato
       responses:

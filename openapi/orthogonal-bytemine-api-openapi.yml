@@ -16,7 +16,7 @@ paths:
   /bytemine/v1/company-lookalikes:
     post:
       operationId: bytemine_POST__v1_company_lookalikes
-      summary: Find companies similar to provided domains (max 10). Returns job_id immediately. Provide a webhook_url to receive results when complete (required, as job polling is not available through this API). 50 credits per run.
+      summary: Find companies similar to provided domains (max 10).
       tags:
       - Bytemine
       responses:
@@ -47,7 +47,7 @@ paths:
   /bytemine/crawl/diff:
     post:
       operationId: bytemine_POST__crawl_diff
-      summary: Compare a page's current content against a saved snapshot. Returns added/removed lines and change summary. 1 credit.
+      summary: Compare a page's current content against a saved snapshot.
       tags:
       - Bytemine
       responses:
@@ -78,7 +78,7 @@ paths:
   /bytemine/v1/icp-builder:
     post:
       operationId: bytemine_POST__v1_icp_builder
-      summary: Describe your ideal customer profile in plain text. Returns a job_id immediately. Provide a webhook_url to receive results when complete (required, as job polling is not available through this API). 50 credits per run.
+      summary: Describe your ideal customer profile in plain text.
       tags:
       - Bytemine
       responses:
@@ -109,7 +109,7 @@ paths:
   /bytemine/contacts/unlock:
     post:
       operationId: bytemine_POST__contacts_unlock
-      summary: 'Unlock full contact details (emails, phones, social profiles) for prospect PIDs obtained from /contacts/search. Requires gateway wrapper format: {path, method, body: {pids}}.'
+      summary: Unlock full contact details (emails, phones, social profiles) for prospect PIDs…
       tags:
       - Bytemine
       responses:
@@ -140,7 +140,7 @@ paths:
   /bytemine/crawl/start:
     post:
       operationId: bytemine_POST__crawl_start
-      summary: Start a multi-page crawl job with sitemap discovery and configurable depth/page limits. Returns job_id. 1 credit per page.
+      summary: Start a multi-page crawl job with sitemap discovery and configurable depth/page…
       tags:
       - Bytemine
       responses:
@@ -171,7 +171,7 @@ paths:
   /bytemine/signals/funding:
     post:
       operationId: bytemine_POST__signals_funding
-      summary: Search real-time funding signals with filters for round type, amount, investor, industry, date, employee count, and more. 1 credit per record. Use count='true' for free count-only query.
+      summary: Search real-time funding signals with filters for round type, amount, investor…
       tags:
       - Bytemine
       responses:
@@ -202,7 +202,7 @@ paths:
   /bytemine/contacts/enrich:
     post:
       operationId: bytemine_POST__contacts_enrich
-      summary: Enrich a single contact by email, phone, LinkedIn, Facebook, or name+company. Returns full profile with work email, phone, job title, company info. 1 credit per match.
+      summary: Enrich a single contact by email, phone, LinkedIn, Facebook, or name+company.
       tags:
       - Bytemine
       responses:
@@ -233,7 +233,7 @@ paths:
   /bytemine/crawl/map:
     post:
       operationId: bytemine_POST__crawl_map
-      summary: Discover all URLs on a website via sitemap + link extraction. Returns scored/sorted URLs without scraping content. 1 credit.
+      summary: Discover all URLs on a website via sitemap + link extraction.
       tags:
       - Bytemine
       responses:
@@ -264,7 +264,7 @@ paths:
   /bytemine/crawl/scrape:
     post:
       operationId: bytemine_POST__crawl_scrape
-      summary: Scrape a URL and return markdown, links, metadata, and tech stack. Falls back to Firecrawl if needed. 1 credit.
+      summary: Scrape a URL and return markdown, links, metadata, and tech stack.
       tags:
       - Bytemine
       responses:
@@ -295,7 +295,7 @@ paths:
   /bytemine/crawl/batch:
     post:
       operationId: bytemine_POST__crawl_batch
-      summary: Scrape up to 100 URLs in parallel. Returns markdown, metadata, and tech stack per URL. 1 credit per URL.
+      summary: Scrape up to 100 URLs in parallel.
       tags:
       - Bytemine
       responses:
@@ -326,7 +326,7 @@ paths:
   /bytemine/crawl/snapshot:
     post:
       operationId: bytemine_POST__crawl_snapshot
-      summary: Save a snapshot of a page's current content for change tracking. Use with /crawl/diff to detect changes. 1 credit.
+      summary: Save a snapshot of a page's current content for change tracking.
       tags:
       - Bytemine
       responses:
@@ -357,7 +357,7 @@ paths:
   /bytemine/crawl/continue:
     post:
       operationId: bytemine_POST__crawl_continue
-      summary: Resume processing pending pages in an existing crawl job. Call repeatedly until status is 'completed'.
+      summary: Resume processing pending pages in an existing crawl job.
       tags:
       - Bytemine
       responses:
@@ -388,7 +388,7 @@ paths:
   /bytemine/crawl/results:
     post:
       operationId: bytemine_POST__crawl_results
-      summary: Retrieve paginated results from a completed crawl. Each result includes URL, markdown, metadata, and links. Free, no credits.
+      summary: Retrieve paginated results from a completed crawl.
       tags:
       - Bytemine
       responses:
@@ -419,7 +419,7 @@ paths:
   /bytemine/v1/apps/roi-calculator:
     post:
       operationId: bytemine_POST__v1_apps_roi_calculator
-      summary: Generate a personalized ROI projection and business case with quantified savings, implementation timeline, risk analysis, and outreach copy. Returns a public shareable URL. 10 credits.
+      summary: Generate a personalized ROI projection and business case with quantified…
       tags:
       - Bytemine
       responses:
@@ -450,7 +450,7 @@ paths:
   /bytemine/b2b-enrich:
     post:
       operationId: bytemine_POST__b2b_enrich
-      summary: Enrich a company by name, website, LinkedIn URL, or company_id. Returns full profile with description, industries, NAICS, locations, posts, funding. 1 credit per match.
+      summary: Enrich a company by name, website, LinkedIn URL, or company_id.
       tags:
       - Bytemine
       responses:
@@ -481,7 +481,7 @@ paths:
   /bytemine/v1/apps/meeting-prep:
     post:
       operationId: bytemine_POST__v1_apps_meeting_prep
-      summary: Generate a comprehensive meeting prep brief with company intel, contacts, talking points, objections, ice breakers, and pain points. 10 credits.
+      summary: Generate a comprehensive meeting prep brief with company intel, contacts…
       tags:
       - Bytemine
       responses:
@@ -512,7 +512,7 @@ paths:
   /bytemine/crawl/intel:
     post:
       operationId: bytemine_POST__crawl_intel
-      summary: 'Crawl a website''s key pages and return comprehensive intel: company profile, contacts, social links, tech stack, sales signals, pain points, conversation starters. 1 credit per page (min 5).'
+      summary: 'Crawl a website''s key pages and return comprehensive intel: company profile…'
       tags:
       - Bytemine
       responses:
@@ -543,7 +543,7 @@ paths:
   /bytemine/v1/proposals/generate:
     post:
       operationId: bytemine_POST__v1_proposals_generate
-      summary: Generate a personalized sales or partnership proposal with branding, ROI projections, social proof, and outreach copy. Returns a public shareable URL. 10 credits.
+      summary: Generate a personalized sales or partnership proposal with branding, ROI…
       tags:
       - Bytemine
       responses:
@@ -574,7 +574,7 @@ paths:
   /bytemine/crawl/status:
     post:
       operationId: bytemine_POST__crawl_status
-      summary: Check crawl job status including pages crawled, found, and completion. Free, no credits.
+      summary: Check crawl job status including pages crawled, found, and completion.
       tags:
       - Bytemine
       responses:
@@ -605,7 +605,7 @@ paths:
   /bytemine/signals/acquisitions:
     post:
       operationId: bytemine_POST__signals_acquisitions
-      summary: Search real-time M&A/acquisition signals with filters for acquirer, amount, industry, date, and more. 1 credit per record. Use count='true' for free count-only query.
+      summary: Search real-time M&A/acquisition signals with filters for acquirer, amount…
       tags:
       - Bytemine
       responses:
@@ -636,7 +636,7 @@ paths:
   /bytemine/crawl/extract:
     post:
       operationId: bytemine_POST__crawl_extract
-      summary: 'Scrape a URL and extract structured data using a schema: company_profile, team_members, pricing, tech_stack, social_links, branding, full_intelligence. 2 credits.'
+      summary: 'Scrape a URL and extract structured data using a schema: company_profile…'
       tags:
       - Bytemine
       responses:
@@ -667,7 +667,7 @@ paths:
   /bytemine/b2b-search:
     post:
       operationId: bytemine_POST__b2b_search
-      summary: Search companies by name, industry, NAICS code, keywords, location, employee count. 1 credit per company returned.
+      summary: Search companies by name, industry, NAICS code, keywords, location, employee…
       tags:
       - Bytemine
       responses:
@@ -698,7 +698,7 @@ paths:
   /bytemine/contacts/search:
     post:
       operationId: bytemine_POST__contacts_search
-      summary: Search the prospect database using filters like job title, seniority, industry, location, company size, and more. Returns masked results. 1 credit per result.
+      summary: Search the prospect database using filters like job title, seniority, industry…
       tags:
       - Bytemine
       responses:

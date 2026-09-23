@@ -16,7 +16,7 @@ paths:
   /rocketreach/profile-company/lookup:
     get:
       operationId: rocketreach_GET__profile_company_lookup
-      summary: Look up a person and their associated company data in a single request.
+      summary: Look up a person and their associated company data in a single request
       tags:
       - RocketReach
       responses:
@@ -47,7 +47,7 @@ paths:
   /rocketreach/person/search:
     post:
       operationId: rocketreach_POST__person_search
-      summary: Search for people by various criteria including name, title, company, location, and more. Returns paginated results. Consumes 1 export credit per page.
+      summary: Search for people by various criteria including name, title, company, location…
       tags:
       - RocketReach
       responses:
@@ -78,7 +78,7 @@ paths:
   /rocketreach/person/lookup:
     get:
       operationId: rocketreach_GET__person_lookup
-      summary: Look up a person by name, email, LinkedIn URL, or other identifiers. Returns professional profile and contact information. Consumes 1 export credit.
+      summary: Look up a person by name, email, LinkedIn URL, or other identifiers.
       tags:
       - RocketReach
       responses:
@@ -109,7 +109,7 @@ paths:
   /rocketreach/company/lookup/:
     get:
       operationId: rocketreach_GET__company_lookup_
-      summary: Look up a company by name, domain, or ID. Returns company profile including industry, size, location, revenue, and more. Consumes 1 export credit.
+      summary: Look up a company by name, domain, or ID.
       tags:
       - RocketReach
       responses:
@@ -140,7 +140,7 @@ paths:
   /rocketreach/person/checkStatus:
     get:
       operationId: rocketreach_GET__person_checkStatus
-      summary: Check the status of a pending person lookup request. Free, no credit cost.
+      summary: Check the status of a pending person lookup request. Free, no credit cost
       tags:
       - RocketReach
       responses:
@@ -149,7 +149,7 @@ paths:
   /rocketreach/searchCompany:
     post:
       operationId: rocketreach_POST__searchCompany
-      summary: Search for companies by name, domain, industry, location, size, revenue, and more. Returns paginated results. Consumes 1 export credit per page.
+      summary: Search for companies by name, domain, industry, location, size, revenue, and…
       tags:
       - RocketReach
       responses:

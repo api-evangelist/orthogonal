@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Orthogonal Discovery API
-  description: Orthogonal is a unified API and payment layer that lets AI agents discover, access, and pay for external services from a single catalog of 40+ third-party APIs. Agents describe what they need in natural language; Orthogonal returns the right service and proxies the call, metering a per-call price. This OpenAPI description was GENERATED from the public developer documentation at https://docs.orthogonal.com (no first-party OpenAPI is published) and captures the documented Discovery and Run surface. Endpoint shapes are faithful to the docs; verify against the live API before code generation.
+  description: Orthogonal is a unified API and payment layer that lets AI agents discover, access, and pay for external services from a single catalog of 40+ third-party APIs.
   version: v1
   contact:
     name: Orthogonal
@@ -180,6 +180,24 @@ components:
           type: string
         responseTime:
           type: number
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: false
+        error:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: string
+          description: Machine-readable error code.
+          enum:
+          - UNAUTHORIZED
+          - INSUFFICIENT_CREDITS
+          - RATE_LIMITED
+          - NOT_FOUND
+          - UPSTREAM_ERROR
     EndpointResult:
       type: object
       properties:
@@ -218,31 +236,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EndpointResult'
-    Error:
-      type: object
-      properties:
-        success:
-          type: boolean
-          const: false
-        error:
-          type: string
-          description: Human-readable error message.
-        code:
-          type: string
-          description: Machine-readable error code.
-          enum:
-          - UNAUTHORIZED
-          - INSUFFICIENT_CREDITS
-          - RATE_LIMITED
-          - NOT_FOUND
-          - UPSTREAM_ERROR
   responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     NotFound:
       description: API or endpoint not found.
       content:
@@ -251,6 +245,12 @@ components:
             $ref: '#/components/schemas/Error'
     RateLimited:
       description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:

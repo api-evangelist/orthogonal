@@ -16,7 +16,7 @@ paths:
   /nyne/person/enrichment:
     get:
       operationId: nyne_GET__person_enrichment
-      summary: Poll for person enrichment results using requestId.
+      summary: Poll for person enrichment results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -24,7 +24,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_enrichment
-      summary: 'Start async person enrichment. Requires at least one of: email, phone, or social_media_url.'
+      summary: Start async person enrichment.
       tags:
       - Nyne.ai
       responses:
@@ -55,7 +55,7 @@ paths:
   /nyne/company/funding:
     post:
       operationId: nyne_POST__company_funding
-      summary: Start async retrieval of company funding history and investment details.
+      summary: Start async retrieval of company funding history and investment details
       tags:
       - Nyne.ai
       responses:
@@ -85,7 +85,7 @@ paths:
           url: https://np.orthogonal.com/nyne/company/funding
     get:
       operationId: nyne_GET__company_funding
-      summary: Poll for company funding results using requestId.
+      summary: Poll for company funding results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -94,7 +94,7 @@ paths:
   /nyne/company/funders:
     post:
       operationId: nyne_POST__company_funders
-      summary: Start async retrieval of investors and funders associated with a company.
+      summary: Start async retrieval of investors and funders associated with a company
       tags:
       - Nyne.ai
       responses:
@@ -124,7 +124,7 @@ paths:
           url: https://np.orthogonal.com/nyne/company/funders
     get:
       operationId: nyne_GET__company_funders
-      summary: Poll for company funders results using requestId.
+      summary: Poll for company funders results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -133,7 +133,7 @@ paths:
   /nyne/person/social-profiles:
     get:
       operationId: nyne_GET__person_social_profiles
-      summary: Poll for social profiles results using requestId.
+      summary: Poll for social profiles results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -141,7 +141,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_social_profiles
-      summary: Start async retrieval of all social media profiles associated with a person.
+      summary: Start async retrieval of all social media profiles associated with a person
       tags:
       - Nyne.ai
       responses:
@@ -172,7 +172,7 @@ paths:
   /nyne/company/enrichment:
     get:
       operationId: nyne_GET__company_enrichment
-      summary: Poll for company enrichment results using requestId.
+      summary: Poll for company enrichment results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -180,7 +180,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__company_enrichment
-      summary: 'Start async company enrichment. Requires at least one of: email, phone, or social_media_url.'
+      summary: Start async company enrichment.
       tags:
       - Nyne.ai
       responses:
@@ -211,7 +211,7 @@ paths:
   /nyne/person/search:
     get:
       operationId: nyne_GET__person_search
-      summary: Poll for person search results using requestId.
+      summary: Poll for person search results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -219,7 +219,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_search
-      summary: 'Start async person search by company name, role, geography, and person name. Returns requestId for polling. Pagination billing: call the first page normally and save billing.requestId from the Orthogonal /v1/run response. For later offset or cursor pages of the same search, pass parentRequestId with unchanged search parameters. Valid continuation pages still get their own request IDs and quoted price, but are charged 0. Changing filters starts a new billable search.'
+      summary: Start async person search by company name, role, geography, and person name.
       tags:
       - Nyne.ai
       responses:
@@ -250,7 +250,7 @@ paths:
   /nyne/company/needs:
     get:
       operationId: nyne_GET__company_needs
-      summary: Poll for company needs results using requestId.
+      summary: Poll for company needs results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -258,7 +258,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__company_needs
-      summary: Start async analysis of company needs based on provided content.
+      summary: Start async analysis of company needs based on provided content
       tags:
       - Nyne.ai
       responses:
@@ -289,7 +289,7 @@ paths:
   /nyne/company/checkseller:
     get:
       operationId: nyne_GET__company_checkseller
-      summary: Poll for checkseller results using requestId.
+      summary: Poll for checkseller results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -297,7 +297,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__company_checkseller
-      summary: Start async check if a company sells a specific product/service.
+      summary: Start async check if a company sells a specific product/service
       tags:
       - Nyne.ai
       responses:
@@ -328,7 +328,7 @@ paths:
   /nyne/person/interactions:
     post:
       operationId: nyne_POST__person_interactions
-      summary: Start async retrieval of social media interactions. Requires social_media_url and type.
+      summary: Start async retrieval of social media interactions.
       tags:
       - Nyne.ai
       responses:
@@ -358,7 +358,7 @@ paths:
           url: https://np.orthogonal.com/nyne/person/interactions
     get:
       operationId: nyne_GET__person_interactions
-      summary: Poll for interactions results using requestId.
+      summary: Poll for interactions results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -367,7 +367,7 @@ paths:
   /nyne/company/search:
     get:
       operationId: nyne_GET__company_search
-      summary: Poll for company search results using requestId.
+      summary: Poll for company search results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -375,7 +375,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__company_search
-      summary: 'Start async company search. Requires at least one of: industry or website_keyword.'
+      summary: Start async company search.
       tags:
       - Nyne.ai
       responses:
@@ -406,7 +406,7 @@ paths:
   /nyne/person/events:
     get:
       operationId: nyne_GET__person_events
-      summary: Poll for person events results using requestId.
+      summary: Poll for person events results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -414,7 +414,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_events
-      summary: Start async retrieval of life events and career milestones. Requires event parameter.
+      summary: Start async retrieval of life events and career milestones.
       tags:
       - Nyne.ai
       responses:
@@ -445,7 +445,7 @@ paths:
   /nyne/person/interests:
     get:
       operationId: nyne_GET__person_interests
-      summary: Poll for interests results using requestId.
+      summary: Poll for interests results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -453,7 +453,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_interests
-      summary: Start async retrieval of interests, skills, and topics a person engages with.
+      summary: Start async retrieval of interests, skills, and topics a person engages with
       tags:
       - Nyne.ai
       responses:
@@ -484,7 +484,7 @@ paths:
   /nyne/person/single-social-lookup:
     get:
       operationId: nyne_GET__person_single_social_lookup
-      summary: Poll for single social lookup results using requestId.
+      summary: Poll for single social lookup results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -492,7 +492,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_single_social_lookup
-      summary: Start async lookup of a single social media profile. Requires both social_media_url and site.
+      summary: Start async lookup of a single social media profile.
       tags:
       - Nyne.ai
       responses:
@@ -523,7 +523,7 @@ paths:
   /nyne/person/newsfeed:
     get:
       operationId: nyne_GET__person_newsfeed
-      summary: Poll for person newsfeed results using requestId.
+      summary: Poll for person newsfeed results using requestId
       tags:
       - Nyne.ai
       responses:
@@ -531,7 +531,7 @@ paths:
           description: Successful response
     post:
       operationId: nyne_POST__person_newsfeed
-      summary: Start async retrieval of social media newsfeed data from LinkedIn, Twitter, Instagram, GitHub, or Facebook profiles.
+      summary: Start async retrieval of social media newsfeed data from LinkedIn, Twitter…
       tags:
       - Nyne.ai
       responses:

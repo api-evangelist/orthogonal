@@ -16,7 +16,7 @@ paths:
   /avatars/v1:
     get:
       operationId: avatars_GET__v1
-      summary: Generate an avatar image from a name or initials with customizable styling.
+      summary: Generate an avatar image from a name or initials with customizable styling
       tags:
       - Abstract Avatars
       responses:

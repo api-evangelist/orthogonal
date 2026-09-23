@@ -16,7 +16,7 @@ paths:
   /andi/v1/search:
     get:
       operationId: andi_GET__v1_search
-      summary: Fast, high-quality search API with intelligent ranking, instant answers, and result enrichment.
+      summary: Fast, high-quality search API with intelligent ranking, instant answers, and…
       tags:
       - Andi Search API
       responses:
