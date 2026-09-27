@@ -98,14 +98,14 @@ components:
           - NOT_FOUND
           - UPSTREAM_ERROR
   responses:
-    BadRequest:
-      description: Invalid request.
+    Unauthorized:
+      description: Missing or invalid API key.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: API or endpoint not found.
+    BadRequest:
+      description: Invalid request.
       content:
         application/json:
           schema:
@@ -116,14 +116,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UpstreamError:
-      description: Upstream API provider returned an error.
+    NotFound:
+      description: API or endpoint not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
+    UpstreamError:
+      description: Upstream API provider returned an error.
       content:
         application/json:
           schema:

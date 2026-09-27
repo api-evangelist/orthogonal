@@ -52,11 +52,23 @@ tags:
 - AI Agents
 - API Discovery
 - API Marketplace
+- Agentic Payments
+- MCP
+- Data Enrichment
+- Crypto
+- Stablecoins
+- A2A
+tags_raw:
+- Company
+- AI Agents
+- API Discovery
+- API Marketplace
 - Agent Payments
 - MCP
 - Data Enrichment
 - Crypto
 - Stablecoins
+- A2A
 apis:
 - aid: orthogonal:orthogonal-account-api
   name: Orthogonal Account API
@@ -787,3 +799,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 11
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://docs.orthogonal.com/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404
