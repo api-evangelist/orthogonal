@@ -160,26 +160,45 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: API or endpoint not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
+    ApiResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        baseUrl:
+          type: string
+        payableBaseUrl:
+          type: string
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/EndpointResult'
+    EndpointResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        path:
+          type: string
+        method:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        isPayable:
+          type: boolean
+        verified:
+          type: boolean
+        score:
+          type: number
     SearchResponse:
       type: object
       properties:
@@ -217,44 +236,25 @@ components:
           - RATE_LIMITED
           - NOT_FOUND
           - UPSTREAM_ERROR
-    EndpointResult:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        path:
-          type: string
-        method:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-        isPayable:
-          type: boolean
-        verified:
-          type: boolean
-        score:
-          type: number
-    ApiResult:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        slug:
-          type: string
-        baseUrl:
-          type: string
-        payableBaseUrl:
-          type: string
-        endpoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/EndpointResult'
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: API or endpoint not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
