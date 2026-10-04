@@ -199,6 +199,24 @@ components:
           type: boolean
         score:
           type: number
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          const: false
+        error:
+          type: string
+          description: Human-readable error message.
+        code:
+          type: string
+          description: Machine-readable error code.
+          enum:
+          - UNAUTHORIZED
+          - INSUFFICIENT_CREDITS
+          - RATE_LIMITED
+          - NOT_FOUND
+          - UPSTREAM_ERROR
     SearchResponse:
       type: object
       properties:
@@ -218,24 +236,6 @@ components:
           type: string
         responseTime:
           type: number
-    Error:
-      type: object
-      properties:
-        success:
-          type: boolean
-          const: false
-        error:
-          type: string
-          description: Human-readable error message.
-        code:
-          type: string
-          description: Machine-readable error code.
-          enum:
-          - UNAUTHORIZED
-          - INSUFFICIENT_CREDITS
-          - RATE_LIMITED
-          - NOT_FOUND
-          - UPSTREAM_ERROR
   responses:
     Unauthorized:
       description: Missing or invalid API key.
@@ -243,14 +243,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    RateLimited:
-      description: Rate limit exceeded.
+    NotFound:
+      description: API or endpoint not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: API or endpoint not found.
+    RateLimited:
+      description: Rate limit exceeded.
       content:
         application/json:
           schema:

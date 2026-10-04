@@ -72,14 +72,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    UpstreamError:
-      description: Upstream API provider returned an error.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
+    InsufficientCredits:
+      description: Not enough credits to complete the call.
       content:
         application/json:
           schema:
@@ -90,26 +84,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    InsufficientCredits:
-      description: Not enough credits to complete the call.
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UpstreamError:
+      description: Upstream API provider returned an error.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    RunResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        priceCents:
-          type: number
-          description: Cost in cents (100 = $1).
-        data:
-          type: object
-          description: Response from the upstream API provider.
-        requestId:
-          type: string
     Error:
       type: object
       properties:
@@ -128,6 +115,19 @@ components:
           - RATE_LIMITED
           - NOT_FOUND
           - UPSTREAM_ERROR
+    RunResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        priceCents:
+          type: number
+          description: Cost in cents (100 = $1).
+        data:
+          type: object
+          description: Response from the upstream API provider.
+        requestId:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http
